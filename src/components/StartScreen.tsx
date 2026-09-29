@@ -74,15 +74,14 @@ export const StartScreen: React.FC<StartScreenProps> = ({
       </header>
 
       <div className="flex-1 flex flex-col items-center py-2 sm:py-4">
-        {/* Compact status banner — SIMULATION INITIALIZING */}
         <div className="w-full rounded-xl overflow-hidden border border-[#2d3748] relative mb-2 sm:mb-3 shadow-lg bg-[#1a1f2c]">
           <div className="flex items-center gap-3 px-3 py-2.5 sm:py-3 bg-gradient-to-br from-[#1a1f2c] to-[#12151c]">
             <Sparkles size={20} className="text-[#00e676] shrink-0 animate-pulse" />
             <div className="min-w-0 flex-1">
-              <div className="font-display font-bold text-white text-xs sm:text-sm tracking-wide leading-tight">
+              <div className="font-display font-bold text-white text-sm sm:text-base tracking-wide leading-tight">
                 SIMULATION INITIALIZING
               </div>
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5 text-[10px] sm:text-[11px] font-mono-numbers">
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5 text-[12px] sm:text-[13px] font-mono-numbers">
                 <span className="text-[#00f0ff]">
                   {language === 'zh' ? '雙語事件庫：已就緒' : 'DATABASE: READY'}
                 </span>
@@ -97,15 +96,15 @@ export const StartScreen: React.FC<StartScreenProps> = ({
 
         <GlitchTitle subtitle={t.tagline} />
 
-        <div className="mt-2 sm:mt-3 flex flex-wrap items-center justify-center gap-2 text-[10px] sm:text-xs font-mono-numbers">
+        <div className="mt-2 sm:mt-3 flex flex-wrap items-center justify-center gap-2 text-[12px] sm:text-sm font-mono-numbers">
           <div className="bg-[#1a1f2c] border border-[#2d3748] px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-slate-300 flex items-center gap-1.5">
             <span className="text-slate-400">{t.totalLives}:</span>
-            <strong className="text-white text-xs sm:text-sm">{totalRuns}</strong>
+            <strong className="text-white text-sm sm:text-base">{totalRuns}</strong>
           </div>
           {highestAge && (
             <div className="bg-[#1a1f2c] border border-[#2d3748] px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-slate-300 flex items-center gap-1.5">
               <span className="text-slate-400">{t.maxAge}:</span>
-              <strong className="text-[#00e676] text-xs sm:text-sm">{highestAge}</strong>
+              <strong className="text-[#00e676] text-sm sm:text-base">{highestAge}</strong>
             </div>
           )}
         </div>
@@ -116,7 +115,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({
               sounds.playClick();
               setShowRules(!showRules);
             }}
-            className="w-full py-2 px-3 text-[11px] sm:text-xs font-medium text-slate-300 hover:text-white bg-[#161a24] border border-[#2d3748] rounded-lg transition-colors flex items-center justify-between cursor-pointer"
+            className="w-full py-2.5 px-3 text-[13px] sm:text-sm font-medium text-slate-200 hover:text-white bg-[#161a24] border border-[#2d3748] rounded-lg transition-colors flex items-center justify-between cursor-pointer"
           >
             <span className="flex items-center gap-1.5 font-semibold">
               <ShieldAlert size={14} className="text-amber-400" />
@@ -126,7 +125,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({
           </button>
 
           {showRules && (
-            <div className="mt-1.5 p-3 sm:p-4 bg-[#1a1f2c] border border-[#2d3748] rounded-lg text-[12px] sm:text-[13px] text-slate-200 space-y-1.5 font-medium animate-fade-in text-left leading-relaxed">
+            <div className="mt-1.5 p-3 sm:p-4 bg-[#1a1f2c] border border-[#2d3748] rounded-lg text-[14px] sm:text-[15px] text-slate-100 space-y-2 font-medium animate-fade-in text-left leading-relaxed">
               <p>{t.rule1}</p>
               <p>{t.rule2}</p>
               <p>{t.rule3}</p>
@@ -137,12 +136,12 @@ export const StartScreen: React.FC<StartScreenProps> = ({
 
         {pastRuns.length > 0 && (
           <div className="w-full mt-2.5 sm:mt-3 bg-[#161a24] border border-[#2d3748] rounded-xl p-2.5 sm:p-3 text-left shadow-lg">
-            <div className="flex items-center justify-between text-[11px] sm:text-xs text-[#00f0ff] mb-2 font-semibold gap-2">
+            <div className="flex items-center justify-between text-[13px] sm:text-sm text-[#00f0ff] mb-2 font-semibold gap-2">
               <span className="flex items-center gap-1.5 shrink-0">
                 <Trophy size={14} className="text-amber-400" />
                 <span>{t.hallOfFame} ({pastRuns.length})</span>
               </span>
-              <span className="text-slate-400 text-[10px] sm:text-[11px] font-normal truncate">
+              <span className="text-slate-400 text-[12px] font-normal truncate">
                 {language === 'zh' ? '可上下捲動瀏覽全部存檔' : 'Scroll to view all past records'}
               </span>
             </div>
@@ -160,15 +159,15 @@ export const StartScreen: React.FC<StartScreenProps> = ({
                   <div className="flex items-center justify-between gap-2 w-full">
                     <div className="flex items-center gap-2 min-w-0 flex-1">
                       <Trophy size={16} className="text-amber-400 group-hover:text-[#00f0ff] shrink-0 transition-colors" />
-                      <span className="font-bold text-white group-hover:text-[#00f0ff] text-sm sm:text-base leading-snug tracking-normal line-clamp-1 transition-colors">
+                      <span className="font-bold text-white group-hover:text-[#00f0ff] text-[15px] sm:text-base leading-snug tracking-normal line-clamp-1 transition-colors">
                         {run.epitaph[language]}
                       </span>
                     </div>
-                    <span className="shrink-0 text-[11px] sm:text-xs font-semibold text-cyan-400 bg-cyan-950/70 border border-cyan-800/60 group-hover:bg-[#00f0ff] group-hover:text-black group-hover:border-[#00f0ff] px-2.5 py-0.5 rounded-md transition-all">
-                      {language === 'zh' ? '查看 ➜' : 'Inspect ➜'}
+                    <span className="shrink-0 text-[12px] sm:text-xs font-semibold text-cyan-400 bg-cyan-950/70 border border-cyan-800/60 group-hover:bg-[#00f0ff] group-hover:text-black group-hover:border-[#00f0ff] px-2.5 py-0.5 rounded-md transition-all">
+                      {language === 'zh' ? '查看 →' : 'Inspect →'}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-slate-300 text-[11px] sm:text-xs font-medium pl-[23px] tracking-normal">
+                  <div className="flex items-center gap-2 text-slate-300 text-[13px] sm:text-sm font-medium pl-[23px] tracking-normal">
                     <span className="text-[#00e676] font-semibold">
                       {language === 'zh' ? `${run.age} 歲` : `Age ${run.age}`}
                     </span>
@@ -179,7 +178,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({
                     {run.date && (
                       <>
                         <span className="text-slate-500">·</span>
-                        <span className="text-slate-400 text-[10px] sm:text-[11px]">{run.date}</span>
+                        <span className="text-slate-400 text-[12px]">{run.date}</span>
                       </>
                     )}
                   </div>
@@ -196,7 +195,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({
             sounds.playPositive();
             onStartGame();
           }}
-          className="w-full py-3 sm:py-4 px-4 sm:px-6 bg-[#00e676] hover:bg-[#00c853] text-[#0f1117] font-display font-black text-lg sm:text-2xl uppercase tracking-widest rounded-xl shadow-[0_0_25px_rgba(0,230,118,0.4)] hover:shadow-[0_0_35px_rgba(0,230,118,0.6)] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 sm:gap-3 active:scale-[0.98]"
+          className="w-full py-3 sm:py-4 px-4 sm:px-6 bg-[#00e676] hover:bg-[#00c853] text-[#0f1117] font-display font-black text-xl sm:text-2xl tracking-wide rounded-xl shadow-[0_0_25px_rgba(0,230,118,0.4)] hover:shadow-[0_0_35px_rgba(0,230,118,0.6)] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 sm:gap-3 active:scale-[0.98]"
         >
           <Play size={20} className="fill-current sm:w-[22px] sm:h-[22px]" />
           <span>{t.startBtn}</span>
