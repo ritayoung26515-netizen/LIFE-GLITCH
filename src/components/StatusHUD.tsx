@@ -43,7 +43,6 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
     job: language === 'zh' ? '💼 職業' : '💼 Job',
     relationship: language === 'zh' ? '💍 關係' : '💍 Status',
     log: language === 'zh' ? '履歷' : 'Log',
-    traits: language === 'zh' ? '特質' : 'Traits',
   };
 
   return (
@@ -55,20 +54,6 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
               {language === 'zh' ? `${state.age} 歲` : `Age ${state.age}`}
             </span>
           </div>
-
-          {state.flags.length > 0 && onToggleFlagsDrawer && (
-            <button
-              onClick={() => {
-                sounds.playClick();
-                onToggleFlagsDrawer();
-              }}
-              title="Discovered flags"
-              className="text-xs bg-[#1a1f2c] hover:bg-[#252b3d] text-[#00f0ff] border border-[#2d3748] px-2.5 py-1 rounded-md transition-colors flex items-center gap-1 cursor-pointer font-semibold tracking-normal"
-            >
-              <span>🚩</span>
-              <span>{state.flags.length} {t.traits}</span>
-            </button>
-          )}
         </div>
 
         <div className="flex items-center gap-1.5">
