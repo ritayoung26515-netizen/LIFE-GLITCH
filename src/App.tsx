@@ -182,7 +182,9 @@ export default function App() {
     const newMoney = prev.money + (effects.money ?? 0);
     const newHealth = Math.max(0, Math.min(100, prev.health + (effects.health ?? 0)));
     const newHappiness = Math.max(0, Math.min(100, prev.happiness + (effects.happiness ?? 0)));
-    const newStress = Math.max(0, Math.min(100, prev.stress + (effects.stress ?? 0)));
+    // Natural annual stress decay (-3%) so players aren't locked in a one-way stress spiral
+    const naturalStressDecay = -3;
+    const newStress = Math.max(0, Math.min(100, prev.stress + (effects.stress ?? 0) + naturalStressDecay));
     const newFame = Math.max(0, Math.min(100, prev.fame + (effects.fame ?? 0)));
 
     const newJob = effects.setJob || prev.job;
@@ -210,7 +212,7 @@ export default function App() {
     if (effects.money) {
       deltas.push({
         label: { en: 'Money', zh: '資產' },
-        value: effects.money > 0 ? `+$${effects.money.toLocaleString()}` : `-$${Math.abs(effects.money).toLocaleString()}`,
+        value: effects.money > 0 ? `+$` + effects.money.toLocaleString() : `-$` + Math.abs(effects.money).toLocaleString(),
         positive: effects.money > 0
       });
     }
@@ -597,7 +599,6 @@ export default function App() {
         }}
         language={language}
         history={inspectedPastRun?.timeline ?? inspectedPastRun?.history ?? gameState.history}
-        pastRun={inspectedPastRun}
         onForkTimeline={handleForkTimeline}
       />
 
@@ -606,7 +607,14 @@ export default function App() {
         mode={adMode}
         language={language}
         onComplete={() => handleAdCompleted()}
-        onSkip={() => handleAdCompleted()}
+        onClose={() => {
+          setIsAdOpen(false);
+          if (adMode === 'REVIVE') {
+            // stay on game over
+          } else {
+            gameplayStart();
+          }
+        }}
       />
 
       <AbandonModal
