@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GlitchTitle } from './GlitchTitle';
 import { PastRun, Language } from '../types/game';
-import { Volume2, VolumeX, Play, Trophy, ShieldAlert, Sparkles, Globe } from 'lucide-react';
+import { Volume2, VolumeX, Play, Trophy, ShieldAlert, Globe } from 'lucide-react';
 import { sounds } from '../utils/audio';
 
 interface StartScreenProps {
@@ -74,26 +74,6 @@ export const StartScreen: React.FC<StartScreenProps> = ({
       </header>
 
       <div className="flex-1 flex flex-col items-center py-2 sm:py-4">
-        <div className="w-full rounded-xl overflow-hidden border border-[#2d3748] relative mb-2 sm:mb-3 shadow-lg bg-[#1a1f2c]">
-          <div className="flex items-center gap-3 px-3 py-2.5 sm:py-3 bg-gradient-to-br from-[#1a1f2c] to-[#12151c]">
-            <Sparkles size={20} className="text-[#00e676] shrink-0 animate-pulse" />
-            <div className="min-w-0 flex-1">
-              <div className="font-display font-bold text-white text-sm sm:text-base tracking-wide leading-tight">
-                SIMULATION INITIALIZING
-              </div>
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5 text-[12px] sm:text-[13px] font-mono-numbers">
-                <span className="text-[#00f0ff]">
-                  {language === 'zh' ? '雙語事件庫：已就緒' : 'DATABASE: READY'}
-                </span>
-                <span className="text-slate-500">·</span>
-                <span className="text-slate-400">
-                  {t.totalLives}: {totalRuns}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <GlitchTitle subtitle={t.tagline} />
 
         <div className="mt-2 sm:mt-3 flex flex-wrap items-center justify-center gap-2 text-[12px] sm:text-sm font-mono-numbers">
