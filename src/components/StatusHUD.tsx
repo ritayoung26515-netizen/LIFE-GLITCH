@@ -2,7 +2,6 @@ import React from 'react';
 import { GameState, Language } from '../types/game';
 import { Volume2, VolumeX, BookOpen, AlertTriangle, Globe, Home } from 'lucide-react';
 import { sounds } from '../utils/audio';
-import { isChinese, loc, languageButtonLabel } from '../utils/i18n';
 
 interface StatusHUDProps {
   state: GameState;
@@ -28,23 +27,23 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
   const isHighStress = state.stress >= 70;
   const isCriticalHealth = state.health <= 25;
 
-  const formattedMoney = new Intl.NumberFormat(isChinese(language) ? 'zh-TW' : 'en-US', {
+  const formattedMoney = new Intl.NumberFormat(language === 'zh' ? 'zh-TW' : 'en-US', {
     style: 'currency',
     currency: 'USD',
     maximumFractionDigits: 0
   }).format(state.money);
 
   const t = {
-    age: isChinese(language) ? '歲數' : 'AGE',
-    money: isChinese(language) ? '💵 資產' : '💵 Cash',
-    health: isChinese(language) ? '❤️ 健康' : '❤️ Health',
-    happiness: isChinese(language) ? '😄 快樂' : '😄 Joy',
-    stress: isChinese(language) ? '⚡ 壓力' : '⚡ Stress',
-    fame: isChinese(language) ? '⭐ 聲望' : '⭐ Fame',
-    job: isChinese(language) ? '💼 職業' : '💼 Job',
-    relationship: isChinese(language) ? '💍 關係' : '💍 Status',
-    log: isChinese(language) ? '履歷' : 'Log',
-    traits: isChinese(language) ? '特質' : 'Traits',
+    age: language === 'zh' ? '歲數' : 'AGE',
+    money: language === 'zh' ? '💵 資產' : '💵 Cash',
+    health: language === 'zh' ? '❤️ 健康' : '❤️ Health',
+    happiness: language === 'zh' ? '😄 快樂' : '😄 Joy',
+    stress: language === 'zh' ? '⚡ 壓力' : '⚡ Stress',
+    fame: language === 'zh' ? '⭐ 聲望' : '⭐ Fame',
+    job: language === 'zh' ? '💼 職業' : '💼 Job',
+    relationship: language === 'zh' ? '💍 關係' : '💍 Status',
+    log: language === 'zh' ? '履歷' : 'Log',
+    traits: language === 'zh' ? '特質' : 'Traits',
   };
 
   return (
@@ -53,7 +52,7 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
         <div className="flex items-center gap-2">
           <div className="bg-[#1a1f2c] border border-[#2d3748] px-3 py-1 rounded-md flex items-center">
             <span className="text-lg sm:text-xl font-bold text-white tracking-tight">
-              {isChinese(language) ? `${state.age} 歲` : `Age ${state.age}`}
+              {language === 'zh' ? `${state.age} 歲` : `Age ${state.age}`}
             </span>
           </div>
 
@@ -80,11 +79,11 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
                 onReturnHome();
               }}
               className="flex items-center gap-1 text-xs font-semibold text-slate-200 hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] hover:border-amber-400/60 px-2 sm:px-2.5 py-1.5 rounded-md transition-colors cursor-pointer tracking-normal"
-              title={isChinese(language) ? '返回主頁 / Home' : 'Return to Home'}
+              title={language === 'zh' ? '返回主頁 / Home' : 'Return to Home'}
               aria-label="Home"
             >
               <Home size={14} className="text-amber-400" />
-              <span className="hidden sm:inline font-semibold">{isChinese(language) ? '主頁' : 'Home'}</span>
+              <span className="hidden sm:inline font-semibold">{language === 'zh' ? '主頁' : 'Home'}</span>
             </button>
           )}
 
@@ -94,10 +93,10 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
               onToggleLanguage();
             }}
             className="flex items-center gap-1 text-xs font-semibold text-[#00e676] hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] hover:border-[#00e676]/60 px-2.5 py-1.5 rounded-md transition-colors cursor-pointer tracking-normal"
-            title="Toggle Language EN / 繁 / 簡"
+            title="Toggle Language / 切換語言"
           >
             <Globe size={14} />
-            <span>{languageButtonLabel(language)}</span>
+            <span>{language === 'en' ? '中文' : 'EN'}</span>
           </button>
 
           <button
@@ -137,12 +136,12 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
         </div>
 
         <div className={`bg-[#1a1f2c] border rounded-lg p-2 flex flex-col justify-between transition-colors ${
-          isCriticalHealth ? 'border-[#ff1744] bg-[#ff1744]/15' : 'border-[#2d3748]'
+          isCriticalHealth ? 'border-[#ff1744] bg-[#ff1744]/10' : 'border-[#2d3748]'
         }`}>
           <div className="flex items-center justify-between text-[11px] sm:text-xs text-slate-300 font-medium">
             <span className="flex items-center gap-0.5">
               {t.health}
-              {isCriticalHealth && <AlertTriangle size={11} className="text-[#ff1744]" />}
+              {isCriticalHealth && <AlertTriangle size={10} className="text-[#ff1744]" />}
             </span>
             <span className="font-mono-numbers text-xs sm:text-[13px] font-bold text-slate-100">{state.health}%</span>
           </div>
@@ -203,15 +202,15 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
 
         <div className="bg-[#1a1f2c] border border-[#2d3748] rounded-lg p-2 flex flex-col justify-between col-span-1">
           <div className="text-[11px] sm:text-xs text-slate-300 font-medium truncate">{t.job}</div>
-          <div className="text-xs sm:text-[13px] font-semibold text-[#e2e8f0] truncate mt-1" title={loc(state.job, language)}>
-            {loc(state.job, language)}
+          <div className="text-xs sm:text-[13px] font-semibold text-[#e2e8f0] truncate mt-1" title={state.job[language]}>
+            {state.job[language]}
           </div>
         </div>
 
         <div className="bg-[#1a1f2c] border border-[#2d3748] rounded-lg p-2 flex flex-col justify-between col-span-2">
           <div className="text-[11px] sm:text-xs text-slate-300 font-medium truncate">{t.relationship}</div>
-          <div className="text-xs sm:text-[13px] font-semibold text-[#e2e8f0] truncate mt-1" title={loc(state.relationship, language)}>
-            {loc(state.relationship, language)}
+          <div className="text-xs sm:text-[13px] font-semibold text-[#e2e8f0] truncate mt-1" title={state.relationship[language]}>
+            {state.relationship[language]}
           </div>
         </div>
       </div>
