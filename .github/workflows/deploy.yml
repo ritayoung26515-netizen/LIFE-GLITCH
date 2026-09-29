@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,6 +32,30 @@ jobs:
       - name: Build production assets
         run: npm run build
 
+      - name: Ensure .nojekyll (required for GH Pages SPA assets)
+        run: touch dist/.nojekyll
+
+      - name: Verify build output
+        run: |
+          echo "=== dist contents ==="
+          ls -la dist/
+          echo "=== index.html (should reference ./assets/ not /src/) ==="
+          head -30 dist/index.html
+          if grep -q '/src/main' dist/index.html; then
+            echo "ERROR: dist/index.html still points at source — build failed"
+            exit 1
+          fi
+
+      # Primary: deploy built dist/ to gh-pages branch (works with Pages source = branch)
+      - name: Deploy dist to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          force_orphan: true
+
+      # Also upload for GitHub Pages "Actions" source (if enabled)
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -51,13 +75,15 @@ jobs:
           path: life-glitch-crazygames.zip
           retention-days: 30
 
-  deploy:
-    needs: build
+  # Optional second job if repo Pages source is set to "GitHub Actions"
+  deploy-pages:
+    needs: build-and-deploy
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages (Actions source)
         id: deployment
         uses: actions/deploy-pages@v4
+        continue-on-error: true
