@@ -1,5 +1,4 @@
-/** en = English · zh = Traditional Chinese (繁) · zh-CN = Simplified Chinese (簡) */
-export type Language = 'en' | 'zh' | 'zh-CN';
+export type Language = 'en' | 'zh';
 
 export type EventCategory = 
   | 'WORK' 
@@ -10,25 +9,29 @@ export type EventCategory =
   | 'WEIRD' 
   | 'CHAIN';
 
-/**
- * Localized copy.
- * - en: English
- * - zh: Traditional Chinese (繁) — required
- * - zhCN: Simplified Chinese (簡) — optional; game falls back to zh if missing
- */
 export interface LocalizedString {
   en: string;
   zh: string;
-  zhCN?: string;
 }
 
 export interface EventConditions {
-  flags?: string[];
   minMoney?: number;
+  maxMoney?: number;
+  minHealth?: number;
+  maxHealth?: number;
+  minHappiness?: number;
+  maxHappiness?: number;
   minStress?: number;
+  maxStress?: number;
+  minFame?: number;
+  maxFame?: number;
+  requiredFlags?: string[];
+  forbiddenFlags?: string[];
+  requiredJob?: string[];
+  requiredRelationship?: string[];
 }
 
-export interface ChoiceEffects {
+export interface EventEffects {
   money?: number;
   health?: number;
   happiness?: number;
@@ -38,47 +41,42 @@ export interface ChoiceEffects {
   removeFlags?: string[];
   setJob?: LocalizedString;
   setRelationship?: LocalizedString;
+  nextEventId?: string;
 }
 
 export interface EventChoice {
   text: LocalizedString;
-  effects: ChoiceEffects;
+  effects: EventEffects;
 }
 
 export interface GameEvent {
   id: string;
-  category: EventCategory | string;
+  category: EventCategory;
   minAge: number;
   maxAge: number;
-  conditions?: EventConditions;
   text: LocalizedString;
-  choices: [EventChoice, EventChoice];
+  choices: EventChoice[];
+  conditions?: EventConditions;
+  weight?: number;
 }
 
-export interface SavedStateSnapshot {
-  age: number;
-  money: number;
-  health: number;
-  happiness: number;
-  stress: number;
-  fame: number;
-  job: LocalizedString;
-  relationship: LocalizedString;
-  flags: string[];
-  peakMoney: number;
-  decisionsCount: number;
+export interface StatDelta {
+  label: LocalizedString;
+  value: string;
+  positive: boolean;
+}
+
+export interface TurnFeedback {
+  choiceText: LocalizedString;
+  deltas: StatDelta[];
 }
 
 export interface LifeLogEntry {
   age: number;
   eventText: LocalizedString;
   choiceText: LocalizedString;
-  effectsSummary: {
-    en: string;
-    zh: string;
-  };
-  event?: GameEvent;
-  snapshot?: SavedStateSnapshot;
+  category: EventCategory;
+  effectsSummary: LocalizedString;
 }
 
 export interface GameState {
@@ -91,36 +89,25 @@ export interface GameState {
   job: LocalizedString;
   relationship: LocalizedString;
   flags: string[];
-  hasRevived: boolean;
-  isAlive: boolean;
-  deathReason: LocalizedString | null;
-  history: LifeLogEntry[];
-  peakMoney: number;
   decisionsCount: number;
-}
-
-export interface TurnFeedback {
-  choiceText: LocalizedString;
-  deltas: {
-    label: LocalizedString;
-    value: string;
-    positive: boolean;
-  }[];
+  lifeLog: LifeLogEntry[];
+  hasRevived: boolean;
+  deathReason: LocalizedString | null;
+  isAlive: boolean;
+  regretsUsed: number;
+  maxRegrets: number;
+  previousStateSnapshot: GameState | null;
+  currentEvent: GameEvent | null;
 }
 
 export interface PastRun {
   id: string;
   age: number;
   money: number;
-  health: number;
-  happiness: number;
-  stress: number;
-  fame: number;
-  job: LocalizedString;
   epitaph: LocalizedString;
-  deathReason: LocalizedString;
-  flags: string[];
-  history: LifeLogEntry[];
-  timeline?: LifeLogEntry[];
   date: string;
+  deathReason?: LocalizedString;
+  job?: LocalizedString;
+  flags?: string[];
+  lifeLog?: LifeLogEntry[];
 }
