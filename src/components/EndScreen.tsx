@@ -1,293 +1,151 @@
 import React, { useState } from 'react';
 import { GameState, Language } from '../types/game';
+import { isChinese, loc, languageButtonLabel } from '../utils/i18n';
 import { generateEpitaph } from '../utils/epitaph';
-import { RotateCcw, Tv, Share2, Check, Sparkles, Skull, Globe, Home } from 'lucide-react';
+import { Home, Globe, Share2, RotateCcw, Play, BookOpen } from 'lucide-react';
 import { sounds } from '../utils/audio';
-import { getTraitLabel } from '../utils/traits';
 
 interface EndScreenProps {
   state: GameState;
   language: Language;
   onToggleLanguage: () => void;
-  onRestart: () => void;
-  onOpenAdRevive: () => void;
-  canRewindFatal?: boolean;
-  onRewindFatalChoice?: () => void;
-  onOpenHistory: () => void;
-  onReturnHome?: () => void;
+  onPlayAgain: () => void;
+  onRevive: () => void;
+  onOpenTimeline: () => void;
+  onReturnHome: () => void;
+  canRegret: boolean;
+  onRegret: () => void;
 }
 
 export const EndScreen: React.FC<EndScreenProps> = ({
   state,
   language,
   onToggleLanguage,
-  onRestart,
-  onOpenAdRevive,
-  canRewindFatal = false,
-  onRewindFatalChoice,
-  onOpenHistory,
-  onReturnHome
+  onPlayAgain,
+  onRevive,
+  onOpenTimeline,
+  onReturnHome,
+  canRegret,
+  onRegret
 }) => {
   const [copied, setCopied] = useState(false);
-  const [imageError, setImageError] = useState(false);
-
   const epitaph = generateEpitaph(state);
-  const isCenturyVictory = state.age >= 100;
+  const isVictory = state.age >= 100;
 
   const t = {
-    victoryBanner: language === 'zh' ? '🎉 世紀存活者' : '🎉 CENTURY SURVIVOR',
-    deathBanner: language === 'zh' ? '💀 生命終結' : '💀 LIFE TERMINATED',
-    decisionsCount: language === 'zh' ? '做出決定數' : 'DECISIONS MADE',
-    retiredAt: language === 'zh' ? `🎉 於 ${state.age} 歲圓滿退休` : `🎉 RETIRED AT AGE ${state.age}`,
-    diedAt: language === 'zh' ? `💀 於 ${state.age} 歲離世` : `💀 DIED AT AGE ${state.age}`,
-    officialTitle: language === 'zh' ? '官方人生稱號 / 墓誌銘' : 'OFFICIAL LIFE EPITAPH',
-    causeOfEnd: language === 'zh' ? '終結原因：' : 'Cause of End:',
-    finalWealth: language === 'zh' ? '最終財富' : 'Final Wealth',
-    finalJoy: language === 'zh' ? '最終快樂' : 'Final Joy',
-    finalJob: language === 'zh' ? '最終職業' : 'Final Career',
-    traitsDiscovered: language === 'zh' ? '探索特質' : 'Traits Found',
-    acquiredTraits: language === 'zh' ? '已獲特質標籤：' : 'Acquired Traits:',
-    reviveBtn: language === 'zh' ? '📺 觀看廣告 (復活恢復50%HP)' : '📺 WATCH AD (REVIVE WITH 50% HP)',
-    playAgainBtn: language === 'zh' ? '🔄 再活一次' : '🔄 PLAY AGAIN',
-    timelineBtn: language === 'zh' ? '回顧整個人生時間軸' : 'Review Full Timeline',
-    shareBtn: language === 'zh' ? '分享人生總結' : 'Share Epitaph',
-    copiedText: language === 'zh' ? '已複製到剪貼簿！' : 'Copied to Clipboard!',
+    victoryBanner: isChinese(language) ? '🎉 世紀存活者' : '🎉 CENTURY SURVIVOR',
+    deathBanner: isChinese(language) ? '💀 生命終結' : '💀 LIFE TERMINATED',
+    decisionsCount: isChinese(language) ? '做出決定數' : 'DECISIONS MADE',
+    retiredAt: isChinese(language) ? `🎉 於 ${state.age} 歲圓滿退休` : `🎉 RETIRED AT AGE ${state.age}`,
+    diedAt: isChinese(language) ? `💀 於 ${state.age} 歲離世` : `💀 DIED AT AGE ${state.age}`,
+    officialTitle: isChinese(language) ? '官方人生稱號 / 墓誌銘' : 'OFFICIAL LIFE EPITAPH',
+    causeOfEnd: isChinese(language) ? '終結原因：' : 'Cause of End:',
+    finalWealth: isChinese(language) ? '最終財富' : 'Final Wealth',
+    finalJoy: isChinese(language) ? '最終快樂' : 'Final Joy',
+    finalJob: isChinese(language) ? '最終職業' : 'Final Career',
+    traitsDiscovered: isChinese(language) ? '探索特質' : 'Traits Found',
+    acquiredTraits: isChinese(language) ? '已獲特質標籤：' : 'Acquired Traits:',
+    reviveBtn: isChinese(language) ? '📺 觀看廣告 (復活恢復50%HP)' : '📺 WATCH AD (REVIVE WITH 50% HP)',
+    playAgainBtn: isChinese(language) ? '🔄 再活一次' : '🔄 PLAY AGAIN',
+    timelineBtn: isChinese(language) ? '回顧整個人生時間軸' : 'Review Full Timeline',
+    shareBtn: isChinese(language) ? '分享人生總結' : 'Share Epitaph',
+    copiedText: isChinese(language) ? '已複製到剪貼簿！' : 'Copied to Clipboard!',
   };
 
-  const handleShare = () => {
-    sounds.playClick();
-    const shareText = `💀 LIFE GLITCH SUMMARY:
-Title / 稱號: "${epitaph.title[language]}"
-Age / 年齡: ${state.age}
-Final Wealth / 財富: $${state.money.toLocaleString()}
-Career / 職業: ${state.job[language]}
-Cause / 原因: ${state.deathReason ? state.deathReason[language] : ''}
-Play LIFE GLITCH on CrazyGames!`;
-
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(shareText).then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2500);
-      });
+  const handleShare = async () => {
+    const text = `LIFE GLITCH Report\nAge: ${state.age}\nTitle: "${loc(epitaph.title, language)}"\nCareer: ${loc(state.job, language)}\nCause: ${state.deathReason ? loc(state.deathReason, language) : ''}\nWealth: $${state.money.toLocaleString()}`;
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // ignore
     }
   };
 
   return (
-    <div id="screen-end" className="min-h-screen flex flex-col justify-between p-4 sm:p-6 max-w-lg mx-auto w-full select-none animate-fade-in">
-      {/* Top Header with Language Toggle & Home */}
-      <header className="flex items-center justify-between py-1 mb-2 border-b border-[#2d3748]">
+    <div className="min-h-[100dvh] max-w-lg mx-auto w-full p-4 flex flex-col gap-3 overflow-y-auto">
+      <header className="flex items-center justify-between border-b border-[#2d3748] pb-2">
         <span className="text-xs font-mono-numbers text-slate-400">
-          LIFE REPORT · {state.age} {language === 'zh' ? '歲' : 'YRS'}
+          LIFE REPORT · {state.age} {isChinese(language) ? '歲' : 'YRS'}
         </span>
         <div className="flex items-center gap-1.5">
-          {onReturnHome && (
-            <button
-              onClick={() => {
-                sounds.playClick();
-                onReturnHome();
-              }}
-              className="flex items-center gap-1 text-xs font-mono-numbers text-slate-300 hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] px-2.5 py-1 rounded-md transition-colors cursor-pointer"
-              title={language === 'zh' ? '返回主頁 / Home' : 'Return Home'}
-            >
-              <Home size={13} className="text-amber-400" />
-              <span>{language === 'zh' ? '主頁' : 'Home'}</span>
-            </button>
-          )}
-          <button
-            onClick={() => {
-              sounds.playClick();
-              onToggleLanguage();
-            }}
-            className="flex items-center gap-1 text-xs font-mono-numbers font-bold text-[#00e676] bg-[#1a1f2c] border border-[#2d3748] px-2.5 py-1 rounded-md transition-colors cursor-pointer"
-          >
+          <button type="button" onClick={onReturnHome} className="flex items-center gap-1 text-xs text-slate-400 hover:text-white bg-[#1a1f2c] border border-[#2d3748] px-2 py-1 rounded cursor-pointer">
+            <Home size={13} />
+            <span>{isChinese(language) ? '主頁' : 'Home'}</span>
+          </button>
+          <button type="button" onClick={onToggleLanguage} className="flex items-center gap-1 text-xs font-bold text-[#00e676] bg-[#1a1f2c] border border-[#2d3748] px-2 py-1 rounded cursor-pointer">
             <Globe size={13} />
-            <span>{language === 'en' ? '中文' : 'EN'}</span>
+            <span>{languageButtonLabel(language)}</span>
           </button>
         </div>
       </header>
 
-      {/* Top Banner / Image */}
-      <div>
-        <div className="w-full h-36 sm:h-44 rounded-2xl overflow-hidden border border-[#2d3748] relative mb-3 bg-[#1a1f2c] flex items-center justify-center shadow-lg">
-          {!imageError ? (
-            <img
-              src="/src/assets/images/life_glitch_game_over_1790649918264.jpg"
-              alt="Life Glitch Game Over"
-              referrerPolicy="no-referrer"
-              onError={() => setImageError(true)}
-              className="w-full h-full object-cover opacity-75"
-            />
-          ) : (
-            <div className="p-4 text-center">
-              <Skull size={32} className="text-[#ff1744] mx-auto mb-1 animate-pulse" />
-              <div className="font-display font-bold text-white text-base">
-                {language === 'zh' ? '生命終結協議' : 'TERMINATION EXCEPTION'}
-              </div>
-            </div>
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#12151c] via-[#12151c]/40 to-transparent pointer-events-none" />
-
-          <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[11px] font-mono-numbers">
-            <span className={`px-2.5 py-1 rounded border font-bold uppercase tracking-wider ${
-              isCenturyVictory 
-                ? 'bg-emerald-500/20 text-[#00e676] border-emerald-500/40' 
-                : 'bg-rose-500/20 text-[#ff1744] border-rose-500/40'
-            }`}>
-              {isCenturyVictory ? t.victoryBanner : t.deathBanner}
-            </span>
-            <span className="bg-[#12151c]/80 backdrop-blur-md px-2.5 py-1 rounded text-slate-300 border border-[#2d3748]">
-              {t.decisionsCount}: {state.decisionsCount}
-            </span>
-          </div>
+      <div className="rounded-2xl border border-[#2d3748] bg-[#161a24] p-4 text-center">
+        <div className="text-xs font-mono-numbers text-slate-500 mb-2">Life Glitch Game Over</div>
+        <div className="flex justify-center gap-2 mb-3 text-[10px] font-mono-numbers">
+          <span className="px-2 py-0.5 rounded border border-rose-800/50 text-rose-400 bg-rose-950/30">{t.deathBanner}</span>
+          <span className="px-2 py-0.5 rounded border border-[#2d3748] text-slate-400">{t.decisionsCount}: {state.decisionsCount}</span>
         </div>
-
-        {/* Headline */}
-        <div className="text-center mb-3">
-          <h1 className="text-2xl sm:text-3xl font-display font-black text-white tracking-wide uppercase">
-            {isCenturyVictory ? (
-              <span className="text-[#00e676]">{t.retiredAt}</span>
-            ) : (
-              <span className="text-[#ff1744]">{t.diedAt}</span>
-            )}
-          </h1>
+        <div className="text-xl font-display font-bold text-rose-400 mb-2">{isVictory ? t.retiredAt : t.diedAt}</div>
+        <div className="text-[10px] text-slate-500 mb-1">{t.officialTitle}</div>
+        <div className="text-lg font-bold text-[#00e676] mb-1">"{loc(epitaph.title, language)}"</div>
+        <div className="text-sm text-slate-400 italic mb-3">"{loc(epitaph.tagline, language)}"</div>
+        <div className="text-xs text-left text-slate-400 bg-[#1a1f2c] border border-[#2d3748] rounded-lg p-2.5">
+          <strong className="text-rose-400">{t.causeOfEnd}</strong>{' '}
+          {state.deathReason ? loc(state.deathReason, language) : ''}
         </div>
-
-        {/* Generated Epitaph Card */}
-        <div className="bg-[#1a1f2c] border-2 border-[#2d3748] rounded-xl p-4 sm:p-5 mb-4 text-center shadow-xl relative overflow-hidden">
-          <div className="text-[11px] font-semibold text-[#00f0ff] uppercase tracking-normal mb-1">
-            {t.officialTitle}
-          </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-[#00e676] mb-1 tracking-normal">
-            "{epitaph.title[language]}"
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-200 font-medium italic mb-3">
-            "{epitaph.tagline[language]}"
-          </p>
-          <div className="bg-[#12151c] p-3.5 rounded-lg border border-[#2d3748] text-xs sm:text-sm text-slate-200 font-medium leading-relaxed text-left">
-            <strong className="text-[#ff1744] block mb-1 font-semibold">{t.causeOfEnd}</strong>
-            {state.deathReason ? state.deathReason[language] : ''}
-          </div>
-        </div>
-
-        {/* Final Stats Recap Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
-          <div className="bg-[#1a1f2c] border border-[#2d3748] p-2.5 rounded-lg text-center">
-            <span className="text-[10px] text-slate-400 block font-medium">{t.finalWealth}</span>
-            <span className={`text-sm sm:text-base font-mono-numbers font-bold ${
-              state.money >= 0 ? 'text-[#00e676]' : 'text-[#ff1744]'
-            }`}>
-              ${state.money.toLocaleString()}
-            </span>
-          </div>
-
-          <div className="bg-[#1a1f2c] border border-[#2d3748] p-2.5 rounded-lg text-center">
-            <span className="text-[10px] text-slate-400 block font-medium">{t.finalJoy}</span>
-            <span className="text-sm sm:text-base font-mono-numbers font-bold text-cyan-400">
-              {state.happiness}%
-            </span>
-          </div>
-
-          <div className="bg-[#1a1f2c] border border-[#2d3748] p-2.5 rounded-lg text-center">
-            <span className="text-[10px] text-slate-400 block font-medium">{t.finalJob}</span>
-            <span className="text-xs sm:text-sm font-semibold text-slate-200 truncate block" title={state.job[language]}>
-              {state.job[language]}
-            </span>
-          </div>
-
-          <div className="bg-[#1a1f2c] border border-[#2d3748] p-2.5 rounded-lg text-center">
-            <span className="text-[10px] text-slate-400 block font-medium">{t.traitsDiscovered}</span>
-            <span className="text-sm sm:text-base font-mono-numbers font-bold text-amber-400">
-              {state.flags.length}
-            </span>
-          </div>
-        </div>
-
-        {/* Traits list */}
-        {state.flags.length > 0 && (
-          <div className="mb-3 bg-[#161a24] border border-[#2d3748] p-2.5 rounded-lg">
-            <span className="text-[11px] font-semibold text-slate-400 block mb-1.5 tracking-normal">
-              {t.acquiredTraits}
-            </span>
-            <div className="flex flex-wrap gap-1">
-              {state.flags.map((f, i) => (
-                <span key={i} className="text-[10px] font-medium bg-[#1a1f2c] border border-[#2d3748] px-2 py-0.5 rounded text-slate-300 tracking-normal">
-                  {getTraitLabel(f, language)}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
 
-      {/* Action Buttons Section */}
-      <div className="space-y-2.5 pt-1">
-        {/* Mock Rewarded Ad Revive */}
-        {!state.hasRevived && !isCenturyVictory && (
-          <button
-            onClick={() => {
-              sounds.playClick();
-              onOpenAdRevive();
-            }}
-            className="w-full py-3 px-4 bg-[#1a1f2c] hover:bg-[#252c3d] border-2 border-[#00f0ff] hover:border-[#00e676] text-white font-display font-bold text-sm sm:text-base uppercase tracking-wider rounded-xl transition-all shadow-[0_0_15px_rgba(0,240,255,0.2)] flex items-center justify-center gap-2 cursor-pointer active:scale-95"
-          >
-            <Tv size={18} className="text-[#00f0ff]" />
-            <span>{t.reviveBtn}</span>
-          </button>
-        )}
-
-        {/* Rewind Fatal Choice Ad */}
-        {canRewindFatal && !isCenturyVictory && onRewindFatalChoice && (
-          <button
-            onClick={() => {
-              sounds.playClick();
-              onRewindFatalChoice();
-            }}
-            className="w-full py-3 px-4 bg-gradient-to-r from-[#1c2333] via-[#263147] to-[#1c2333] hover:from-[#25304a] hover:to-[#25304a] border-2 border-amber-400/70 hover:border-amber-300 text-amber-300 hover:text-amber-100 font-display font-bold text-sm sm:text-base uppercase tracking-wider rounded-xl transition-all shadow-[0_0_18px_rgba(251,191,36,0.18)] flex items-center justify-center gap-2 cursor-pointer active:scale-95"
-          >
-            <RotateCcw size={18} className="text-amber-400" />
-            <span>{language === 'zh' ? '⏪ 後悔致命抉擇？(看廣告倒流時光)' : '⏪ REWIND FATAL CHOICE (WATCH AD)'}</span>
-          </button>
-        )}
-
-        {/* Play Again */}
-        <button
-          onClick={() => {
-            sounds.playPositive();
-            onRestart();
-          }}
-          className="w-full py-3.5 px-4 bg-[#00e676] hover:bg-[#00c853] text-[#0f1117] font-display font-black text-lg sm:text-xl uppercase tracking-wider rounded-xl transition-all shadow-[0_0_20px_rgba(0,230,118,0.3)] hover:shadow-[0_0_30px_rgba(0,230,118,0.5)] flex items-center justify-center gap-2 cursor-pointer active:scale-95"
-        >
-          <RotateCcw size={20} />
-          <span>{t.playAgainBtn}</span>
-        </button>
-
-        {/* Share & Timeline */}
-        <div className="grid grid-cols-2 gap-2">
-          <button
-            onClick={onOpenHistory}
-            className="py-2.5 px-3 bg-[#161a24] hover:bg-[#1e2330] border border-[#2d3748] text-slate-300 text-xs font-semibold rounded-lg transition-colors cursor-pointer flex items-center justify-center gap-1.5"
-          >
-            <Sparkles size={14} className="text-[#00f0ff]" />
-            <span>{t.timelineBtn}</span>
-          </button>
-
-          <button
-            onClick={handleShare}
-            className="py-2.5 px-3 bg-[#161a24] hover:bg-[#1e2330] border border-[#2d3748] text-slate-300 text-xs font-semibold rounded-lg transition-colors cursor-pointer flex items-center justify-center gap-1.5"
-          >
-            {copied ? (
-              <>
-                <Check size={14} className="text-[#00e676]" />
-                <span className="text-[#00e676]">{t.copiedText}</span>
-              </>
-            ) : (
-              <>
-                <Share2 size={14} />
-                <span>{t.shareBtn}</span>
-              </>
-            )}
-          </button>
+      <div className="grid grid-cols-2 gap-2">
+        <div className="bg-[#161a24] border border-[#2d3748] rounded-xl p-3 text-center">
+          <div className="text-[10px] text-slate-500">{t.finalWealth}</div>
+          <div className="text-sm font-mono-numbers font-bold text-[#00e676]">${state.money.toLocaleString()}</div>
         </div>
+        <div className="bg-[#161a24] border border-[#2d3748] rounded-xl p-3 text-center">
+          <div className="text-[10px] text-slate-500">{t.finalJoy}</div>
+          <div className="text-sm font-mono-numbers font-bold text-white">{state.happiness}%</div>
+        </div>
+        <div className="bg-[#161a24] border border-[#2d3748] rounded-xl p-3 text-center">
+          <div className="text-[10px] text-slate-500">{t.finalJob}</div>
+          <div className="text-xs font-semibold text-slate-200 truncate" title={loc(state.job, language)}>{loc(state.job, language)}</div>
+        </div>
+        <div className="bg-[#161a24] border border-[#2d3748] rounded-xl p-3 text-center">
+          <div className="text-[10px] text-slate-500">{t.traitsDiscovered}</div>
+          <div className="text-sm font-mono-numbers font-bold text-[#00f0ff]">{state.flags.length}</div>
+        </div>
+      </div>
+
+      {state.flags.length > 0 && (
+        <div className="text-[10px] text-slate-400">
+          <div className="mb-1">{t.acquiredTraits}</div>
+          <div className="flex flex-wrap gap-1">
+            {state.flags.map(f => (
+              <span key={f} className="px-1.5 py-0.5 rounded bg-[#1a1f2c] border border-[#2d3748] text-slate-300">{f}</span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="flex flex-col gap-2 mt-auto pt-2">
+        {!state.hasRevived && !isVictory && (
+          <button type="button" onClick={() => { sounds.playClick(); onRevive(); }} className="w-full py-3 rounded-xl bg-[#00e676] text-[#0f1117] font-bold text-sm cursor-pointer">{t.reviveBtn}</button>
+        )}
+        {canRegret && (
+          <button type="button" onClick={() => { sounds.playClick(); onRegret(); }} className="w-full py-2.5 rounded-xl border border-amber-700/50 text-amber-300 bg-amber-950/30 text-sm flex items-center justify-center gap-1.5 cursor-pointer">
+            <RotateCcw size={14} />
+            <span>{isChinese(language) ? '⏪ 後悔致命抉擇？(看廣告倒流時光)' : '⏪ REWIND FATAL CHOICE (WATCH AD)'}</span>
+          </button>
+        )}
+        <button type="button" onClick={() => { sounds.playClick(); onOpenTimeline(); }} className="w-full py-2.5 rounded-xl border border-[#2d3748] text-slate-300 text-sm flex items-center justify-center gap-1.5 cursor-pointer">
+          <BookOpen size={14} />{t.timelineBtn}
+        </button>
+        <button type="button" onClick={() => { sounds.playPositive(); onPlayAgain(); }} className="w-full py-3 rounded-xl border border-[#00e676]/40 text-[#00e676] font-bold text-sm flex items-center justify-center gap-1.5 cursor-pointer">
+          <Play size={14} />{t.playAgainBtn}
+        </button>
+        <button type="button" onClick={handleShare} className="w-full py-2 rounded-xl text-slate-500 text-xs flex items-center justify-center gap-1 cursor-pointer">
+          <Share2 size={12} />{copied ? t.copiedText : t.shareBtn}
+        </button>
       </div>
     </div>
   );
