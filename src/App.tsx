@@ -17,6 +17,7 @@ import { LifeLogDrawer } from './components/LifeLogDrawer';
 import { MockAdModal } from './components/MockAdModal';
 import { AbandonModal } from './components/AbandonModal';
 import { DEFAULT_PAST_RUNS, ensurePastRunHistory } from './data/sampleRuns';
+import { gameplayStart, gameplayStop, requestRewardedAd } from './utils/crazyGames';
 
 type AppScreen = 'START' | 'PLAYING' | 'GAME_OVER';
 
@@ -139,6 +140,7 @@ export default function App() {
     const firstEvent = eventEngine.getNextEvent(freshState);
     setCurrentEvent(firstEvent);
     setScreen('PLAYING');
+    gameplayStart();
   };
 
   // Abandon current life and return cleanly to Start Screen (#screen-start)
@@ -156,6 +158,7 @@ export default function App() {
     setIsLogOpen(false);
     setIsAdOpen(false);
     setScreen('START');
+    gameplayStop();
   };
 
   // Process player choice with strict +1 age increment & 400ms anti-spam debounce
@@ -318,32 +321,13 @@ export default function App() {
     }
   };
 
-  // Open Regret Rewind Ad (Unlimited across life)
-  const handleOpenRegretAd = () => {
-    if (!previousTurnState) return;
-    setAdMode('REGRET');
-    setIsAdOpen(true);
-  };
-
-  // Open Revive Ad on Game Over
-  const handleOpenReviveAd = () => {
-    setAdMode('REVIVE');
-    setIsAdOpen(true);
-  };
-
-  // Open Fork Life Rewarded Ad from Timeline
-  const handleForkTimeline = (entry: LifeLogEntry) => {
-    if (!entry.snapshot || !entry.event) return;
-    setForkTargetEntry(entry);
-    setAdMode('FORK');
-    setIsAdOpen(true);
-  };
-
   // Complete Rewarded Ad (Revive, Regret, or Fork Life)
-  const handleAdCompleted = () => {
+  // modeOverride avoids stale closure when real CrazyGames ad finishes async
+  const handleAdCompleted = (modeOverride?: 'REVIVE' | 'REGRET' | 'FORK') => {
+    const effectiveMode = modeOverride ?? adMode;
     setIsAdOpen(false);
 
-    if (adMode === 'FORK') {
+    if (effectiveMode === 'FORK') {
       if (!forkTargetEntry || !forkTargetEntry.snapshot || !forkTargetEntry.event) return;
       sounds.playRevive();
 
@@ -391,6 +375,7 @@ export default function App() {
       // Close the timeline and game over screen
       setIsLogOpen(false);
       setScreen('PLAYING');
+      gameplayStart();
 
       // Show toast: "Timeline branched! You have rewound to Age X."
       setFeedback({
@@ -403,7 +388,7 @@ export default function App() {
       return;
     }
 
-    if (adMode === 'REGRET') {
+    if (effectiveMode === 'REGRET') {
       if (!previousTurnState) return;
       sounds.playRevive();
 
@@ -436,6 +421,7 @@ export default function App() {
 
       // Switch back to PLAYING screen in case rewound from Game Over
       setScreen('PLAYING');
+      gameplayStart();
       return;
     }
 
@@ -469,10 +455,51 @@ export default function App() {
     const nextEvent = eventEngine.getNextEvent(revivedState);
     setCurrentEvent(nextEvent);
     setScreen('PLAYING');
+    gameplayStart();
+  };
+
+  /** Dual-mode rewarded ad: real CrazyGames SDK when available, else mock modal. */
+  const requestAdOrMock = (mode: 'REVIVE' | 'REGRET' | 'FORK') => {
+    setAdMode(mode);
+    gameplayStop();
+
+    const usedRealAd = requestRewardedAd({
+      adFinished: () => {
+        handleAdCompleted(mode);
+      },
+      adError: () => {
+        // SDK failed → fall back to mock so the player is never stuck
+        setIsAdOpen(true);
+      },
+    });
+
+    if (!usedRealAd) {
+      setIsAdOpen(true);
+    }
+  };
+
+  // Open Regret Rewind Ad (Unlimited across life)
+  const handleOpenRegretAd = () => {
+    if (!previousTurnState) return;
+    requestAdOrMock('REGRET');
+  };
+
+  // Open Revive Ad on Game Over
+  const handleOpenReviveAd = () => {
+    requestAdOrMock('REVIVE');
+  };
+
+  // Open Fork Life Rewarded Ad from Timeline
+  const handleForkTimeline = (entry: LifeLogEntry) => {
+    if (!entry.snapshot || !entry.event) return;
+    setForkTargetEntry(entry);
+    requestAdOrMock('FORK');
   };
 
   // Record game over
   const handleGameOver = (finalState: GameState) => {
+    gameplayStop();
+
     try {
       const newTotal = totalRuns + 1;
       setTotalRuns(newTotal);
