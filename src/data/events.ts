@@ -1,15 +1,23 @@
 import { GameEvent } from '../types/game';
-import part1 from './eventsPart1.json';
-import part2 from './eventsPart2.json';
-import part3 from './eventsPart3.json';
-import part4 from './eventsPart4.json';
+import chunk1 from './eventsChunk1.json';
+import chunk2 from './eventsChunk2.json';
+import chunk3 from './eventsChunk3.json';
+import chunk4 from './eventsChunk4.json';
+import chunk5 from './eventsChunk5.json';
+import chunk6 from './eventsChunk6.json';
+import chunk7 from './eventsChunk7.json';
+import chunk8 from './eventsChunk8.json';
 
-// Consolidate all 177 events from revised database
+// Consolidate all 227 events from final database
 export const ALL_EVENTS: GameEvent[] = [
-  ...(part1 as unknown as GameEvent[]),
-  ...(part2 as unknown as GameEvent[]),
-  ...(part3 as unknown as GameEvent[]),
-  ...(part4 as unknown as GameEvent[])
+  ...(chunk1 as unknown as GameEvent[]),
+  ...(chunk2 as unknown as GameEvent[]),
+  ...(chunk3 as unknown as GameEvent[]),
+  ...(chunk4 as unknown as GameEvent[]),
+  ...(chunk5 as unknown as GameEvent[]),
+  ...(chunk6 as unknown as GameEvent[]),
+  ...(chunk7 as unknown as GameEvent[]),
+  ...(chunk8 as unknown as GameEvent[])
 ];
 
 export function getProceduralFallbackEvent(currentAge: number): GameEvent {
@@ -21,21 +29,15 @@ export function getProceduralFallbackEvent(currentAge: number): GameEvent {
       maxAge: 100,
       text: {
         en: 'A sudden heatwave hits the city. Your air conditioner sounds like an angry jet engine and breathes lukewarm dust.',
-        zh: '熱浪突襲這座城市。你的冷氣發出如暴怒噴射機般的噪音，並吐出溫熱的灰塵。'
+        zh: '热浪突袭这座城市。你的空调发出愤怒喷气机般的噪音，吐出温热的灰尘。'
       },
       choices: [
         {
-          text: {
-            en: 'Call emergency repairs for $450.',
-            zh: '花 450 美金叫緊急維修。'
-          },
+          text: { en: 'Call emergency repairs for $450.', zh: '花 450 美元叫紧急维修。' },
           effects: { money: -450, health: 3, happiness: 5, stress: -8 }
         },
         {
-          text: {
-            en: 'Hug a frozen bag of peas and endure.',
-            zh: '抱著一包冷凍豌豆硬撐。'
-          },
+          text: { en: 'Hug a frozen bag of peas and endure.', zh: '抱着一袋冷冻豌豆硬撑。' },
           effects: { money: 0, health: -4, happiness: -5, stress: 10 }
         }
       ]
@@ -46,23 +48,17 @@ export function getProceduralFallbackEvent(currentAge: number): GameEvent {
       minAge: 18,
       maxAge: 100,
       text: {
-        en: 'A surprise tax rebate check of $1,200 arrives in your mailbox. Your inner demon whispers about speculative memecoins.',
-        zh: '一封裝有 1,200 美金意外退稅支票的信件寄達。你心中的小惡魔開始低語關於投機迷因幣的事。'
+        en: 'A surprise tax rebate check of $1,200 arrives in your mailbox.',
+        zh: '一封装有 1,200 美元退税支票的信寄到了。'
       },
       choices: [
         {
-          text: {
-            en: 'Gamble it on high-volatility tokens.',
-            zh: '拿去高波動代幣全押賭一把。'
-          },
-          effects: { money: 2500, health: 0, happiness: 10, stress: 12, fame: 2 }
+          text: { en: 'Gamble it on high-volatility tokens.', zh: '拿去高波动代币全押。' },
+          effects: { money: 2500, happiness: 10, stress: 12, fame: 2 }
         },
         {
-          text: {
-            en: 'Deposit into a sensible emergency savings fund.',
-            zh: '存入理智的緊急備用金帳戶。'
-          },
-          effects: { money: 1200, health: 0, happiness: 4, stress: -6, fame: 0 }
+          text: { en: 'Deposit into emergency savings.', zh: '存入紧急备用金。' },
+          effects: { money: 1200, happiness: 4, stress: -6 }
         }
       ]
     },
@@ -72,31 +68,20 @@ export function getProceduralFallbackEvent(currentAge: number): GameEvent {
       minAge: 18,
       maxAge: 100,
       text: {
-        en: 'A childhood friend texts you out of nowhere asking for your thoughts on consciousness and a loan of $50.',
-        zh: '兒時玩伴突然傳訊息給你，探討意識的本質，順便向你借 50 美金。'
+        en: 'A childhood friend texts asking for thoughts on consciousness and a $50 loan.',
+        zh: '儿时玩伴突然发消息，探讨意识本质，顺便借 50 美元。'
       },
       choices: [
         {
-          text: {
-            en: 'Send the $50 and philosophize until 2 AM.',
-            zh: '轉帳 50 美金並徹夜哲學長談至凌晨兩點。'
-          },
-          effects: { money: -50, health: -2, happiness: 8, stress: -3, fame: 0 }
+          text: { en: 'Lend the money and open a philosophical can of worms.', zh: '借钱，并打开哲学话题的潘多拉盒。' },
+          effects: { money: -50, happiness: 6, stress: 2 }
         },
         {
-          text: {
-            en: 'Leave on "Read". Your energy is precious.',
-            zh: '已讀不回。你的精力很寶貴。'
-          },
-          effects: { money: 0, health: 0, happiness: -2, stress: 0, fame: 0 }
+          text: { en: 'Reply with a vague emoji and pretend offline.', zh: '回一个模糊表情，假装离线。' },
+          effects: { happiness: -2, stress: -3 }
         }
       ]
     }
   ];
-
-  const pick = genericEvents[Math.floor(Math.random() * genericEvents.length)];
-  return {
-    ...pick,
-    id: `${pick.id}_${Date.now()}`
-  };
+  return genericEvents[currentAge % genericEvents.length];
 }
