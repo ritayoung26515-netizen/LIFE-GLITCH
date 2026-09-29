@@ -1,6 +1,6 @@
 import React from 'react';
 import { GameEvent, EventChoice, TurnFeedback, Language, Theme } from '../types/game';
-import { Sparkles, RotateCcw } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { sounds } from '../utils/audio';
 
 interface EventCardProps {
@@ -71,26 +71,25 @@ export const EventCard: React.FC<EventCardProps> = ({
       en: 'CHAIN', 
       zh: '命運連鎖', 
       badge: isLight ? 'text-rose-800 bg-rose-100 border-rose-300' : 'text-rose-400 bg-rose-400/10 border-rose-400/30', 
-      border: isLight ? 'border-rose-300' : 'border-rose-500/30' 
+      border: isLight ? 'border-rose-200' : 'border-rose-500/20' 
     },
   };
 
   const currentTheme = categoryLabels[event.category] || categoryLabels.WEIRD;
 
-  const rarityInfo = event.category === 'CHAIN'
-    ? {
-        label: language === 'zh' ? '⚡ 命運連鎖 [CHAIN]' : '⚡ CHAIN EVENT',
-        badge: isLight ? 'text-rose-800 bg-rose-100 border-rose-300' : 'text-rose-400 bg-rose-500/10 border-rose-500/30'
-      }
-    : event.category === 'WEIRD'
-      ? {
-          label: language === 'zh' ? '👾 系統漏洞 [GLITCH]' : '👾 GLITCH EVENT',
-          badge: isLight ? 'text-purple-800 bg-purple-100 border-purple-300' : 'text-purple-400 bg-purple-500/10 border-purple-500/30'
-        }
-      : {
-          label: language === 'zh' ? '✨ 常規日常 [COMMON]' : '✨ COMMON EVENT',
-          badge: isLight ? 'text-slate-700 bg-slate-100 border-slate-300' : 'text-slate-300 bg-slate-800/80 border-slate-700'
-        };
+  const rarityInfo = (() => {
+    const cat = String(event.category || '').toUpperCase();
+    if (cat === 'CHAIN' || cat === 'WEIRD') {
+      return {
+        label: language === 'zh' ? '系統漏洞 [GLITCH]' : 'SYSTEM GLITCH',
+        badge: isLight ? 'text-purple-800 bg-purple-100 border-purple-300' : 'text-purple-300 bg-purple-500/15 border-purple-400/40'
+      };
+    }
+    return {
+      label: language === 'zh' ? '常規日常 [COMMON]' : 'COMMON',
+      badge: isLight ? 'text-slate-600 bg-slate-100 border-slate-300' : 'text-slate-400 bg-slate-500/10 border-slate-500/30'
+    };
+  })();
 
   const isButtonsDisabled = disabled || localDebounced;
 
@@ -104,57 +103,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 
   return (
     <div className="flex-1 flex flex-col justify-start px-3 sm:px-4 pt-1 pb-3 gap-3">
-      {feedback && (
-        <div className={`rounded-xl border px-3.5 py-2 shrink-0 animate-fade-in ${
-          isLight
-            ? 'bg-white border-slate-300 shadow-xs'
-            : 'bg-[#161a24] border-[#2d3748]'
-        }`}>
-          <div className="flex items-start justify-between gap-2">
-            <div className={`text-xs leading-relaxed flex-1 min-w-0 ${isLight ? 'text-slate-800' : 'text-slate-200'}`}>
-              <span className={`font-semibold ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>
-                {language === 'zh' ? '上輪選擇：' : 'Last choice: '}
-              </span>
-              <span className="font-semibold break-words">
-                {feedback.choiceText[language]}
-              </span>
-            </div>
-            {canRegret && (
-              <button
-                type="button"
-                onClick={() => {
-                  sounds.playClick();
-                  onRegretClick();
-                }}
-                className={`shrink-0 flex items-center gap-1 text-[11px] font-mono-numbers rounded-md px-2 py-0.5 transition-colors cursor-pointer border ${
-                  isLight
-                    ? 'text-amber-800 bg-amber-50 hover:bg-amber-100 border-amber-300'
-                    : 'text-amber-300 bg-amber-950/30 hover:bg-amber-900/40 border-amber-700/50'
-                }`}
-              >
-                <RotateCcw size={10} />
-                <span>{language === 'zh' ? '後悔了？' : 'Regret?'}</span>
-              </button>
-            )}
-          </div>
-          {feedback.deltas.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 pt-1 border-t border-slate-200/80 dark:border-slate-800/80 mt-1.5">
-              {feedback.deltas.map((ch, i) => (
-                <span
-                  key={i}
-                  className={`text-[11px] font-mono-numbers font-semibold px-2 py-0.5 rounded border inline-flex items-center ${
-                    ch.positive
-                      ? (isLight ? 'text-emerald-800 border-emerald-300 bg-emerald-50' : 'text-emerald-400 border-emerald-800/60 bg-emerald-950/40')
-                      : (isLight ? 'text-red-800 border-red-300 bg-red-50' : 'text-rose-400 border-rose-800/60 bg-rose-950/40')
-                  }`}
-                >
-                  {ch.value} {ch.label[language]}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
+      {/* Feedback block removed – deltas now shown inline in StatusHUD */}
 
       <div className={`rounded-2xl border-2 p-4 sm:p-5 transition-all duration-200 shrink-0 ${
         isLight
@@ -204,33 +153,27 @@ export const EventCard: React.FC<EventCardProps> = ({
             onClick={() => handleChoiceClick(choice)}
             className={`w-full text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-150 cursor-pointer group relative overflow-hidden flex items-center gap-2.5 active:scale-[0.99] ${
               isButtonsDisabled
-                ? 'opacity-60 cursor-not-allowed pointer-events-none'
-                : isLight
-                  ? idx === 0
+                ? (isLight ? 'bg-slate-100 border-slate-200 opacity-60' : 'bg-[#1a1f2c] border-[#2d3748] opacity-50')
+                : (isLight
                     ? 'bg-white hover:bg-slate-50 border-slate-300 hover:border-emerald-600 shadow-2xs hover:shadow-xs'
-                    : 'bg-white hover:bg-slate-50 border-slate-300 hover:border-sky-600 shadow-2xs hover:shadow-xs'
-                  : idx === 0
-                    ? 'bg-[#1e2536] hover:bg-[#252f45] border-[#3b475f] hover:border-[#00e676]'
-                    : 'bg-[#191d28] hover:bg-[#222736] border-[#2d3748] hover:border-[#00f0ff]'
+                    : 'bg-[#1a1f2c] hover:bg-[#252b3d] border-[#2d3748] hover:border-[#00e676]/60')
             }`}
           >
             <div className="flex-1 pr-1.5 min-w-0">
               <div className="flex items-center gap-1.5 mb-1">
                 <span className={`text-[10px] font-mono-numbers font-bold px-1.5 py-0.5 rounded ${
-                  idx === 0 
-                    ? (isLight ? 'bg-emerald-100 text-emerald-800' : 'bg-[#00e676]/20 text-[#00e676]') 
-                    : (isLight ? 'bg-sky-100 text-sky-800' : 'bg-[#00f0ff]/20 text-[#00f0ff]')
+                  idx === 0
+                    ? (isLight ? 'bg-emerald-100 text-emerald-800' : 'bg-emerald-500/20 text-emerald-300')
+                    : (isLight ? 'bg-sky-100 text-sky-800' : 'bg-sky-500/20 text-sky-300')
                 }`}>
-                  {language === 'zh' ? `選項 ${idx === 0 ? 'A' : 'B'}` : `CHOICE ${idx === 0 ? 'A' : 'B'}`}
+                  {language === 'zh' ? `選項 ${idx === 0 ? 'A' : 'B'}` : `Option ${idx === 0 ? 'A' : 'B'}`}
                 </span>
               </div>
-              <div className={`text-[15px] sm:text-[16px] font-bold leading-[1.45] transition-colors break-words ${
-                isLight 
-                  ? idx === 0 ? 'text-[#0f172a] group-hover:text-emerald-700' : 'text-[#0f172a] group-hover:text-sky-700'
-                  : 'text-[#f8fafc] group-hover:text-[#00e676]'
+              <p className={`text-[15px] sm:text-[16px] leading-snug font-medium ${
+                isLight ? 'text-slate-800' : 'text-slate-100'
               }`}>
                 {choice.text[language]}
-              </div>
+              </p>
             </div>
           </button>
         ))}

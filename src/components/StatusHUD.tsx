@@ -1,6 +1,6 @@
 import React from 'react';
-import { GameState, Language, Theme } from '../types/game';
-import { Volume2, VolumeX, BookOpen, AlertTriangle, Globe, Home, Sun, Moon } from 'lucide-react';
+import { GameState, Language, Theme, TurnFeedback } from '../types/game';
+import { Volume2, VolumeX, BookOpen, AlertTriangle, Globe, Home, Sun, Moon, RotateCcw } from 'lucide-react';
 import { sounds } from '../utils/audio';
 import { calculateJobSalary } from '../utils/economy';
 
@@ -15,6 +15,10 @@ interface StatusHUDProps {
   onToggleMute: () => void;
   onToggleFlagsDrawer?: () => void;
   onReturnHome?: () => void;
+  /** Last turn deltas – shown inline next to the relevant stats (does not auto-hide) */
+  feedback?: TurnFeedback | null;
+  canRegret?: boolean;
+  onRegretClick?: () => void;
 }
 
 export const StatusHUD: React.FC<StatusHUDProps> = ({
@@ -27,7 +31,10 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
   isMuted,
   onToggleMute,
   onToggleFlagsDrawer,
-  onReturnHome
+  onReturnHome,
+  feedback,
+  canRegret,
+  onRegretClick
 }) => {
   const isLight = theme === 'light';
   const isHighStress = state.stress >= 70;
@@ -47,15 +54,39 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
         : `(+$${salaryInfo.salary >= 1000 ? Math.round(salaryInfo.salary / 1000) + 'k' : salaryInfo.salary}/yr)`)
     : '';
 
+  // Extract persistent deltas for inline display
+  const getDelta = (keys: string[]) => {
+    if (!feedback?.deltas?.length) return null;
+    return feedback.deltas.find(d => 
+      keys.some(k => 
+        d.label.zh.includes(k) || 
+        d.label.en.toLowerCase().includes(k.toLowerCase())
+      )
+    ) || null;
+  };
+
+  const healthDelta = getDelta(['健康', 'Health']);
+  const stressDelta = getDelta(['壓力', 'Stress']);
+  const joyDelta = getDelta(['快樂', 'Joy', 'Happiness']);
+  const moneyDelta = getDelta(['收支', '年薪', 'Cash', 'Salary', 'Event Cash', 'Wealth']);
+  const fameDelta = getDelta(['聲望', 'Fame']);
+
+  const renderDelta = (delta: { value: string; positive: boolean } | null) => {
+    if (!delta) return null;
+    return (
+      <span
+        className={`ml-1.5 text-[11px] font-mono-numbers font-bold px-1.5 py-0.5 rounded border ${
+          delta.positive
+            ? (isLight ? 'text-emerald-700 bg-emerald-50 border-emerald-300' : 'text-emerald-400 bg-emerald-950/50 border-emerald-700/50')
+            : (isLight ? 'text-red-700 bg-red-50 border-red-300' : 'text-rose-400 bg-rose-950/50 border-rose-700/50')
+        }`}
+      >
+        {delta.value}
+      </span>
+    );
+  };
+
   const t = {
-    age: language === 'zh' ? '歲數' : 'AGE',
-    money: language === 'zh' ? '💵 資產' : '💵 Wealth',
-    health: language === 'zh' ? '❤️ 健康' : '❤️ Health',
-    happiness: language === 'zh' ? '😄 快樂' : '😄 Joy',
-    stress: language === 'zh' ? '⚡ 壓力' : '⚡ Stress',
-    fame: language === 'zh' ? '⭐ 聲望' : '⭐ Fame',
-    job: language === 'zh' ? '💼 職業' : '💼 Career',
-    relationship: language === 'zh' ? '💍 關係' : '💍 Status',
     log: language === 'zh' ? '履歷' : 'Log',
   };
 
@@ -78,17 +109,37 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
             </span>
           </div>
           {state.fame > 0 && (
-            <span className={`text-[11px] font-mono-numbers font-semibold px-2 py-0.5 rounded-md border ${
+            <span className={`text-[11px] font-mono-numbers font-semibold px-2 py-0.5 rounded-md border flex items-center gap-1 ${
               isLight
                 ? 'bg-amber-50 text-amber-800 border-amber-300'
                 : 'bg-amber-500/15 text-amber-300 border-amber-500/30'
             }`}>
               ⭐ {state.fame}%
+              {renderDelta(fameDelta)}
             </span>
           )}
         </div>
 
         <div className="flex items-center gap-1.5">
+          {/* Prominent Regret button */}
+          {canRegret && onRegretClick && (
+            <button
+              type="button"
+              onClick={() => {
+                sounds.playClick();
+                onRegretClick();
+              }}
+              className={`shrink-0 flex items-center gap-1 text-[12px] font-bold rounded-lg px-2.5 py-1.5 transition-all cursor-pointer border shadow-sm ${
+                isLight
+                  ? 'text-amber-900 bg-amber-100 hover:bg-amber-200 border-amber-400 ring-1 ring-amber-300'
+                  : 'text-amber-200 bg-amber-900/50 hover:bg-amber-800/60 border-amber-500/70 ring-1 ring-amber-500/40'
+              }`}
+            >
+              <RotateCcw size={13} />
+              <span>{language === 'zh' ? '後悔了？' : 'Regret?'}</span>
+            </button>
+          )}
+
           {onReturnHome && (
             <button
               onClick={() => {
@@ -108,7 +159,6 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
             </button>
           )}
 
-          {/* Theme Toggle Button */}
           <button
             onClick={() => {
               sounds.playClick();
@@ -175,7 +225,7 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
 
       {/* Frameless 2-Column Status Dashboard */}
       <div className="grid grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-1.5 pt-0.5">
-        {/* Left Column: Core Survival Meters (Frameless) */}
+        {/* Left Column: Core Survival Meters */}
         <div className="flex flex-col justify-between space-y-1.5">
           {/* Health Meter */}
           <div>
@@ -185,12 +235,13 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
                 <span>{language === 'zh' ? '健康' : 'Health'}</span>
                 {isCriticalHealth && <AlertTriangle size={11} className={isLight ? 'text-red-600' : 'text-[#ff1744]'} />}
               </span>
-              <span className={`font-mono-numbers text-[12px] sm:text-xs font-bold ${
+              <span className={`font-mono-numbers text-[12px] sm:text-xs font-bold flex items-center ${
                 isCriticalHealth 
                   ? (isLight ? 'text-red-600' : 'text-[#ff1744]') 
                   : (isLight ? 'text-slate-900' : 'text-white')
               }`}>
                 {state.health}%
+                {renderDelta(healthDelta)}
               </span>
             </div>
             <div className={`w-full h-1.5 rounded-full overflow-hidden ${isLight ? 'bg-slate-200' : 'bg-[#1e2330]'}`}>
@@ -219,12 +270,13 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
                 <span>{language === 'zh' ? '壓力' : 'Stress'}</span>
                 {isHighStress && <AlertTriangle size={11} className={isLight ? 'text-red-600' : 'text-[#ff1744]'} />}
               </span>
-              <span className={`font-mono-numbers text-[12px] sm:text-xs font-bold ${
+              <span className={`font-mono-numbers text-[12px] sm:text-xs font-bold flex items-center ${
                 isHighStress 
                   ? (isLight ? 'text-red-700' : 'text-[#ff1744]') 
                   : (isLight ? 'text-slate-900' : 'text-white')
               }`}>
                 {state.stress}%
+                {renderDelta(stressDelta)}
               </span>
             </div>
             <div className={`w-full h-1.5 rounded-full overflow-hidden ${isLight ? 'bg-slate-200' : 'bg-[#1e2330]'}`}>
@@ -248,10 +300,11 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
                 <span>😄</span>
                 <span>{language === 'zh' ? '快樂' : 'Joy'}</span>
               </span>
-              <span className={`font-mono-numbers text-[12px] sm:text-xs font-bold ${
+              <span className={`font-mono-numbers text-[12px] sm:text-xs font-bold flex items-center ${
                 isLight ? 'text-sky-700' : 'text-cyan-400'
               }`}>
                 {state.happiness}%
+                {renderDelta(joyDelta)}
               </span>
             </div>
             <div className={`w-full h-1.5 rounded-full overflow-hidden ${isLight ? 'bg-slate-200' : 'bg-[#1e2330]'}`}>
@@ -263,15 +316,15 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
           </div>
         </div>
 
-        {/* Right Column: Status Details (Frameless) */}
+        {/* Right Column: Status Details */}
         <div className="flex flex-col justify-between space-y-1.5 min-w-0">
           {/* Wealth */}
           <div className="flex items-center text-[12px] sm:text-[13px] leading-tight min-w-0">
             <span className={`shrink-0 font-medium mr-1.5 ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
-              {language === 'zh' ? '💵 資產:' : '💵 Cash:'}
+              {language === 'zh' ? '💵' : '💵'}
             </span>
             <span
-              className={`font-mono-numbers font-bold truncate tracking-tight text-[13px] sm:text-[14px] ${
+              className={`font-mono-numbers font-bold truncate tracking-tight text-[13px] sm:text-[14px] flex items-center gap-1 ${
                 state.money < 0 
                   ? (isLight ? 'text-red-600' : 'text-[#ff1744]') 
                   : (isLight ? 'text-emerald-700' : 'text-[#00e676]')
@@ -279,13 +332,14 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
               title={formattedMoney}
             >
               {formattedMoney}
+              {renderDelta(moneyDelta)}
             </span>
           </div>
 
           {/* Career */}
           <div className="flex items-baseline text-[12px] sm:text-[13px] leading-tight min-w-0">
             <span className={`shrink-0 font-medium mr-1.5 ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
-              {language === 'zh' ? '💼 職業:' : '💼 Career:'}
+              {language === 'zh' ? '💼' : '💼'}
             </span>
             <span className="font-bold truncate min-w-0 flex-1" title={`${state.job[language]} ${salaryBadge}`}>
               <span className={isLight ? 'text-[#0f172a]' : 'text-white'}>{state.job[language]}</span>
@@ -302,7 +356,7 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
           {/* Relationship */}
           <div className="flex items-baseline text-[12px] sm:text-[13px] leading-tight min-w-0">
             <span className={`shrink-0 font-medium mr-1.5 ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
-              {language === 'zh' ? '💍 關係:' : '💍 Status:'}
+              {language === 'zh' ? '💍' : '💍'}
             </span>
             <span className={`font-bold truncate ${isLight ? 'text-[#0f172a]' : 'text-white'}`} title={state.relationship[language]}>
               {state.relationship[language]}
