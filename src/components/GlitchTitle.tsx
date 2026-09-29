@@ -10,13 +10,13 @@ export const GlitchTitle: React.FC<GlitchTitleProps> = ({
   size = '2xl' 
 }) => {
   const sizeClasses = {
-    lg: 'text-3xl sm:text-4xl',
-    xl: 'text-4xl sm:text-5xl',
-    '2xl': 'text-5xl sm:text-6xl tracking-tight'
+    lg: 'text-2xl sm:text-4xl',
+    xl: 'text-3xl sm:text-5xl',
+    '2xl': 'text-3xl sm:text-6xl tracking-tight'
   }[size];
 
   return (
-    <div className="text-center select-none py-2">
+    <div className="text-center select-none py-1 sm:py-2">
       <div className="relative inline-block group">
         <h1 className={`${sizeClasses} font-display font-extrabold uppercase text-white tracking-widest drop-shadow-[0_0_15px_rgba(0,230,118,0.4)]`}>
           LIFE <span className="text-[#00e676] group-hover:text-[#00f0ff] transition-colors">GLITCH</span>
@@ -30,7 +30,7 @@ export const GlitchTitle: React.FC<GlitchTitleProps> = ({
         </span>
       </div>
       {subtitle && (
-        <p className="text-xs sm:text-sm text-slate-400 mt-2 font-medium tracking-wide max-w-sm mx-auto">
+        <p className="text-[11px] sm:text-sm text-slate-400 mt-1 sm:mt-2 font-medium tracking-wide max-w-sm mx-auto px-1">
           {subtitle}
         </p>
       )}
