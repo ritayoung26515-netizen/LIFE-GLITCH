@@ -5,6 +5,8 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    // Relative paths so the build works on GitHub Pages AND as a CrazyGames zip
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
