@@ -1,4 +1,5 @@
-export type Language = 'en' | 'zh';
+/** en = English · zh = Traditional Chinese (繁) · zh-CN = Simplified Chinese (簡) */
+export type Language = 'en' | 'zh' | 'zh-CN';
 
 export type EventCategory = 
   | 'WORK' 
@@ -9,9 +10,16 @@ export type EventCategory =
   | 'WEIRD' 
   | 'CHAIN';
 
+/**
+ * Localized copy.
+ * - en: English
+ * - zh: Traditional Chinese (繁) — required
+ * - zhCN: Simplified Chinese (簡) — optional; game falls back to zh if missing
+ */
 export interface LocalizedString {
   en: string;
   zh: string;
+  zhCN?: string;
 }
 
 export interface EventConditions {
@@ -91,30 +99,28 @@ export interface GameState {
   decisionsCount: number;
 }
 
-export interface TurnDelta {
-  label: LocalizedString;
-  value: string;
-  positive: boolean;
-}
-
 export interface TurnFeedback {
   choiceText: LocalizedString;
-  deltas: TurnDelta[];
+  deltas: {
+    label: LocalizedString;
+    value: string;
+    positive: boolean;
+  }[];
 }
 
 export interface PastRun {
-  id?: string;
+  id: string;
   age: number;
   money: number;
-  health?: number;
-  happiness?: number;
-  stress?: number;
-  fame?: number;
+  health: number;
+  happiness: number;
+  stress: number;
+  fame: number;
   job: LocalizedString;
   epitaph: LocalizedString;
   deathReason: LocalizedString;
-  date: string;
-  flags?: string[];
-  history?: LifeLogEntry[];
+  flags: string[];
+  history: LifeLogEntry[];
   timeline?: LifeLogEntry[];
+  date: string;
 }
