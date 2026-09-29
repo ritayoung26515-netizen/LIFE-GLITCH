@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GameState, Language } from '../types/game';
 import { generateEpitaph } from '../utils/epitaph';
-import { RotateCcw, Tv, Share2, Check, Sparkles, Skull, Globe, Home } from 'lucide-react';
+import { RotateCcw, Tv, Share2, Check, Sparkles, Globe, Home } from 'lucide-react';
 import { sounds } from '../utils/audio';
 
 interface EndScreenProps {
@@ -28,7 +28,6 @@ export const EndScreen: React.FC<EndScreenProps> = ({
   onReturnHome
 }) => {
   const [copied, setCopied] = useState(false);
-  const [imageError, setImageError] = useState(false);
 
   const epitaph = generateEpitaph(state);
   const isCenturyVictory = state.age >= 100;
@@ -99,37 +98,18 @@ export const EndScreen: React.FC<EndScreenProps> = ({
       </header>
 
       <div>
-        <div className="w-full h-36 sm:h-44 rounded-2xl overflow-hidden border border-[#2d3748] relative mb-3 bg-[#1a1f2c] flex items-center justify-center shadow-lg">
-          {!imageError ? (
-            <img
-              src="./assets/life_glitch_game_over.jpg"
-              alt="Life Glitch Game Over"
-              referrerPolicy="no-referrer"
-              onError={() => setImageError(true)}
-              className="w-full h-full object-cover opacity-75"
-            />
-          ) : (
-            <div className="p-4 text-center">
-              <Skull size={32} className="text-[#ff1744] mx-auto mb-1 animate-pulse" />
-              <div className="font-display font-bold text-white text-base">
-                {language === 'zh' ? '生命終結協議' : 'TERMINATION EXCEPTION'}
-              </div>
-            </div>
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#12151c] via-[#12151c]/40 to-transparent pointer-events-none" />
-
-          <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[13px] font-mono-numbers font-semibold">
-            <span className={`px-2.5 py-1 rounded border font-bold tracking-normal ${
-              isCenturyVictory
-                ? 'bg-emerald-500/20 text-[#00e676] border-emerald-500/40'
-                : 'bg-rose-500/20 text-[#ff1744] border-rose-500/40'
-            }`}>
-              {isCenturyVictory ? t.victoryBanner : t.deathBanner}
-            </span>
-            <span className="bg-[#12151c]/80 backdrop-blur-md px-2.5 py-1 rounded text-slate-300 border border-[#2d3748]">
-              {t.decisionsCount}: {state.decisionsCount}
-            </span>
-          </div>
+        {/* Keep only death/victory badge + decisions count — no hero image */}
+        <div className="flex items-center justify-between gap-2 mb-3 text-[13px] sm:text-sm font-semibold">
+          <span className={`px-2.5 py-1.5 rounded-lg border font-bold tracking-normal ${
+            isCenturyVictory
+              ? 'bg-emerald-500/20 text-[#00e676] border-emerald-500/40'
+              : 'bg-rose-500/20 text-[#ff1744] border-rose-500/40'
+          }`}>
+            {isCenturyVictory ? t.victoryBanner : t.deathBanner}
+          </span>
+          <span className="bg-[#1a1f2c] px-2.5 py-1.5 rounded-lg text-slate-300 border border-[#2d3748]">
+            {t.decisionsCount}: {state.decisionsCount}
+          </span>
         </div>
 
         <div className="text-center mb-3">
