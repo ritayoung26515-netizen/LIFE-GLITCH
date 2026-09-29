@@ -1,0 +1,1094 @@
+[
+  {
+    "id": "norm_early_pension",
+    "category": "MONEY",
+    "minAge": 60,
+    "maxAge": 66,
+    "conditions": {},
+    "text": {
+      "en": "A letter from the benefits office offers two options: claim early for a smaller payment, or wait for a bigger one. It's 14 pages long, and the fine print has its own fine print.",
+      "zh": "退休金辦公室來信提供兩個選項：提早領取但金額較少，或是等待領更多。信有 14 頁，小字裡還有小字。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Claim early. Enjoy the money now.", "zh": "提早領。現在就享受這筆錢。" },
+        "effects": { "money": 4000, "health": 0, "happiness": 5, "stress": -3, "fame": 0 }
+      },
+      {
+        "text": { "en": "Keep working and claim later for the bigger payment. Future You sends a thank-you note.", "zh": "繼續工作，晚點再領更大筆的。未來的你會寄來一張感謝卡。" },
+        "effects": { "money": 10000, "health": -3, "happiness": -2, "stress": 8, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_screening_prep",
+    "category": "HEALTH",
+    "minAge": 60,
+    "maxAge": 70,
+    "conditions": {},
+    "text": {
+      "en": "Your doctor recommends a routine screening for people your age. The prep involves a special drink that tastes like regret and an evening spent near the bathroom.",
+      "zh": "醫生建議你這個年紀該做例行檢查。準備工作包括喝一種嚐起來像後悔的特調飲料，以及整晚守在廁所旁。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Do it. Drink the regret. Be a grown-up about it.", "zh": "去做。喝下那杯後悔。當個成熟的大人。" },
+        "effects": { "money": -300, "health": 10, "happiness": -2, "stress": 5, "fame": 0 }
+      },
+      {
+        "text": { "en": "Postpone it 'until things calm down'. Things never calm down.", "zh": "拖到『等事情平靜下來再說』。事情永遠不會平靜。" },
+        "effects": { "money": 0, "health": -6, "happiness": 2, "stress": 3, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_pottery_class",
+    "category": "SOCIAL",
+    "minAge": 61,
+    "maxAge": 70,
+    "conditions": {},
+    "text": {
+      "en": "You join a pottery class. The instructor is 23, calls you 'a natural', and your first bowl looks like a hat.",
+      "zh": "你報名了陶藝課。老師才 23 歲，說你『很有天分』，而你的第一個碗看起來像一頂帽子。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Keep going. Gift the 'hat bowl' to everyone you know.", "zh": "繼續上課。把『帽子碗』送給你認識的每個人。" },
+        "effects": { "money": -600, "health": 1, "happiness": 10, "stress": -8, "fame": 1 }
+      },
+      {
+        "text": { "en": "Quit after one lesson and blame the clay.", "zh": "上完一堂就放棄，怪罪黏土。" },
+        "effects": { "money": -100, "health": 0, "happiness": -3, "stress": 0, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_old_flame",
+    "category": "LOVE",
+    "minAge": 60,
+    "maxAge": 68,
+    "conditions": {},
+    "text": {
+      "en": "Your high-school sweetheart finds you online: 'Coffee? I promise to be less dramatic than at seventeen.'",
+      "zh": "你的高中初戀在網路上找到你：『喝杯咖啡？我保證比十七歲時低調一點。』"
+    },
+    "choices": [
+      {
+        "text": { "en": "Meet for coffee. Bring spare reading glasses and your best posture.", "zh": "去喝咖啡。帶上備用老花眼鏡，挺直腰桿。" },
+        "effects": { "money": -60, "health": 0, "happiness": 9, "stress": 5, "fame": 0 }
+      },
+      {
+        "text": { "en": "Send a warm reply and keep the memories in their box.", "zh": "回一則溫暖的訊息，把回憶留在盒子裡。" },
+        "effects": { "money": 0, "health": 0, "happiness": -2, "stress": -3, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_smart_home",
+    "category": "WEIRD",
+    "minAge": 61,
+    "maxAge": 70,
+    "conditions": {},
+    "text": {
+      "en": "Your smart home has developed opinions. The thermostat judges you, the fridge locks itself at midnight, and the doorbell keeps saying 'you again?'",
+      "zh": "你的智慧家居開始有自己的意見。恆溫器在批評你，冰箱午夜自動上鎖，門鈴一直說『又是你？』"
+    },
+    "choices": [
+      {
+        "text": { "en": "Learn the settings. Become the bossiest person in the house.", "zh": "研究設定，成為家裡最霸道的人。" },
+        "effects": { "money": -400, "health": 0, "happiness": 5, "stress": 5, "fame": 0 }
+      },
+      {
+        "text": { "en": "Rip it all out and go analog. A light switch never talks back.", "zh": "全部拆掉，回歸類比。電燈開關絕不會回嘴。" },
+        "effects": { "money": -1800, "health": 0, "happiness": 6, "stress": -6, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_boomerang_kid",
+    "category": "SOCIAL",
+    "minAge": 60,
+    "maxAge": 66,
+    "conditions": {},
+    "text": {
+      "en": "Your 30-something kid moves back home 'temporarily' with a rescue dog, three plants, and a startup idea about subscription toothpicks.",
+      "zh": "你三十多歲的孩子『暫時』搬回家，帶著一隻收容所的狗、三盆植物，和一個訂閱制牙籤的創業點子。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Let them stay. Post house rules on a laminated card.", "zh": "讓他們住下。把家規護貝貼在牆上。" },
+        "effects": { "money": -6000, "health": -2, "happiness": 6, "stress": 10, "fame": 0 }
+      },
+      {
+        "text": { "en": "Set a move-out date. Be the loving landlord nobody asked for.", "zh": "訂下搬出日期。當個沒人要求的慈愛房東。" },
+        "effects": { "money": 3000, "health": 0, "happiness": -3, "stress": 6, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_half_marathon",
+    "category": "HEALTH",
+    "minAge": 61,
+    "maxAge": 68,
+    "conditions": {},
+    "text": {
+      "en": "A friend dares you to sign up for a half-marathon. Your knees demand to speak to a manager.",
+      "zh": "朋友激你報名半程馬拉松。你的膝蓋要求見經理。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Train for it. Finish last, wearing your medal like a hero.", "zh": "認真訓練。最後一名衝線，把獎牌戴得像英雄。" },
+        "effects": { "money": -400, "health": 8, "happiness": 10, "stress": -3, "fame": 2 }
+      },
+      {
+        "text": { "en": "Volunteer at the water station. Cheering counts as cardio.", "zh": "去水站當志工。加油吶喊也算有氧。" },
+        "effects": { "money": 0, "health": 2, "happiness": 4, "stress": -2, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_language_trip",
+    "category": "SOCIAL",
+    "minAge": 61,
+    "maxAge": 70,
+    "conditions": {},
+    "text": {
+      "en": "You learn a foreign language for a dream trip. After three months, you can order soup and apologize. That's it.",
+      "zh": "你為了夢想旅程學一門外語。三個月後，你會點湯，也會道歉。就這樣。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Go anyway. Order soup with confidence and apologize to everyone.", "zh": "照樣出發。自信地點湯，並向每個人道歉。" },
+        "effects": { "money": -5000, "health": 0, "happiness": 12, "stress": 3, "fame": 0 }
+      },
+      {
+        "text": { "en": "Stay home and cook the soup yourself. The trip lives in your imagination.", "zh": "留在家自己煮湯。旅行活在你的想像裡。" },
+        "effects": { "money": -100, "health": 0, "happiness": -2, "stress": -3, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_hearing_check",
+    "category": "HEALTH",
+    "minAge": 60,
+    "maxAge": 70,
+    "conditions": {},
+    "text": {
+      "en": "You've said 'what?' so often that your family made it your nickname. A hearing test suggests a tiny device with big opinions.",
+      "zh": "你太常說『什麼？』，家人乾脆把它當成你的綽號。聽力檢查建議你戴一個意見很多的小裝置。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Get hearing aids. Discover the family group chat was never that quiet.", "zh": "配助聽器。發現家人群組原來從來沒那麼安靜。" },
+        "effects": { "money": -2500, "health": 4, "happiness": 6, "stress": -2, "fame": 0 }
+      },
+      {
+        "text": { "en": "Keep nodding and smiling. Accidentally agree to host the next holiday.", "zh": "繼續點頭微笑。結果不小心答應主辦下一次節日聚會。" },
+        "effects": { "money": 0, "health": -3, "happiness": 2, "stress": 4, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_cruise_deal",
+    "category": "MONEY",
+    "minAge": 60,
+    "maxAge": 68,
+    "conditions": {},
+    "text": {
+      "en": "A travel agent offers a 'once-in-a-lifetime' 40-day cruise. The brochure has one photo of a buffet and three of a life jacket.",
+      "zh": "旅行社推銷『一生一次』的 40 天郵輪。手冊裡有一張自助餐照片，和三張救生衣照片。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Book it. Pack sea-sickness pills and pure optimism.", "zh": "訂了。帶上暈船藥和滿滿的樂觀。" },
+        "effects": { "money": -12000, "health": -3, "happiness": 12, "stress": -8, "fame": 0 }
+      },
+      {
+        "text": { "en": "Take a week-long scenic train ride instead. Views without sea legs.", "zh": "改搭一週的景觀火車。有風景，不用海上腳。" },
+        "effects": { "money": -3000, "health": 1, "happiness": 6, "stress": -6, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_book_club_war",
+    "category": "SOCIAL",
+    "minAge": 60,
+    "maxAge": 75,
+    "conditions": {},
+    "text": {
+      "en": "Your book club has split into two factions over whether the last novel's ending was 'brilliant' or 'a crime'. Snacks are being weaponized.",
+      "zh": "你的讀書會為了上一本小說的結局是『天才之作』還是『犯罪』分裂成兩派。點心正被當成武器。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Start your own club with better snacks.", "zh": "自己另開一個讀書會，點心更好。" },
+        "effects": { "money": -200, "health": 0, "happiness": 8, "stress": 3, "fame": 1 }
+      },
+      {
+        "text": { "en": "Play peacemaker: propose a book nobody has read yet.", "zh": "當和事佬：提議讀一本沒人看過的書。" },
+        "effects": { "money": 0, "health": 0, "happiness": 4, "stress": 6, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_tomato_feud",
+    "category": "SOCIAL",
+    "minAge": 60,
+    "maxAge": 70,
+    "conditions": {},
+    "text": {
+      "en": "Your tomatoes are outperforming your neighbor's. He has started leaving anonymous notes: 'Nice tomatoes. Shame if something happened to them.'",
+      "zh": "你的番茄長得比鄰居的好。他開始留匿名紙條：『番茄不錯。要是出了什麼事就可惜了。』"
+    },
+    "choices": [
+      {
+        "text": { "en": "Escalate: install a tiny fence and a very small security camera.", "zh": "升級戰局：架一道小圍籬，再裝一台迷你監視器。" },
+        "effects": { "money": -400, "health": 0, "happiness": 9, "stress": 8, "fame": 0 }
+      },
+      {
+        "text": { "en": "Deliver a basket of tomatoes. Defeat him with kindness.", "zh": "送一籃番茄過去。用善意擊敗他。" },
+        "effects": { "money": -30, "health": 0, "happiness": 5, "stress": -3, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_century_letter",
+    "category": "SOCIAL",
+    "minAge": 97,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "A letter from the government congratulates you on nearly reaching 100. Enclosed is a form asking you to confirm you're still alive.",
+      "zh": "政府來信恭喜你即將滿一百歲。信裡附了一張表格，要你確認自己還活著。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Frame the letter and mail back the form with a smiley face.", "zh": "把信裱框，並在表格上畫個笑臉寄回去。" },
+        "effects": { "money": 0, "health": 0, "happiness": 8, "stress": 0, "fame": 2 }
+      },
+      {
+        "text": { "en": "Ignore it and nap. Officially, you're 'under review'.", "zh": "不理它，去睡午覺。官方紀錄上，你『審核中』。" },
+        "effects": { "money": 0, "health": 3, "happiness": 3, "stress": -4, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_candle_cake",
+    "category": "SOCIAL",
+    "minAge": 96,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "Your birthday cake has so many candles that the fire department sends a polite email.",
+      "zh": "你的生日蛋糕蠟燭多到消防局寄來一封禮貌的電子郵件。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Blow them out with the whole family. It's a team sport.", "zh": "全家人一起吹。這是團體運動。" },
+        "effects": { "money": 0, "health": -2, "happiness": 10, "stress": -3, "fame": 0 }
+      },
+      {
+        "text": { "en": "Use one candle shaped like your age. Efficiency is wisdom.", "zh": "只插一根數字形狀的蠟燭。效率就是智慧。" },
+        "effects": { "money": 0, "health": 0, "happiness": 4, "stress": -2, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_great_grandkid_interview",
+    "category": "SOCIAL",
+    "minAge": 95,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "Your great-grandchild needs to interview you for a school project: 'What was it like before the internet?'",
+      "zh": "你的曾孫要為學校作業訪問你：『網路出現以前是什麼樣子？』"
+    },
+    "choices": [
+      {
+        "text": { "en": "Tell the whole story, embellished with a few dinosaurs.", "zh": "把整段故事講完，還加了幾隻恐龍。" },
+        "effects": { "money": 0, "health": 0, "happiness": 12, "stress": -5, "fame": 2 }
+      },
+      {
+        "text": { "en": "Hand over a box of old photos and take a nap.", "zh": "交出一盒老照片，然後去睡午覺。" },
+        "effects": { "money": 0, "health": 2, "happiness": 6, "stress": 0, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_video_chaos",
+    "category": "SOCIAL",
+    "minAge": 90,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "Your family sets up a video call with fourteen relatives. Nobody is muted, and someone's parrot is singing.",
+      "zh": "家人幫你開了一場十四位親戚的視訊通話。沒有人關麥克風，還有人的鸚鵡在唱歌。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Stay on and become the star of the chaos.", "zh": "留在線上，成為這場混亂的主角。" },
+        "effects": { "money": 0, "health": 0, "happiness": 10, "stress": 5, "fame": 1 }
+      },
+      {
+        "text": { "en": "Say the screen froze and take a nap.", "zh": "說畫面卡住了，然後去睡午覺。" },
+        "effects": { "money": 0, "health": 0, "happiness": 3, "stress": -4, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_secret_recipe",
+    "category": "SOCIAL",
+    "minAge": 95,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "Your family begs for your legendary recipe. You've kept it secret for seventy years.",
+      "zh": "家人苦苦哀求你傳授那道傳說中的食譜。你已經保密七十年了。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Write it down. Change one ingredient to keep them guessing.", "zh": "寫下來，但偷偷改掉一樣材料，讓他們繼續猜。" },
+        "effects": { "money": 0, "health": 0, "happiness": 8, "stress": 2, "fame": 3 }
+      },
+      {
+        "text": { "en": "Keep it secret. The mystery is the seasoning.", "zh": "繼續保密。神祕感就是最好的調味料。" },
+        "effects": { "money": 0, "health": 0, "happiness": 4, "stress": -4, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_time_capsule",
+    "category": "SOCIAL",
+    "minAge": 96,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "The town asks you to seal a time capsule to be opened in fifty years. You're the guest of honor. Everyone is politely doing the math.",
+      "zh": "小鎮請你為一個五十年後才開啟的時光膠囊封口。你是貴賓，每個人都在禮貌地心算。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Add a letter and your favorite hat. Plan to attend the opening.", "zh": "放進一封信和你最愛的帽子。計劃出席開啟儀式。" },
+        "effects": { "money": -200, "health": 0, "happiness": 10, "stress": 2, "fame": 4 }
+      },
+      {
+        "text": { "en": "Add one note: 'Buy low, sell high.' Nothing else.", "zh": "只放一張字條：『低買高賣。』沒別的了。" },
+        "effects": { "money": 0, "health": 0, "happiness": 5, "stress": -3, "fame": 2 }
+      }
+    ]
+  },
+  {
+    "id": "norm_named_bench",
+    "category": "SOCIAL",
+    "minAge": 95,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "The park names a bench after you for 'outstanding longevity'. It is deeply uncomfortable.",
+      "zh": "公園以『傑出長壽』為由，用你的名字命名了一張長椅。它坐起來非常不舒服。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Sit on it daily and greet every stranger.", "zh": "每天坐在上面，向每個路人打招呼。" },
+        "effects": { "money": 0, "health": 2, "happiness": 8, "stress": 3, "fame": 5 }
+      },
+      {
+        "text": { "en": "Demand a cushion. Longevity should come with back support.", "zh": "要求加個坐墊。長壽應該附贈腰部支撐。" },
+        "effects": { "money": -100, "health": 0, "happiness": 4, "stress": -2, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_someday_list",
+    "category": "WEIRD",
+    "minAge": 96,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "You realize you've outlived your entire 'someday' list. You start a new one titled 'Tomorrow, Maybe'.",
+      "zh": "你發現自己已經活得比整份『有一天』清單還久。於是你開了一份新的，標題是『明天，也許』。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Tackle it: ice cream for breakfast, a sunrise, and a handwritten note to an old friend.", "zh": "一項項完成：早餐吃冰淇淋、看日出、寫一封手寫信給老朋友。" },
+        "effects": { "money": 0, "health": -1, "happiness": 14, "stress": 2, "fame": 0 }
+      },
+      {
+        "text": { "en": "Nap first. The list has waited this long.", "zh": "先睡一覺。清單都等這麼久了。" },
+        "effects": { "money": 0, "health": 1, "happiness": 3, "stress": -6, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_advice_column",
+    "category": "WORK",
+    "minAge": 95,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "A local paper asks you to write a weekly advice column. Your first tip: 'Drink water and be kind. Everything else is decoration.'",
+      "zh": "地方報社邀你寫每週的建議專欄。你的第一則建議：『多喝水，對人好。其他都是裝飾。』"
+    },
+    "choices": [
+      {
+        "text": { "en": "Accept. Become the town oracle.", "zh": "接下專欄，成為小鎮的先知。" },
+        "effects": { "money": 500, "health": 0, "happiness": 10, "stress": 6, "fame": 8 }
+      },
+      {
+        "text": { "en": "Decline politely. Wisdom is free at the kitchen table.", "zh": "禮貌婉拒。智慧在廚房餐桌上就是免費的。" },
+        "effects": { "money": 0, "health": 0, "happiness": 3, "stress": -2, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_neighbor_game_night",
+    "category": "SOCIAL",
+    "minAge": 96,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "You've outlived most of your old friends. The neighborhood kids invite you to their game night.",
+      "zh": "你的老朋友大多已經先走一步。附近的孩子邀你參加他們的遊戲之夜。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Join. Learn a card game whose rules were invented by a nine-year-old.", "zh": "加入。學一種規則由九歲小孩發明的紙牌遊戲。" },
+        "effects": { "money": 0, "health": -1, "happiness": 12, "stress": 3, "fame": 1 }
+      },
+      {
+        "text": { "en": "Stay in with tea and your old records.", "zh": "留在家，泡杯茶聽老唱片。" },
+        "effects": { "money": 0, "health": 1, "happiness": 2, "stress": -5, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_garden_slip",
+    "category": "HEALTH",
+    "minAge": 95,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "You slip in the garden. The paramedic calls you 'the toughest person I've met today'.",
+      "zh": "你在花園滑了一跤。救護員說你是『我今天遇過最硬的人』。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Go to the clinic for a checkup and accept a sturdy cane.", "zh": "去診所做檢查，並接受一根堅固的手杖。" },
+        "effects": { "money": -300, "health": 6, "happiness": 2, "stress": 0, "fame": 0 }
+      },
+      {
+        "text": { "en": "Insist on ice cream first, then the checkup.", "zh": "堅持先吃冰淇淋，再做檢查。" },
+        "effects": { "money": -300, "health": 3, "happiness": 6, "stress": 0, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_birth_year_menu",
+    "category": "MONEY",
+    "minAge": 96,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "Every online form's birth-year menu starts too late for you.",
+      "zh": "每一份線上表格的出生年份選單，起點都晚得沒你的份。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Ask the grandkids to fill it in. Delegation is wisdom.", "zh": "請孫子代填。懂得授權就是智慧。" },
+        "effects": { "money": 0, "health": 0, "happiness": 4, "stress": -3, "fame": 0 }
+      },
+      {
+        "text": { "en": "Write a strongly worded letter to the website. On paper.", "zh": "寫一封措辭強烈的信給網站。用紙寫的。" },
+        "effects": { "money": -5, "health": 0, "happiness": 6, "stress": 2, "fame": 1 }
+      }
+    ]
+  },
+  {
+    "id": "norm_squirrel_secretary",
+    "category": "WEIRD",
+    "minAge": 95,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "A squirrel has decided you're its personal secretary. It leaves acorns on your windowsill with 'urgent' notes.",
+      "zh": "一隻松鼠認定你是牠的私人祕書。牠在你的窗台留下橡實和『緊急』紙條。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Accept the job. Answer the acorn mail.", "zh": "接下這份工作，回覆橡實信件。" },
+        "effects": { "money": 0, "health": -1, "happiness": 8, "stress": 3, "fame": 0, "addFlags": ["squirrel_secretary"] }
+      },
+      {
+        "text": { "en": "Resign politely. The squirrel goes on strike outside.", "zh": "禮貌請辭。松鼠在窗外罷工。" },
+        "effects": { "money": 0, "health": 0, "happiness": 2, "stress": -3, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_fancy_recliner",
+    "category": "HEALTH",
+    "minAge": 96,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "Your favorite armchair has been replaced by a modern recliner with fourteen buttons. It talks.",
+      "zh": "你最愛的扶手椅被換成一張有十四個按鈕的新款躺椅。它會說話。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Learn all fourteen buttons. Become master of the chair.", "zh": "學會全部十四個按鈕，成為椅子的主人。" },
+        "effects": { "money": -900, "health": 3, "happiness": 8, "stress": 0, "fame": 0 }
+      },
+      {
+        "text": { "en": "Keep the old chair. It remembers your shape.", "zh": "留下舊椅子。它記得你的形狀。" },
+        "effects": { "money": 0, "health": -2, "happiness": 5, "stress": 0, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_wedding_song",
+    "category": "SOCIAL",
+    "minAge": 96,
+    "maxAge": 100,
+    "conditions": {},
+    "text": {
+      "en": "The care-home band asks what song you'd like. You say: 'the one from my wedding.' Nobody knows it, but everyone hums along.",
+      "zh": "安養院的樂團問你想聽什麼歌。你說：『我婚禮上的那首。』沒人聽過，但大家都跟著哼。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Sing it yourself. Every wrong note is a memory.", "zh": "自己唱。每一個走音都是一段回憶。" },
+        "effects": { "money": 0, "health": -2, "happiness": 12, "stress": 2, "fame": 2 }
+      },
+      {
+        "text": { "en": "Hum along and let the band figure it out.", "zh": "跟著哼，讓樂團自己摸索。" },
+        "effects": { "money": 0, "health": 0, "happiness": 6, "stress": -4, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_gap_year_debate",
+    "category": "WORK",
+    "minAge": 18,
+    "maxAge": 20,
+    "conditions": {},
+    "text": {
+      "en": "Everyone expects you to go straight to college. You want a gap year 'to find yourself'. Your savings: $412 and a very confident backpack.",
+      "zh": "所有人都期待你直接上大學。你想休一年『間隔年』找自己。你的存款：412 美金，加上一個信心滿滿的背包。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Enroll in college. Find yourself in the cafeteria line.", "zh": "去念大學。在餐廳排隊的隊伍裡找自己。" },
+        "effects": { "money": -15000, "health": 0, "happiness": 4, "stress": 8, "fame": 1, "setJob": { "en": "Undergraduate", "zh": "大學生" } }
+      },
+      {
+        "text": { "en": "Take the gap year. Find yourself, hopefully near a beach.", "zh": "休間隔年。希望能在海灘附近找到自己。" },
+        "effects": { "money": -2000, "health": 0, "happiness": 9, "stress": 4, "fame": 0, "setJob": { "en": "Gap-Year Wanderer", "zh": "間隔年流浪者" } }
+      }
+    ]
+  },
+  {
+    "id": "fun_taxidermy_roommate",
+    "category": "WEIRD",
+    "minAge": 18,
+    "maxAge": 20,
+    "conditions": {},
+    "text": {
+      "en": "Your assigned dorm roommate collects taxidermy squirrels and has strong opinions about your sleep schedule.",
+      "zh": "系統分配給你的宿舍室友蒐集松鼠標本，而且對你的作息有強烈意見。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Stay. Negotiate a 'no squirrels after 10 p.m.' treaty.", "zh": "留下來。談判出一份『晚上十點後不准出現松鼠』的條約。" },
+        "effects": { "money": 0, "health": -1, "happiness": 6, "stress": 8, "fame": 1 }
+      },
+      {
+        "text": { "en": "Pay extra for a single room. Peace has a price tag.", "zh": "加錢換單人房。平靜是有標價的。" },
+        "effects": { "money": -3000, "health": 2, "happiness": -2, "stress": -8, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_driving_test_fail",
+    "category": "SOCIAL",
+    "minAge": 18,
+    "maxAge": 20,
+    "conditions": {},
+    "text": {
+      "en": "You fail your driving test for the second time. The examiner writes 'confident, but wrong' on your report.",
+      "zh": "你的駕照考試第二次不及格。考官在報告上寫著：『很有自信，但是錯的。』"
+    },
+    "choices": [
+      {
+        "text": { "en": "Book a third test and take lessons from your grandma.", "zh": "報名第三次考試，並向奶奶學開車。" },
+        "effects": { "money": -200, "health": 0, "happiness": 3, "stress": 6, "fame": 1 }
+      },
+      {
+        "text": { "en": "Go carless. Bike everywhere and call it 'sustainable'.", "zh": "放棄開車。騎腳踏車到處跑，還美其名為『永續生活』。" },
+        "effects": { "money": 100, "health": 4, "happiness": -3, "stress": 2, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_campus_shirt_card",
+    "category": "MONEY",
+    "minAge": 18,
+    "maxAge": 20,
+    "conditions": {},
+    "text": {
+      "en": "A campus table offers a free T-shirt if you sign up for a credit card. The shirt is remarkably soft.",
+      "zh": "校園攤位說，辦一張信用卡就送免費 T 恤。那件 T 恤軟得驚人。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Sign up. Softness has no price (until the statement arrives).", "zh": "辦卡。柔軟無價（直到帳單寄來為止）。" },
+        "effects": { "money": -600, "health": 0, "happiness": 5, "stress": 6, "fame": 0 }
+      },
+      {
+        "text": { "en": "Walk away. Your neck stays in the freezing weather.", "zh": "轉身離開。你的脖子繼續暴露在寒風裡。" },
+        "effects": { "money": 0, "health": -1, "happiness": -3, "stress": -2, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_summer_job_pick",
+    "category": "WORK",
+    "minAge": 18,
+    "maxAge": 20,
+    "conditions": {},
+    "text": {
+      "en": "Summer job options: lifeguard at a pool with a suspicious smell, or a giant mascot suit at a burger stand in July.",
+      "zh": "暑期工作二選一：在氣味可疑的游泳池當救生員，或是在七月穿巨型吉祥物裝在漢堡攤前發傳單。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Wear the mascot suit. Sweat is a form of branding.", "zh": "穿上吉祥物裝。汗水也是一種品牌經營。" },
+        "effects": { "money": 3000, "health": -4, "happiness": 3, "stress": 8, "fame": 3, "setJob": { "en": "Burger Mascot", "zh": "漢堡吉祥物" } }
+      },
+      {
+        "text": { "en": "Guard the pool. Nobody drowns, everybody sighs.", "zh": "守護泳池。沒有人溺水，只有人嘆氣。" },
+        "effects": { "money": 2200, "health": 3, "happiness": -2, "stress": -3, "fame": 0, "setJob": { "en": "Lifeguard", "zh": "救生員" } }
+      }
+    ]
+  },
+  {
+    "id": "norm_curfew_at_eighteen",
+    "category": "SOCIAL",
+    "minAge": 18,
+    "maxAge": 20,
+    "conditions": {},
+    "text": {
+      "en": "Your parents set a midnight curfew for a legal adult. Their leverage: free laundry and pasta.",
+      "zh": "你的父母替一個法定成年人訂了午夜門禁。他們的籌碼：免費洗衣服，以及義大利麵。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Follow it. Enjoy the pasta and fold your dignity neatly.", "zh": "乖乖遵守。享用義大利麵，並把尊嚴摺得整整齊齊。" },
+        "effects": { "money": 300, "health": 2, "happiness": -3, "stress": -4, "fame": 0 }
+      },
+      {
+        "text": { "en": "Move into a shared flat above a noisy bakery.", "zh": "搬進一間在吵鬧麵包店樓上的合租公寓。" },
+        "effects": { "money": -3500, "health": -2, "happiness": 8, "stress": 8, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_first_ballot",
+    "category": "SOCIAL",
+    "minAge": 18,
+    "maxAge": 20,
+    "conditions": {},
+    "text": {
+      "en": "Your first election: the ballot has 43 items, and you've read none of them. A stranger offers a 'cheat sheet'.",
+      "zh": "你的第一次投票：選票上有 43 個項目，你一個都沒讀過。一位陌生人遞來『小抄』。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Read every item. Arrive late, but informed.", "zh": "把每個項目都讀完。遲到，但很有見識。" },
+        "effects": { "money": 0, "health": -1, "happiness": 3, "stress": 6, "fame": 1 }
+      },
+      {
+        "text": { "en": "Decide the first three and skip the rest. Democracy is a marathon.", "zh": "只決定前三項，其餘跳過。民主是場馬拉松。" },
+        "effects": { "money": 0, "health": 0, "happiness": -1, "stress": -3, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "fun_regrettable_tattoo",
+    "category": "WEIRD",
+    "minAge": 18,
+    "maxAge": 20,
+    "conditions": {},
+    "text": {
+      "en": "You want a tattoo of your crush's name. You've known them for eleven days.",
+      "zh": "你想刺一個暗戀對象名字的刺青。你認識對方十一天了。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Get it. Commitment looks great on skin.", "zh": "刺下去。承諾在皮膚上看起來很棒。" },
+        "effects": { "money": -150, "health": -2, "happiness": 8, "stress": 3, "fame": 1 }
+      },
+      {
+        "text": { "en": "Get a tiny cactus instead. Prickly and low-maintenance.", "zh": "改刺一株小仙人掌。帶刺而且好照顧。" },
+        "effects": { "money": -100, "health": 0, "happiness": 4, "stress": -1, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_graduation_speech",
+    "category": "SOCIAL",
+    "minAge": 18,
+    "maxAge": 20,
+    "conditions": {},
+    "text": {
+      "en": "The valedictorian loses their voice. You're asked to give the graduation speech: five minutes, three index cards.",
+      "zh": "畢業生代表突然失聲，你被臨時拉去致詞：五分鐘、三張小卡片。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Wing it with jokes about the cafeteria.", "zh": "隨興發揮，全是關於學校餐廳的笑話。" },
+        "effects": { "money": 0, "health": 0, "happiness": 8, "stress": 10, "fame": 6 }
+      },
+      {
+        "text": { "en": "Read the cards. They are somehow in the wrong order.", "zh": "照著卡片念。卡片不知為何順序全亂了。" },
+        "effects": { "money": 0, "health": 0, "happiness": 2, "stress": 3, "fame": 1 }
+      }
+    ]
+  },
+  {
+    "id": "norm_textbook_price",
+    "category": "MONEY",
+    "minAge": 19,
+    "maxAge": 21,
+    "conditions": {},
+    "text": {
+      "en": "The required textbook costs $280. It's a 'new edition' with two changed commas.",
+      "zh": "指定教科書要價 280 美金。所謂『新版』只改了兩個逗號。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Buy it new. Enjoy the smell of overpriced paper.", "zh": "買全新的。聞著昂貴紙張的味道。" },
+        "effects": { "money": -280, "health": 0, "happiness": 1, "stress": -3, "fame": 0 }
+      },
+      {
+        "text": { "en": "Share one copy with three strangers via a 'study group'.", "zh": "跟三個陌生人組成『讀書會』共用一本。" },
+        "effects": { "money": -70, "health": 0, "happiness": 4, "stress": 6, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_all_nighter",
+    "category": "HEALTH",
+    "minAge": 19,
+    "maxAge": 21,
+    "conditions": {},
+    "text": {
+      "en": "Your final essay is due at 9 a.m. It's 1 a.m. You have a title and a mug.",
+      "zh": "期末報告早上九點截止。現在凌晨一點。你只有一個標題和一個馬克杯。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Pull an all-nighter. Coffee is a food group.", "zh": "熬夜趕工。咖啡也算一種食物類別。" },
+        "effects": { "money": -20, "health": -6, "happiness": 2, "stress": 8, "fame": 1 }
+      },
+      {
+        "text": { "en": "Email the professor for an extension. Include three apologies.", "zh": "寫信向教授要求延期。附上三次道歉。" },
+        "effects": { "money": 0, "health": 2, "happiness": -3, "stress": -2, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_club_fair",
+    "category": "SOCIAL",
+    "minAge": 19,
+    "maxAge": 21,
+    "conditions": {},
+    "text": {
+      "en": "The club fair has 200 booths. One promises free snacks; another promises 'life-changing networking'.",
+      "zh": "社團博覽會有兩百個攤位。有一個保證提供免費零食，另一個則保證『改變人生的人脈』。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Join the snack club. Learn about competitive origami.", "zh": "加入零食社。順便學會競技摺紙。" },
+        "effects": { "money": -40, "health": 0, "happiness": 8, "stress": -2, "fame": 1 }
+      },
+      {
+        "text": { "en": "Join the networking club. Get a lanyard and a nervous handshake.", "zh": "加入人脈社。拿到一條掛繩和一個緊張的握手。" },
+        "effects": { "money": 500, "health": 0, "happiness": -1, "stress": 6, "fame": 2 }
+      }
+    ]
+  },
+  {
+    "id": "life_study_abroad",
+    "category": "MONEY",
+    "minAge": 19,
+    "maxAge": 21,
+    "conditions": {},
+    "text": {
+      "en": "A study-abroad program offers six months in a beautiful city. You speak the language at 'polite hello' level. The flights cost a small fortune.",
+      "zh": "交換學生計劃提供半年在美麗城市的生活。你的當地語言只有『禮貌打招呼』的程度。機票貴得像一筆小財富。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Go. Order food by pointing.", "zh": "出發。靠比手畫腳點餐。" },
+        "effects": { "money": -9000, "health": 0, "happiness": 12, "stress": 6, "fame": 1 }
+      },
+      {
+        "text": { "en": "Stay home. Watch travel videos with subtitles.", "zh": "留在家。看附字幕的旅遊影片。" },
+        "effects": { "money": 0, "health": 1, "happiness": -3, "stress": -3, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_food_budget",
+    "category": "MONEY",
+    "minAge": 19,
+    "maxAge": 21,
+    "conditions": {},
+    "text": {
+      "en": "Your food budget is $40 a week. Your stomach has filed a formal complaint.",
+      "zh": "你每週的伙食預算是 40 美金。你的胃已經提出正式申訴。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Meal-prep rice and beans for seven days. Become a spreadsheet.", "zh": "一週七天都吃備餐米飯和豆子。人生變成一張試算表。" },
+        "effects": { "money": 150, "health": 2, "happiness": -4, "stress": 3, "fame": 0 }
+      },
+      {
+        "text": { "en": "Order takeout twice. Live a little.", "zh": "叫兩次外送。偶爾也要活一下。" },
+        "effects": { "money": -80, "health": -2, "happiness": 6, "stress": -2, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_situationship",
+    "category": "LOVE",
+    "minAge": 19,
+    "maxAge": 21,
+    "conditions": {},
+    "text": {
+      "en": "You've been 'talking' to someone for three months. Nobody has said 'together'. Your friends run a group chat about it.",
+      "zh": "你跟某人『聊』了三個月，沒有人說過『在一起』這三個字。你的朋友們還為此開了群組。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Ask directly. Brace for impact.", "zh": "直接問清楚。做好承受衝擊的準備。" },
+        "effects": { "money": -30, "health": 0, "happiness": 6, "stress": 8, "fame": 0, "setRelationship": { "en": "Dating (It's Official)", "zh": "交往中（正式官宣）" } }
+      },
+      {
+        "text": { "en": "Keep it vague and let the group chat speculate.", "zh": "保持曖昧，讓群組自行推測。" },
+        "effects": { "money": 0, "health": 0, "happiness": -2, "stress": 2, "fame": 1, "setRelationship": { "en": "It's Complicated", "zh": "關係複雜" } }
+      }
+    ]
+  },
+  {
+    "id": "norm_fire_alarm_popcorn",
+    "category": "SOCIAL",
+    "minAge": 19,
+    "maxAge": 21,
+    "conditions": {},
+    "text": {
+      "en": "The dorm fire alarm goes off at 3 a.m. because someone burned popcorn. Again.",
+      "zh": "宿舍防火警報在凌晨三點響起，原因又是有人燒焦了爆米花。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Evacuate in pajamas and become a campus meme.", "zh": "穿著睡衣疏散，順便成為校園迷因。" },
+        "effects": { "money": 0, "health": 0, "happiness": 4, "stress": 4, "fame": 3 }
+      },
+      {
+        "text": { "en": "Volunteer as dorm safety rep. Get a stipend and a whistle.", "zh": "自願當宿舍安全代表。領到津貼和一支哨子。" },
+        "effects": { "money": 150, "health": 0, "happiness": 3, "stress": 5, "fame": 1 }
+      }
+    ]
+  },
+  {
+    "id": "norm_library_night_shift",
+    "category": "WORK",
+    "minAge": 19,
+    "maxAge": 21,
+    "conditions": {},
+    "text": {
+      "en": "A campus job opens: night shift at the library desk. Duties include shushing people and guarding the good chairs.",
+      "zh": "校園打工缺人：圖書館夜班櫃檯。工作內容是叫人小聲點，以及守護好位子。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Take it. Become a legend of the quiet.", "zh": "接下。成為安靜界的傳奇。" },
+        "effects": { "money": 2800, "health": -3, "happiness": 2, "stress": 4, "fame": 0, "setJob": { "en": "Library Night Staff", "zh": "圖書館夜間管理員" } }
+      },
+      {
+        "text": { "en": "Decline. Sell your class notes online instead.", "zh": "婉拒。改把上課筆記放到網路上賣。" },
+        "effects": { "money": 900, "health": -1, "happiness": 3, "stress": -2, "fame": 1 }
+      }
+    ]
+  },
+  {
+    "id": "norm_unpaid_intern",
+    "category": "WORK",
+    "minAge": 20,
+    "maxAge": 22,
+    "conditions": {},
+    "text": {
+      "en": "Your unpaid internship's main task: making coffee for twelve people, none of whom know your name.",
+      "zh": "你的無薪實習主要工作：幫十二個人泡咖啡，其中沒有人知道你的名字。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Stay. Learn every coffee order and every secret.", "zh": "留下。記住每個人的咖啡口味和每一個祕密。" },
+        "effects": { "money": -500, "health": 0, "happiness": -2, "stress": 6, "fame": 2, "setJob": { "en": "Intern (Unpaid, Very Caffeinated)", "zh": "實習生（無薪，咖啡因超標）" } }
+      },
+      {
+        "text": { "en": "Quit and freelance designing logos for friends.", "zh": "辭職，改幫朋友接案設計標誌。" },
+        "effects": { "money": 300, "health": 0, "happiness": 4, "stress": 5, "fame": 0, "setJob": { "en": "Freelance Designer", "zh": "自由接案設計師" } }
+      }
+    ]
+  },
+  {
+    "id": "norm_credit_history",
+    "category": "MONEY",
+    "minAge": 20,
+    "maxAge": 22,
+    "conditions": {},
+    "text": {
+      "en": "You discover your credit score is 'not enough data'. The bank suggests you 'build history'.",
+      "zh": "你發現自己的信用評分是『資料不足』。銀行建議你『累積紀錄』。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Open a starter card and pay it on time like a monk.", "zh": "辦張入門信用卡，並像僧侶一樣準時還款。" },
+        "effects": { "money": 300, "health": 0, "happiness": -1, "stress": 4, "fame": 0 }
+      },
+      {
+        "text": { "en": "Ignore it. Cash is king (and lonely).", "zh": "不理它。現金為王（而且很孤單）。" },
+        "effects": { "money": -50, "health": 0, "happiness": 2, "stress": -2, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "fun_nap_thesis",
+    "category": "WEIRD",
+    "minAge": 20,
+    "maxAge": 22,
+    "conditions": {},
+    "text": {
+      "en": "Your thesis topic: 'The Sociology of Naps'. Your advisor sighs like a broken accordion.",
+      "zh": "你的論文題目：《午睡社會學》。指導教授嘆氣的聲音像一台壞掉的手風琴。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Commit. Nap-based fieldwork begins.", "zh": "堅持到底。以午睡為主的田野調查正式開始。" },
+        "effects": { "money": 0, "health": 3, "happiness": 8, "stress": 6, "fame": 2 }
+      },
+      {
+        "text": { "en": "Switch to a safe topic about supply chains.", "zh": "改成一個安全的供應鏈題目。" },
+        "effects": { "money": 500, "health": 0, "happiness": -4, "stress": -4, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_curb_furniture",
+    "category": "MONEY",
+    "minAge": 20,
+    "maxAge": 22,
+    "conditions": {},
+    "text": {
+      "en": "You furnish your first apartment from the curb: a couch with a mysterious stain and a lamp with an attitude.",
+      "zh": "你的第一間公寓靠路邊撿來的家具布置：一張有神祕汙漬的沙發，和一盞很有個性的檯燈。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Take everything. Cover the stain with a blanket 'for style'.", "zh": "全部搬回家。用毯子蓋住汙漬，美其名為『風格』。" },
+        "effects": { "money": -20, "health": -3, "happiness": 5, "stress": 2, "fame": 0 }
+      },
+      {
+        "text": { "en": "Buy flat-pack furniture and lose two weekends to a diagram.", "zh": "買組裝家具，兩個週末都輸給一張說明圖。" },
+        "effects": { "money": -450, "health": 1, "happiness": 3, "stress": 3, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_hackathon_weekend",
+    "category": "WORK",
+    "minAge": 20,
+    "maxAge": 22,
+    "conditions": {},
+    "text": {
+      "en": "A weekend hackathon offers $500 for the best idea. Yours: an app that reminds you to drink water by insulting you.",
+      "zh": "週末黑客松提供 500 美金獎金給最佳點子。你的點子：一個用羞辱來提醒你喝水的 app。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Pitch it. Bring a mascot.", "zh": "上台簡報。還帶了一個吉祥物。" },
+        "effects": { "money": 300, "health": -3, "happiness": 6, "stress": 6, "fame": 3 }
+      },
+      {
+        "text": { "en": "Skip it and sleep for fourteen hours.", "zh": "跳過，睡上十四個小時。" },
+        "effects": { "money": 0, "health": 4, "happiness": -2, "stress": -6, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_holiday_table_plan",
+    "category": "SOCIAL",
+    "minAge": 20,
+    "maxAge": 22,
+    "conditions": {},
+    "text": {
+      "en": "At the holiday table, a relative asks, 'So what's your plan?' Your plan is 'lunch'.",
+      "zh": "節日聚餐上，親戚問：『所以你的計劃是什麼？』你的計劃是『午餐』。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Say 'entrepreneur' and change the subject to pie.", "zh": "回答『創業家』，然後把話題轉到派上。" },
+        "effects": { "money": 0, "health": 0, "happiness": 2, "stress": 5, "fame": 2 }
+      },
+      {
+        "text": { "en": "Be honest: 'lunch, then figure it out.' Receive an hour of advice and some cash.", "zh": "老實說：『先吃午餐，再慢慢想。』換來一小時的建議和一些零用錢。" },
+        "effects": { "money": 200, "health": -1, "happiness": 4, "stress": 2, "fame": 0 }
+      }
+    ]
+  },
+  {
+    "id": "norm_plant_custody",
+    "category": "LOVE",
+    "minAge": 20,
+    "maxAge": 22,
+    "conditions": {},
+    "text": {
+      "en": "You break up with someone you share a lease with. The houseplant is in both names.",
+      "zh": "你和同住的伴侶分手了。那盆室內植物是兩個人共同的名字。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Share custody of the plant. Send weekly growth updates.", "zh": "共同監護那盆植物。每週傳送成長報告。" },
+        "effects": { "money": -100, "health": 0, "happiness": 3, "stress": 6, "fame": 0, "setRelationship": { "en": "Single (Co-Parenting a Plant)", "zh": "單身（與前任共同養植物）" } }
+      },
+      {
+        "text": { "en": "Give them the plant. Keep the good pan.", "zh": "把植物給對方，自己留下好用的平底鍋。" },
+        "effects": { "money": 40, "health": 0, "happiness": -2, "stress": -3, "fame": 0, "setRelationship": { "en": "Single (Owner of the Good Pan)", "zh": "單身（好鍋擁有者）" } }
+      }
+    ]
+  },
+  {
+    "id": "norm_loan_letter",
+    "category": "MONEY",
+    "minAge": 20,
+    "maxAge": 22,
+    "conditions": {},
+    "text": {
+      "en": "A student loan letter arrives with 'Congratulations!' in the header. It is not congratulations.",
+      "zh": "學貸通知信抵達，標題寫著『恭喜！』。這並不是恭喜。"
+    },
+    "choices": [
+      {
+        "text": { "en": "Set up a payment plan and a spreadsheet named 'Doom'.", "zh": "設定還款計劃，並建一份名為『末日』的試算表。" },
+        "effects": { "money": -1200, "health": 0, "happiness": -3, "stress": -2, "fame": 0 }
+      },
+      {
+        "text": { "en": "Deliver groceries on the side to pay it off faster.", "zh": "兼差送生鮮雜貨，想更快還清。" },
+        "effects": { "money": 1500, "health": -3, "happiness": -2, "stress": 8, "fame": 0 }
+      }
+    ]
+  }
+]

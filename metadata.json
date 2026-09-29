@@ -1,0 +1,6 @@
+{
+  "name": "LIFE GLITCH",
+  "description": "A dark-humored, choice-based life simulation browser game. Live a life, make terrible decisions, and see what happens.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
