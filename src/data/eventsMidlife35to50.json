@@ -1,1 +1,523 @@
-PLACEHOLDER
+[
+  {
+    "id": "mid_job_hunt_entry",
+    "category": "WORK",
+    "minAge": 35,
+    "maxAge": 48,
+    "conditions": {
+      "requiresUnemployed": true
+    },
+    "text": {
+      "en": "You've been unemployed for a while. The only interviews you get are for junior roles that pay half of what you used to make.",
+      "zh": "你失業有一段時間了。能約到的面試全是初級職位，薪水只有以前的一半。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Take the junior role. Pride is a luxury you can no longer afford.",
+          "zh": "接下初級職位。尊嚴已經是你負擔不起的奢侈品。"
+        },
+        "effects": {
+          "money": 1500,
+          "health": -2,
+          "happiness": -6,
+          "stress": 10,
+          "fame": 0,
+          "setJob": {
+            "en": "Junior Associate",
+            "zh": "初級專員"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Keep hunting for something closer to your old level. Another month of savings burns.",
+          "zh": "繼續找接近舊職級的工作。又燒一個月存款。"
+        },
+        "effects": {
+          "money": -2500,
+          "health": 0,
+          "happiness": -4,
+          "stress": 12,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "mid_promotion_gate",
+    "category": "WORK",
+    "minAge": 36,
+    "maxAge": 48,
+    "conditions": {
+      "requiresEmployed": true,
+      "minJobTier": "CORPORATE"
+    },
+    "text": {
+      "en": "A senior director slot opens. You've been corporate for years. The panel asks if you're 'still hungry'.",
+      "zh": "出現一個資深總監空缺。你在正職待了好幾年。面試官問你「還有沒有餓」。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Show the hunger. Accept longer hours and the new title.",
+          "zh": "展示飢餓感。接受更長工時和新頭銜。"
+        },
+        "effects": {
+          "money": 4000,
+          "health": -4,
+          "happiness": 4,
+          "stress": 14,
+          "fame": 3,
+          "setJob": {
+            "en": "Senior Director",
+            "zh": "資深總監"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Stay at your current level. Sleep still exists.",
+          "zh": "留在現職。睡眠還存在。"
+        },
+        "effects": {
+          "money": 1000,
+          "health": 2,
+          "happiness": 2,
+          "stress": -6,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "mid_headhunt",
+    "category": "WORK",
+    "minAge": 35,
+    "maxAge": 50,
+    "conditions": {
+      "requiresEmployed": true,
+      "minJobTier": "ENTRY"
+    },
+    "text": {
+      "en": "A recruiter DMs you: '+30% base, fully remote, and we actually mean it.' Your current boss still thinks 'remote' is a temporary phase.",
+      "zh": "獵頭私訊你：「底薪+30%，全遠端，而且是真的。」你現在的老闆仍認為「遠端」只是過渡期。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Jump. Update LinkedIn the same afternoon.",
+          "zh": "跳槽。當天下午就更新 LinkedIn。"
+        },
+        "effects": {
+          "money": 5000,
+          "health": 0,
+          "happiness": 8,
+          "stress": 8,
+          "fame": 2,
+          "setJob": {
+            "en": "Remote Specialist",
+            "zh": "遠端專員"
+          },
+          "addFlags": ["jumped_ship"]
+        }
+      },
+      {
+        "text": {
+          "en": "Stay loyal. Ask for a matching raise. Receive a 'market review' in six months.",
+          "zh": "留下盡忠。要求對等加薪。得到「六個月後市場檢視」的回覆。"
+        },
+        "effects": {
+          "money": 800,
+          "health": 0,
+          "happiness": -3,
+          "stress": 6,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "mid_backstab_promotion",
+    "category": "WORK",
+    "minAge": 37,
+    "maxAge": 50,
+    "conditions": {
+      "requiresEmployed": true,
+      "minJobTier": "CORPORATE"
+    },
+    "text": {
+      "en": "You and a peer are both up for the same senior role. They once told you about their side consulting. You still have the chat logs.",
+      "zh": "你和一位同儕競爭同一個資深職位。對方曾告訴你私下接案的事。你還留著對話紀錄。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Leak the logs. Friendship is a junior-level skill.",
+          "zh": "洩漏紀錄。友情只是新手村技能。"
+        },
+        "effects": {
+          "money": 3500,
+          "health": 0,
+          "happiness": -8,
+          "stress": 14,
+          "fame": 0,
+          "addFlags": ["backstabber"],
+          "setJob": {
+            "en": "Senior Manager",
+            "zh": "高級經理"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Compete clean. Lose with dignity (and a fruit basket).",
+          "zh": "光明正大競爭。輸得體面（還有一籃水果）。"
+        },
+        "effects": {
+          "money": 500,
+          "health": 0,
+          "happiness": 3,
+          "stress": 4,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "mid_debt_interest_roll",
+    "category": "MONEY",
+    "minAge": 35,
+    "maxAge": 50,
+    "conditions": {
+      "flags": ["car_debt", "mortgage_slave", "cosigned_loan", "debt_consolidated"]
+    },
+    "text": {
+      "en": "Interest on your debts now exceeds your monthly grocery budget. The bank calls it 'standard amortization'. You call it a slow bleed.",
+      "zh": "債務利息已經超過每月買菜錢。銀行稱之為「標準攤還」。你稱之為緩慢失血。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Cut everything non-essential. Live like a student again.",
+          "zh": "砍掉所有非必要開支。重新過學生生活。"
+        },
+        "effects": {
+          "money": 3000,
+          "health": -3,
+          "happiness": -8,
+          "stress": 6,
+          "fame": 0
+        }
+      },
+      {
+        "text": {
+          "en": "Take a second job on weekends. Sleep becomes optional.",
+          "zh": "週末再兼一份工。睡眠變成可選項。"
+        },
+        "effects": {
+          "money": 2500,
+          "health": -6,
+          "happiness": -4,
+          "stress": 12,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "mid_kid_tuition_crisis",
+    "category": "MONEY",
+    "minAge": 38,
+    "maxAge": 52,
+    "conditions": {},
+    "text": {
+      "en": "Private school just raised tuition another 12%. The principal emails about 'investing in excellence'. Your spreadsheet calls it a catastrophe.",
+      "zh": "私立學校學費又漲 12%。校長來信談「投資卓越」。你的試算表稱之為災難。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Pay it. Your child's future > your retirement number.",
+          "zh": "照繳。孩子的未來 > 你的退休數字。"
+        },
+        "effects": {
+          "money": -12000,
+          "health": -2,
+          "happiness": 2,
+          "stress": 12,
+          "fame": 0
+        }
+      },
+      {
+        "text": {
+          "en": "Switch to public. Prepare for the guilt campaign at the dinner table.",
+          "zh": "轉公立。準備迎接飯桌上的愧疚攻勢。"
+        },
+        "effects": {
+          "money": 2000,
+          "health": 0,
+          "happiness": -7,
+          "stress": 8,
+          "fame": 0,
+          "addFlags": ["public_school_guilt"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "mid_parent_care_decision",
+    "category": "SOCIAL",
+    "minAge": 40,
+    "maxAge": 55,
+    "conditions": {},
+    "text": {
+      "en": "Your parent can no longer live alone safely. Siblings are 'very busy' but full of opinions.",
+      "zh": "父母已無法安全獨居。兄弟姐妹「都很忙」，但意見很多。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Move them in. Learn the true meaning of patience.",
+          "zh": "接回家住。重新認識「耐心」二字。"
+        },
+        "effects": {
+          "money": -5000,
+          "health": -5,
+          "happiness": -4,
+          "stress": 16,
+          "fame": 0,
+          "addFlags": ["family_caregiver"]
+        }
+      },
+      {
+        "text": {
+          "en": "Pay for a care facility. Carry the guilt for free.",
+          "zh": "出錢送照護機構。愧疚感免費附贈。"
+        },
+        "effects": {
+          "money": -15000,
+          "health": 0,
+          "happiness": -6,
+          "stress": 6,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "mid_health_wake_up",
+    "category": "HEALTH",
+    "minAge": 38,
+    "maxAge": 50,
+    "conditions": {
+      "minStress": 45
+    },
+    "text": {
+      "en": "Chest tightness at 2 a.m. ER says 'probably stress' but still orders a full workup 'just in case'.",
+      "zh": "凌晨兩點胸悶。急診說「大概是壓力」，但仍安排完整檢查「以防萬一」。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Do every test. Start changing habits tomorrow.",
+          "zh": "全部檢查。從明天開始改習慣。"
+        },
+        "effects": {
+          "money": -2500,
+          "health": 8,
+          "happiness": -3,
+          "stress": -10,
+          "fame": 0,
+          "addFlags": ["health_wake_up"]
+        }
+      },
+      {
+        "text": {
+          "en": "Skip the extras. 'I'm fine' is still a powerful spell.",
+          "zh": "拒絕額外檢查。「我沒事」仍是強大咒語。"
+        },
+        "effects": {
+          "money": -300,
+          "health": -5,
+          "happiness": 1,
+          "stress": 4,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "mid_career_plateau",
+    "category": "WORK",
+    "minAge": 38,
+    "maxAge": 50,
+    "conditions": {
+      "requiresEmployed": true,
+      "minJobTier": "CORPORATE"
+    },
+    "text": {
+      "en": "You've been at the same level for six years. A 29-year-old with better hair and a podcast just got the promotion.",
+      "zh": "你在同一職級待了六年。一個頭髮比較好、有播客的 29 歲年輕人剛拿到升遷。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Smile, congratulate, update résumé at 1 a.m.",
+          "zh": "微笑祝賀，凌晨一點更新履歷。"
+        },
+        "effects": {
+          "money": 0,
+          "health": -2,
+          "happiness": -7,
+          "stress": 12,
+          "fame": 0,
+          "addFlags": ["quiet_resentment"]
+        }
+      },
+      {
+        "text": {
+          "en": "Ask for a raise. They offer 'more visibility'.",
+          "zh": "要求加薪。對方給「更多曝光機會」。"
+        },
+        "effects": {
+          "money": 1200,
+          "health": 0,
+          "happiness": -4,
+          "stress": 8,
+          "fame": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "mid_side_hustle_choice",
+    "category": "WORK",
+    "minAge": 35,
+    "maxAge": 48,
+    "conditions": {
+      "requiresEmployed": true
+    },
+    "text": {
+      "en": "Your side project is finally making money. Your main job has noticed the 'reduced enthusiasm'.",
+      "zh": "你的副業終於開始賺錢。正職卻注意到你「熱情下降」。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Quit the day job. Bet on the side project.",
+          "zh": "辭掉正職，把一切押在副業上。"
+        },
+        "effects": {
+          "money": -4000,
+          "health": -3,
+          "happiness": 9,
+          "stress": 18,
+          "fame": 3,
+          "setJob": {
+            "en": "Full-time Side Hustler",
+            "zh": "全職副業"
+          },
+          "addFlags": ["full_time_hustle"]
+        }
+      },
+      {
+        "text": {
+          "en": "Kill the side project. Sleep becomes possible again.",
+          "zh": "關掉副業。睡眠重新變得可能。"
+        },
+        "effects": {
+          "money": 1500,
+          "health": 5,
+          "happiness": -5,
+          "stress": -10,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "mid_marriage_therapy",
+    "category": "LOVE",
+    "minAge": 36,
+    "maxAge": 50,
+    "conditions": {},
+    "text": {
+      "en": "You and your partner mostly communicate through logistics and sighs. Someone suggests couples therapy.",
+      "zh": "你跟另一半的溝通幾乎只剩物流安排和嘆氣。有人建議去夫妻諮商。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Go. Say the hard things out loud on the couch.",
+          "zh": "去。坐在沙發上把難聽的話說出來。"
+        },
+        "effects": {
+          "money": -2000,
+          "health": 0,
+          "happiness": 5,
+          "stress": 7,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Married (In Therapy)",
+            "zh": "已婚（諮商中）"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Book a weekend trip instead. Hope proximity helps.",
+          "zh": "改訂週末旅行。希望距離近一點能修好。"
+        },
+        "effects": {
+          "money": -1500,
+          "health": 1,
+          "happiness": 3,
+          "stress": -2,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "mid_gen_z_boss",
+    "category": "WORK",
+    "minAge": 40,
+    "maxAge": 55,
+    "conditions": {
+      "requiresEmployed": true
+    },
+    "text": {
+      "en": "Your new boss is 27, communicates in emojis, and calls quarterly reviews 'vibe checks'.",
+      "zh": "你的新老闆 27 歲，只用表情包溝通，還把季度考核叫「氛圍檢查」。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Learn the slang. Say 'no cap' with a straight face.",
+          "zh": "學黑話。一臉嚴肅地說「no cap」。"
+        },
+        "effects": {
+          "money": 1500,
+          "health": 0,
+          "happiness": -2,
+          "stress": 6,
+          "fame": 0
+        }
+      },
+      {
+        "text": {
+          "en": "Say 'back in my day…' and watch HR take notes.",
+          "zh": "說「想當年……」，看著 HR 開始做記錄。"
+        },
+        "effects": {
+          "money": -1500,
+          "health": 0,
+          "happiness": 4,
+          "stress": 9,
+          "fame": 0
+        }
+      }
+    ]
+  }
+]
