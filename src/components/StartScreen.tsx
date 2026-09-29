@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { GlitchTitle } from './GlitchTitle';
 import { PastRun, Language } from '../types/game';
-import { Volume2, VolumeX, Play, Trophy, ShieldAlert, Globe } from 'lucide-react';
+import { Volume2, VolumeX, Play, Trophy, ShieldAlert, Sparkles, Globe } from 'lucide-react';
 import { sounds } from '../utils/audio';
-import { isChinese, loc, languageButtonLabel } from '../utils/i18n';
 
 interface StartScreenProps {
   totalRuns: number;
@@ -31,18 +30,18 @@ export const StartScreen: React.FC<StartScreenProps> = ({
   const highestAge = pastRuns.length > 0 ? Math.max(...pastRuns.map(r => r.age)) : null;
 
   const t = {
-    tagline: isChinese(language)
+    tagline: language === 'zh'
       ? '經歷荒誕人生。做出最糟決定。看看會發生什麼。'
       : 'Live a life. Make terrible decisions. See what happens.',
-    totalLives: isChinese(language) ? '總遊玩人生數' : 'Total Lives Played',
-    maxAge: isChinese(language) ? '最高年齡' : 'Max Age',
-    howToSurvive: isChinese(language) ? '如何在這場代碼漏洞中存活' : 'HOW TO SURVIVE THE GLITCH',
-    startBtn: isChinese(language) ? '開始新人生' : 'START LIFE',
-    rule1: isChinese(language) ? '• 健康值 > 0%：肉身崩潰將立即終結人生。' : '• Health > 0%: Physical collapse causes immediate death.',
-    rule2: isChinese(language) ? '• 壓力值 < 100%：達到 100% 將觸發過勞猝死！' : '• Stress < 100%: At 100%, fatal cardiac burnout triggers!',
-    rule3: isChinese(language) ? '• 快樂值 > 0%：零快樂會導致隱入塵埃。' : '• Joy > 0%: Zero joy causes existential fading.',
-    rule4: isChinese(language) ? '• 活到 100 歲：解鎖傳奇世紀存活者！' : '• Reach Age 100: Unlock the legendary Century Survivor!',
-    hallOfFame: isChinese(language) ? '歷代人生名人堂' : 'PAST LIVES HALL OF FAME',
+    totalLives: language === 'zh' ? '總遊玩人生數' : 'Total Lives Played',
+    maxAge: language === 'zh' ? '最高年齡' : 'Max Age',
+    howToSurvive: language === 'zh' ? '如何在這場代碼漏洞中存活' : 'HOW TO SURVIVE THE GLITCH',
+    startBtn: language === 'zh' ? '開始新人生' : 'START LIFE',
+    rule1: language === 'zh' ? '• 健康值 > 0%：肉身崩潰將立即終結人生。' : '• Health > 0%: Physical collapse causes immediate death.',
+    rule2: language === 'zh' ? '• 壓力值 < 100%：達到 100% 將觸發過勞猝死！' : '• Stress < 100%: At 100%, fatal cardiac burnout triggers!',
+    rule3: language === 'zh' ? '• 快樂值 > 0%：零快樂會導致隱入塵埃。' : '• Joy > 0%: Zero joy causes existential fading.',
+    rule4: language === 'zh' ? '• 活到 100 歲：解鎖傳奇世紀存活者！' : '• Reach Age 100: Unlock the legendary Century Survivor!',
+    hallOfFame: language === 'zh' ? '歷代人生名人堂' : 'PAST LIVES HALL OF FAME',
   };
 
   return (
@@ -58,10 +57,10 @@ export const StartScreen: React.FC<StartScreenProps> = ({
               onToggleLanguage();
             }}
             className="flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-[#00e676] hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-md transition-colors cursor-pointer"
-            title="Toggle Language EN / 繁 / 簡"
+            title="Toggle Language"
           >
             <Globe size={12} className="sm:w-3.5 sm:h-3.5" />
-            <span>{languageButtonLabel(language)}</span>
+            <span>{language === 'en' ? '中文' : 'EN'}</span>
           </button>
 
           <button
@@ -75,17 +74,38 @@ export const StartScreen: React.FC<StartScreenProps> = ({
       </header>
 
       <div className="flex-1 flex flex-col items-center py-2 sm:py-4">
+        {/* Compact status banner — SIMULATION INITIALIZING */}
+        <div className="w-full rounded-xl overflow-hidden border border-[#2d3748] relative mb-2 sm:mb-3 shadow-lg bg-[#1a1f2c]">
+          <div className="flex items-center gap-3 px-3 py-2.5 sm:py-3 bg-gradient-to-br from-[#1a1f2c] to-[#12151c]">
+            <Sparkles size={20} className="text-[#00e676] shrink-0 animate-pulse" />
+            <div className="min-w-0 flex-1">
+              <div className="font-display font-bold text-white text-xs sm:text-sm tracking-wide leading-tight">
+                SIMULATION INITIALIZING
+              </div>
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5 text-[10px] sm:text-[11px] font-mono-numbers">
+                <span className="text-[#00f0ff]">
+                  {language === 'zh' ? '雙語事件庫：已就緒' : 'DATABASE: READY'}
+                </span>
+                <span className="text-slate-500">·</span>
+                <span className="text-slate-400">
+                  {t.totalLives}: {totalRuns}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <GlitchTitle subtitle={t.tagline} />
 
-        <div className="mt-2 sm:mt-3 flex flex-wrap items-center justify-center gap-2 text-[11px] sm:text-xs">
-          <div className="bg-[#1a1f2c] border border-[#2d3748] px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg text-slate-300 flex items-center gap-1.5 font-medium">
+        <div className="mt-2 sm:mt-3 flex flex-wrap items-center justify-center gap-2 text-[10px] sm:text-xs font-mono-numbers">
+          <div className="bg-[#1a1f2c] border border-[#2d3748] px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-slate-300 flex items-center gap-1.5">
             <span className="text-slate-400">{t.totalLives}:</span>
-            <strong className="text-white text-xs sm:text-sm font-mono-numbers">{totalRuns}</strong>
+            <strong className="text-white text-xs sm:text-sm">{totalRuns}</strong>
           </div>
           {highestAge && (
-            <div className="bg-[#1a1f2c] border border-[#2d3748] px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg text-slate-300 flex items-center gap-1.5 font-medium">
+            <div className="bg-[#1a1f2c] border border-[#2d3748] px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-slate-300 flex items-center gap-1.5">
               <span className="text-slate-400">{t.maxAge}:</span>
-              <strong className="text-[#00e676] text-xs sm:text-sm font-mono-numbers">{highestAge}</strong>
+              <strong className="text-[#00e676] text-xs sm:text-sm">{highestAge}</strong>
             </div>
           )}
         </div>
@@ -123,7 +143,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({
                 <span>{t.hallOfFame} ({pastRuns.length})</span>
               </span>
               <span className="text-slate-400 text-[10px] sm:text-[11px] font-normal truncate">
-                {isChinese(language) ? '可上下捲動瀏覽全部存檔' : 'Scroll to view all past records'}
+                {language === 'zh' ? '可上下捲動瀏覽全部存檔' : 'Scroll to view all past records'}
               </span>
             </div>
             <div className="space-y-2 max-h-56 sm:max-h-64 overflow-y-auto pr-1">
@@ -141,20 +161,20 @@ export const StartScreen: React.FC<StartScreenProps> = ({
                     <div className="flex items-center gap-2 min-w-0 flex-1">
                       <Trophy size={16} className="text-amber-400 group-hover:text-[#00f0ff] shrink-0 transition-colors" />
                       <span className="font-bold text-white group-hover:text-[#00f0ff] text-sm sm:text-base leading-snug tracking-normal line-clamp-1 transition-colors">
-                        {loc(run.epitaph, language)}
+                        {run.epitaph[language]}
                       </span>
                     </div>
                     <span className="shrink-0 text-[11px] sm:text-xs font-semibold text-cyan-400 bg-cyan-950/70 border border-cyan-800/60 group-hover:bg-[#00f0ff] group-hover:text-black group-hover:border-[#00f0ff] px-2.5 py-0.5 rounded-md transition-all">
-                      {isChinese(language) ? '查看 ➜' : 'Inspect ➜'}
+                      {language === 'zh' ? '查看 ➜' : 'Inspect ➜'}
                     </span>
                   </div>
                   <div className="flex items-center gap-2 text-slate-300 text-[11px] sm:text-xs font-medium pl-[23px] tracking-normal">
                     <span className="text-[#00e676] font-semibold">
-                      {isChinese(language) ? `${run.age} 歲` : `Age ${run.age}`}
+                      {language === 'zh' ? `${run.age} 歲` : `Age ${run.age}`}
                     </span>
                     <span className="text-slate-500">·</span>
                     <span className="text-amber-300 font-semibold">
-                      {isChinese(language) ? `淨資產 $${run.money.toLocaleString()}` : `$${run.money.toLocaleString()}`}
+                      {language === 'zh' ? `淨資產 $${run.money.toLocaleString()}` : `$${run.money.toLocaleString()}`}
                     </span>
                     {run.date && (
                       <>
@@ -176,7 +196,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({
             sounds.playPositive();
             onStartGame();
           }}
-          className="w-full py-3.5 sm:py-4 px-4 sm:px-6 bg-[#00e676] hover:bg-[#00c853] text-[#0f1117] font-display font-black text-lg sm:text-2xl uppercase tracking-widest rounded-xl shadow-[0_0_25px_rgba(0,230,118,0.4)] hover:shadow-[0_0_35px_rgba(0,230,118,0.6)] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 sm:gap-3 active:scale-[0.98]"
+          className="w-full py-3 sm:py-4 px-4 sm:px-6 bg-[#00e676] hover:bg-[#00c853] text-[#0f1117] font-display font-black text-lg sm:text-2xl uppercase tracking-widest rounded-xl shadow-[0_0_25px_rgba(0,230,118,0.4)] hover:shadow-[0_0_35px_rgba(0,230,118,0.6)] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 sm:gap-3 active:scale-[0.98]"
         >
           <Play size={20} className="fill-current sm:w-[22px] sm:h-[22px]" />
           <span>{t.startBtn}</span>
