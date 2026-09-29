@@ -145,8 +145,8 @@ export const StartScreen: React.FC<StartScreenProps> = ({
                   {/* Row 1: Epitaph Title + Inspect Badge */}
                   <div className="flex items-center justify-between gap-2 w-full">
                     <div className="flex items-center gap-2 min-w-0 flex-1">
-                      <Trophy size={15} className="text-amber-400 group-hover:text-[#00f0ff] shrink-0 transition-colors" />
-                      <span className="font-semibold text-white group-hover:text-[#00f0ff] text-[13px] sm:text-sm leading-snug tracking-normal line-clamp-1 transition-colors">
+                      <Trophy size={16} className="text-amber-400 group-hover:text-[#00f0ff] shrink-0 transition-colors" />
+                      <span className="font-bold text-white group-hover:text-[#00f0ff] text-sm sm:text-base leading-snug tracking-normal line-clamp-1 transition-colors">
                         {run.epitaph[language]}
                       </span>
                     </div>

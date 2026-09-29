@@ -51,12 +51,9 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
       {/* Top Bar Controls & Age Banner */}
       <div className="flex items-center justify-between gap-2 mb-2">
         <div className="flex items-center gap-2">
-          <div className="bg-[#1a1f2c] border border-[#2d3748] px-3 py-1 rounded-md flex items-center gap-2">
-            <span className="text-xs text-slate-300 font-semibold tracking-normal">
-              {t.age}
-            </span>
-            <span className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              {state.age}
+          <div className="bg-[#1a1f2c] border border-[#2d3748] px-3 py-1 rounded-md flex items-center">
+            <span className="text-lg sm:text-xl font-bold text-white tracking-tight">
+              {language === 'zh' ? `${state.age} 歲` : `Age ${state.age}`}
             </span>
           </div>
 

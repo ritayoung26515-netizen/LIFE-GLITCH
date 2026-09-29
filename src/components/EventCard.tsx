@@ -1,6 +1,6 @@
 import React from 'react';
 import { GameEvent, EventChoice, TurnFeedback, Language } from '../types/game';
-import { ArrowRight, Sparkles, RotateCcw } from 'lucide-react';
+import { Sparkles, RotateCcw } from 'lucide-react';
 import { sounds } from '../utils/audio';
 
 interface EventCardProps {
@@ -134,8 +134,8 @@ export const EventCard: React.FC<EventCardProps> = ({
             </div>
           </div>
 
-          {/* Event Narrative Box - Crisp solid high-contrast 16px/18px text */}
-          <div className="bg-[#12151c]/90 border border-[#2d3748] rounded-lg p-3.5 sm:p-4 text-white text-[16px] sm:text-[18px] leading-relaxed font-medium sm:font-semibold tracking-normal">
+          {/* Event Narrative Box - Crisp solid high-contrast 17px/18px text */}
+          <div className="bg-[#12151c]/90 border border-[#2d3748] rounded-lg p-3.5 sm:p-4 text-white text-[17px] sm:text-[18px] leading-relaxed font-medium sm:font-semibold tracking-normal">
             {event.text[language]}
           </div>
         </div>
@@ -157,7 +157,7 @@ export const EventCard: React.FC<EventCardProps> = ({
             key={idx}
             disabled={isButtonsDisabled}
             onClick={() => handleChoiceClick(choice)}
-            className={`w-full text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-200 cursor-pointer group relative overflow-hidden flex items-center justify-between gap-3 ${
+            className={`w-full text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-200 cursor-pointer group relative overflow-hidden flex flex-col ${
               isButtonsDisabled 
                 ? 'opacity-60 cursor-not-allowed pointer-events-none' 
                 : idx === 0
@@ -165,21 +165,15 @@ export const EventCard: React.FC<EventCardProps> = ({
                   : 'bg-[#191d28] hover:bg-[#222736] border-[#2d3748] hover:border-[#00f0ff] active:scale-[0.99]'
             }`}
           >
-            <div className="flex-1 pr-2">
-              <div className="flex items-center gap-2 mb-1">
-                <span className={`text-[11px] font-bold px-2 py-0.5 rounded tracking-normal ${
-                  idx === 0 ? 'bg-[#00e676]/20 text-[#00e676]' : 'bg-[#00f0ff]/20 text-[#00f0ff]'
-                }`}>
-                  {language === 'zh' ? `選項 ${idx === 0 ? 'A' : 'B'}` : `CHOICE ${idx === 0 ? 'A' : 'B'}`}
-                </span>
-              </div>
-              <div className="text-[15px] sm:text-base font-semibold text-white group-hover:text-[#00e676] transition-colors leading-snug tracking-normal">
-                {choice.text[language]}
-              </div>
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className={`text-[11px] font-bold px-2 py-0.5 rounded tracking-normal ${
+                idx === 0 ? 'bg-[#00e676]/20 text-[#00e676]' : 'bg-[#00f0ff]/20 text-[#00f0ff]'
+              }`}>
+                {language === 'zh' ? `選項 ${idx === 0 ? 'A' : 'B'}` : `CHOICE ${idx === 0 ? 'A' : 'B'}`}
+              </span>
             </div>
-
-            <div className="w-8 h-8 rounded-full bg-[#12151c] border border-[#2d3748] flex items-center justify-center shrink-0 group-hover:border-[#00e676] group-hover:text-[#00e676] transition-colors">
-              <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+            <div className="text-[15px] sm:text-base font-semibold text-white group-hover:text-[#00e676] transition-colors leading-snug tracking-normal">
+              {choice.text[language]}
             </div>
           </button>
         ))}

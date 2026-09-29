@@ -1,0 +1,97 @@
+import { Language } from '../types/game';
+
+export const TRAIT_DICTIONARY: Record<string, { zh: string; en: string }> = {
+  startup_alumni: { zh: '新創元老', en: 'Startup Alumni' },
+  fake_fiance: { zh: '假冒伴侶', en: 'Fake Partner' },
+  night_owl: { zh: '夜貓子', en: 'Night Owl' },
+  founder: { zh: '初創創辦人', en: 'Founder' },
+  founder_ceo: { zh: '新創執行長', en: 'Founder & CEO' },
+  hacked_lie: { zh: '被駭謊言', en: 'Hacked Lie' },
+  bag_holder: { zh: '迷因接盤俠', en: 'Bag Holder' },
+  boss_grudge: { zh: '老闆記恨', en: 'Boss Grudge' },
+  box_sold: { zh: '轉賣神秘箱', en: 'Box Resold' },
+  box_found: { zh: '發現神秘箱', en: 'Mysterious Box' },
+  box_opened: { zh: '開箱者', en: 'Box Opener' },
+  box_trouble: { zh: '箱中麻煩', en: 'Box Trouble' },
+  ai_lover: { zh: 'AI 戀人', en: 'AI Lover' },
+  ai_ghost: { zh: '數位幽靈', en: 'Digital Ghost' },
+  ai_saboteur: { zh: 'AI 破壞者', en: 'AI Saboteur' },
+  pigeon_friend: { zh: '鴿子盟友', en: 'Pigeon Friend' },
+  pigeon_revenge: { zh: '鴿群復仇對象', en: 'Pigeon Vendetta' },
+  mortgage_slave: { zh: '房貸奴隸', en: 'Mortgage Slave' },
+  snitch: { zh: '職場告密者', en: 'Whistleblower Snitch' },
+  whistleblower: { zh: '正義檢舉人', en: 'Whistleblower' },
+  hush_money: { zh: '封口費持有者', en: 'Hush Money Keeper' },
+  took_hush_money: { zh: '收受封口費', en: 'Accepted Hush Money' },
+  backstabber: { zh: '職場背刺者', en: 'Backstabber' },
+  lemon_car: { zh: '檸檬老爺車', en: 'Lemon Car Owner' },
+  car_debt: { zh: '修車負債', en: 'Auto Debt' },
+  mlm_boxes: { zh: '直銷庫存山', en: 'MLM Stockpile' },
+  mansion_curse: { zh: '凶宅詛咒', en: 'Mansion Curse' },
+  cult_alumni: { zh: '邪教體驗者', en: 'Cult Alumni' },
+  cosigned_loan: { zh: '連帶保證人', en: 'Co-signed Loan' },
+  hired_actor: { zh: '聘用演員', en: 'Hired Actor' },
+  saw_glitch: { zh: '代碼覺醒者', en: 'Glitch Witness' },
+  glitch_choice: { zh: '漏洞抉擇者', en: 'Glitch Decider' },
+  peeked_reality: { zh: '窺探現實', en: 'Peeked Reality' },
+  matrix_contact: { zh: '矩陣聯絡人', en: 'Matrix Contact' },
+  ufo_believer: { zh: '外星信徒', en: 'UFO Believer' },
+  wedding_crasher: { zh: '蹭婚禮達人', en: 'Wedding Crasher' },
+  reunion_liar: { zh: '同學會吹牛王', en: 'Reunion Fabulist' },
+  neighbor_war: { zh: '鄰里交戰者', en: 'Neighbor War' },
+  neighbor_lawsuit: { zh: '鄰里訴訟纏身', en: 'Neighbor Lawsuit' },
+  office_feud: { zh: '辦公室世仇', en: 'Office Feud' },
+  office_legend: { zh: '辦公室傳奇', en: 'Office Legend' },
+  chat_legend: { zh: '群聊傳奇', en: 'Chat Legend' },
+  scam_victim: { zh: '殺豬盤受害者', en: 'Scam Victim' },
+  silent_partner: { zh: '隱形合夥人', en: 'Silent Partner' },
+  squirrel_secretary: { zh: '松鼠秘書部', en: 'Squirrel Secretary' },
+  trusted_friend: { zh: '重情義好友', en: 'Trusted Friend' },
+  jumped_ship: { zh: '及時跳船', en: 'Jumped Ship' },
+  van_life: { zh: '廂型車浪人', en: 'Van Life Nomad' },
+  biker_midlife: { zh: '重機中年', en: 'Midlife Biker' },
+  club_member: { zh: '俱樂部會員', en: 'Secret Club Member' },
+  club_dropout: { zh: '俱樂部逃兵', en: 'Club Dropout' },
+  club_contract: { zh: '終生俱樂部契約', en: 'Club Contract' },
+  mob_target: { zh: '黑幫盯上目標', en: 'Mob Target' },
+  under_investigation: { zh: '接受監管調查', en: 'Under Investigation' },
+  buried_gold: { zh: '後院埋金者', en: 'Buried Gold' },
+  ghost_accountants: { zh: '幽靈會計師', en: 'Ghost Accountants' },
+  ghost_karma: { zh: '陰魂業障', en: 'Ghost Karma' },
+  has_black_card: { zh: '黑卡持有者', en: 'Black Card Holder' },
+  invented_flying_vac: { zh: '飛行吸塵器發明家', en: 'Flying Vacuum Inventor' },
+  vac_viral: { zh: '吸塵器爆紅', en: 'Viral Inventor' },
+  vac_debt: { zh: '吸塵器召回債務', en: 'Recall Debt' },
+  vac_weaponized: { zh: '軍用吸塵器執照', en: 'Weaponized Tech' },
+  raider_enemy: { zh: '企業禿鷹仇敵', en: 'Corporate Raider Enemy' },
+  rental_horror: { zh: '凶殘房東租客', en: 'Rental Horror Survivor' },
+  lifespan_pledged: { zh: '典當壽命者', en: 'Pledged Lifespan' },
+  memento_mori: { zh: '死生參透者', en: 'Memento Mori' },
+  bucket_list_mode: { zh: '遺願清單模式', en: 'Bucket List Mode' },
+  what_if_app: { zh: '平行時空觀測者', en: 'What-If App User' },
+  visit_contest: { zh: '探病繼承大賽', en: 'Inheritance Contestant' },
+  cohabiting: { zh: '同居中', en: 'Cohabiting' },
+  cold_war_home: { zh: '家庭冷戰中', en: 'Home Cold War' },
+  commitment_issues: { zh: '承諾恐懼症', en: 'Commitment Phobic' },
+  flirt_risk: { zh: '曖昧危險期', en: 'Flirt Risk' },
+  frozen_reservation: { zh: '冷凍人預約', en: 'Cryo Reservation' },
+  former_informant: { zh: '前聯邦線人', en: 'Former Informant' },
+  witness_celebrity: { zh: '證人保護名流', en: 'Witness Celebrity' },
+  zen_master: { zh: '心態大師', en: 'Zen Master' },
+  wine_enthusiast: { zh: '紅酒品味家', en: 'Wine Enthusiast' },
+  ai_art_investor: { zh: 'AI 藝術投資者', en: 'AI Art Investor' },
+};
+
+export function getTraitLabel(flag: string, language: Language): string {
+  const item = TRAIT_DICTIONARY[flag];
+  if (item) {
+    return item[language];
+  }
+  if (language === 'zh') {
+    return flag.replace(/_/g, ' ');
+  }
+  return flag
+    .split('_')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}

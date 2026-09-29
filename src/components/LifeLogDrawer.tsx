@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { LifeLogEntry, Language, PastRun } from '../types/game';
 import { X, Award, History, GitFork, Trophy, Skull, ArrowUpDown } from 'lucide-react';
 import { sounds } from '../utils/audio';
+import { getTraitLabel } from '../utils/traits';
 
 interface LifeLogDrawerProps {
   isOpen: boolean;
@@ -126,9 +127,9 @@ export const LifeLogDrawer: React.FC<LifeLogDrawerProps> = ({
               {flags.map((flag, idx) => (
                 <span
                   key={idx}
-                  className="text-[10px] font-mono-numbers bg-[#12151c] text-slate-300 border border-[#2d3748] px-2 py-0.5 rounded capitalize"
+                  className="text-[10px] bg-[#12151c] text-slate-200 border border-[#2d3748] px-2 py-0.5 rounded font-medium tracking-normal"
                 >
-                  {flag.replace(/_/g, ' ')}
+                  {getTraitLabel(flag, language)}
                 </span>
               ))}
             </div>

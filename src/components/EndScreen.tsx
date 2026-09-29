@@ -3,6 +3,7 @@ import { GameState, Language } from '../types/game';
 import { generateEpitaph } from '../utils/epitaph';
 import { RotateCcw, Tv, Share2, Check, Sparkles, Skull, Globe, Home } from 'lucide-react';
 import { sounds } from '../utils/audio';
+import { getTraitLabel } from '../utils/traits';
 
 interface EndScreenProps {
   state: GameState;
@@ -119,7 +120,9 @@ Play LIFE GLITCH on CrazyGames!`;
           ) : (
             <div className="p-4 text-center">
               <Skull size={32} className="text-[#ff1744] mx-auto mb-1 animate-pulse" />
-              <div className="font-display font-bold text-white text-base">TERMINATION EXCEPTION</div>
+              <div className="font-display font-bold text-white text-base">
+                {language === 'zh' ? '生命終結協議' : 'TERMINATION EXCEPTION'}
+              </div>
             </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-[#12151c] via-[#12151c]/40 to-transparent pointer-events-none" />
@@ -208,7 +211,7 @@ Play LIFE GLITCH on CrazyGames!`;
             <div className="flex flex-wrap gap-1">
               {state.flags.map((f, i) => (
                 <span key={i} className="text-[10px] font-medium bg-[#1a1f2c] border border-[#2d3748] px-2 py-0.5 rounded text-slate-300 tracking-normal">
-                  {f.replace(/_/g, ' ')}
+                  {getTraitLabel(f, language)}
                 </span>
               ))}
             </div>

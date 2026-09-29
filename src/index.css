@@ -14,7 +14,7 @@
   html, body {
     background-color: var(--bg-main);
     color: #e2e8f0;
-    font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+    font-family: system-ui, -apple-system, "PingFang SC", "PingFang TC", "Microsoft YaHei", "Microsoft JhengHei", sans-serif;
     letter-spacing: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -28,21 +28,22 @@
 
   /* Reset letter-spacing on Chinese content to avoid loose, fragmented characters */
   :lang(zh), [lang="zh"], .font-chinese, html[lang="zh"] body * {
+    font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif !important;
     letter-spacing: normal !important;
     text-shadow: none !important;
   }
 
   /* Display font for English titles */
   .font-display {
-    font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, "PingFang HK", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    font-family: 'Chakra Petch', system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
     letter-spacing: -0.01em;
   }
 
   /* For Chinese headers, ensure solid system sans-serif with normal spacing */
   html[lang="zh"] .font-display,
   :lang(zh) .font-display {
-    font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "PingFang TC", "Microsoft JhengHei", sans-serif;
-    letter-spacing: normal;
+    font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif !important;
+    letter-spacing: normal !important;
   }
 
   /* Tabular monospace strictly for numbers/metrics */

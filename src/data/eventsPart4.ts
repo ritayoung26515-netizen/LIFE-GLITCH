@@ -1,4 +1,6 @@
-[
+import { GameEvent } from "../types/game";
+
+export const eventsPart4: GameEvent[] = [
   {
     "id": "norm_early_pension",
     "category": "MONEY",
@@ -15,14 +17,26 @@
           "en": "Claim early. Enjoy the money now.",
           "zh": "提前领。现在就享受这笔钱。"
         },
-        "effects": { "money": 4000, "health": 0, "happiness": 5, "stress": -3, "fame": 0 }
+        "effects": {
+          "money": 4000,
+          "health": 0,
+          "happiness": 5,
+          "stress": -3,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Keep working and claim later for the bigger payment. Future You sends a thank-you note.",
           "zh": "继续工作，晚点再领更多。未来的你会寄来一张感谢卡。"
         },
-        "effects": { "money": 10000, "health": -3, "happiness": -2, "stress": 8, "fame": 0 }
+        "effects": {
+          "money": 10000,
+          "health": -3,
+          "happiness": -2,
+          "stress": 8,
+          "fame": 0
+        }
       }
     ]
   },
@@ -42,14 +56,26 @@
           "en": "Do it. Drink the regret. Be a grown-up about it.",
           "zh": "去做。喝下那杯后悔。做个成熟的大人。"
         },
-        "effects": { "money": -300, "health": 10, "happiness": -2, "stress": 5, "fame": 0 }
+        "effects": {
+          "money": -300,
+          "health": 10,
+          "happiness": -2,
+          "stress": 5,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Postpone it 'until things calm down'. Things never calm down.",
           "zh": "拖到“等忙完这阵再说”。这阵永远忙不完。"
         },
-        "effects": { "money": 0, "health": -6, "happiness": 2, "stress": 3, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": -6,
+          "happiness": 2,
+          "stress": 3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -69,14 +95,26 @@
           "en": "Keep going. Gift the 'hat bowl' to everyone you know.",
           "zh": "继续上课。把“帽子碗”送给你认识的每一个人。"
         },
-        "effects": { "money": -600, "health": 1, "happiness": 10, "stress": -8, "fame": 1 }
+        "effects": {
+          "money": -600,
+          "health": 1,
+          "happiness": 10,
+          "stress": -8,
+          "fame": 1
+        }
       },
       {
         "text": {
           "en": "Quit after one lesson and blame the clay.",
           "zh": "上完一节课就放弃，怪泥巴。"
         },
-        "effects": { "money": -100, "health": 0, "happiness": -3, "stress": 0, "fame": 0 }
+        "effects": {
+          "money": -100,
+          "health": 0,
+          "happiness": -3,
+          "stress": 0,
+          "fame": 0
+        }
       }
     ]
   },
@@ -96,14 +134,26 @@
           "en": "Meet for coffee. Bring spare reading glasses and your best posture.",
           "zh": "去喝咖啡。带上备用老花镜，挺直腰板。"
         },
-        "effects": { "money": -60, "health": 0, "happiness": 9, "stress": 5, "fame": 0 }
+        "effects": {
+          "money": -60,
+          "health": 0,
+          "happiness": 9,
+          "stress": 5,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Send a warm reply and keep the memories in their box.",
           "zh": "回一条温暖的消息，把回忆留在盒子里。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": -2, "stress": -3, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -2,
+          "stress": -3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -123,14 +173,26 @@
           "en": "Learn the settings. Become the bossiest person in the house.",
           "zh": "研究设置，成为家里最霸道的人。"
         },
-        "effects": { "money": -400, "health": 0, "happiness": 5, "stress": 5, "fame": 0 }
+        "effects": {
+          "money": -400,
+          "health": 0,
+          "happiness": 5,
+          "stress": 5,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Rip it all out and go analog. A light switch never talks back.",
           "zh": "全部拆掉，回归模拟时代。电灯开关绝不会顶嘴。"
         },
-        "effects": { "money": -1800, "health": 0, "happiness": 6, "stress": -6, "fame": 0 }
+        "effects": {
+          "money": -1800,
+          "health": 0,
+          "happiness": 6,
+          "stress": -6,
+          "fame": 0
+        }
       }
     ]
   },
@@ -150,14 +212,26 @@
           "en": "Let them stay. Post house rules on a laminated card.",
           "zh": "让他们住下。把家规塑封贴在墙上。"
         },
-        "effects": { "money": -6000, "health": -2, "happiness": 6, "stress": 10, "fame": 0 }
+        "effects": {
+          "money": -6000,
+          "health": -2,
+          "happiness": 6,
+          "stress": 10,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Set a move-out date. Be the loving landlord nobody asked for.",
           "zh": "定个搬出日期。当个没人要的慈爱房东。"
         },
-        "effects": { "money": 3000, "health": 0, "happiness": -3, "stress": 6, "fame": 0 }
+        "effects": {
+          "money": 3000,
+          "health": 0,
+          "happiness": -3,
+          "stress": 6,
+          "fame": 0
+        }
       }
     ]
   },
@@ -177,14 +251,26 @@
           "en": "Train for it. Finish last, wearing your medal like a hero.",
           "zh": "认真训练。最后一名冲线，把奖牌戴得像英雄。"
         },
-        "effects": { "money": -400, "health": 8, "happiness": 10, "stress": -3, "fame": 2 }
+        "effects": {
+          "money": -400,
+          "health": 8,
+          "happiness": 10,
+          "stress": -3,
+          "fame": 2
+        }
       },
       {
         "text": {
           "en": "Volunteer at the water station. Cheering counts as cardio.",
           "zh": "去补给站当志愿者。喊加油也算有氧。"
         },
-        "effects": { "money": 0, "health": 2, "happiness": 4, "stress": -2, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 2,
+          "happiness": 4,
+          "stress": -2,
+          "fame": 0
+        }
       }
     ]
   },
@@ -204,14 +290,26 @@
           "en": "Go anyway. Order soup with confidence and apologize to everyone.",
           "zh": "照样出发。自信地点汤，并向每个人道歉。"
         },
-        "effects": { "money": -5000, "health": 0, "happiness": 12, "stress": 3, "fame": 0 }
+        "effects": {
+          "money": -5000,
+          "health": 0,
+          "happiness": 12,
+          "stress": 3,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Stay home and cook the soup yourself. The trip lives in your imagination.",
           "zh": "留在家自己煮汤。旅行活在想象里。"
         },
-        "effects": { "money": -100, "health": 0, "happiness": -2, "stress": -3, "fame": 0 }
+        "effects": {
+          "money": -100,
+          "health": 0,
+          "happiness": -2,
+          "stress": -3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -231,14 +329,26 @@
           "en": "Get hearing aids. Discover the family group chat was never that quiet.",
           "zh": "配助听器。发现家族群原来从来没那么安静。"
         },
-        "effects": { "money": -2500, "health": 4, "happiness": 6, "stress": -2, "fame": 0 }
+        "effects": {
+          "money": -2500,
+          "health": 4,
+          "happiness": 6,
+          "stress": -2,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Keep nodding and smiling. Accidentally agree to host the next holiday.",
           "zh": "继续点头微笑。结果不小心答应了主办下一次节日聚会。"
         },
-        "effects": { "money": 0, "health": -3, "happiness": 2, "stress": 4, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": -3,
+          "happiness": 2,
+          "stress": 4,
+          "fame": 0
+        }
       }
     ]
   },
@@ -258,14 +368,26 @@
           "en": "Book it. Pack sea-sickness pills and pure optimism.",
           "zh": "订了。带上晕船药和满满的乐观。"
         },
-        "effects": { "money": -12000, "health": -3, "happiness": 12, "stress": -8, "fame": 0 }
+        "effects": {
+          "money": -12000,
+          "health": -3,
+          "happiness": 12,
+          "stress": -8,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Take a week-long scenic train ride instead. Views without sea legs.",
           "zh": "改坐为期一周的观光火车。有风景，不晕船。"
         },
-        "effects": { "money": -3000, "health": 1, "happiness": 6, "stress": -6, "fame": 0 }
+        "effects": {
+          "money": -3000,
+          "health": 1,
+          "happiness": 6,
+          "stress": -6,
+          "fame": 0
+        }
       }
     ]
   },
@@ -285,14 +407,26 @@
           "en": "Start your own club with better snacks.",
           "zh": "自己另开一个读书会，点心更好。"
         },
-        "effects": { "money": -200, "health": 0, "happiness": 8, "stress": 3, "fame": 1 }
+        "effects": {
+          "money": -200,
+          "health": 0,
+          "happiness": 8,
+          "stress": 3,
+          "fame": 1
+        }
       },
       {
         "text": {
           "en": "Play peacemaker: propose a book nobody has read yet.",
           "zh": "当和事佬：提议读一本没人看过的书。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 4, "stress": 6, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 4,
+          "stress": 6,
+          "fame": 0
+        }
       }
     ]
   },
@@ -312,14 +446,26 @@
           "en": "Escalate: install a tiny fence and a very small security camera.",
           "zh": "升级战局：装一道小围栏，再装一个迷你监控。"
         },
-        "effects": { "money": -400, "health": 0, "happiness": 9, "stress": 8, "fame": 0 }
+        "effects": {
+          "money": -400,
+          "health": 0,
+          "happiness": 9,
+          "stress": 8,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Deliver a basket of tomatoes. Defeat him with kindness.",
           "zh": "送一篮番茄过去。用善意打败他。"
         },
-        "effects": { "money": -30, "health": 0, "happiness": 5, "stress": -3, "fame": 0 }
+        "effects": {
+          "money": -30,
+          "health": 0,
+          "happiness": 5,
+          "stress": -3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -339,14 +485,26 @@
           "en": "Frame the letter and mail back the form with a smiley face.",
           "zh": "把信装裱起来，并在表格上画个笑脸寄回去。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 8, "stress": 0, "fame": 2 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 8,
+          "stress": 0,
+          "fame": 2
+        }
       },
       {
         "text": {
           "en": "Ignore it and nap. Officially, you're 'under review'.",
           "zh": "不理它，去睡午觉。官方记录上，你“审核中”。"
         },
-        "effects": { "money": 0, "health": 3, "happiness": 3, "stress": -4, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 3,
+          "happiness": 3,
+          "stress": -4,
+          "fame": 0
+        }
       }
     ]
   },
@@ -366,14 +524,26 @@
           "en": "Blow them out with the whole family. It's a team sport.",
           "zh": "全家人一起吹。这是团体项目。"
         },
-        "effects": { "money": 0, "health": -2, "happiness": 10, "stress": -3, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": -2,
+          "happiness": 10,
+          "stress": -3,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Use one candle shaped like your age. Efficiency is wisdom.",
           "zh": "只插一根数字形状的蜡烛。效率就是智慧。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 4, "stress": -2, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 4,
+          "stress": -2,
+          "fame": 0
+        }
       }
     ]
   },
@@ -393,14 +563,26 @@
           "en": "Tell the whole story, embellished with a few dinosaurs.",
           "zh": "把整段故事讲完，还加了几只恐龙。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 12, "stress": -5, "fame": 2 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 12,
+          "stress": -5,
+          "fame": 2
+        }
       },
       {
         "text": {
           "en": "Hand over a box of old photos and take a nap.",
           "zh": "交出一盒老照片，然后去睡午觉。"
         },
-        "effects": { "money": 0, "health": 2, "happiness": 6, "stress": 0, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 2,
+          "happiness": 6,
+          "stress": 0,
+          "fame": 0
+        }
       }
     ]
   },
@@ -420,14 +602,26 @@
           "en": "Stay on and become the star of the chaos.",
           "zh": "留在线上，成为这场混乱的主角。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 10, "stress": 5, "fame": 1 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 10,
+          "stress": 5,
+          "fame": 1
+        }
       },
       {
         "text": {
           "en": "Say the screen froze and take a nap.",
           "zh": "说屏幕卡住了，然后去睡午觉。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 3, "stress": -4, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 3,
+          "stress": -4,
+          "fame": 0
+        }
       }
     ]
   },
@@ -447,14 +641,26 @@
           "en": "Write it down. Change one ingredient to keep them guessing.",
           "zh": "写下来，但偷偷改掉一样材料，让他们继续猜。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 8, "stress": 2, "fame": 3 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 8,
+          "stress": 2,
+          "fame": 3
+        }
       },
       {
         "text": {
           "en": "Keep it secret. The mystery is the seasoning.",
           "zh": "继续保密。神秘感就是最好的调味料。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 4, "stress": -4, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 4,
+          "stress": -4,
+          "fame": 0
+        }
       }
     ]
   },
@@ -474,14 +680,26 @@
           "en": "Add a letter and your favorite hat. Plan to attend the opening.",
           "zh": "放进一封信和你最爱的帽子。打算出席开启仪式。"
         },
-        "effects": { "money": -200, "health": 0, "happiness": 10, "stress": 2, "fame": 4 }
+        "effects": {
+          "money": -200,
+          "health": 0,
+          "happiness": 10,
+          "stress": 2,
+          "fame": 4
+        }
       },
       {
         "text": {
           "en": "Add one note: 'Buy low, sell high.' Nothing else.",
           "zh": "只放一张字条：“低买高卖。”没别的了。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 5, "stress": -3, "fame": 2 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 5,
+          "stress": -3,
+          "fame": 2
+        }
       }
     ]
   },
@@ -501,14 +719,26 @@
           "en": "Sit on it daily and greet every stranger.",
           "zh": "每天坐在上面，跟每个路人打招呼。"
         },
-        "effects": { "money": 0, "health": 2, "happiness": 8, "stress": 3, "fame": 5 }
+        "effects": {
+          "money": 0,
+          "health": 2,
+          "happiness": 8,
+          "stress": 3,
+          "fame": 5
+        }
       },
       {
         "text": {
           "en": "Demand a cushion. Longevity should come with back support.",
           "zh": "要求加个坐垫。长寿应该附赠腰部支撑。"
         },
-        "effects": { "money": -100, "health": 0, "happiness": 4, "stress": -2, "fame": 0 }
+        "effects": {
+          "money": -100,
+          "health": 0,
+          "happiness": 4,
+          "stress": -2,
+          "fame": 0
+        }
       }
     ]
   },
@@ -528,14 +758,26 @@
           "en": "Tackle it: ice cream for breakfast, a sunrise, and a handwritten note to an old friend.",
           "zh": "逐项完成：早餐吃冰淇淋、看日出、给老朋友写一封手写信。"
         },
-        "effects": { "money": 0, "health": -1, "happiness": 14, "stress": 2, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": -1,
+          "happiness": 14,
+          "stress": 2,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Nap first. The list has waited this long.",
           "zh": "先睡一觉。清单都等这么久了。"
         },
-        "effects": { "money": 0, "health": 1, "happiness": 3, "stress": -6, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 1,
+          "happiness": 3,
+          "stress": -6,
+          "fame": 0
+        }
       }
     ]
   },
@@ -555,14 +797,26 @@
           "en": "Accept. Become the town oracle.",
           "zh": "接下专栏，成为小镇的先知。"
         },
-        "effects": { "money": 500, "health": 0, "happiness": 10, "stress": 6, "fame": 8 }
+        "effects": {
+          "money": 500,
+          "health": 0,
+          "happiness": 10,
+          "stress": 6,
+          "fame": 8
+        }
       },
       {
         "text": {
           "en": "Decline politely. Wisdom is free at the kitchen table.",
           "zh": "礼貌婉拒。智慧在厨房饭桌上就是免费的。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 3, "stress": -2, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 3,
+          "stress": -2,
+          "fame": 0
+        }
       }
     ]
   },
@@ -582,14 +836,26 @@
           "en": "Join. Learn a card game whose rules were invented by a nine-year-old.",
           "zh": "加入。学一种规则由九岁小孩发明的纸牌游戏。"
         },
-        "effects": { "money": 0, "health": -1, "happiness": 12, "stress": 3, "fame": 1 }
+        "effects": {
+          "money": 0,
+          "health": -1,
+          "happiness": 12,
+          "stress": 3,
+          "fame": 1
+        }
       },
       {
         "text": {
           "en": "Stay in with tea and your old records.",
           "zh": "留在家，泡杯茶听老唱片。"
         },
-        "effects": { "money": 0, "health": 1, "happiness": 2, "stress": -5, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 1,
+          "happiness": 2,
+          "stress": -5,
+          "fame": 0
+        }
       }
     ]
   },
@@ -609,14 +875,26 @@
           "en": "Go to the clinic for a checkup and accept a sturdy cane.",
           "zh": "去诊所做检查，并接受一根结实的手杖。"
         },
-        "effects": { "money": -300, "health": 6, "happiness": 2, "stress": 0, "fame": 0 }
+        "effects": {
+          "money": -300,
+          "health": 6,
+          "happiness": 2,
+          "stress": 0,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Insist on ice cream first, then the checkup.",
           "zh": "坚持先吃冰淇淋，再做检查。"
         },
-        "effects": { "money": -300, "health": 3, "happiness": 6, "stress": 0, "fame": 0 }
+        "effects": {
+          "money": -300,
+          "health": 3,
+          "happiness": 6,
+          "stress": 0,
+          "fame": 0
+        }
       }
     ]
   },
@@ -636,14 +914,26 @@
           "en": "Ask the grandkids to fill it in. Delegation is wisdom.",
           "zh": "让孙子代填。懂得授权就是智慧。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 4, "stress": -3, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 4,
+          "stress": -3,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Write a strongly worded letter to the website. On paper.",
           "zh": "给网站写一封措辞强烈的信。用纸写的。"
         },
-        "effects": { "money": -5, "health": 0, "happiness": 6, "stress": 2, "fame": 1 }
+        "effects": {
+          "money": -5,
+          "health": 0,
+          "happiness": 6,
+          "stress": 2,
+          "fame": 1
+        }
       }
     ]
   },
@@ -663,14 +953,26 @@
           "en": "Accept the job. Answer the acorn mail.",
           "zh": "接下这份工作，回复橡果来信。"
         },
-        "effects": { "money": 0, "health": -1, "happiness": 8, "stress": 3, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": -1,
+          "happiness": 8,
+          "stress": 3,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Resign politely. The squirrel goes on strike outside.",
           "zh": "礼貌辞职。松鼠在窗外罢工。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 2, "stress": -3, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 2,
+          "stress": -3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -690,14 +992,26 @@
           "en": "Learn all fourteen buttons. Become master of the chair.",
           "zh": "学会全部十四个按钮，成为椅子的主人。"
         },
-        "effects": { "money": -900, "health": 3, "happiness": 8, "stress": 0, "fame": 0 }
+        "effects": {
+          "money": -900,
+          "health": 3,
+          "happiness": 8,
+          "stress": 0,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Keep the old chair. It remembers your shape.",
           "zh": "留下旧椅子。它记得你的形状。"
         },
-        "effects": { "money": 0, "health": -2, "happiness": 5, "stress": 0, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": -2,
+          "happiness": 5,
+          "stress": 0,
+          "fame": 0
+        }
       }
     ]
   },
@@ -717,14 +1031,26 @@
           "en": "Sing it yourself. Every wrong note is a memory.",
           "zh": "自己唱。每一个跑调都是一段回忆。"
         },
-        "effects": { "money": 0, "health": -2, "happiness": 12, "stress": 2, "fame": 2 }
+        "effects": {
+          "money": 0,
+          "health": -2,
+          "happiness": 12,
+          "stress": 2,
+          "fame": 2
+        }
       },
       {
         "text": {
           "en": "Hum along and let the band figure it out.",
           "zh": "跟着哼，让乐队自己摸索。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 6, "stress": -4, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 6,
+          "stress": -4,
+          "fame": 0
+        }
       }
     ]
   },
@@ -744,14 +1070,34 @@
           "en": "Enroll in college. Find yourself in the cafeteria line.",
           "zh": "去上大学。在食堂排队的队伍里找自己。"
         },
-        "effects": { "money": -15000, "health": 0, "happiness": 4, "stress": 8, "fame": 1, "setJob": { "en": "Undergraduate", "zh": "大学生" } }
+        "effects": {
+          "money": -15000,
+          "health": 0,
+          "happiness": 4,
+          "stress": 8,
+          "fame": 1,
+          "setJob": {
+            "en": "Undergraduate",
+            "zh": "大学生"
+          }
+        }
       },
       {
         "text": {
           "en": "Take the gap year. Find yourself, hopefully near a beach.",
           "zh": "休间隔年。希望能在海滩附近找到自己。"
         },
-        "effects": { "money": -2000, "health": 0, "happiness": 9, "stress": 4, "fame": 0, "setJob": { "en": "Gap-Year Wanderer", "zh": "间隔年流浪者" } }
+        "effects": {
+          "money": -2000,
+          "health": 0,
+          "happiness": 9,
+          "stress": 4,
+          "fame": 0,
+          "setJob": {
+            "en": "Gap-Year Wanderer",
+            "zh": "间隔年流浪者"
+          }
+        }
       }
     ]
   },
@@ -771,14 +1117,26 @@
           "en": "Stay. Negotiate a 'no squirrels after 10 p.m.' treaty.",
           "zh": "留下来。谈判出一份“晚上十点后不准出现松鼠”的条约。"
         },
-        "effects": { "money": 0, "health": -1, "happiness": 6, "stress": 8, "fame": 1 }
+        "effects": {
+          "money": 0,
+          "health": -1,
+          "happiness": 6,
+          "stress": 8,
+          "fame": 1
+        }
       },
       {
         "text": {
           "en": "Pay extra for a single room. Peace has a price tag.",
           "zh": "加钱换单人间。平静是有标价的。"
         },
-        "effects": { "money": -3000, "health": 2, "happiness": -2, "stress": -8, "fame": 0 }
+        "effects": {
+          "money": -3000,
+          "health": 2,
+          "happiness": -2,
+          "stress": -8,
+          "fame": 0
+        }
       }
     ]
   },
@@ -798,14 +1156,26 @@
           "en": "Book a third test and take lessons from your grandma.",
           "zh": "报名第三次考试，并跟奶奶学开车。"
         },
-        "effects": { "money": -200, "health": 0, "happiness": 3, "stress": 6, "fame": 1 }
+        "effects": {
+          "money": -200,
+          "health": 0,
+          "happiness": 3,
+          "stress": 6,
+          "fame": 1
+        }
       },
       {
         "text": {
           "en": "Go carless. Bike everywhere and call it 'sustainable'.",
           "zh": "放弃开车。骑自行车到处跑，还美其名曰“可持续生活”。"
         },
-        "effects": { "money": 100, "health": 4, "happiness": -3, "stress": 2, "fame": 0 }
+        "effects": {
+          "money": 100,
+          "health": 4,
+          "happiness": -3,
+          "stress": 2,
+          "fame": 0
+        }
       }
     ]
   },
@@ -825,14 +1195,26 @@
           "en": "Sign up. Softness has no price (until the statement arrives).",
           "zh": "办卡。柔软无价（直到账单寄来为止）。"
         },
-        "effects": { "money": -600, "health": 0, "happiness": 5, "stress": 6, "fame": 0 }
+        "effects": {
+          "money": -600,
+          "health": 0,
+          "happiness": 5,
+          "stress": 6,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Walk away. Your neck stays in the freezing weather.",
           "zh": "转身离开。你的脖子继续暴露在寒风里。"
         },
-        "effects": { "money": 0, "health": -1, "happiness": -3, "stress": -2, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": -1,
+          "happiness": -3,
+          "stress": -2,
+          "fame": 0
+        }
       }
     ]
   },
@@ -852,14 +1234,34 @@
           "en": "Wear the mascot suit. Sweat is a form of branding.",
           "zh": "穿上玩偶服。汗水也是一种品牌经营。"
         },
-        "effects": { "money": 3000, "health": -4, "happiness": 3, "stress": 8, "fame": 3, "setJob": { "en": "Burger Mascot (Seasonal)", "zh": "汉堡吉祥物（季节工）" } }
+        "effects": {
+          "money": 3000,
+          "health": -4,
+          "happiness": 3,
+          "stress": 8,
+          "fame": 3,
+          "setJob": {
+            "en": "Burger Mascot (Seasonal)",
+            "zh": "汉堡吉祥物（季节工）"
+          }
+        }
       },
       {
         "text": {
           "en": "Guard the pool. Nobody drowns, everybody sighs.",
           "zh": "守护泳池。没有人溺水，只有人叹气。"
         },
-        "effects": { "money": 2200, "health": 3, "happiness": -2, "stress": -3, "fame": 0, "setJob": { "en": "Lifeguard (Seasonal)", "zh": "救生员（季节工）" } }
+        "effects": {
+          "money": 2200,
+          "health": 3,
+          "happiness": -2,
+          "stress": -3,
+          "fame": 0,
+          "setJob": {
+            "en": "Lifeguard (Seasonal)",
+            "zh": "救生员（季节工）"
+          }
+        }
       }
     ]
   },
@@ -879,14 +1281,26 @@
           "en": "Follow it. Enjoy the pasta and fold your dignity neatly.",
           "zh": "乖乖遵守。享用意面，并把尊严叠得整整齐齐。"
         },
-        "effects": { "money": 300, "health": 2, "happiness": -3, "stress": -4, "fame": 0 }
+        "effects": {
+          "money": 300,
+          "health": 2,
+          "happiness": -3,
+          "stress": -4,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Move into a shared flat above a noisy bakery.",
           "zh": "搬进一间在吵闹面包店楼上的合租公寓。"
         },
-        "effects": { "money": -3500, "health": -2, "happiness": 8, "stress": 8, "fame": 0 }
+        "effects": {
+          "money": -3500,
+          "health": -2,
+          "happiness": 8,
+          "stress": 8,
+          "fame": 0
+        }
       }
     ]
   },
@@ -906,14 +1320,26 @@
           "en": "Read every item. Arrive late, but informed.",
           "zh": "把每个项目都读完。迟到，但很有见识。"
         },
-        "effects": { "money": 0, "health": -1, "happiness": 3, "stress": 6, "fame": 1 }
+        "effects": {
+          "money": 0,
+          "health": -1,
+          "happiness": 3,
+          "stress": 6,
+          "fame": 1
+        }
       },
       {
         "text": {
           "en": "Decide the first three and skip the rest. Democracy is a marathon.",
           "zh": "只决定前三项，其余跳过。民主是场马拉松。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": -1, "stress": -3, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -1,
+          "stress": -3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -933,14 +1359,26 @@
           "en": "Get it. Commitment looks great on skin.",
           "zh": "纹。承诺在皮肤上看起来很棒。"
         },
-        "effects": { "money": -150, "health": -2, "happiness": 8, "stress": 3, "fame": 1 }
+        "effects": {
+          "money": -150,
+          "health": -2,
+          "happiness": 8,
+          "stress": 3,
+          "fame": 1
+        }
       },
       {
         "text": {
           "en": "Get a tiny cactus instead. Prickly and low-maintenance.",
           "zh": "改纹一株小仙人掌。带刺而且好养活。"
         },
-        "effects": { "money": -100, "health": 0, "happiness": 4, "stress": -1, "fame": 0 }
+        "effects": {
+          "money": -100,
+          "health": 0,
+          "happiness": 4,
+          "stress": -1,
+          "fame": 0
+        }
       }
     ]
   },
@@ -960,14 +1398,26 @@
           "en": "Wing it with jokes about the cafeteria.",
           "zh": "即兴发挥，全是关于学校食堂的笑话。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 8, "stress": 10, "fame": 6 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 8,
+          "stress": 10,
+          "fame": 6
+        }
       },
       {
         "text": {
           "en": "Read the cards. They are somehow in the wrong order.",
           "zh": "照着卡片念。卡片不知为何顺序全乱了。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 2, "stress": 3, "fame": 1 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 2,
+          "stress": 3,
+          "fame": 1
+        }
       }
     ]
   },
@@ -987,14 +1437,26 @@
           "en": "Buy it new. Enjoy the smell of overpriced paper.",
           "zh": "买全新的。闻着昂贵纸张的味道。"
         },
-        "effects": { "money": -280, "health": 0, "happiness": 1, "stress": -3, "fame": 0 }
+        "effects": {
+          "money": -280,
+          "health": 0,
+          "happiness": 1,
+          "stress": -3,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Share one copy with three strangers via a 'study group'.",
           "zh": "跟三个陌生人组成“学习小组”，共用一本。"
         },
-        "effects": { "money": -70, "health": 0, "happiness": 4, "stress": 6, "fame": 0 }
+        "effects": {
+          "money": -70,
+          "health": 0,
+          "happiness": 4,
+          "stress": 6,
+          "fame": 0
+        }
       }
     ]
   },
@@ -1014,14 +1476,26 @@
           "en": "Pull an all-nighter. Coffee is a food group.",
           "zh": "通宵赶工。咖啡也算一种食物类别。"
         },
-        "effects": { "money": -20, "health": -6, "happiness": 2, "stress": 8, "fame": 1 }
+        "effects": {
+          "money": -20,
+          "health": -6,
+          "happiness": 2,
+          "stress": 8,
+          "fame": 1
+        }
       },
       {
         "text": {
           "en": "Email the professor for an extension. Include three apologies.",
           "zh": "写邮件向教授申请延期。附上三次道歉。"
         },
-        "effects": { "money": 0, "health": 2, "happiness": -3, "stress": -2, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 2,
+          "happiness": -3,
+          "stress": -2,
+          "fame": 0
+        }
       }
     ]
   },
@@ -1041,14 +1515,26 @@
           "en": "Join the snack club. Learn about competitive origami.",
           "zh": "加入零食社。顺便学会竞技折纸。"
         },
-        "effects": { "money": -40, "health": 0, "happiness": 8, "stress": -2, "fame": 1 }
+        "effects": {
+          "money": -40,
+          "health": 0,
+          "happiness": 8,
+          "stress": -2,
+          "fame": 1
+        }
       },
       {
         "text": {
           "en": "Join the networking club. Get a lanyard and a nervous handshake.",
           "zh": "加入人脉社。领到一条挂绳和一次紧张的握手。"
         },
-        "effects": { "money": 500, "health": 0, "happiness": -1, "stress": 6, "fame": 2 }
+        "effects": {
+          "money": 500,
+          "health": 0,
+          "happiness": -1,
+          "stress": 6,
+          "fame": 2
+        }
       }
     ]
   },
@@ -1068,14 +1554,26 @@
           "en": "Go. Order food by pointing.",
           "zh": "出发。靠比划点餐。"
         },
-        "effects": { "money": -9000, "health": 0, "happiness": 12, "stress": 6, "fame": 1 }
+        "effects": {
+          "money": -9000,
+          "health": 0,
+          "happiness": 12,
+          "stress": 6,
+          "fame": 1
+        }
       },
       {
         "text": {
           "en": "Stay home. Watch travel videos with subtitles.",
           "zh": "留在家。看带字幕的旅游视频。"
         },
-        "effects": { "money": 0, "health": 1, "happiness": -3, "stress": -3, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 1,
+          "happiness": -3,
+          "stress": -3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -1095,14 +1593,26 @@
           "en": "Meal-prep rice and beans for seven days. Become a spreadsheet.",
           "zh": "一周七天都吃备餐的米饭和豆子。人生变成一张表格。"
         },
-        "effects": { "money": 150, "health": 2, "happiness": -4, "stress": 3, "fame": 0 }
+        "effects": {
+          "money": 150,
+          "health": 2,
+          "happiness": -4,
+          "stress": 3,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Order takeout twice. Live a little.",
           "zh": "点两次外卖。偶尔也要活一下。"
         },
-        "effects": { "money": -80, "health": -2, "happiness": 6, "stress": -2, "fame": 0 }
+        "effects": {
+          "money": -80,
+          "health": -2,
+          "happiness": 6,
+          "stress": -2,
+          "fame": 0
+        }
       }
     ]
   },
@@ -1122,14 +1632,34 @@
           "en": "Ask directly. Brace for impact.",
           "zh": "直接问清楚。做好承受冲击的准备。"
         },
-        "effects": { "money": -30, "health": 0, "happiness": 6, "stress": 8, "fame": 0, "setRelationship": { "en": "Dating (It's Official)", "zh": "交往中（正式官宣）" } }
+        "effects": {
+          "money": -30,
+          "health": 0,
+          "happiness": 6,
+          "stress": 8,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Dating (It's Official)",
+            "zh": "交往中（正式官宣）"
+          }
+        }
       },
       {
         "text": {
           "en": "Keep it vague and let the group chat speculate.",
           "zh": "保持暧昧，让群里自行推测。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": -2, "stress": 2, "fame": 1, "setRelationship": { "en": "It's Complicated", "zh": "关系复杂" } }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -2,
+          "stress": 2,
+          "fame": 1,
+          "setRelationship": {
+            "en": "It's Complicated",
+            "zh": "关系复杂"
+          }
+        }
       }
     ]
   },
@@ -1149,14 +1679,26 @@
           "en": "Evacuate in pajamas and become a campus meme.",
           "zh": "穿着睡衣疏散，顺便成为校园表情包。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 4, "stress": 4, "fame": 3 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 4,
+          "stress": 4,
+          "fame": 3
+        }
       },
       {
         "text": {
           "en": "Volunteer as dorm safety rep. Get a stipend and a whistle.",
           "zh": "自愿当宿舍安全员。领到津贴和一个哨子。"
         },
-        "effects": { "money": 150, "health": 0, "happiness": 3, "stress": 5, "fame": 1 }
+        "effects": {
+          "money": 150,
+          "health": 0,
+          "happiness": 3,
+          "stress": 5,
+          "fame": 1
+        }
       }
     ]
   },
@@ -1176,14 +1718,26 @@
           "en": "Take it. Become a legend of the quiet.",
           "zh": "接下。成为安静界的传奇。"
         },
-        "effects": { "money": 2800, "health": -3, "happiness": 2, "stress": 4, "fame": 0 }
+        "effects": {
+          "money": 2800,
+          "health": -3,
+          "happiness": 2,
+          "stress": 4,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Decline. Sell your class notes online instead.",
           "zh": "婉拒。改把上课笔记放到网上卖。"
         },
-        "effects": { "money": 900, "health": -1, "happiness": 3, "stress": -2, "fame": 1 }
+        "effects": {
+          "money": 900,
+          "health": -1,
+          "happiness": 3,
+          "stress": -2,
+          "fame": 1
+        }
       }
     ]
   },
@@ -1203,14 +1757,30 @@
           "en": "Stay. Learn every coffee order and every secret.",
           "zh": "留下。记住每个人的咖啡口味和每一个秘密。"
         },
-        "effects": { "money": -500, "health": 0, "happiness": -2, "stress": 6, "fame": 2, "setJob": { "en": "Intern (Unpaid, Very Caffeinated)", "zh": "实习生（无薪，咖啡因超标）" } }
+        "effects": {
+          "money": -500,
+          "health": 0,
+          "happiness": -2,
+          "stress": 6,
+          "fame": 2,
+          "setJob": {
+            "en": "Intern (Unpaid, Very Caffeinated)",
+            "zh": "实习生（无薪，咖啡因超标）"
+          }
+        }
       },
       {
         "text": {
           "en": "Quit and freelance designing logos for friends.",
           "zh": "辞职，改替朋友接单设计 logo。"
         },
-        "effects": { "money": 300, "health": 0, "happiness": 4, "stress": 5, "fame": 0 }
+        "effects": {
+          "money": 300,
+          "health": 0,
+          "happiness": 4,
+          "stress": 5,
+          "fame": 0
+        }
       }
     ]
   },
@@ -1230,14 +1800,26 @@
           "en": "Open a starter card and pay it on time like a monk.",
           "zh": "办张入门信用卡，并像僧侣一样准时还款。"
         },
-        "effects": { "money": 300, "health": 0, "happiness": -1, "stress": 4, "fame": 0 }
+        "effects": {
+          "money": 300,
+          "health": 0,
+          "happiness": -1,
+          "stress": 4,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Ignore it. Cash is king (and lonely).",
           "zh": "不理它。现金为王（而且孤单）。"
         },
-        "effects": { "money": -50, "health": 0, "happiness": 2, "stress": -2, "fame": 0 }
+        "effects": {
+          "money": -50,
+          "health": 0,
+          "happiness": 2,
+          "stress": -2,
+          "fame": 0
+        }
       }
     ]
   },
@@ -1257,14 +1839,26 @@
           "en": "Commit. Nap-based fieldwork begins.",
           "zh": "坚持到底。以午睡为主的田野调查正式开始。"
         },
-        "effects": { "money": 0, "health": 3, "happiness": 8, "stress": 6, "fame": 2 }
+        "effects": {
+          "money": 0,
+          "health": 3,
+          "happiness": 8,
+          "stress": 6,
+          "fame": 2
+        }
       },
       {
         "text": {
           "en": "Switch to a safe topic about supply chains.",
           "zh": "改成一个安全的供应链题目。"
         },
-        "effects": { "money": 500, "health": 0, "happiness": -4, "stress": -4, "fame": 0 }
+        "effects": {
+          "money": 500,
+          "health": 0,
+          "happiness": -4,
+          "stress": -4,
+          "fame": 0
+        }
       }
     ]
   },
@@ -1284,14 +1878,26 @@
           "en": "Take everything. Cover the stain with a blanket 'for style'.",
           "zh": "全部搬回家。用毯子盖住污渍，美其名曰“风格”。"
         },
-        "effects": { "money": -20, "health": -3, "happiness": 5, "stress": 2, "fame": 0 }
+        "effects": {
+          "money": -20,
+          "health": -3,
+          "happiness": 5,
+          "stress": 2,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Buy flat-pack furniture and lose two weekends to a diagram.",
           "zh": "买组装家具，两个周末都输给了一张说明图。"
         },
-        "effects": { "money": -450, "health": 1, "happiness": 3, "stress": 3, "fame": 0 }
+        "effects": {
+          "money": -450,
+          "health": 1,
+          "happiness": 3,
+          "stress": 3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -1311,14 +1917,26 @@
           "en": "Pitch it. Bring a mascot.",
           "zh": "上台路演。还带了一个吉祥物。"
         },
-        "effects": { "money": 300, "health": -3, "happiness": 6, "stress": 6, "fame": 3 }
+        "effects": {
+          "money": 300,
+          "health": -3,
+          "happiness": 6,
+          "stress": 6,
+          "fame": 3
+        }
       },
       {
         "text": {
           "en": "Skip it and sleep for fourteen hours.",
           "zh": "跳过，睡上十四个小时。"
         },
-        "effects": { "money": 0, "health": 4, "happiness": -2, "stress": -6, "fame": 0 }
+        "effects": {
+          "money": 0,
+          "health": 4,
+          "happiness": -2,
+          "stress": -6,
+          "fame": 0
+        }
       }
     ]
   },
@@ -1338,14 +1956,26 @@
           "en": "Say 'entrepreneur' and change the subject to pie.",
           "zh": "回答“创业者”，然后把话题转到派上。"
         },
-        "effects": { "money": 0, "health": 0, "happiness": 2, "stress": 5, "fame": 2 }
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 2,
+          "stress": 5,
+          "fame": 2
+        }
       },
       {
         "text": {
           "en": "Be honest: 'lunch, then figure it out.' Receive an hour of advice and some cash.",
           "zh": "老实说：“先吃午饭，再慢慢想。”换来一小时的建议和一些零花钱。"
         },
-        "effects": { "money": 200, "health": -1, "happiness": 4, "stress": 2, "fame": 0 }
+        "effects": {
+          "money": 200,
+          "health": -1,
+          "happiness": 4,
+          "stress": 2,
+          "fame": 0
+        }
       }
     ]
   },
@@ -1365,14 +1995,34 @@
           "en": "Share custody of the plant. Send weekly growth updates.",
           "zh": "共同监护那盆植物。每周发送生长报告。"
         },
-        "effects": { "money": -100, "health": 0, "happiness": 3, "stress": 6, "fame": 0, "setRelationship": { "en": "Single (Co-Parenting a Plant)", "zh": "单身（与前任共同养植物）" } }
+        "effects": {
+          "money": -100,
+          "health": 0,
+          "happiness": 3,
+          "stress": 6,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Single (Co-Parenting a Plant)",
+            "zh": "单身（与前任共同养植物）"
+          }
+        }
       },
       {
         "text": {
           "en": "Give them the plant. Keep the good pan.",
           "zh": "把植物给对方，自己留下好用的平底锅。"
         },
-        "effects": { "money": 40, "health": 0, "happiness": -2, "stress": -3, "fame": 0, "setRelationship": { "en": "Single (Owner of the Good Pan)", "zh": "单身（好锅拥有者）" } }
+        "effects": {
+          "money": 40,
+          "health": 0,
+          "happiness": -2,
+          "stress": -3,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Single (Owner of the Good Pan)",
+            "zh": "单身（好锅拥有者）"
+          }
+        }
       }
     ]
   },
@@ -1392,15 +2042,27 @@
           "en": "Set up a payment plan and a spreadsheet named 'Doom'.",
           "zh": "设定还款计划，并建一份叫“末日”的表格。"
         },
-        "effects": { "money": -1200, "health": 0, "happiness": -3, "stress": -2, "fame": 0 }
+        "effects": {
+          "money": -1200,
+          "health": 0,
+          "happiness": -3,
+          "stress": -2,
+          "fame": 0
+        }
       },
       {
         "text": {
           "en": "Deliver groceries on the side to pay it off faster.",
           "zh": "兼职送生鲜外卖，想更快还清。"
         },
-        "effects": { "money": 1500, "health": -3, "happiness": -2, "stress": 8, "fame": 0 }
+        "effects": {
+          "money": 1500,
+          "health": -3,
+          "happiness": -2,
+          "stress": 8,
+          "fame": 0
+        }
       }
     ]
   }
-]
+];

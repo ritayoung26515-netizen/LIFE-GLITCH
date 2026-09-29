@@ -1,5 +1,6 @@
 import { PastRun, LifeLogEntry, GameEvent, EventChoice, SavedStateSnapshot } from '../types/game';
 import { ALL_EVENTS } from './events';
+import { getTraitLabel } from '../utils/traits';
 
 function getEventById(id: string): GameEvent | undefined {
   return ALL_EVENTS.find(e => e.id === id);
@@ -56,8 +57,10 @@ function formatEffectsSummary(choice: EventChoice): { en: string; zh: string } {
     partsZh.push(`${s} 聲望`);
   }
   if (eff.addFlags && eff.addFlags.length > 0) {
-    partsEn.push(`[${eff.addFlags.join(', ')}]`);
-    partsZh.push(`[${eff.addFlags.join(', ')}]`);
+    const enFlags = eff.addFlags.map(f => getTraitLabel(f, 'en')).join(', ');
+    const zhFlags = eff.addFlags.map(f => getTraitLabel(f, 'zh')).join(', ');
+    partsEn.push(`[${enFlags}]`);
+    partsZh.push(`[${zhFlags}]`);
   }
 
   return {

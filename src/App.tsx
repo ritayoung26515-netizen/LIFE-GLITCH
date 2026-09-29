@@ -18,6 +18,7 @@ import { MockAdModal } from './components/MockAdModal';
 import { AbandonModal } from './components/AbandonModal';
 import { DEFAULT_PAST_RUNS, ensurePastRunHistory } from './data/sampleRuns';
 import { gameplayStart, gameplayStop, requestRewardedAd } from './utils/crazyGames';
+import { getTraitLabel } from './utils/traits';
 
 type AppScreen = 'START' | 'PLAYING' | 'GAME_OVER';
 
@@ -256,16 +257,22 @@ export default function App() {
       });
     }
 
-    const enSummary = deltas.map(d => `${d.value} ${d.label.en}`).join(' · ');
-    const zhSummary = deltas.map(d => `${d.value} ${d.label.zh}`).join(' · ');
+    let enSummary = deltas.map(d => `${d.value} ${d.label.en}`).join(' · ');
+    let zhSummary = deltas.map(d => `${d.value} ${d.label.zh}`).join(' · ');
+    if (effects.addFlags && effects.addFlags.length > 0) {
+      const enTraits = effects.addFlags.map(f => getTraitLabel(f, 'en')).join(', ');
+      const zhTraits = effects.addFlags.map(f => getTraitLabel(f, 'zh')).join(', ');
+      enSummary = enSummary ? `${enSummary} · [${enTraits}]` : `[${enTraits}]`;
+      zhSummary = zhSummary ? `${zhSummary} · [${zhTraits}]` : `[${zhTraits}]`;
+    }
 
     const newHistoryEntry: LifeLogEntry = {
       age: prev.age,
       eventText: currentEvent?.text || { en: 'Routine day', zh: '平常的一天' },
       choiceText: choice.text,
       effectsSummary: {
-        en: enSummary,
-        zh: zhSummary
+        en: enSummary || 'Routine year',
+        zh: zhSummary || '平穩度過的一年'
       },
       event: currentEvent ? { ...currentEvent } : undefined,
       snapshot: {

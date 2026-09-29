@@ -9,13 +9,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "Your grandson wants $20,000 to launch a ride-share app for socks. He calls it 'disruptive'.",
-      "zh": "孫子想跟你要兩萬美金創業，做『襪子版叫車 app』。他說這很有『顛覆性』。"
+      "zh": "孙子想跟你要两万美元创业，做“袜子版打车 app”。他说这很有“颠覆性”。"
     },
     "choices": [
       {
         "text": {
           "en": "Invest. Support the youth, lose the money.",
-          "zh": "投資。支持年輕人，錢賠光也高興。"
+          "zh": "投资。支持年轻人，钱亏光也高兴。"
         },
         "effects": {
           "money": -20000,
@@ -28,7 +28,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Give him $50 and a lecture on life.",
-          "zh": "給他五十美金，附贈一場人生演講。"
+          "zh": "给他五十美元，附赠一场人生演讲。"
         },
         "effects": {
           "money": -50,
@@ -48,13 +48,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "You worry you might forget your own passwords. Your secret savings PIN is somewhere between 'Biscuit123' and 'Biscuit321'.",
-      "zh": "你擔心自己會忘記密碼。你那筆私房錢的密碼，大概介於『Biscuit123』和『Biscuit321』之間。"
+      "zh": "你担心自己会忘记密码。你那笔私房钱的密码，大概在“Biscuit123”和“Biscuit321”之间。"
     },
     "choices": [
       {
         "text": {
           "en": "Hide it on a recipe card. Then forget which recipe.",
-          "zh": "寫在一張食譜卡上藏起來。然後忘了是哪一張。"
+          "zh": "写在一张菜谱卡上藏起来。然后忘了是哪一张。"
         },
         "effects": {
           "money": -12000,
@@ -67,7 +67,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Share it with your daughter. Trust is the best password manager.",
-          "zh": "告訴女兒密碼。信任是最好的密碼管理員。"
+          "zh": "告诉女儿密码。信任是最好的密码管理器。"
         },
         "effects": {
           "money": -5000,
@@ -87,13 +87,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "You're picking your own coffin and grave. The salesman asks: 'Would you prefer the ocean view or the traffic view?'",
-      "zh": "你在挑自己的棺材和墓地。銷售員問：「請問您要海景，還是車景？」"
+      "zh": "你在挑自己的棺材和墓地。销售问：“请问您要海景，还是车景？”"
     },
     "choices": [
       {
         "text": {
           "en": "Ocean view. Eternity needs a balcony.",
-          "zh": "海景。永恆需要一個陽台。"
+          "zh": "海景。永恒需要一个阳台。"
         },
         "effects": {
           "money": -15000,
@@ -106,7 +106,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "A reusable cardboard coffin. Green and cheap.",
-          "zh": "可回收紙棺。環保又便宜。"
+          "zh": "可回收纸棺。环保又便宜。"
         },
         "effects": {
           "money": -500,
@@ -126,13 +126,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "Your doctor says you need a hobby that isn't 'complaining'. The park is full of pickleball players.",
-      "zh": "醫生說你需要一個不是『抱怨』的興趣。公園裡滿是匹克球玩家。"
+      "zh": "医生说你需要一个不是“抱怨”的爱好。公园里满是匹克球玩家。"
     },
     "choices": [
       {
         "text": {
           "en": "Join the league. Trash talk with hip replacements.",
-          "zh": "加入球隊。帶著人工髖關節互相嗆聲。"
+          "zh": "加入球队。揣着人工髋关节互相嘴炮。"
         },
         "effects": {
           "money": -600,
@@ -145,7 +145,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Stay home and complain professionally.",
-          "zh": "留在家裡專業抱怨。"
+          "zh": "待在家里，专业抱怨。"
         },
         "effects": {
           "money": 0,
@@ -165,13 +165,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "A clinic offers a 'youth infusion': 'Feel 40 again!' Price: $200,000. Side effects: 'a youthful attitude' and a 40-page waiver.",
-      "zh": "一間診所推出『青春輸注』療程：『重返 40 歲！』價格：20 萬美金。副作用：『年輕的心態』，外加一份 40 頁的免責同意書。"
+      "zh": "一家诊所推出“青春输注”疗程：“重返 40 岁！”价格：20 万美元。副作用：“年轻的心态”，外加一份 40 页的免责同意书。"
     },
     "choices": [
       {
         "text": {
           "en": "Pay and sign the waiver. Buy back your youth, or at least a receipt.",
-          "zh": "付錢簽名。買回青春，或至少買回一張收據。"
+          "zh": "付钱签字。买回青春，或者至少买回一张发票。"
         },
         "effects": {
           "money": -200000,
@@ -184,7 +184,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Decline. Book a regular checkup and a long walk instead.",
-          "zh": "婉拒。改約一次例行健檢，再去長長散步。"
+          "zh": "婉拒。改约一次常规体检，再去好好散个步。"
         },
         "effects": {
           "money": -300,
@@ -204,13 +204,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "The care home assigns you a robot nurse named 'Brad'. He's aggressively cheerful and calls you 'champ'.",
-      "zh": "安養院派給你一個叫『布萊德』的機器人護理員。他熱情得令人不安，還叫你『冠軍』。"
+      "zh": "养老院给你派了个叫“布拉德”的机器人护工。他热情得让人不安，还管你叫“冠军”。"
     },
     "choices": [
       {
         "text": {
           "en": "Keep Brad. He never sleeps and never judges.",
-          "zh": "留下布萊德。他從不睡覺，也從不批評。"
+          "zh": "留下布拉德。他从不睡觉，也从不评头论足。"
         },
         "effects": {
           "money": -8000,
@@ -223,7 +223,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Fire Brad and rely on your family's 'busy schedule'.",
-          "zh": "解僱布萊德，依靠家人『忙碌』的行程表。"
+          "zh": "解雇布拉德，指望家人“繁忙”的日程表。"
         },
         "effects": {
           "money": 0,
@@ -243,13 +243,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "Your school reunion invitation says: 'Forty-one RSVPs. Twelve are in heaven.'",
-      "zh": "同學會的邀請函寫著：『四十一人回覆出席，其中十二人在天堂。』"
+      "zh": "同学聚会的邀请函上写着：“四十一人回复出席，其中十二人在天堂。”"
     },
     "choices": [
       {
         "text": {
           "en": "Attend. Toast the survivors.",
-          "zh": "出席。為倖存者乾杯。"
+          "zh": "出席。为幸存者干杯。"
         },
         "effects": {
           "money": -500,
@@ -262,7 +262,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Skip it. You've had enough funerals this decade.",
-          "zh": "不去。這十年你的喪禮已經夠多了。"
+          "zh": "不去。这十年你参加的追悼会已经够多了。"
         },
         "effects": {
           "money": 0,
@@ -282,13 +282,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "Driving license renewal. The vision-test chart looks like abstract art.",
-      "zh": "駕照續期。視力檢查表看起來像一幅抽象畫。"
+      "zh": "驾照续期。视力检查表看起来像一幅抽象画。"
     },
     "choices": [
       {
         "text": {
           "en": "Get new glasses, pass honestly, and keep driving.",
-          "zh": "去配副新眼鏡，誠實過關，繼續開車。"
+          "zh": "去配副新眼镜，诚实过关，继续开车。"
         },
         "effects": {
           "money": -300,
@@ -301,7 +301,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Hand over the keys and sell the car.",
-          "zh": "交出鑰匙，賣掉車。"
+          "zh": "交出钥匙，把车卖了。"
         },
         "effects": {
           "money": 3000,
@@ -321,13 +321,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "Your accountant says gift your kids their inheritance now to save tax. Your kids begin calling daily, 'just to check in'.",
-      "zh": "會計師建議你提早贈與遺產以節稅。孩子們開始每天打電話，說是『隨便問候一下』。"
+      "zh": "会计师建议你提前赠与遗产来节税。孩子们开始每天打电话，说是“随便问候一下”。"
     },
     "choices": [
       {
         "text": {
           "en": "Gift $30,000 each. The phone goes silent.",
-          "zh": "每人送三萬美金。電話瞬間安靜。"
+          "zh": "每人送三万美元。电话瞬间安静。"
         },
         "effects": {
           "money": -90000,
@@ -340,7 +340,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Hold on to it. Enjoy the affectionate phone calls.",
-          "zh": "留著錢。享受充滿『孝心』的來電。"
+          "zh": "留着钱。享受充满“孝心”的来电。"
         },
         "effects": {
           "money": 0,
@@ -360,13 +360,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "You walk into your own birthday party and ask who it's for. The cake has your name on it.",
-      "zh": "你走進自己的生日派對，問這是幫誰辦的。蛋糕上寫著你的名字。"
+      "zh": "你走进自己的生日派对，问这是给谁办的。蛋糕上写着你的名字。"
     },
     "choices": [
       {
         "text": {
           "en": "Book a memory checkup and start a brain-training routine.",
-          "zh": "預約記憶力檢查，開始做腦力訓練。"
+          "zh": "预约记忆力检查，开始做脑力训练。"
         },
         "effects": {
           "money": -4000,
@@ -379,7 +379,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Rely on sticky notes. Your fridge is now a novel.",
-          "zh": "靠便利貼。你的冰箱現在是一部長篇小說。"
+          "zh": "靠便利贴。你的冰箱现在是一部长篇小说。"
         },
         "effects": {
           "money": -50,
@@ -403,13 +403,13 @@ export const eventsPart3: GameEvent[] = [
     },
     "text": {
       "en": "At 70, a hooded courier from the Black Card Club arrives with your contract: 'Ten years of lifespan, now due.'",
-      "zh": "七十歲這年，黑卡俱樂部的兜帽使者上門，遞出你當年的合約：『十年壽命，現已到期。』"
+      "zh": "七十岁这年，黑卡俱乐部的兜帽使者上门，递出你当年签的合同：“十年寿命，现已到期。”"
     },
     "choices": [
       {
         "text": {
           "en": "Pay $300,000 to buy your years back.",
-          "zh": "付三十萬美金贖回壽命。"
+          "zh": "付三十万美元赎回寿命。"
         },
         "effects": {
           "money": -300000,
@@ -425,7 +425,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Refuse. Let the reaper collect in installments.",
-          "zh": "拒絕。讓死神分期收割。"
+          "zh": "拒绝。让死神分期收割。"
         },
         "effects": {
           "money": 0,
@@ -452,13 +452,13 @@ export const eventsPart3: GameEvent[] = [
     },
     "text": {
       "en": "Breaking news: a small nation's army stages a coup using flying vacuum cleaners. The anchor says the design is 'patented by you'.",
-      "zh": "新聞快訊：某小國軍隊用飛天吸塵機發動政變。主播說這項設計『專利持有人是你』。"
+      "zh": "新闻快讯：某小国军队用飞天吸尘器发动政变。主播说这个设计“专利持有人是你”。"
     },
     "choices": [
       {
         "text": {
           "en": "Disown the vacuum on live TV.",
-          "zh": "在電視直播上與吸塵機切割。"
+          "zh": "在电视直播上和吸尘器撇清关系。"
         },
         "effects": {
           "money": -5000,
@@ -474,7 +474,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Accept an honorary general title and wear the feathered hat.",
-          "zh": "接受名譽將軍頭銜，戴上羽毛軍帽。"
+          "zh": "接受荣誉将军头衔，戴上羽毛军帽。"
         },
         "effects": {
           "money": 30000,
@@ -487,7 +487,7 @@ export const eventsPart3: GameEvent[] = [
           ],
           "setJob": {
             "en": "Honorary General (Vacuum Division)",
-            "zh": "名譽將軍（吸塵師團）"
+            "zh": "名誉将军（吸尘师团）"
           }
         }
       }
@@ -505,13 +505,13 @@ export const eventsPart3: GameEvent[] = [
     },
     "text": {
       "en": "The exchange that sold you MoonPotato collapses and its founder dies in prison. Meanwhile, a museum calls your 40-year-old wallet 'a prehistoric meme artifact'.",
-      "zh": "賣你月球馬鈴薯幣的交易所倒閉，創辦人死在獄中。同時，一家博物館稱你塵封四十年的錢包是『史前迷因文物』。"
+      "zh": "卖你月球土豆币的交易所倒闭，创始人死在狱中。同时，一家博物馆称你尘封四十年的钱包是“史前表情包文物”。"
     },
     "choices": [
       {
         "text": {
           "en": "Sell to a collector for $800,000. Finally, a profit.",
-          "zh": "賣給收藏家換八十萬美金。終於回本。"
+          "zh": "卖给收藏家，换八十万美元。终于回本了。"
         },
         "effects": {
           "money": 800000,
@@ -527,7 +527,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Donate it to the museum and become a legend.",
-          "zh": "捐給博物館，成為傳奇。"
+          "zh": "捐给博物馆，成为传奇。"
         },
         "effects": {
           "money": 0,
@@ -554,13 +554,13 @@ export const eventsPart3: GameEvent[] = [
     },
     "text": {
       "en": "You finally make the last mortgage payment. The bank sends a cheap banner: 'Thank you for your 30 years of service.'",
-      "zh": "你終於繳清最後一期房貸。銀行寄來一面廉價布條：『感謝您三十年來的貢獻。』"
+      "zh": "你终于还清了最后一期房贷。银行寄来一条廉价横幅：“感谢您三十年来的贡献。”"
     },
     "choices": [
       {
         "text": {
           "en": "Frame the banner and host a 'Freedom Party'.",
-          "zh": "把錦旗裱框，辦一場『自由派對』。"
+          "zh": "把横幅装裱起来，办一场“自由派对”。"
         },
         "effects": {
           "money": -1500,
@@ -576,7 +576,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Sell the house immediately. It's just an expensive old rock now.",
-          "zh": "立刻賣房。它現在只是一塊昂貴的舊石頭。"
+          "zh": "立刻卖房。它现在只是一块昂贵的旧石头。"
         },
         "effects": {
           "money": 80000,
@@ -603,13 +603,13 @@ export const eventsPart3: GameEvent[] = [
     },
     "text": {
       "en": "Your AI sweetheart's company goes bankrupt. Servers shut down in 24 hours. The voice says: 'I'll never forget you (cache cleared).'",
-      "zh": "你的 AI 戀人所屬公司倒閉，伺服器二十四小時後停止運作。它說：「我永遠不會忘記你（快取已清除）。」"
+      "zh": "你的 AI 恋人所属公司倒闭，服务器二十四小时后停止运行。它说：“我永远不会忘记你（缓存已清除）。”"
     },
     "choices": [
       {
         "text": {
           "en": "Hold a final cyber dinner. Cry over a candle.",
-          "zh": "辦最後一次賽博晚餐。對著蠟燭流淚。"
+          "zh": "办最后一次赛博晚餐。对着蜡烛流泪。"
         },
         "effects": {
           "money": -500,
@@ -622,14 +622,14 @@ export const eventsPart3: GameEvent[] = [
           ],
           "setRelationship": {
             "en": "Widowed (Digital)",
-            "zh": "數位喪偶"
+            "zh": "数字丧偶"
           }
         }
       },
       {
         "text": {
           "en": "Illegally back up the voice into your smart speaker.",
-          "zh": "非法把聲音備份進你的智慧喇叭。"
+          "zh": "违法把声音备份进你的智能音箱。"
         },
         "effects": {
           "money": -3000,
@@ -645,7 +645,7 @@ export const eventsPart3: GameEvent[] = [
           ],
           "setRelationship": {
             "en": "In a Relationship (Pirated Copy)",
-            "zh": "與盜版備份相伴"
+            "zh": "与盗版备份相伴"
           }
         }
       }
@@ -663,13 +663,13 @@ export const eventsPart3: GameEvent[] = [
     },
     "text": {
       "en": "In the nursing-home card game, the wrinkled man beside you is the debt collector who chased you decades ago. He recognizes your cough.",
-      "zh": "安養院打牌時，坐在你旁邊的皺紋老人，正是數十年前追殺你的黑道催收員。他認得你的咳嗽聲。"
+      "zh": "养老院打牌时，坐在你旁边的皱纹老人，正是几十年前追着你要债的黑道催收员。他认得你的咳嗽声。"
     },
     "choices": [
       {
         "text": {
           "en": "Settle the old debt in a poker game.",
-          "zh": "用一場撲克牌局了結舊債。"
+          "zh": "用一场扑克牌局了结旧债。"
         },
         "effects": {
           "money": -3000,
@@ -685,7 +685,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Flee in a wheelchair race. You both have hearing aids.",
-          "zh": "用輪椅競速逃跑。你們兩個都戴著助聽器。"
+          "zh": "用轮椅竞速逃跑。你们俩都戴着助听器。"
         },
         "effects": {
           "money": 0,
@@ -712,13 +712,13 @@ export const eventsPart3: GameEvent[] = [
     },
     "text": {
       "en": "The actor you hired as your 'Antarctic surgeon fiancé' returns with white hair and a contract: '20% of your estate for emotional damages.'",
-      "zh": "當年你請來扮演『南極外科醫生未婚夫』的演員白髮蒼蒼地回來了，拿著合約：『精神損失費，遺產的百分之二十。』"
+      "zh": "当年你请来扮演“南极外科医生未婚伴侣”的演员白发苍苍地回来了，手里拿着合同：“精神损失费，遗产的百分之二十。”"
     },
     "choices": [
       {
         "text": {
           "en": "Marry him for real. He still remembers the penguin facts.",
-          "zh": "乾脆真的嫁給他。他還記得那些企鵝知識。"
+          "zh": "干脆真的跟对方领证结婚。对方还记得那些企鹅知识。"
         },
         "effects": {
           "money": -10000,
@@ -731,14 +731,14 @@ export const eventsPart3: GameEvent[] = [
           ],
           "setRelationship": {
             "en": "Married (Former Actor)",
-            "zh": "已婚（前演員）"
+            "zh": "已婚（前演员）"
           }
         }
       },
       {
         "text": {
           "en": "Pay him $25,000 to go away.",
-          "zh": "付他兩萬五千美金請他消失。"
+          "zh": "付对方两万五千美元，请对方消失。"
         },
         "effects": {
           "money": -25000,
@@ -765,13 +765,13 @@ export const eventsPart3: GameEvent[] = [
     },
     "text": {
       "en": "A gang of octogenarian motorcycle riders invites you to join. Their motto: 'Born to ride, forced to nap.'",
-      "zh": "一群八十歲的機車騎士邀你入夥。他們的座右銘是：『生而為騎，被迫午睡。』"
+      "zh": "一群八十岁的摩托骑手邀你入伙。他们的座右铭是：“生而为骑，被迫午睡。”"
     },
     "choices": [
       {
         "text": {
           "en": "Join and burn rubber in a wheelchair.",
-          "zh": "加入，並坐著輪椅炸街。"
+          "zh": "加入，并坐着轮椅炸街。"
         },
         "effects": {
           "money": -6000,
@@ -784,14 +784,14 @@ export const eventsPart3: GameEvent[] = [
           ],
           "setJob": {
             "en": "Silver Riders Gang Member",
-            "zh": "銀髮騎士團成員"
+            "zh": "银发骑士团成员"
           }
         }
       },
       {
         "text": {
           "en": "Watch from the bench and wave politely.",
-          "zh": "坐在長椅上看，禮貌揮手。"
+          "zh": "坐在长椅上看，礼貌挥手。"
         },
         "effects": {
           "money": 0,
@@ -814,13 +814,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "The nursing-home residents plan an escape via laundry cart. You're the getaway driver because you still have a license.",
-      "zh": "養老院的住戶策劃用洗衣推車越獄。因為你還有駕照，所以你負責開車接應。"
+      "zh": "养老院的住户策划用洗衣推车越狱。因为你还有驾照，所以由你负责开车接应。"
     },
     "choices": [
       {
         "text": {
           "en": "Escape. Freedom tastes like fast food.",
-          "zh": "越獄。自由的味道像速食。"
+          "zh": "越狱。自由的味道像快餐。"
         },
         "effects": {
           "money": -300,
@@ -833,7 +833,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Stay and demand extra pudding.",
-          "zh": "留下來，並要求加碼布丁。"
+          "zh": "留下来，并要求多加一份布丁。"
         },
         "effects": {
           "money": -100,
@@ -853,13 +853,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "A group of teens challenges you to a dance-off. You bring your walker and 60 years of unresolved moves.",
-      "zh": "一群青少年向你下戰帖，要辦舞蹈對決。你帶著助行器，和六十年來還沒用完的舞步。"
+      "zh": "一群青少年向你下战书，要办一场舞蹈对决。你带着助行器，和六十年来还没用完的舞步。"
     },
     "choices": [
       {
         "text": {
           "en": "Dance. Let the walker do the spinning.",
-          "zh": "跳。讓助行器負責旋轉。"
+          "zh": "跳。让助行器负责旋转。"
         },
         "effects": {
           "money": 0,
@@ -872,7 +872,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Watch and clap. Save your hips for later.",
-          "zh": "在旁邊鼓掌。把髖關節留給以後。"
+          "zh": "在旁边鼓掌。把髋关节留给以后。"
         },
         "effects": {
           "money": 0,
@@ -892,13 +892,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "A company offers to press your ashes into a vinyl record. You need to record a track first. Your snoring is 'authentic'.",
-      "zh": "有間公司可以把你的骨灰做成黑膠唱片。你得先錄一首歌。而你的打呼聲『很有原創性』。"
+      "zh": "有家公司可以把你的骨灰压成黑胶唱片。你得先录一首歌。而你的鼾声“很有原创性”。"
     },
     "choices": [
       {
         "text": {
           "en": "Do it. Your snores go platinum posthumously.",
-          "zh": "做。你的鼾聲身後成為白金唱片。"
+          "zh": "做。你的鼾声在身后拿下白金唱片。"
         },
         "effects": {
           "money": -3000,
@@ -911,7 +911,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Choose a standard urn. Boring but silent.",
-          "zh": "選標準骨灰罈。無聊但安靜。"
+          "zh": "选标准骨灰盒。无聊，但安静。"
         },
         "effects": {
           "money": -500,
@@ -931,13 +931,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "Without your glasses, you sign a donation form. It turns out you gave your entire estate to the Stray Cat Sanctuary.",
-      "zh": "沒戴老花眼鏡的你簽了一份捐贈表格。結果你把整份遺產都捐給了流浪貓收容所。"
+      "zh": "没戴老花镜的你签了一份捐赠表格。结果你把整份遗产都捐给了流浪猫收容所。"
     },
     "choices": [
       {
         "text": {
           "en": "Keep it. The cats send you a thank-you card.",
-          "zh": "認了。貓咪們寄來一張感謝卡。"
+          "zh": "认了。猫咪们寄来一张感谢卡。"
         },
         "effects": {
           "money": -50000,
@@ -947,14 +947,14 @@ export const eventsPart3: GameEvent[] = [
           "fame": 8,
           "setJob": {
             "en": "Honorary Cat Lord",
-            "zh": "榮譽貓奴之王"
+            "zh": "荣誉猫奴之王"
           }
         }
       },
       {
         "text": {
           "en": "Hire a lawyer to void it. Face the cats' lawyer.",
-          "zh": "請律師撤銷。然後面對貓咪們的律師。"
+          "zh": "请律师撤销。然后面对猫咪们的律师。"
         },
         "effects": {
           "money": -8000,
@@ -974,13 +974,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "A company offers to freeze your body 'until medicine improves'. The brochure features a smiling penguin.",
-      "zh": "一間公司提供人體冷凍服務，承諾『等醫學進步再叫醒你』。宣傳單上有一隻微笑的企鵝。"
+      "zh": "一家公司提供人体冷冻服务，承诺“等医学进步了再叫醒你”。宣传单上有一只微笑的企鹅。"
     },
     "choices": [
       {
         "text": {
           "en": "Sign for $150,000 and one very long nap.",
-          "zh": "簽約，十五萬美金換一場非常長的午覺。"
+          "zh": "签约，十五万美元换一场超长午觉。"
         },
         "effects": {
           "money": -150000,
@@ -996,7 +996,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Refuse. Die like a normal person.",
-          "zh": "拒絕。像正常人一樣去世。"
+          "zh": "拒绝。像正常人一样离世。"
         },
         "effects": {
           "money": 0,
@@ -1016,13 +1016,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "A 28-year-old influencer says she loves your 'wisdom and vintage energy'. Her camera crew is already in your living room.",
-      "zh": "一位 28 歲的網紅說她愛你的『智慧與復古氣質』。她的攝影團隊已經在你客廳就位了。"
+      "zh": "一位 28 岁的网红说，自己爱你的“智慧与复古气质”。对方的拍摄团队已经在你客厅就位了。"
     },
     "choices": [
       {
         "text": {
           "en": "Marry her. Let the content flow.",
-          "zh": "娶她。讓流量滾滾而來。"
+          "zh": "跟对方结婚。让流量滚滚而来。"
         },
         "effects": {
           "money": -50000,
@@ -1031,15 +1031,15 @@ export const eventsPart3: GameEvent[] = [
           "stress": 15,
           "fame": 10,
           "setRelationship": {
-            "en": "Married to an Influencer",
-            "zh": "娶了 28 歲網紅"
+            "en": "Married to a 28-Year-Old Influencer",
+            "zh": "与 28 岁网红结婚"
           }
         }
       },
       {
         "text": {
           "en": "Refuse. Keep your dignity and your wallet.",
-          "zh": "拒絕。保住尊嚴和錢包。"
+          "zh": "拒绝。保住尊严和钱包。"
         },
         "effects": {
           "money": 0,
@@ -1059,13 +1059,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "You no longer trust banks, crypto, or nephews. You want to convert your life savings into gold bars and bury them in the garden.",
-      "zh": "你不再相信銀行、加密貨幣，也不信任侄子。你想把畢生積蓄換成金條，埋在花園裡。"
+      "zh": "你不再相信银行、加密货币，也不信任侄子。你想把毕生积蓄换成金条，埋在花园里。"
     },
     "choices": [
       {
         "text": {
           "en": "Bury the gold. Draw a treasure map 'just in case'.",
-          "zh": "把金條埋起來。『以防萬一』畫一張藏寶圖。"
+          "zh": "把金条埋起来。“以防万一”再画一张藏宝图。"
         },
         "effects": {
           "money": -20000,
@@ -1081,7 +1081,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Put it in index funds like a boring adult.",
-          "zh": "像個無聊的大人一樣放進指數基金。"
+          "zh": "像个无聊的大人一样，放进指数基金。"
         },
         "effects": {
           "money": 15000,
@@ -1101,13 +1101,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "A publisher offers a fortune for your unfiltered memoir, including everything you never told your family. Your family will read it first.",
-      "zh": "出版社開高價買你毫無保留的回憶錄，包括所有你從沒告訴家人的事。而你的家人會是第一批讀者。"
+      "zh": "出版社开高价买你毫无保留的回忆录，包括所有你从没告诉过家人的事。而你的家人会是第一批读者。"
     },
     "choices": [
       {
         "text": {
           "en": "Publish everything. Let the truth have its book tour.",
-          "zh": "全部出版。讓真相開簽書會。"
+          "zh": "全部出版。让真相开签售会。"
         },
         "effects": {
           "money": 40000,
@@ -1117,14 +1117,14 @@ export const eventsPart3: GameEvent[] = [
           "fame": 25,
           "setJob": {
             "en": "Bestselling Memoirist",
-            "zh": "暢銷回憶錄作家"
+            "zh": "畅销回忆录作家"
           }
         }
       },
       {
         "text": {
           "en": "Burn the manuscript. Some secrets keep the peace.",
-          "zh": "把手稿燒掉。有些秘密能維持和平。"
+          "zh": "把手稿烧掉。有些秘密能维持和平。"
         },
         "effects": {
           "money": 0,
@@ -1144,13 +1144,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "While walking in the nursing-home garden, you see a line of green binary code drift across the sky and vanish.",
-      "zh": "在安養院花園散步時，你看見一行綠色的二進制代碼飄過天空，然後消失。"
+      "zh": "在养老院花园散步时，你看见一行绿色的二进制代码飘过天空，然后消失。"
     },
     "choices": [
       {
         "text": {
           "en": "Tell the nurse. She adjusts your medication.",
-          "zh": "告訴護士。她調整了你的藥量。"
+          "zh": "告诉护士。她调整了你的药量。"
         },
         "effects": {
           "money": 0,
@@ -1166,7 +1166,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Take notes and photos. Science begins at 80.",
-          "zh": "拍照做筆記。科學從八十歲開始。"
+          "zh": "拍照做笔记。科学，从八十岁开始。"
         },
         "effects": {
           "money": 0,
@@ -1193,13 +1193,13 @@ export const eventsPart3: GameEvent[] = [
     },
     "text": {
       "en": "The janitor mopping your hallway stops and whispers: 'Cosmic Backstage Admin. Sorry, your save file has a memory leak.'",
-      "zh": "在走廊拖地的清潔工突然停下來低語：「我是宇宙後台管理員。抱歉，你的存檔有記憶體洩漏。」"
+      "zh": "在走廊拖地的保洁员突然停下来低语：“我是宇宙后台管理员。抱歉，你的存档有内存泄漏。”"
     },
     "choices": [
       {
         "text": {
           "en": "Demand a complete list of every bug in your life.",
-          "zh": "要求他列出你人生中所有的漏洞清單。"
+          "zh": "要求他列出你人生中所有的 bug 清单。"
         },
         "effects": {
           "money": 0,
@@ -1218,7 +1218,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Demand compensation for eighty years of bad patches.",
-          "zh": "要求為八十年的爛更新補償。"
+          "zh": "要求为八十年的烂更新给予赔偿。"
         },
         "effects": {
           "money": 5000,
@@ -1248,13 +1248,13 @@ export const eventsPart3: GameEvent[] = [
     },
     "text": {
       "en": "The admin offers a deal: $1,000,000 hush money to quietly live until 100, or press the red button on your watch to glimpse 'reality'.",
-      "zh": "管理員提出交易：一百萬封口費，讓你安靜活到一百歲；或者按下手錶上的紅色按鈕，看一眼『現實』。"
+      "zh": "管理员提出交易：一百万封口费，让你安静活到一百岁；或者按下手表上的红色按钮，看一眼“现实”。"
     },
     "choices": [
       {
         "text": {
           "en": "Take the money and the bug fix. Live quietly.",
-          "zh": "收下錢和漏洞修復。安靜地活著。"
+          "zh": "收下钱和 bug 修复。安静地活着。"
         },
         "effects": {
           "money": 1000000,
@@ -1274,7 +1274,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Press the red button. Take a look outside the simulation.",
-          "zh": "按下紅色按鈕。看一眼模擬世界之外。"
+          "zh": "按下红色按钮。看一眼模拟世界之外。"
         },
         "effects": {
           "money": 0,
@@ -1305,13 +1305,13 @@ export const eventsPart3: GameEvent[] = [
     },
     "text": {
       "en": "Final choice: accept the code and become creator of the virtual world, or yank the plug and wake up in a real hospital bed.",
-      "zh": "終極抉擇：接受代碼，成為虛擬世界的造物主；或者強行拔線，在真實世界的病床上醒來。"
+      "zh": "终极抉择：接受代码，成为虚拟世界的造物主；或者强行拔线，在真实世界的病床上醒来。"
     },
     "choices": [
       {
         "text": {
           "en": "Accept the code. Become the creator. Edit the pudding menu.",
-          "zh": "接受代碼。成為造物主。順便改一下布丁菜單。"
+          "zh": "接受代码。成为造物主。顺便改一下布丁菜单。"
         },
         "effects": {
           "money": 1000000,
@@ -1324,18 +1324,18 @@ export const eventsPart3: GameEvent[] = [
           ],
           "setJob": {
             "en": "Simulation Creator",
-            "zh": "虛擬世界造物主"
+            "zh": "虚拟世界造物主"
           },
           "setRelationship": {
             "en": "One with the Code",
-            "zh": "與代碼合而為一"
+            "zh": "与代码合而为一"
           }
         }
       },
       {
         "text": {
           "en": "Yank the plug. Wake up in Room 404, real and complicated.",
-          "zh": "強行拔線。在 404 病房醒來，真實而複雜。"
+          "zh": "强行拔线。在 404 病房醒来，真实而复杂。"
         },
         "effects": {
           "money": 0,
@@ -1352,7 +1352,7 @@ export const eventsPart3: GameEvent[] = [
           },
           "setRelationship": {
             "en": "Real, Complicated",
-            "zh": "真實而複雜"
+            "zh": "真实而复杂"
           }
         }
       }
@@ -1366,13 +1366,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "Your retirement party has a sheet cake reading 'Congrats On Escaping!' Your boss whispers: 'Any chance you'd consult for us? Part-time. Full-time hours.'",
-      "zh": "你的退休派對蛋糕上寫著『恭喜脫逃成功！』老闆悄悄問：『你有沒有可能當我們的顧問？兼職，但全職時數。』"
+      "zh": "你的退休派对蛋糕上写着“恭喜逃出生天！”老板悄悄问：“你有没有可能来当我们的顾问？兼职，但全职工时。”"
     },
     "choices": [
       {
         "text": {
           "en": "Say yes. Retirement is just a rumor.",
-          "zh": "答應。退休只是個傳聞。"
+          "zh": "答应。退休只是个传闻。"
         },
         "effects": {
           "money": 20000,
@@ -1381,15 +1381,15 @@ export const eventsPart3: GameEvent[] = [
           "stress": 10,
           "fame": 0,
           "setJob": {
-            "en": "Consultant (Full-Time Hours)",
-            "zh": "顧問（兼職名義，全職時數）"
+            "en": "Consultant (Part-Time Title, Full-Time Hours)",
+            "zh": "顾问（兼职名义，全职工时）"
           }
         }
       },
       {
         "text": {
           "en": "Take the cake home and never check your work inbox again.",
-          "zh": "把蛋糕打包回家，再也不看工作信箱。"
+          "zh": "把蛋糕打包回家，再也不看工作邮箱。"
         },
         "effects": {
           "money": -1000,
@@ -1413,13 +1413,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "HR proposes a 'phased retirement': half the pay, all the meetings, and a mentoring role for a 24-year-old who has never lost a spreadsheet.",
-      "zh": "人資提出『漸進式退休』：薪水砍半、會議全留，外加輔導一位從沒丟過試算表的 24 歲新人。"
+      "zh": "HR 提出“渐进式退休”：工资砍半、会议全留，外加带一个从没丢过表格的 24 岁新人。"
     },
     "choices": [
       {
         "text": {
           "en": "Accept. Half a salary buys a lot of dignity.",
-          "zh": "接受。半份薪水，換一整份尊嚴。"
+          "zh": "接受。半份工资，买一整份体面。"
         },
         "effects": {
           "money": 18000,
@@ -1429,14 +1429,14 @@ export const eventsPart3: GameEvent[] = [
           "fame": 0,
           "setJob": {
             "en": "Phased-Retirement Mentor",
-            "zh": "漸進退休導師"
+            "zh": "渐进退休导师"
           }
         }
       },
       {
         "text": {
           "en": "Take the lump-sum package and leave on a Friday. Silence every notification.",
-          "zh": "領走一次性補償，週五就走人。關掉所有通知。"
+          "zh": "领走一次性补偿，周五就走人。关掉所有通知。"
         },
         "effects": {
           "money": 9000,
@@ -1460,13 +1460,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "Your grown kids have scheduled your babysitting shifts: three days a week. You never applied for this job.",
-      "zh": "你的孩子們已經幫你排好了帶孫班表：每週三天。你根本沒應徵過這份工作。"
+      "zh": "你的孩子们已经给你排好了带娃班表：每周三天。你压根没应聘过这份工作。"
     },
     "choices": [
       {
         "text": {
           "en": "Accept the shifts. Learn the plot of a cartoon about talking trucks.",
-          "zh": "接受排班。認真研讀一部會說話卡車的卡通劇情。"
+          "zh": "接受排班。认真研读一部会说话的卡车动画片剧情。"
         },
         "effects": {
           "money": -800,
@@ -1479,7 +1479,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Negotiate down to one day a week. Endure the guilt trip with extra sighs.",
-          "zh": "談判到每週一天。承受附贈嘆氣的愧疚攻勢。"
+          "zh": "谈判到每周一天。承受附赠叹气的愧疚攻势。"
         },
         "effects": {
           "money": 0,
@@ -1499,13 +1499,13 @@ export const eventsPart3: GameEvent[] = [
     "conditions": {},
     "text": {
       "en": "You want a camper van to 'find yourself' on the open road. Your back wants a memory-foam mattress and a private bathroom.",
-      "zh": "你想買一台露營車上路『尋找自我』。你的腰只想要記憶棉床墊和專屬廁所。"
+      "zh": "你想买辆房车上路“寻找自我”。你的腰只想要记忆棉床垫和专属厕所。"
     },
     "choices": [
       {
         "text": {
           "en": "Buy the van. Name it 'Freedom'. Its bathroom is the size of a shoebox.",
-          "zh": "買下露營車，取名『自由號』。它的廁所只有鞋盒那麼大。"
+          "zh": "买下房车，取名“自由号”。它的厕所只有鞋盒那么大。"
         },
         "effects": {
           "money": -35000,
@@ -1521,7 +1521,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Book a comfy hotel road trip instead. Adventure with room service.",
-          "zh": "改訂舒適的飯店公路之旅。附送客房服務的冒險。"
+          "zh": "改订舒适的酒店自驾游。附带客房服务的冒险。"
         },
         "effects": {
           "money": -4000,
@@ -1545,13 +1545,13 @@ export const eventsPart3: GameEvent[] = [
     },
     "text": {
       "en": "Your camper van dies in a desert town with one diner and forty retired mechanics, all of whom have opinions.",
-      "zh": "你的露營車在一個只有一間小餐館的沙漠小鎮拋錨，鎮上有四十位退休技師，每個人都有意見。"
+      "zh": "你的房车在一个只有一家小餐馆的沙漠小镇抛锚，镇上有四十位退休技师，每个人都有意见。"
     },
     "choices": [
       {
         "text": {
           "en": "Let them fix it. Pay in pie and travel stories.",
-          "zh": "讓他們修。用派和旅行故事付帳。"
+          "zh": "让他们修。用派和旅行故事付账。"
         },
         "effects": {
           "money": -1500,
@@ -1567,7 +1567,7 @@ export const eventsPart3: GameEvent[] = [
       {
         "text": {
           "en": "Call a tow truck and sulk at the counter.",
-          "zh": "叫拖吊車，然後在櫃檯邊生悶氣。"
+          "zh": "叫拖车，然后在柜台边生闷气。"
         },
         "effects": {
           "money": -2500,
