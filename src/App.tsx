@@ -4,10 +4,11 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { GameState, GameEvent, EventChoice, TurnFeedback, PastRun, Language, LifeLogEntry } from './types/game';
+import { GameState, GameEvent, EventChoice, TurnFeedback, PastRun, Language, Theme, LifeLogEntry } from './types/game';
 import { eventEngine } from './data/eventEngine';
 import { determineDeathReason, generateEpitaph } from './utils/epitaph';
 import { sounds } from './utils/audio';
+import { calculateJobSalary } from './utils/economy';
 
 import { StatusHUD } from './components/StatusHUD';
 import { EventCard } from './components/EventCard';
@@ -16,8 +17,10 @@ import { EndScreen } from './components/EndScreen';
 import { LifeLogDrawer } from './components/LifeLogDrawer';
 import { MockAdModal } from './components/MockAdModal';
 import { AbandonModal } from './components/AbandonModal';
+import { TrophyRoomModal } from './components/TrophyRoomModal';
 import { DEFAULT_PAST_RUNS, ensurePastRunHistory } from './data/sampleRuns';
 import { gameplayStart, gameplayStop, requestRewardedAd } from './utils/crazyGames';
+import { getUnlockedMedalIds, saveUnlockedMedalIds } from './utils/traits';
 
 type AppScreen = 'START' | 'PLAYING' | 'GAME_OVER';
 
@@ -51,6 +54,7 @@ export default function App() {
   const [currentEvent, setCurrentEvent] = useState<GameEvent | null>(null);
   const [feedback, setFeedback] = useState<TurnFeedback | null>(null);
   const [language, setLanguage] = useState<Language>('zh');
+  const [theme, setTheme] = useState<Theme>('light');
   
   const [isProcessingChoice, setIsProcessingChoice] = useState(false);
 
@@ -66,6 +70,8 @@ export default function App() {
   const [totalRuns, setTotalRuns] = useState<number>(0);
   const [pastRuns, setPastRuns] = useState<PastRun[]>([]);
   const [inspectedPastRun, setInspectedPastRun] = useState<PastRun | null>(null);
+  const [isTrophyRoomOpen, setIsTrophyRoomOpen] = useState(false);
+  const [unlockedMedalIds, setUnlockedMedalIds] = useState<string[]>(() => getUnlockedMedalIds());
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -74,10 +80,23 @@ export default function App() {
   }, [language]);
 
   useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('data-theme', theme);
+    }
+  }, [theme]);
+
+  useEffect(() => {
     try {
       const savedLang = localStorage.getItem('life_glitch_lang') as Language;
       if (savedLang === 'en' || savedLang === 'zh') {
         setLanguage(savedLang);
+      }
+
+      const savedTheme = localStorage.getItem('life_glitch_theme') as Theme;
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        setTheme(savedTheme);
+      } else {
+        setTheme('light');
       }
 
       const savedRuns = localStorage.getItem('life_glitch_total_runs');
@@ -105,6 +124,13 @@ export default function App() {
       }
       setTotalRuns(effectiveTotal);
       localStorage.setItem('life_glitch_total_runs', String(effectiveTotal));
+
+      // Synchronize all medals earned across all saved past runs
+      const allPastFlags = loadedPastRuns.flatMap(r => r.flags || []);
+      if (allPastFlags.length > 0) {
+        const mergedMedals = saveUnlockedMedalIds(allPastFlags);
+        setUnlockedMedalIds(mergedMedals);
+      }
     } catch {
       setPastRuns(DEFAULT_PAST_RUNS);
       setTotalRuns(DEFAULT_PAST_RUNS.length);
@@ -121,6 +147,16 @@ export default function App() {
     const nextLang: Language = language === 'en' ? 'zh' : 'en';
     setLanguage(nextLang);
     localStorage.setItem('life_glitch_lang', nextLang);
+  };
+
+  const handleToggleTheme = () => {
+    const nextTheme: Theme = theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+    try {
+      localStorage.setItem('life_glitch_theme', nextTheme);
+    } catch {
+      // ignore
+    }
   };
 
   const handleToggleMute = () => {
@@ -179,16 +215,23 @@ export default function App() {
     setPreviousEvent(currentEvent);
 
     const newAge = prev.age + 1;
-    const newMoney = prev.money + (effects.money ?? 0);
+    const newJob = effects.setJob || prev.job;
+    const newRelationship = effects.setRelationship || prev.relationship;
+
+    // Automatic Job Salary Inflow:
+    // Every year when Age advances by +1, grant net annual savings based on current Job
+    const salaryResult = calculateJobSalary(newJob, prev);
+    const annualSalary = salaryResult.salary;
+    const choiceMoneyDelta = effects.money ?? 0;
+    const totalMoneyDelta = choiceMoneyDelta + annualSalary;
+
+    const newMoney = prev.money + totalMoneyDelta;
     const newHealth = Math.max(0, Math.min(100, prev.health + (effects.health ?? 0)));
     const newHappiness = Math.max(0, Math.min(100, prev.happiness + (effects.happiness ?? 0)));
     // Natural annual stress decay (-3%) so players aren't locked in a one-way stress spiral
     const naturalStressDecay = -3;
     const newStress = Math.max(0, Math.min(100, prev.stress + (effects.stress ?? 0) + naturalStressDecay));
     const newFame = Math.max(0, Math.min(100, prev.fame + (effects.fame ?? 0)));
-
-    const newJob = effects.setJob || prev.job;
-    const newRelationship = effects.setRelationship || prev.relationship;
 
     let updatedFlags = [...prev.flags];
     if (effects.addFlags) {
@@ -200,7 +243,7 @@ export default function App() {
       updatedFlags = updatedFlags.filter(f => !effects.removeFlags!.includes(f));
     }
 
-    if ((effects.money ?? 0) > 0) {
+    if (totalMoneyDelta > 0) {
       sounds.playCash();
     } else if ((effects.stress ?? 0) > 15 || (effects.health ?? 0) < -8) {
       sounds.playDanger();
@@ -209,9 +252,16 @@ export default function App() {
     }
 
     const deltas: TurnFeedback['deltas'] = [];
+    if (annualSalary > 0) {
+      deltas.push({
+        label: { en: `Salary (${salaryResult.tierLabel.en})`, zh: `年薪 (${salaryResult.tierLabel.zh})` },
+        value: `+$` + annualSalary.toLocaleString(),
+        positive: true
+      });
+    }
     if (effects.money) {
       deltas.push({
-        label: { en: 'Money', zh: '資產' },
+        label: { en: 'Event Cash', zh: '抉擇收支' },
         value: effects.money > 0 ? `+$` + effects.money.toLocaleString() : `-$` + Math.abs(effects.money).toLocaleString(),
         positive: effects.money > 0
       });
@@ -510,6 +560,10 @@ export default function App() {
       } catch {
         localStorage.setItem('life_glitch_past_runs', JSON.stringify(cappedHistory.slice(-20)));
       }
+
+      // Unlock and persist medals earned in this life run
+      const newlyUnlocked = saveUnlockedMedalIds(finalState.flags);
+      setUnlockedMedalIds(newlyUnlocked);
     } catch {
       // storage error fallback
     }
@@ -518,7 +572,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f1117] text-slate-100 flex flex-col justify-between relative selection:bg-[#00e676] selection:text-black">
+    <div className={`min-h-screen flex flex-col justify-between relative transition-colors duration-150 ${
+      theme === 'light'
+        ? 'bg-[#f1f5f9] text-[#0f172a] selection:bg-[#059669] selection:text-white'
+        : 'bg-[#0f1117] text-slate-100 selection:bg-[#00e676] selection:text-black'
+    }`}>
       <main className="flex-1 flex flex-col justify-center w-full z-10">
         {screen === 'START' && (
           <StartScreen
@@ -526,19 +584,25 @@ export default function App() {
             pastRuns={pastRuns}
             language={language}
             onToggleLanguage={handleToggleLanguage}
+            theme={theme}
+            onToggleTheme={handleToggleTheme}
             onStartGame={handleStartGame}
             onInspectPastRun={handleInspectPastRun}
             isMuted={isMuted}
             onToggleMute={handleToggleMute}
+            onOpenTrophyRoom={() => setIsTrophyRoomOpen(true)}
+            unlockedCount={unlockedMedalIds.length}
           />
         )}
 
         {screen === 'PLAYING' && (
-          <div id="screen-game" className="flex-1 flex flex-col justify-between min-h-screen max-w-lg mx-auto w-full">
+          <div id="screen-game" className="flex-1 flex flex-col justify-between min-h-[100dvh] max-w-lg mx-auto w-full">
             <StatusHUD
               state={gameState}
               language={language}
               onToggleLanguage={handleToggleLanguage}
+              theme={theme}
+              onToggleTheme={handleToggleTheme}
               onOpenLog={() => {
                 setInspectedPastRun(null);
                 setIsLogOpen(true);
@@ -556,6 +620,7 @@ export default function App() {
               <EventCard
                 event={currentEvent}
                 language={language}
+                theme={theme}
                 currentAge={gameState.age}
                 feedback={feedback}
                 canRegret={previousTurnState !== null}
@@ -565,7 +630,7 @@ export default function App() {
               />
             ) : (
               <div className="flex-1 flex items-center justify-center p-6 text-center">
-                <p className="text-slate-400 font-mono-numbers text-sm">
+                <p className={`${theme === 'light' ? 'text-slate-600' : 'text-slate-400'} font-mono-numbers text-sm`}>
                   {language === 'zh' ? '正在搜尋下一段人生事件...' : 'Searching next life event in the simulation...'}
                 </p>
               </div>
@@ -578,6 +643,8 @@ export default function App() {
             state={gameState}
             language={language}
             onToggleLanguage={handleToggleLanguage}
+            theme={theme}
+            onToggleTheme={handleToggleTheme}
             onRestart={handleStartGame}
             onOpenAdRevive={handleOpenReviveAd}
             canRewindFatal={previousTurnState !== null}
@@ -587,6 +654,8 @@ export default function App() {
               setIsLogOpen(true);
             }}
             onReturnHome={() => setIsAbandonConfirmOpen(true)}
+            onOpenTrophyRoom={() => setIsTrophyRoomOpen(true)}
+            totalUnlockedCount={unlockedMedalIds.length}
           />
         )}
       </main>
@@ -598,6 +667,7 @@ export default function App() {
           setInspectedPastRun(null);
         }}
         language={language}
+        theme={theme}
         history={inspectedPastRun?.timeline ?? inspectedPastRun?.history ?? gameState.history}
         onForkTimeline={handleForkTimeline}
       />
@@ -606,7 +676,8 @@ export default function App() {
         isOpen={isAdOpen}
         mode={adMode}
         language={language}
-        onComplete={() => handleAdCompleted()}
+        theme={theme}
+        onAdCompleted={() => handleAdCompleted()}
         onClose={() => {
           setIsAdOpen(false);
           if (adMode === 'REVIVE') {
@@ -620,8 +691,17 @@ export default function App() {
       <AbandonModal
         isOpen={isAbandonConfirmOpen}
         language={language}
+        theme={theme}
         onConfirm={handleConfirmAbandonLife}
         onCancel={() => setIsAbandonConfirmOpen(false)}
+      />
+
+      <TrophyRoomModal
+        isOpen={isTrophyRoomOpen}
+        onClose={() => setIsTrophyRoomOpen(false)}
+        unlockedMedalIds={unlockedMedalIds}
+        language={language}
+        theme={theme}
       />
     </div>
   );

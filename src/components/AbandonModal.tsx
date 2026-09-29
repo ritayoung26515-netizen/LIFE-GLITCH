@@ -1,12 +1,13 @@
 import React from 'react';
 import { Home, AlertTriangle, X } from 'lucide-react';
-import { Language } from '../types/game';
-import { isChinese, loc, languageButtonLabel } from '../utils/i18n';
+import { Language, Theme } from '../types/game';
+import { isChinese } from '../utils/i18n';
 import { sounds } from '../utils/audio';
 
 interface AbandonModalProps {
   isOpen: boolean;
   language: Language;
+  theme?: Theme;
   onConfirm: () => void;
   onCancel: () => void;
 }
@@ -14,10 +15,13 @@ interface AbandonModalProps {
 export const AbandonModal: React.FC<AbandonModalProps> = ({
   isOpen,
   language,
+  theme = 'light',
   onConfirm,
   onCancel
 }) => {
   if (!isOpen) return null;
+
+  const isLight = theme === 'light';
 
   const t = {
     title: isChinese(language) ? '返回主頁' : 'Return to Home',
@@ -32,12 +36,20 @@ export const AbandonModal: React.FC<AbandonModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-      <div className="w-full max-w-sm bg-[#161a24] border border-[#2d3748] rounded-2xl shadow-2xl overflow-hidden">
-        <div className="flex items-center justify-between px-4 py-3 border-b border-[#2d3748]">
-          <div className="flex items-center gap-2 text-amber-400">
+    <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 backdrop-blur-sm ${
+      isLight ? 'bg-slate-900/40' : 'bg-black/80'
+    }`}>
+      <div className={`w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden border ${
+        isLight
+          ? 'bg-white border-slate-300 text-[#0f172a]'
+          : 'bg-[#161a24] border-[#2d3748] text-white'
+      }`}>
+        <div className={`flex items-center justify-between px-4 py-3 border-b ${
+          isLight ? 'border-slate-200 bg-slate-50' : 'border-[#2d3748] bg-[#1a1f2c]'
+        }`}>
+          <div className="flex items-center gap-2 text-amber-500">
             <AlertTriangle size={16} />
-            <span className="text-sm font-bold text-white">{t.title}</span>
+            <span className={`text-sm font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>{t.title}</span>
           </div>
           <button
             type="button"
@@ -45,15 +57,17 @@ export const AbandonModal: React.FC<AbandonModalProps> = ({
               sounds.playClick();
               onCancel();
             }}
-            className="p-1 text-slate-400 hover:text-white cursor-pointer"
+            className={`p-1 rounded-md cursor-pointer transition-colors ${
+              isLight ? 'text-slate-500 hover:text-slate-900 hover:bg-slate-200' : 'text-slate-400 hover:text-white hover:bg-slate-800'
+            }`}
           >
             <X size={16} />
           </button>
         </div>
 
         <div className="p-4 space-y-3">
-          <p className="text-sm text-slate-200">{t.prompt}</p>
-          <p className="text-xs text-slate-500">{t.desc}</p>
+          <p className={`text-sm font-semibold ${isLight ? 'text-[#0f172a]' : 'text-slate-200'}`}>{t.prompt}</p>
+          <p className={`text-xs ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>{t.desc}</p>
 
           <div className="flex flex-col gap-2 pt-1">
             <button
@@ -62,7 +76,11 @@ export const AbandonModal: React.FC<AbandonModalProps> = ({
                 sounds.playClick();
                 onCancel();
               }}
-              className="w-full py-2.5 rounded-xl bg-[#1a1f2c] border border-[#2d3748] text-slate-200 text-sm font-semibold cursor-pointer hover:border-slate-500"
+              className={`w-full py-2.5 rounded-xl border text-sm font-semibold cursor-pointer transition-colors ${
+                isLight
+                  ? 'bg-white hover:bg-slate-100 border-slate-300 text-slate-800 shadow-2xs'
+                  : 'bg-[#1a1f2c] hover:bg-[#252b3d] border-[#2d3748] text-slate-200'
+              }`}
             >
               {t.cancelBtn}
             </button>
@@ -72,7 +90,7 @@ export const AbandonModal: React.FC<AbandonModalProps> = ({
                 sounds.playDanger();
                 onConfirm();
               }}
-              className="w-full py-2.5 rounded-xl bg-rose-600/90 hover:bg-rose-500 text-white text-sm font-bold cursor-pointer flex items-center justify-center gap-1.5"
+              className="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-sm font-bold cursor-pointer flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98] transition-all"
             >
               <Home size={14} />
               {t.confirmBtn}

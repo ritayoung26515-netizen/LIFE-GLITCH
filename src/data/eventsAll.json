@@ -20,7 +20,11 @@
           "health": -3,
           "happiness": -8,
           "stress": 12,
-          "fame": 0
+          "fame": 0,
+          "setJob": {
+            "en": "Bank Clerk",
+            "zh": "銀行行員"
+          }
         }
       },
       {
@@ -36,7 +40,11 @@
           "fame": 2,
           "addFlags": [
             "startup_alumni"
-          ]
+          ],
+          "setJob": {
+            "en": "Junior Startup Dev",
+            "zh": "新創公司初級工程師"
+          }
         }
       }
     ]
@@ -715,7 +723,11 @@
           "fame": 0,
           "addFlags": [
             "hush_money"
-          ]
+          ],
+          "setJob": {
+            "en": "Senior Compliance Director",
+            "zh": "高級合規總監"
+          }
         }
       }
     ]
@@ -1156,7 +1168,11 @@
           "health": -6,
           "happiness": -3,
           "stress": 18,
-          "fame": 0
+          "fame": 0,
+          "setJob": {
+            "en": "On-Call Systems Engineer",
+            "zh": "全天候維運工程師"
+          }
         }
       },
       {
@@ -1169,7 +1185,11 @@
           "health": 0,
           "happiness": 3,
           "stress": -5,
-          "fame": 0
+          "fame": 0,
+          "setJob": {
+            "en": "Independent Consultant",
+            "zh": "獨立技術顧問"
+          }
         }
       }
     ]
@@ -4973,7 +4993,10 @@
           "setJob": {
             "en": "Honorary Cat Lord",
             "zh": "荣誉猫奴之王"
-          }
+          },
+          "addFlags": [
+            "cat_overlord"
+          ]
         }
       },
       {
@@ -7200,10 +7223,10 @@
           "zh": "一周七天都吃备餐的米饭和豆子。人生变成一张表格。"
         },
         "effects": {
-          "money": 150,
-          "health": 2,
+          "money": 2400,
+          "health": 5,
           "happiness": -4,
-          "stress": 3,
+          "stress": -3,
           "fame": 0
         }
       },
@@ -7325,11 +7348,15 @@
           "zh": "接下。成为安静界的传奇。"
         },
         "effects": {
-          "money": 2800,
+          "money": 3500,
           "health": -3,
           "happiness": 2,
           "stress": 4,
-          "fame": 0
+          "fame": 0,
+          "setJob": {
+            "en": "Library Assistant",
+            "zh": "圖書館行政助理"
+          }
         }
       },
       {
@@ -7381,11 +7408,15 @@
           "zh": "辞职，改替朋友接单设计 logo。"
         },
         "effects": {
-          "money": 300,
+          "money": 3500,
           "health": 0,
           "happiness": 4,
           "stress": 5,
-          "fame": 0
+          "fame": 0,
+          "setJob": {
+            "en": "Freelance Designer",
+            "zh": "自由接案設計師"
+          }
         }
       }
     ]
@@ -9365,10 +9396,10 @@
           "zh": "同意。存款上涨，快乐被设了预算上限。"
         },
         "effects": {
-          "money": 600,
+          "money": 4500,
           "health": 0,
           "happiness": -8,
-          "stress": 5,
+          "stress": -2,
           "fame": 0
         }
       },
@@ -9617,6 +9648,471 @@
           "happiness": -3,
           "stress": 6,
           "fame": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "milestone_career_launch",
+    "category": "WORK",
+    "minAge": 22,
+    "maxAge": 27,
+    "conditions": {},
+    "text": {
+      "en": "Graduation dust has settled. You receive two concrete full-time offers: a steady Corporate Operations Analyst or a scrappy Boutique Agency Designer.",
+      "zh": "校園歲月畫上句點。你手握兩份全職員工聘書：一家老牌跨國企業的「維運分析師」，或是新銳小型設計工作室的「視覺設計專員」。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Take the Corporate Analyst role ($12k salary, stable ladder).",
+          "zh": "接下企業分析師聘書（年薪穩定，晉升階梯清晰）。"
+        },
+        "effects": {
+          "money": 6000,
+          "health": 0,
+          "happiness": 4,
+          "stress": 5,
+          "setJob": {
+            "en": "Operations Analyst",
+            "zh": "維運分析師"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Join the Boutique Agency (creative freedom, chaotic hours).",
+          "zh": "加入新銳工作室（創意無限，工時隨性而混亂）。"
+        },
+        "effects": {
+          "money": 4000,
+          "health": -2,
+          "happiness": 10,
+          "stress": 8,
+          "fame": 3,
+          "setJob": {
+            "en": "Creative Specialist",
+            "zh": "視覺創意專員"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "milestone_frugal_discipline",
+    "category": "MONEY",
+    "minAge": 23,
+    "maxAge": 32,
+    "conditions": {},
+    "text": {
+      "en": "Tired of paycheck-to-paycheck anxiety, you map out a strict 50/30/20 budget: home-cooking healthy meals, splitting bulk supplies, and picking up weekend tutoring.",
+      "zh": "受夠了每個月底的戶頭焦慮，你徹底執行嚴格的 50/30/20 儲蓄法：自煮健康便當、好市多採購分裝，週末還接了高時薪家教。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Commit fully: meal prep & weekend hustle for solid savings.",
+          "zh": "全力堅持：健康備餐＋週末兼差，穩穩累積急用基金！"
+        },
+        "effects": {
+          "money": 6500,
+          "health": 6,
+          "happiness": 4,
+          "stress": -4,
+          "addFlags": [
+            "frugal_discipline"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Find a reliable roommate to cut rent and utility bills in half.",
+          "zh": "尋找生活規律的好室友，直接將每個月的房租水電砍半！"
+        },
+        "effects": {
+          "money": 5000,
+          "health": 2,
+          "happiness": 6,
+          "stress": -5,
+          "addFlags": [
+            "modest_roommate"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "milestone_senior_promotion",
+    "category": "WORK",
+    "minAge": 26,
+    "maxAge": 35,
+    "conditions": {},
+    "text": {
+      "en": "A high-stakes cross-departmental initiative is teetering on collapse. Leadership needs someone capable to take ownership and lead the team out of the weeds.",
+      "zh": "跨部門核心專案面臨進度崩塌危機。高層在週會上環顧四周，急需一位能扛起責任、帶領團隊殺出重圍的得力骨幹。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Take the reins, deliver the project, and secure the Senior Lead title.",
+          "zh": "挺身接下燙手山芋，通宵攻堅，順利晉升資深專案主管！"
+        },
+        "effects": {
+          "money": 18000,
+          "health": -4,
+          "happiness": 8,
+          "stress": 14,
+          "fame": 6,
+          "setJob": {
+            "en": "Senior Project Lead",
+            "zh": "資深專案主管"
+          },
+          "addFlags": [
+            "proven_leader"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Deliver your part reliably without absorbing extra corporate politics.",
+          "zh": "穩妥完成自己負責的模組，絕不主動捲入高層政治風暴。"
+        },
+        "effects": {
+          "money": 6000,
+          "health": 2,
+          "happiness": 6,
+          "stress": -6,
+          "setJob": {
+            "en": "Senior Specialist",
+            "zh": "資深業務專員"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "milestone_marriage_proposal",
+    "category": "LOVE",
+    "minAge": 27,
+    "maxAge": 37,
+    "conditions": {},
+    "text": {
+      "en": "After years of shared laughter, quiet weekend brunches, and assembling flat-pack furniture without screaming, your partner brings up formalizing your commitment.",
+      "zh": "經歷了多年的相濡以沫、雨天早午餐，以及一起組裝家具卻奇蹟般沒吵架後，伴侶在星空下溫柔地向你提出攜手終生的承諾。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Say yes! Host a warm, joyful wedding with close friends and family.",
+          "zh": "點頭答應！舉辦一場溫馨浪漫、充滿笑聲的小型婚禮。"
+        },
+        "effects": {
+          "money": -6000,
+          "health": 4,
+          "happiness": 25,
+          "stress": -8,
+          "fame": 3,
+          "setRelationship": {
+            "en": "Happily Married",
+            "zh": "幸福已婚"
+          },
+          "addFlags": [
+            "happily_married"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Propose staying devoted life partners without civil registry red tape.",
+          "zh": "約定不辦繁文縟節的登記，作為純粹的靈魂伴侶同甘共苦。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 14,
+          "stress": -2,
+          "setRelationship": {
+            "en": "Committed Life Partners",
+            "zh": "終生靈魂伴侶"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "milestone_first_property",
+    "category": "MONEY",
+    "minAge": 28,
+    "maxAge": 38,
+    "conditions": {},
+    "text": {
+      "en": "Your accumulated savings and steady salary qualify you for prime mortgage rates. A sunlit 2-bedroom apartment near transit just hit the market.",
+      "zh": "多年穩定的年薪與勤勉儲蓄，讓你拿到了最優惠的首購房貸資格。捷運站旁一間採光極佳的兩房公寓剛剛釋出。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Put down the 20% deposit and become a proud homeowner.",
+          "zh": "繳付 20% 首付款，告別租屋生涯，成為有房一族！"
+        },
+        "effects": {
+          "money": -25000,
+          "health": 2,
+          "happiness": 18,
+          "stress": 6,
+          "addFlags": [
+            "homeowner"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Pass on property: continue renting frugally and auto-invest in index funds.",
+          "zh": "拒絕當房奴：繼續簡樸租屋，將大筆現金全數自動定額投資指數基金。"
+        },
+        "effects": {
+          "money": 10000,
+          "health": 0,
+          "happiness": 8,
+          "stress": -8,
+          "addFlags": [
+            "frugal_investor"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "milestone_layoff_severance_pivot",
+    "category": "WORK",
+    "minAge": 28,
+    "maxAge": 39,
+    "conditions": {},
+    "text": {
+      "en": "A sudden global restructuring slashes 15% of your company. You are called into a meeting room with HR and offered a generous 6-month severance package.",
+      "zh": "母公司突發全球架構重組，裁減 15% 員工。HR 在小會議室向你遞上優厚的 6 個月離職資遣補償與推薦信。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Take the $25,000 severance and launch an independent consulting practice.",
+          "zh": "領取 25,000 美元資遣費，正式開創個人獨立策略顧問業務！"
+        },
+        "effects": {
+          "money": 25000,
+          "health": 4,
+          "happiness": 14,
+          "stress": -6,
+          "fame": 6,
+          "setJob": {
+            "en": "Independent Consultant",
+            "zh": "獨立策略顧問"
+          },
+          "addFlags": [
+            "independent_consultant"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Negotiate an immediate internal transfer into the high-margin core group.",
+          "zh": "憑藉關鍵技術人脈，當場談成平移至高利潤核心產品研發部。"
+        },
+        "effects": {
+          "money": 8000,
+          "health": -2,
+          "happiness": 4,
+          "stress": 8,
+          "setJob": {
+            "en": "Core Systems Lead",
+            "zh": "核心系統總工程師"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "milestone_viral_thought_leader",
+    "category": "SOCIAL",
+    "minAge": 26,
+    "maxAge": 39,
+    "conditions": {},
+    "text": {
+      "en": "A sharp, witty industry essay you wrote on LinkedIn/Substack gets picked up by major tech publications, rocketing you to 250,000 readers overnight.",
+      "zh": "你在社群平台撰寫的產業深度犀利評論，意外被各大財經與科技媒體轉載頭條，一夜之間收穫 25 萬點閱與行業關注！"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Leverage the spotlight: accept paid keynote speeches and book inquiries.",
+          "zh": "乘勝追擊：接下多場高薪商業演講與專欄邀約，聲名大噪！"
+        },
+        "effects": {
+          "money": 22000,
+          "health": -2,
+          "happiness": 12,
+          "stress": 8,
+          "fame": 28,
+          "addFlags": [
+            "industry_influencer"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Use the leverage at your annual review to demand a Director-level promotion.",
+          "zh": "將業界影響力化為內部籌碼，在年度考核中強勢爭取總監級職位！"
+        },
+        "effects": {
+          "money": 16000,
+          "health": 0,
+          "happiness": 14,
+          "stress": 4,
+          "fame": 15,
+          "setJob": {
+            "en": "Strategy Director",
+            "zh": "策略總監"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "milestone_executive_headhunter",
+    "category": "WORK",
+    "minAge": 30,
+    "maxAge": 42,
+    "conditions": {},
+    "text": {
+      "en": "An elite executive search firm invites you to an exclusive hotel rooftop dinner. A rapid-growth unicorn wants you as their Vice President with equity.",
+      "zh": "頂級獵頭公司邀請你在五星級酒店高空餐廳共進晚餐。一家剛完成 C 輪融資的獨角獸企業急需聘請你出任產品副總裁。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Accept the VP seat, massive salary bump, and equity package.",
+          "zh": "簽下高管合約，出任副總裁！薪資與期權大幅飆升！"
+        },
+        "effects": {
+          "money": 45000,
+          "health": -6,
+          "happiness": 10,
+          "stress": 18,
+          "fame": 18,
+          "setJob": {
+            "en": "Vice President of Operations",
+            "zh": "營運副總裁"
+          },
+          "addFlags": [
+            "corporate_vp"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Politely decline to preserve your peaceful evenings and low blood pressure.",
+          "zh": "婉拒這場高壓漩渦，堅持傍晚準時下班、身心舒暢的平衡生活。"
+        },
+        "effects": {
+          "money": 5000,
+          "health": 8,
+          "happiness": 16,
+          "stress": -15,
+          "fame": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "milestone_midlife_crossroads",
+    "category": "WEIRD",
+    "minAge": 32,
+    "maxAge": 42,
+    "conditions": {},
+    "text": {
+      "en": "Sitting in your 34th consecutive status sync of the week, you look at your calendar. A strange feeling overtakes you: is this all reality has to offer?",
+      "zh": "坐在本週第 34 場毫無重點的進度同步會議裡，你看著行事曆上密密麻麻的格子，內心浮現出荒誕的哲學詰問：人生就這樣了嗎？"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Take a 3-month paid sabbatical to build a quirky open-source simulation.",
+          "zh": "申請留職停薪三個月，專心打造一套怪誕有趣的開源人生模擬器。"
+        },
+        "effects": {
+          "money": -4000,
+          "health": 12,
+          "happiness": 22,
+          "stress": -22,
+          "fame": 8,
+          "addFlags": [
+            "zen_master"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Channel the existential dread into founding an internal corporate incubator.",
+          "zh": "將存在主義焦慮化為野心，在內部立項成立前沿孵化創新團隊！"
+        },
+        "effects": {
+          "money": 20000,
+          "health": -3,
+          "happiness": 12,
+          "stress": 10,
+          "fame": 12,
+          "setJob": {
+            "en": "Head of Incubation",
+            "zh": "前沿孵化總監"
+          },
+          "addFlags": [
+            "venture_lead"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "milestone_divorce_amicable",
+    "category": "LOVE",
+    "minAge": 31,
+    "maxAge": 43,
+    "conditions": {},
+    "text": {
+      "en": "You and your partner realize over quiet herbal tea that you have grown into wonderfully different people with opposite life goals. It is time to decide how to proceed.",
+      "zh": "在一個平靜的週末午後，你與伴侶各自捧著熱茶，坦率地意識到彼此已長成截然不同的人，人生目標漸行漸遠。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Part ways amicably with mutual respect and split assets cleanly.",
+          "zh": "平靜好聚好散，理性簽署協議平分財產，祝願彼此前程似錦。"
+        },
+        "effects": {
+          "money": -5000,
+          "health": 4,
+          "happiness": 14,
+          "stress": -12,
+          "setRelationship": {
+            "en": "Divorced & Free",
+            "zh": "單身自由"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Commit to couples counseling and rediscover the spark that brought you together.",
+          "zh": "預約專業婚姻諮商，坦誠溝通，重新找回當年眼裡的熾熱火花。"
+        },
+        "effects": {
+          "money": -2500,
+          "health": 2,
+          "happiness": 16,
+          "stress": 4,
+          "setRelationship": {
+            "en": "Rekindled Marriage",
+            "zh": "重修舊好恩愛夫妻"
+          }
         }
       }
     ]

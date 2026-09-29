@@ -948,7 +948,8 @@ export const eventsPart3: GameEvent[] = [
           "setJob": {
             "en": "Honorary Cat Lord",
             "zh": "荣誉猫奴之王"
-          }
+          },
+          "addFlags": ["cat_overlord"]
         }
       },
       {

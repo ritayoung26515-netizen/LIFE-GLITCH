@@ -1,48 +1,92 @@
 @import "tailwindcss";
 
 @layer base {
-  :root {
+  :root, [data-theme="light"] {
+    --bg-main: #f1f5f9;
+    --card-surface: #ffffff;
+    --card-surface-subtle: #f8fafc;
+    --card-border: #cbd5e1;
+    --card-border-subtle: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --accent-primary: #059669;
+    --accent-emerald: #10b981;
+    --accent-cyan: #0284c7;
+    --danger-neon: #dc2626;
+    --hud-bg: rgba(255, 255, 255, 0.95);
+    --scrollbar-track: #f1f5f9;
+    --scrollbar-thumb: #cbd5e1;
+    --scrollbar-thumb-hover: #94a3b8;
+  }
+
+  [data-theme="dark"] {
     --bg-main: #0f1117;
     --card-surface: #1a1f2c;
+    --card-surface-subtle: #161a24;
     --card-border: #2d3748;
+    --card-border-subtle: #334155;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
     --accent-primary: #00e676;
+    --accent-emerald: #00e676;
     --accent-cyan: #00f0ff;
     --danger-neon: #ff1744;
+    --hud-bg: rgba(18, 21, 28, 0.95);
+    --scrollbar-track: #12151c;
+    --scrollbar-thumb: #2d3748;
+    --scrollbar-thumb-hover: #4a5568;
   }
 
   body {
     background-color: var(--bg-main);
-    color: #e2e8f0;
+    color: var(--text-primary);
     /* Native Chinese + Latin stack for crisp mobile glyphs */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "PingFang TC", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans SC", "Noto Sans TC", "Segoe UI", sans-serif;
-    letter-spacing: normal !important;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: 0 !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    min-height: 100dvh;
     -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.15s ease, color 0.15s ease;
   }
 
   h1, h2, h3, .font-display {
     font-family: 'Chakra Petch', system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-    letter-spacing: normal !important;
+    letter-spacing: 0 !important;
   }
 
   .font-mono-numbers {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-variant-numeric: tabular-nums;
-    letter-spacing: normal !important;
+    letter-spacing: 0 !important;
   }
 
   /* Solid stroke weight for Chinese UI text */
   .zh-text, [lang="zh"] p, [lang="zh"] span, [lang="zh"] button {
-    letter-spacing: normal !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* Anti-overlapping & natural vertical flow for narrative text */
+  .event-text,
+  .event-narrative,
+  .narrative-paragraph {
+    line-height: 1.6 !important;
+    height: auto !important;
+    min-height: min-content !important;
+    overflow: visible !important;
+    display: block !important;
   }
 }
 
-/* Subtle glitch hover (no fullscreen CRT blur on mobile) */
+/* Subtle glitch hover */
 @keyframes glitch-skew {
   0% { transform: skew(0deg); }
   20% { transform: skew(-1.5deg); }
@@ -58,12 +102,12 @@
 
 @keyframes pulse-danger {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(255, 23, 68, 0.4);
-    border-color: rgba(255, 23, 68, 0.8);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+    border-color: rgba(220, 38, 38, 0.8);
   }
   50% {
-    box-shadow: 0 0 15px 2px rgba(255, 23, 68, 0.7);
-    border-color: rgba(255, 23, 68, 1);
+    box-shadow: 0 0 12px 2px rgba(220, 38, 38, 0.6);
+    border-color: rgba(220, 38, 38, 1);
   }
 }
 
@@ -85,12 +129,12 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #12151c;
+  background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2d3748;
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #4a5568;
+  background: var(--scrollbar-thumb-hover);
 }

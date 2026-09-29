@@ -93,7 +93,35 @@ export function generateEpitaph(state: GameState): EpitaphResult {
     };
   }
 
-  // 3. Stat-based archetypes
+  // 3. Fame & Reputation Archetypes
+  if ((state.fame || 0) >= 60) {
+    return {
+      title: { en: 'The Viral Icon', zh: '舉世矚目的傳奇巨星' },
+      tagline: { en: 'Recognized in every corner of the simulation, your name trended across every feed.', zh: '名字長年登頂全網熱搜頭條，舉手投足都牽動著無數粉絲與媒體的目光。' },
+      summary: { en: 'You turned existence into a spectacle and carved your legacy into popular lore.', zh: '你把平凡的人生化為璀璨的聚光燈舞台，成為不可忽視的時代圖騰。' },
+      badge: { en: 'GLOBAL ICON', zh: '全球巨星' }
+    };
+  }
+
+  if ((state.fame || 0) >= 35) {
+    return {
+      title: { en: 'The Acclaimed Luminary', zh: '名滿江湖的行業翹楚' },
+      tagline: { en: 'Held high esteem in public circles with deep professional credibility.', zh: '在業界聲名赫赫，無論出席哪一場峰會論壇，都享有極高聲譽與號召力。' },
+      summary: { en: 'Your reputation opened doors that money alone could never unlock.', zh: '你的名望與影響力，為你開啟了金錢難以買到的崇高禮遇。' },
+      badge: { en: 'DISTINGUISHED FIGURE', zh: '名流領袖' }
+    };
+  }
+
+  // 4. Stat-based archetypes
+  if (money >= 150000 && stress <= 40) {
+    return {
+      title: { en: 'The Prudent Tycoon', zh: '從容自得的理財大師' },
+      tagline: { en: 'Built lasting wealth through discipline, steady salary, and zero reckless gambles.', zh: '憑藉勤懇工作、豐厚年薪與理智抉擇，在低壓力中累積出令無數人羨慕的從容身家。' },
+      summary: { en: 'Proved that winning the simulation does not require burning your mind.', zh: '證明了在充斥代碼漏洞的世界裡，理智、健康與財富完全可以完美兼得。' },
+      badge: { en: 'WEALTH MASTER', zh: '富足大師' }
+    };
+  }
+
   if (money >= 500000 && stress >= 80) {
     return {
       title: { en: 'The Burnout Millionaire', zh: '燃盡自我的過勞富豪' },
