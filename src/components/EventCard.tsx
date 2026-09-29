@@ -1,8 +1,8 @@
 import React from 'react';
 import { GameEvent, EventChoice, TurnFeedback, Language } from '../types/game';
-import { ArrowRight, Sparkles, RotateCcw } from 'lucide-react';
+import { Sparkles, RotateCcw } from 'lucide-react';
 import { sounds } from '../utils/audio';
-import { isChinese, loc } from '../utils/i18n';
+import { isChinese, loc, languageButtonLabel } from '../utils/i18n';
 
 interface EventCardProps {
   event: GameEvent;
@@ -152,7 +152,6 @@ export const EventCard: React.FC<EventCardProps> = ({
                     {loc(choice.text, language)}
                   </div>
                 </div>
-                <ArrowRight size={16} className="text-slate-600 group-hover:text-[#00e676] shrink-0 mt-1 transition-colors" />
               </div>
             </button>
           ))}
