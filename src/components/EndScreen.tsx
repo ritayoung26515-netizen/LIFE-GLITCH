@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { GameState, Language } from '../types/game';
 import { generateEpitaph } from '../utils/epitaph';
-import { isChinese, loc, languageButtonLabel } from '../utils/i18n';
 import { RotateCcw, Tv, Share2, Check, Sparkles, Skull, Globe, Home } from 'lucide-react';
 import { sounds } from '../utils/audio';
-import { getTraitLabel } from '../utils/traits';
 
 interface EndScreenProps {
   state: GameState;
@@ -36,28 +34,28 @@ export const EndScreen: React.FC<EndScreenProps> = ({
   const isCenturyVictory = state.age >= 100;
 
   const t = {
-    victoryBanner: isChinese(language) ? '🎉 世紀存活者' : '🎉 CENTURY SURVIVOR',
-    deathBanner: isChinese(language) ? '💀 生命終結' : '💀 LIFE TERMINATED',
-    decisionsCount: isChinese(language) ? '做出決定數' : 'DECISIONS MADE',
-    retiredAt: isChinese(language) ? `🎉 於 ${state.age} 歲圓滿退休` : `🎉 RETIRED AT AGE ${state.age}`,
-    diedAt: isChinese(language) ? `💀 於 ${state.age} 歲離世` : `💀 DIED AT AGE ${state.age}`,
-    officialTitle: isChinese(language) ? '官方人生稱號 / 墓誌銘' : 'OFFICIAL LIFE EPITAPH',
-    causeOfEnd: isChinese(language) ? '終結原因：' : 'Cause of End:',
-    finalWealth: isChinese(language) ? '最終財富' : 'Final Wealth',
-    finalJoy: isChinese(language) ? '最終快樂' : 'Final Joy',
-    finalJob: isChinese(language) ? '最終職業' : 'Final Career',
-    traitsDiscovered: isChinese(language) ? '探索特質' : 'Traits Found',
-    acquiredTraits: isChinese(language) ? '已獲特質標籤：' : 'Acquired Traits:',
-    reviveBtn: isChinese(language) ? '📺 觀看廣告 (復活恢復50%HP)' : '📺 WATCH AD (REVIVE WITH 50% HP)',
-    playAgainBtn: isChinese(language) ? '🔄 再活一次' : '🔄 PLAY AGAIN',
-    timelineBtn: isChinese(language) ? '回顧整個人生時間軸' : 'Review Full Timeline',
-    shareBtn: isChinese(language) ? '分享人生總結' : 'Share Epitaph',
-    copiedText: isChinese(language) ? '已複製到剪貼簿！' : 'Copied to Clipboard!',
+    victoryBanner: language === 'zh' ? '🎉 世紀存活者' : '🎉 CENTURY SURVIVOR',
+    deathBanner: language === 'zh' ? '💀 生命終結' : '💀 LIFE TERMINATED',
+    decisionsCount: language === 'zh' ? '做出決定數' : 'DECISIONS MADE',
+    retiredAt: language === 'zh' ? `🎉 於 ${state.age} 歲圓滿退休` : `🎉 RETIRED AT AGE ${state.age}`,
+    diedAt: language === 'zh' ? `💀 於 ${state.age} 歲離世` : `💀 DIED AT AGE ${state.age}`,
+    officialTitle: language === 'zh' ? '官方人生稱號 / 墓誌銘' : 'OFFICIAL LIFE EPITAPH',
+    causeOfEnd: language === 'zh' ? '終結原因：' : 'Cause of End:',
+    finalWealth: language === 'zh' ? '最終財富' : 'Final Wealth',
+    finalJoy: language === 'zh' ? '最終快樂' : 'Final Joy',
+    finalJob: language === 'zh' ? '最終職業' : 'Final Career',
+    traitsDiscovered: language === 'zh' ? '探索特質' : 'Traits Found',
+    acquiredTraits: language === 'zh' ? '已獲特質標籤：' : 'Acquired Traits:',
+    reviveBtn: language === 'zh' ? '📺 觀看廣告 (復活恢復50%HP)' : '📺 WATCH AD (REVIVE WITH 50% HP)',
+    playAgainBtn: language === 'zh' ? '🔄 再活一次' : '🔄 PLAY AGAIN',
+    timelineBtn: language === 'zh' ? '回顧整個人生時間軸' : 'Review Full Timeline',
+    shareBtn: language === 'zh' ? '分享人生總結' : 'Share Epitaph',
+    copiedText: language === 'zh' ? '已複製到剪貼簿！' : 'Copied to Clipboard!',
   };
 
   const handleShare = () => {
     sounds.playClick();
-    const shareText = `💀 LIFE GLITCH SUMMARY:\nTitle / 稱號: "${loc(epitaph.title, language)}"\nAge / 年齡: ${state.age}\nFinal Wealth / 財富: $${state.money.toLocaleString()}\nCareer / 職業: ${loc(state.job, language)}\nCause / 原因: ${state.deathReason ? loc(state.deathReason, language) : ''}\nPlay LIFE GLITCH on CrazyGames!`;
+    const shareText = `💀 LIFE GLITCH SUMMARY:\nTitle / 稱號: "${epitaph.title[language]}"\nAge / 年齡: ${state.age}\nFinal Wealth / 財富: $${state.money.toLocaleString()}\nCareer / 職業: ${state.job[language]}\nCause / 原因: ${state.deathReason ? state.deathReason[language] : ''}\nPlay LIFE GLITCH on CrazyGames!`;
 
     if (navigator.clipboard) {
       navigator.clipboard.writeText(shareText).then(() => {
@@ -71,7 +69,7 @@ export const EndScreen: React.FC<EndScreenProps> = ({
     <div id="screen-end" className="min-h-screen flex flex-col justify-between p-4 sm:p-6 max-w-lg mx-auto w-full select-none animate-fade-in">
       <header className="flex items-center justify-between py-1 mb-2 border-b border-[#2d3748]">
         <span className="text-xs font-mono-numbers text-slate-400">
-          LIFE REPORT · {state.age} {isChinese(language) ? '歲' : 'YRS'}
+          LIFE REPORT · {state.age} {language === 'zh' ? '歲' : 'YRS'}
         </span>
         <div className="flex items-center gap-1.5">
           {onReturnHome && (
@@ -81,10 +79,10 @@ export const EndScreen: React.FC<EndScreenProps> = ({
                 onReturnHome();
               }}
               className="flex items-center gap-1 text-xs font-mono-numbers text-slate-300 hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] px-2.5 py-1 rounded-md transition-colors cursor-pointer"
-              title={isChinese(language) ? '返回主頁 / Home' : 'Return Home'}
+              title={language === 'zh' ? '返回主頁 / Home' : 'Return Home'}
             >
               <Home size={13} className="text-amber-400" />
-              <span>{isChinese(language) ? '主頁' : 'Home'}</span>
+              <span>{language === 'zh' ? '主頁' : 'Home'}</span>
             </button>
           )}
           <button
@@ -95,7 +93,7 @@ export const EndScreen: React.FC<EndScreenProps> = ({
             className="flex items-center gap-1 text-xs font-mono-numbers font-bold text-[#00e676] bg-[#1a1f2c] border border-[#2d3748] px-2.5 py-1 rounded-md transition-colors cursor-pointer"
           >
             <Globe size={13} />
-            <span>{languageButtonLabel(language)}</span>
+            <span>{language === 'en' ? '中文' : 'EN'}</span>
           </button>
         </div>
       </header>
@@ -114,7 +112,7 @@ export const EndScreen: React.FC<EndScreenProps> = ({
             <div className="p-4 text-center">
               <Skull size={32} className="text-[#ff1744] mx-auto mb-1 animate-pulse" />
               <div className="font-display font-bold text-white text-base">
-                {isChinese(language) ? '生命終結協議' : 'TERMINATION EXCEPTION'}
+                {language === 'zh' ? '生命終結協議' : 'TERMINATION EXCEPTION'}
               </div>
             </div>
           )}
@@ -149,14 +147,14 @@ export const EndScreen: React.FC<EndScreenProps> = ({
             {t.officialTitle}
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-[#00e676] mb-1 tracking-normal">
-            "{loc(epitaph.title, language)}"
+            "{epitaph.title[language]}"
           </h2>
           <p className="text-xs sm:text-sm text-slate-200 font-medium italic mb-3">
-            "{loc(epitaph.tagline, language)}"
+            "{epitaph.tagline[language]}"
           </p>
           <div className="bg-[#12151c] p-3.5 rounded-lg border border-[#2d3748] text-xs sm:text-sm text-slate-200 font-medium leading-relaxed text-left">
             <strong className="text-[#ff1744] block mb-1 font-semibold">{t.causeOfEnd}</strong>
-            {state.deathReason ? loc(state.deathReason, language) : ''}
+            {state.deathReason ? state.deathReason[language] : ''}
           </div>
         </div>
 
@@ -179,8 +177,8 @@ export const EndScreen: React.FC<EndScreenProps> = ({
 
           <div className="bg-[#1a1f2c] border border-[#2d3748] p-2.5 rounded-lg text-center">
             <span className="text-[10px] text-slate-400 block font-medium">{t.finalJob}</span>
-            <span className="text-xs sm:text-sm font-semibold text-slate-200 truncate block" title={loc(state.job, language)}>
-              {loc(state.job, language)}
+            <span className="text-xs sm:text-sm font-semibold text-slate-200 truncate block" title={state.job[language]}>
+              {state.job[language]}
             </span>
           </div>
 
@@ -200,7 +198,7 @@ export const EndScreen: React.FC<EndScreenProps> = ({
             <div className="flex flex-wrap gap-1">
               {state.flags.map((f, i) => (
                 <span key={i} className="text-[10px] font-medium bg-[#1a1f2c] border border-[#2d3748] px-2 py-0.5 rounded text-slate-300 tracking-normal">
-                  {getTraitLabel(f, language)}
+                  {f}
                 </span>
               ))}
             </div>
@@ -231,7 +229,7 @@ export const EndScreen: React.FC<EndScreenProps> = ({
             className="w-full py-3 px-4 bg-gradient-to-r from-[#1c2333] via-[#263147] to-[#1c2333] hover:from-[#25304a] hover:to-[#25304a] border-2 border-amber-400/70 hover:border-amber-300 text-amber-300 hover:text-amber-100 font-display font-bold text-sm sm:text-base uppercase tracking-wider rounded-xl transition-all shadow-[0_0_18px_rgba(251,191,36,0.18)] flex items-center justify-center gap-2 cursor-pointer active:scale-95"
           >
             <RotateCcw size={18} className="text-amber-400" />
-            <span>{isChinese(language) ? '⏪ 後悔致命抉擇？(看廣告倒流時光)' : '⏪ REWIND FATAL CHOICE (WATCH AD)'}</span>
+            <span>{language === 'zh' ? '⏪ 後悔致命抉擇？(看廣告倒流時光)' : '⏪ REWIND FATAL CHOICE (WATCH AD)'}</span>
           </button>
         )}
 
