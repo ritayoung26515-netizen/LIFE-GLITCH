@@ -18,8 +18,6 @@ import { MockAdModal } from './components/MockAdModal';
 import { AbandonModal } from './components/AbandonModal';
 import { DEFAULT_PAST_RUNS, ensurePastRunHistory } from './data/sampleRuns';
 import { gameplayStart, gameplayStop, requestRewardedAd } from './utils/crazyGames';
-import { getTraitLabel } from './utils/traits';
-import { isChinese, nextLanguage } from './utils/i18n';
 
 type AppScreen = 'START' | 'PLAYING' | 'GAME_OVER';
 
@@ -28,7 +26,7 @@ const INITIAL_STATE: GameState = {
   money: 1000,
   health: 80,
   happiness: 60,
-  stress: 30,
+  stress: 20,
   fame: 0,
   job: {
     en: 'Unemployed',
@@ -71,14 +69,14 @@ export default function App() {
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      document.documentElement.lang = language === 'zh' ? 'zh-TW' : language === 'zh-CN' ? 'zh-CN' : 'en';
+      document.documentElement.lang = language === 'zh' ? 'zh-TW' : 'en';
     }
   }, [language]);
 
   useEffect(() => {
     try {
       const savedLang = localStorage.getItem('life_glitch_lang') as Language;
-      if (savedLang === 'en' || savedLang === 'zh' || savedLang === 'zh-CN') {
+      if (savedLang === 'en' || savedLang === 'zh') {
         setLanguage(savedLang);
       }
 
@@ -120,8 +118,7 @@ export default function App() {
   };
 
   const handleToggleLanguage = () => {
-    // Cycle: EN → 繁 (zh) → 簡 (zh-CN) → EN
-    const nextLang = nextLanguage(language);
+    const nextLang: Language = language === 'en' ? 'zh' : 'en';
     setLanguage(nextLang);
     localStorage.setItem('life_glitch_lang', nextLang);
   };
@@ -249,10 +246,9 @@ export default function App() {
     let enSummary = deltas.map(d => `${d.value} ${d.label.en}`).join(' · ');
     let zhSummary = deltas.map(d => `${d.value} ${d.label.zh}`).join(' · ');
     if (effects.addFlags && effects.addFlags.length > 0) {
-      const enTraits = effects.addFlags.map(f => getTraitLabel(f, 'en')).join(', ');
-      const zhTraits = effects.addFlags.map(f => getTraitLabel(f, 'zh')).join(', ');
-      enSummary = enSummary ? `${enSummary} · [${enTraits}]` : `[${enTraits}]`;
-      zhSummary = zhSummary ? `${zhSummary} · [${zhTraits}]` : `[${zhTraits}]`;
+      const traitStr = effects.addFlags.join(', ');
+      enSummary = enSummary ? `${enSummary} · [${traitStr}]` : `[${traitStr}]`;
+      zhSummary = zhSummary ? `${zhSummary} · [${traitStr}]` : `[${traitStr}]`;
     }
 
     const newHistoryEntry: LifeLogEntry = {
@@ -568,7 +564,7 @@ export default function App() {
             ) : (
               <div className="flex-1 flex items-center justify-center p-6 text-center">
                 <p className="text-slate-400 font-mono-numbers text-sm">
-                  {isChinese(language) ? '正在搜尋下一段人生事件...' : 'Searching next life event in the simulation...'}
+                  {language === 'zh' ? '正在搜尋下一段人生事件...' : 'Searching next life event in the simulation...'}
                 </p>
               </div>
             )}
@@ -580,15 +576,15 @@ export default function App() {
             state={gameState}
             language={language}
             onToggleLanguage={handleToggleLanguage}
-            onPlayAgain={handleStartGame}
-            onRevive={handleOpenReviveAd}
-            onOpenTimeline={() => {
+            onRestart={handleStartGame}
+            onOpenAdRevive={handleOpenReviveAd}
+            canRewindFatal={previousTurnState !== null}
+            onRewindFatalChoice={handleOpenRegretAd}
+            onOpenHistory={() => {
               setInspectedPastRun(null);
               setIsLogOpen(true);
             }}
             onReturnHome={() => setIsAbandonConfirmOpen(true)}
-            canRegret={previousTurnState !== null}
-            onRegret={handleOpenRegretAd}
           />
         )}
       </main>
@@ -599,10 +595,10 @@ export default function App() {
           setIsLogOpen(false);
           setInspectedPastRun(null);
         }}
-        history={inspectedPastRun?.timeline ?? inspectedPastRun?.history ?? gameState.history}
         language={language}
+        history={inspectedPastRun?.timeline ?? inspectedPastRun?.history ?? gameState.history}
         pastRun={inspectedPastRun}
-        onFork={handleForkTimeline}
+        onForkTimeline={handleForkTimeline}
       />
 
       <MockAdModal
@@ -610,10 +606,7 @@ export default function App() {
         mode={adMode}
         language={language}
         onComplete={() => handleAdCompleted()}
-        onClose={() => {
-          setIsAdOpen(false);
-          gameplayStart();
-        }}
+        onSkip={() => handleAdCompleted()}
       />
 
       <AbandonModal
