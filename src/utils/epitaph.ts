@@ -154,8 +154,8 @@ export function determineDeathReason(state: GameState): LocalizedString {
   }
   if (state.stress >= 100) {
     return {
-      en: 'Stress breached 100%. Suffered a catastrophic burnout and cardiac collapse during an urgent meeting.',
-      zh: '壓力值飆破 100%。在緊急視訊會議中遭遇毀滅性過勞與心臟停機。'
+      en: 'Suffered acute cardiovascular collapse under severe, continuous stress overload.',
+      zh: '在巨大精神打擊與連續極限高壓下，心臟過載當場停機。'
     };
   }
   if (state.happiness <= 0) {

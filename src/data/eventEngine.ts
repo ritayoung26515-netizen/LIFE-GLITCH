@@ -3,9 +3,11 @@ import { ALL_EVENTS, getProceduralFallbackEvent } from './events';
 
 export class EventEngine {
   private usedEventIds: Set<string> = new Set();
+  private weirdCooldownTurns: number = 0;
 
   public reset() {
     this.usedEventIds.clear();
+    this.weirdCooldownTurns = 0;
   }
 
   public removeUsedEvent(id: string) {
@@ -14,11 +16,34 @@ export class EventEngine {
 
   public restoreEventsForHistory(remainingHistory: { event?: GameEvent }[]) {
     this.usedEventIds.clear();
+    this.weirdCooldownTurns = 0;
     remainingHistory.forEach(h => {
       if (h.event && h.event.id) {
         this.usedEventIds.add(h.event.id);
       }
     });
+
+    // Check if any recent event was weird to restore cooldown
+    for (let i = remainingHistory.length - 1; i >= 0; i--) {
+      const ev = remainingHistory[i]?.event;
+      if (ev && this.isWeirdOrChainEvent(ev)) {
+        const turnsAgo = (remainingHistory.length - 1) - i;
+        if (turnsAgo < 2) {
+          this.weirdCooldownTurns = 2 - turnsAgo;
+        }
+        break;
+      }
+    }
+  }
+
+  public isWeirdOrChainEvent(ev: GameEvent): boolean {
+    return (
+      ev.category === 'WEIRD' ||
+      ev.category === 'CHAIN' ||
+      ev.category === 'SECRET' ||
+      ev.id.startsWith('flag_') ||
+      ev.id.startsWith('fun_')
+    );
   }
 
   public getNextEvent(state: GameState): GameEvent {
@@ -40,23 +65,63 @@ export class EventEngine {
       return getProceduralFallbackEvent(state.age);
     }
 
-    // Weighted selection:
-    // If an event is a Chain Event or requires specific flags, give it 3x priority weight
+    const groundedCandidates = candidateEvents.filter(e => !this.isWeirdOrChainEvent(e));
+    const weirdCandidates = candidateEvents.filter(e => this.isWeirdOrChainEvent(e));
+
+    let chosen: GameEvent;
+
+    // Requirement 3: Event Pacing (70% Grounded Life / 30% Weird) & Weird Cooldown:
+    // If weird cooldown is active, enforce picking from grounded candidates for the next 2-3 years
+    if (this.weirdCooldownTurns > 0) {
+      if (groundedCandidates.length > 0) {
+        chosen = this.pickWeighted(groundedCandidates);
+      } else {
+        chosen = this.pickWeighted(candidateEvents);
+      }
+      this.weirdCooldownTurns--;
+    } else {
+      // 70% Grounded Life (career, rent, dating, health) / 30% Weird
+      const roll = Math.random();
+      if (roll < 0.70) {
+        if (groundedCandidates.length > 0) {
+          chosen = this.pickWeighted(groundedCandidates);
+        } else {
+          chosen = this.pickWeighted(weirdCandidates.length > 0 ? weirdCandidates : candidateEvents);
+        }
+      } else {
+        if (weirdCandidates.length > 0) {
+          chosen = this.pickWeighted(weirdCandidates);
+        } else {
+          chosen = this.pickWeighted(groundedCandidates.length > 0 ? groundedCandidates : candidateEvents);
+        }
+      }
+
+      // If a WEIRD / CHAIN / SECRET / fun event was chosen, activate 2-3 years cooldown
+      if (this.isWeirdOrChainEvent(chosen)) {
+        this.weirdCooldownTurns = Math.random() < 0.5 ? 2 : 3;
+      }
+    }
+
+    this.usedEventIds.add(chosen.id);
+    return chosen;
+  }
+
+  private pickWeighted(events: GameEvent[]): GameEvent {
+    if (events.length === 1) return events[0];
+
     const weightedPool: GameEvent[] = [];
-    for (const ev of candidateEvents) {
+    for (const ev of events) {
       const isChainOrRequiresFlags = 
         ev.category === 'CHAIN' || 
         (ev.conditions?.flags && ev.conditions.flags.length > 0);
 
-      const weight = isChainOrRequiresFlags ? 3 : 1;
+      const weight = isChainOrRequiresFlags ? 2 : 1;
       for (let i = 0; i < weight; i++) {
         weightedPool.push(ev);
       }
     }
 
-    const chosen = weightedPool[Math.floor(Math.random() * weightedPool.length)];
-    this.usedEventIds.add(chosen.id);
-    return chosen;
+    return weightedPool[Math.floor(Math.random() * weightedPool.length)];
   }
 
   private filterEvents(state: GameState, minAllowedAge: number, maxAllowedAge: number): GameEvent[] {

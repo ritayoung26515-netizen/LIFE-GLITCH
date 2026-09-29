@@ -1,450 +1,2009 @@
-import { GameEvent } from '../types/game';
+import { GameEvent } from "../types/game";
 
-export const EVENTS_PART_1: GameEvent[] = [
+export const eventsPart1: GameEvent[] = [
   {
-    id: "norm_first_job",
-    category: "WORK",
-    minAge: 18,
-    maxAge: 24,
-    conditions: {},
-    text: {
-      en: "Two job offers: a soul-crushing bank with a pension plan, or a 'family-like' startup paying in equity and free pizza.",
-      zh: "兩份 offer：有退休金計劃但會壓碎靈魂的銀行，或是『像家人一樣』、薪水是股票加免費披薩的新創。"
-    },
-    choices: [
-      {
-        text: {
-          en: "Take the bank. A pension plan is a love language.",
-          zh: "去銀行。退休金就是愛的語言。"
-        },
-        effects: { money: 15000, health: -3, happiness: -8, stress: 12, fame: 0, setJob: { en: "Bank Junior Clerk", zh: "銀行初級行員" } }
-      },
-      {
-        text: {
-          en: "Join the startup. Equity will surely be worth something.",
-          zh: "加入新創。股票『一定』會值錢的。"
-        },
-        effects: { money: 3000, health: -5, happiness: 10, stress: 8, fame: 2, addFlags: ["startup_alumni"], setJob: { en: "Startup Evangelist", zh: "新創熱血專員" } }
-      }
-    ]
-  },
-  {
-    id: "norm_roommate",
-    category: "SOCIAL",
-    minAge: 18,
-    maxAge: 30,
-    conditions: {},
-    text: {
-      en: "A cheap room comes with a roommate who names his sourdough starters and holds funerals for them. The alternative: a $2,400 studio the size of a coffin.",
-      zh: "便宜房間附贈室友：他幫每個酸種麵團取名，死掉還會辦告別式。另一個選擇：月租 2,400 美金、大小像棺材的套房。"
-    },
-    choices: [
-      {
-        text: { en: "Move in. Bring black clothes.", zh: "搬進去。記得帶黑衣服參加告別式。" },
-        effects: { money: 6000, health: 0, happiness: 6, stress: 8, fame: 0 }
-      },
-      {
-        text: { en: "Take the coffin studio. Privacy has a price.", zh: "住棺材套房。隱私是有價格的。" },
-        effects: { money: -9000, health: 3, happiness: -4, stress: -10, fame: 0 }
-      }
-    ]
-  },
-  {
-    id: "norm_gap_year_debate",
-    category: "WORK",
-    minAge: 18,
-    maxAge: 20,
-    conditions: {},
-    text: {
-      en: "Everyone expects you to go straight to college. You want a gap year 'to find yourself'. Your savings: $412 and a very confident backpack.",
-      zh: "所有人都期待你直接上大學。你想休一年『間隔年』找自己。你的存款：412 美金，加上一個信心滿滿的背包。"
-    },
-    choices: [
-      {
-        text: { en: "Enroll in college. Find yourself in the cafeteria line.", zh: "去念大學。在餐廳排隊的隊伍裡找自己。" },
-        effects: { money: -15000, health: 0, happiness: 4, stress: 8, fame: 1, setJob: { en: "Undergraduate", zh: "大學生" } }
-      },
-      {
-        text: { en: "Take the gap year. Find yourself, hopefully near a beach.", zh: "休間隔年。希望能在海灘附近找到自己。" },
-        effects: { money: -2000, health: 0, happiness: 9, stress: 4, fame: 0, setJob: { en: "Gap-Year Wanderer", zh: "間隔年流浪者" } }
-      }
-    ]
-  },
-  {
-    id: "fun_taxidermy_roommate",
-    category: "WEIRD",
-    minAge: 18,
-    maxAge: 20,
-    conditions: {},
-    text: {
-      en: "Your assigned dorm roommate collects taxidermy squirrels and has strong opinions about your sleep schedule.",
-      zh: "系統分配給你的宿舍室友蒐集松鼠標本，而且對你的作息有強烈意見。"
-    },
-    choices: [
-      {
-        text: { en: "Stay. Negotiate a 'no squirrels after 10 p.m.' treaty.", zh: "留下來。談判出一份『晚上十點後不准出現松鼠』的條約。" },
-        effects: { money: 0, health: -1, happiness: 6, stress: 8, fame: 1 }
-      },
-      {
-        text: { en: "Pay extra for a single room. Peace has a price tag.", zh: "加錢換單人房。平靜是有標價的。" },
-        effects: { money: -3000, health: 2, happiness: -2, stress: -8, fame: 0 }
-      }
-    ]
-  },
-  {
-    id: "norm_driving_test_fail",
-    category: "SOCIAL",
-    minAge: 18,
-    maxAge: 20,
-    conditions: {},
-    text: {
-      en: "You fail your driving test for the second time. The examiner writes 'confident, but wrong' on your report.",
-      zh: "你的駕照考試第二次不及格。考官在報告上寫著：『很有自信，但是錯的。』"
-    },
-    choices: [
-      {
-        text: { en: "Book a third test and take lessons from your grandma.", zh: "報名第三次考試，並向奶奶學開車。" },
-        effects: { money: -200, health: 0, happiness: 3, stress: 6, fame: 1 }
-      },
-      {
-        text: { en: "Go carless. Bike everywhere and call it 'sustainable'.", zh: "放棄開車。騎腳踏車到處跑，還美其名為『永續生活』。" },
-        effects: { money: 100, health: 4, happiness: -3, stress: 2, fame: 0 }
-      }
-    ]
-  },
-  {
-    id: "norm_campus_shirt_card",
-    category: "MONEY",
-    minAge: 18,
-    maxAge: 20,
-    conditions: {},
-    text: {
-      en: "A campus table offers a free T-shirt if you sign up for a credit card. The shirt is remarkably soft.",
-      zh: "校園攤位說，辦一張信用卡就送免費 T 恤。那件 T 恤軟得驚人。"
-    },
-    choices: [
-      {
-        text: { en: "Sign up. Softness has no price (until the statement arrives).", zh: "辦卡。柔軟無價（直到帳單寄來為止）。" },
-        effects: { money: -600, health: 0, happiness: 5, stress: 6, fame: 0 }
-      },
-      {
-        text: { en: "Walk away. Your neck stays in the freezing weather.", zh: "轉身離開。你的脖子繼續暴露在寒風裡。" },
-        effects: { money: 0, health: -1, happiness: -3, stress: -2, fame: 0 }
-      }
-    ]
-  },
-  {
-    id: "norm_summer_job_pick",
-    category: "WORK",
-    minAge: 18,
-    maxAge: 20,
-    conditions: {},
-    text: {
-      en: "Summer job options: lifeguard at a pool with a suspicious smell, or a giant mascot suit at a burger stand in July.",
-      zh: "暑期工作二選一：在氣味可疑的游泳池當救生員，或是在七月穿巨型吉祥物裝在漢堡攤前發傳單。"
-    },
-    choices: [
-      {
-        text: { en: "Wear the mascot suit. Sweat is a form of branding.", zh: "穿上吉祥物裝。汗水也是一種品牌經營。" },
-        effects: { money: 3000, health: -4, happiness: 3, stress: 8, fame: 3, setJob: { en: "Burger Mascot (Seasonal)", zh: "漢堡吉祥物（季節工）" } }
-      },
-      {
-        text: { en: "Guard the pool. Nobody drowns, everybody sighs.", zh: "守護泳池。沒有人溺水，只有人嘆氣。" },
-        effects: { money: 2200, health: 3, happiness: -2, stress: -3, fame: 0, setJob: { en: "Lifeguard (Seasonal)", zh: "救生員（季節工）" } }
-      }
-    ]
-  },
-  {
-    id: "norm_curfew_at_eighteen",
-    category: "SOCIAL",
-    minAge: 18,
-    maxAge: 20,
-    conditions: {},
-    text: {
-      en: "Your parents set a midnight curfew for a legal adult. Their leverage: free laundry and pasta.",
-      zh: "你的父母替一個法定成年人訂了午夜門禁。他們的籌碼：免費洗衣服，以及義大利麵。"
-    },
-    choices: [
-      {
-        text: { en: "Follow it. Enjoy the pasta and fold your dignity neatly.", zh: "乖乖遵守。享用義大利麵，並把尊嚴摺得整整齊齊。" },
-        effects: { money: 300, health: 2, happiness: -3, stress: -4, fame: 0 }
-      },
-      {
-        text: { en: "Move into a shared flat above a noisy bakery.", zh: "搬進一間在吵鬧麵包店樓上的合租公寓。" },
-        effects: { money: -3500, health: -2, happiness: 8, stress: 8, fame: 0 }
-      }
-    ]
-  },
-  {
-    id: "fun_regrettable_tattoo",
-    category: "WEIRD",
-    minAge: 18,
-    maxAge: 20,
-    conditions: {},
-    text: {
-      en: "You want a tattoo of your crush's name. You've known them for eleven days.",
-      zh: "你想刺一個暗戀對象名字的刺青。你認識對方十一天了。"
-    },
-    choices: [
-      {
-        text: { en: "Get it. Commitment looks great on skin.", zh: "刺下去。承諾在皮膚上看起來很棒。" },
-        effects: { money: -150, health: -2, happiness: 8, stress: 3, fame: 1, addFlags: ["impulsive_tattoo"] }
-      },
-      {
-        text: { en: "Get a tiny cactus instead. Prickly and low-maintenance.", zh: "改刺一株小仙人掌。帶刺而且好照顧。" },
-        effects: { money: -100, health: 0, happiness: 4, stress: -1, fame: 0 }
-      }
-    ]
-  },
-  {
-    id: "norm_car_loan",
-    category: "MONEY",
-    minAge: 22,
-    maxAge: 40,
-    conditions: {},
-    text: {
-      en: "A brand-new car at 19.9% APR, or a used one that smells like a decision someone regretted.",
-      zh: "全新車，年利率 19.9%；或是一台散發著『前車主後悔氣息』的二手車。"
-    },
-    choices: [
-      {
-        text: { en: "Sign for the new car. The smell of debt is 'new car smell'.", zh: "簽新車。負債的味道就叫『新車味』。" },
-        effects: { money: -14000, health: 0, happiness: 10, stress: 10, fame: 3, addFlags: ["car_debt"] }
-      },
-      {
-        text: { en: "Buy the used one and drive with the windows down. Forever.", zh: "買二手車，然後永遠開著車窗。" },
-        effects: { money: -4000, health: -4, happiness: -3, stress: 5, fame: 0, addFlags: ["lemon_car"] }
-      }
-    ]
-  },
-  {
-    id: "norm_move_in",
-    category: "LOVE",
-    minAge: 20,
-    maxAge: 35,
-    conditions: {},
-    text: {
-      en: "Three months in, your partner says 'let's move in together.' Your freedom whispers 'run.' Your rent whispers 'say yes.'",
-      zh: "交往才三個月，對方說「我們同居吧」。你的自由低語：「快跑。」你的房租低語：「答應啦。」"
-    },
-    choices: [
-      {
-        text: { en: "Say yes. Split the rent, share the dishes, lose the remote.", zh: "答應。平分房租、共用碗盤、失去遙控器主權。" },
-        effects: { money: 3000, health: 0, happiness: 8, stress: 10, fame: 0, addFlags: ["cohabiting"], setRelationship: { en: "Cohabiting", zh: "同居中" } }
-      },
-      {
-        text: { en: "Say 'let's take it slow.' Say it with a very fake smile.", zh: "說「我們慢慢來」。並附上一個非常假的微笑。" },
-        effects: { money: -2000, health: 0, happiness: -5, stress: -5, fame: 0, addFlags: ["commitment_issues"] }
-      }
-    ]
-  },
-  {
-    id: "norm_weekend_overtime",
-    category: "WORK",
-    minAge: 22,
-    maxAge: 45,
-    conditions: { minStress: 30 },
-    text: {
-      en: "Your boss asks you to work this weekend, promising 'great exposure' and a stale bagel.",
-      zh: "老闆要你週末加班，並承諾給你『絕佳曝光機會』與一個乾掉的貝果。"
-    },
-    choices: [
-      {
-        text: { en: "Work the weekend. Eat the bagel. Feel nothing.", zh: "加班。吃貝果。內心毫無波瀾。" },
-        effects: { money: 2000, health: -8, happiness: -8, stress: 15, fame: 0 }
-      },
-      {
-        text: { en: "Politely refuse and enjoy your weekend. The boss will remember this.", zh: "禮貌拒絕，享受週末。老闆會記住的。" },
-        effects: { money: 0, health: 0, happiness: 5, stress: -8, fame: 0, addFlags: ["boss_grudge"] }
-      }
-    ]
-  },
-  {
-    id: "norm_gym",
-    category: "HEALTH",
-    minAge: 20,
-    maxAge: 40,
-    conditions: {},
-    text: {
-      en: "A $1,200 annual gym membership: the price of visiting twice and feeling guilty daily. Or 'working out at home' (the couch counts).",
-      zh: "一年 1200 美金的健身房會員：用來去兩次，然後每天愧疚。或是選擇『在家運動』（沙發也算）。"
-    },
-    choices: [
-      {
-        text: { en: "Buy the membership. Future You will totally show up.", zh: "辦會員。未來的你『絕對』會出現。" },
-        effects: { money: -1200, health: 8, happiness: -2, stress: 3, fame: 0 }
-      },
-      {
-        text: { en: "Home workout: lie down and watch someone else sweat.", zh: "在家運動：躺著看別人流汗。" },
-        effects: { money: 0, health: -6, happiness: 6, stress: 0, fame: 0 }
-      }
-    ]
-  },
-  {
-    id: "norm_dating_app",
-    category: "LOVE",
-    minAge: 20,
-    maxAge: 38,
-    conditions: {},
-    text: {
-      en: "Your date's photos are 8 years out of date, and taken in a very different lighting universe. Awkward dinner, or fake a 'family emergency' and vanish?",
-      zh: "約會對象的照片是 8 年前的，而且是在完全不同的光線宇宙拍的。尷尬地吃完晚餐，還是假裝『家裡有急事』然後消失？"
-    },
-    choices: [
-      {
-        text: { en: "Stay for dinner. Maybe the personality is unedited too.", zh: "留下吃飯。搞不好個性沒修圖。" },
-        effects: { money: -80, health: 0, happiness: 8, stress: 5, fame: 0 }
-      },
-      {
-        text: { en: "Fake a family emergency. Mom is 'suddenly sick'.", zh: "假裝家中急事。老媽『突然』生病。" },
-        effects: { money: 0, health: 0, happiness: -3, stress: -5, fame: 0, addFlags: ["ghost_karma"] }
-      }
-    ]
-  },
-  {
-    id: "norm_rent_hike",
-    category: "MONEY",
-    minAge: 23,
-    maxAge: 40,
-    conditions: {},
-    text: {
-      en: "Your landlord raises rent 30% and calls it 'market alignment.' Pay up, or move out and lose three weekends to boxes.",
-      zh: "房東把租金漲了三成，還稱之為『市場對齊』。乖乖付錢，還是搬家然後賠掉三個週末給紙箱？"
-    },
-    choices: [
-      {
-        text: { en: "Pay it. You've bonded with the mold.", zh: "付錢。你跟牆角的霉已經有感情了。" },
-        effects: { money: -7200, health: -2, happiness: -5, stress: 8, fame: 0 }
-      },
-      {
-        text: { en: "Move out. Fresh start, fresh problems.", zh: "搬家。新的開始，新的問題。" },
-        effects: { money: -3000, health: -4, happiness: 4, stress: 12, fame: 0 }
-      }
-    ]
-  },
-  {
-    id: "norm_mlm_coffee",
-    category: "MONEY",
-    minAge: 22,
-    maxAge: 40,
-    conditions: {},
-    text: {
-      en: "A college friend you haven't heard from in six years invites you to coffee to discuss 'a business ecosystem.'",
-      zh: "六年沒聯絡的大學同學突然約你喝咖啡，說要聊聊『一個商業生態系』。"
+    "id": "norm_first_job",
+    "category": "WORK",
+    "minAge": 18,
+    "maxAge": 24,
+    "conditions": {},
+    "text": {
+      "en": "Two job offers: a soul-crushing bank with a pension plan, or a 'family-like' startup paying in equity and free pizza.",
+      "zh": "兩份 offer：有退休金計劃但會壓碎靈魂的銀行，或是『像家人一樣』、薪水是股票加免費披薩的新創。"
     },
     "choices": [
       {
-        text: { en: "Join the ecosystem. You're now 'Diamond Tier' (of nothing).", zh: "加入生態系。你現在是『鑽石級』（什麼的鑽石不重要）。" },
-        effects: { money: -5000, health: 0, happiness: 3, stress: 10, fame: 0, addFlags: ["mlm_boxes"] }
+        "text": {
+          "en": "Take the bank. A pension plan is a love language.",
+          "zh": "去銀行。退休金就是愛的語言。"
+        },
+        "effects": {
+          "money": 15000,
+          "health": -3,
+          "happiness": -8,
+          "stress": 12,
+          "fame": 0,
+          "setJob": {
+            "en": "Bank Junior Clerk",
+            "zh": "銀行初級行員"
+          }
+        }
       },
       {
-        text: { en: "Decline. Lose a friend, keep your wallet.", zh: "拒絕。失去朋友，保住錢包。" },
-        effects: { money: 0, health: 0, happiness: -4, stress: -2, fame: 0 }
+        "text": {
+          "en": "Join the startup. Equity will surely be worth something.",
+          "zh": "加入新創。股票『一定』會值錢的。"
+        },
+        "effects": {
+          "money": 3000,
+          "health": -5,
+          "happiness": 10,
+          "stress": 8,
+          "fame": 2,
+          "addFlags": [
+            "startup_alumni"
+          ],
+          "setJob": {
+            "en": "Startup Specialist",
+            "zh": "新創專員"
+          }
+        }
       }
     ]
   },
   {
-    id: "norm_destination_wedding",
-    category: "SOCIAL",
-    minAge: 26,
-    maxAge: 40,
-    conditions: {},
-    text: {
-      en: "Your friend's destination wedding will cost you $3,000. Skipping it will cost you a friendship.",
-      zh: "朋友的海外婚禮要花你 3000 美金。不去的話，友情要付出更大的代價。"
+    "id": "norm_roommate",
+    "category": "SOCIAL",
+    "minAge": 18,
+    "maxAge": 30,
+    "conditions": {},
+    "text": {
+      "en": "A cheap room comes with a roommate who names his sourdough starters and holds funerals for them. The alternative: a $2,400 studio the size of a coffin.",
+      "zh": "便宜房間附贈室友：他幫每個酸種麵團取名，死掉還會辦告別式。另一個選擇：月租 2,400 美金、大小像棺材的套房。"
     },
-    choices: [
+    "choices": [
       {
-        text: { en: "Go. Wear a suit in tropical heat and cry at the vows.", zh: "去。在熱帶高溫穿西裝，並在誓詞時哭出來。" },
-        effects: { money: -3000, health: -3, happiness: 8, stress: 5, fame: 2 }
+        "text": {
+          "en": "Move in. Bring black clothes.",
+          "zh": "搬進去。記得帶黑衣服參加告別式。"
+        },
+        "effects": {
+          "money": 6000,
+          "health": 0,
+          "happiness": 6,
+          "stress": 8,
+          "fame": 0
+        }
       },
       {
-        text: { en: "Skip and send a gift card with a 'heartfelt' note.", zh: "不去，寄張禮券附上『滿滿心意』的小卡。" },
-        effects: { money: 0, health: 0, happiness: -5, stress: 3, fame: 0 }
+        "text": {
+          "en": "Take the coffin studio. Privacy has a price.",
+          "zh": "住棺材套房。隱私是有價格的。"
+        },
+        "effects": {
+          "money": -9000,
+          "health": 3,
+          "happiness": -4,
+          "stress": -10,
+          "fame": 0
+        }
       }
     ]
   },
   {
-    id: "fun_reply_all",
-    category: "SOCIAL",
-    minAge: 22,
-    maxAge: 55,
-    conditions: {},
-    text: {
-      en: "You accidentally reply-all to the entire company with your honest review of the boss's haircut.",
-      zh: "你不小心「全部回覆」，把對老闆髮型的真心評語寄給了全公司。"
+    "id": "norm_car_loan",
+    "category": "MONEY",
+    "minAge": 22,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "A brand-new car at 19.9% APR, or a used one that smells like a decision someone regretted.",
+      "zh": "全新車，年利率 19.9%；或是一台散發著『前車主後悔氣息』的二手車。"
     },
-    choices: [
+    "choices": [
       {
-        text: { en: "Claim your account was hacked. Hackers have great taste.", zh: "宣稱帳號被駭。這個駭客品味真好。" },
-        effects: { money: 0, health: 0, happiness: -3, stress: 10, fame: 3, addFlags: ["hacked_lie"] }
+        "text": {
+          "en": "Sign for the new car. The smell of debt is 'new car smell'.",
+          "zh": "簽新車。負債的味道就叫『新車味』。"
+        },
+        "effects": {
+          "money": -14000,
+          "health": 0,
+          "happiness": 10,
+          "stress": 10,
+          "fame": 3,
+          "addFlags": [
+            "car_debt"
+          ]
+        }
       },
       {
-        text: { en: "Double down: send a follow-up rating his tie.", zh: "繼續加碼：再寄一封點評他的領帶。" },
-        effects: { money: -2000, health: 0, happiness: 8, stress: 10, fame: 10, addFlags: ["office_legend"] }
+        "text": {
+          "en": "Buy the used one and drive with the windows down. Forever.",
+          "zh": "買二手車，然後永遠開著車窗。"
+        },
+        "effects": {
+          "money": -4000,
+          "health": -4,
+          "happiness": -3,
+          "stress": 5,
+          "fame": 0,
+          "addFlags": [
+            "lemon_car"
+          ]
+        }
       }
     ]
   },
   {
-    id: "fun_pigeon",
-    category: "WEIRD",
-    minAge: 18,
-    maxAge: 60,
-    conditions: {},
-    text: {
-      en: "A pigeon follows you home and refuses to leave. It stares. It seems to know something.",
-      zh: "一隻鴿子一路跟你回家，怎麼趕都不走。牠一直盯著你，好像知道些什麼。"
+    "id": "norm_move_in",
+    "category": "LOVE",
+    "minAge": 20,
+    "maxAge": 35,
+    "conditions": {},
+    "text": {
+      "en": "Three months in, your partner says 'let's move in together.' Your freedom whispers 'run.' Your rent whispers 'say yes.'",
+      "zh": "交往才三個月，對方說「我們同居吧」。你的自由低語：「快跑。」你的房租低語：「答應啦。」"
     },
-    choices: [
+    "choices": [
       {
-        text: { en: "Adopt it. Name it 'Gerald'.", zh: "收養牠。取名叫『傑拉德』。" },
-        effects: { money: -300, health: -2, happiness: 8, stress: -5, fame: 0, addFlags: ["pigeon_friend"] }
+        "text": {
+          "en": "Say yes. Split the rent, share the dishes, lose the remote.",
+          "zh": "答應。平分房租、共用碗盤、失去遙控器主權。"
+        },
+        "effects": {
+          "money": 3000,
+          "health": 0,
+          "happiness": 8,
+          "stress": 10,
+          "fame": 0,
+          "addFlags": [
+            "cohabiting"
+          ],
+          "setRelationship": {
+            "en": "Cohabiting",
+            "zh": "同居中"
+          }
+        }
       },
       {
-        text: { en: "Shoo it away. Ignore the look of betrayal.", zh: "把牠趕走。無視那個充滿背叛的眼神。" },
-        effects: { money: 0, health: 0, happiness: -3, stress: 3, fame: 0, addFlags: ["pigeon_revenge"] }
+        "text": {
+          "en": "Say 'let's take it slow.' Say it with a very fake smile.",
+          "zh": "說「我們慢慢來」。並附上一個非常假的微笑。"
+        },
+        "effects": {
+          "money": -2000,
+          "health": 0,
+          "happiness": -5,
+          "stress": -5,
+          "fame": 0,
+          "addFlags": [
+            "commitment_issues"
+          ]
+        }
       }
     ]
   },
   {
-    id: "fun_wrong_wedding",
-    category: "SOCIAL",
-    minAge: 20,
-    maxAge: 50,
-    conditions: {},
-    text: {
-      en: "You walk into the wrong wedding and it's too late to leave. The open bar asks no questions.",
-      zh: "你走錯場，混進了別人的婚禮，現在退場太尷尬。吧台開放，而且沒人問你是誰。"
+    "id": "norm_weekend_overtime",
+    "category": "WORK",
+    "minAge": 22,
+    "maxAge": 45,
+    "conditions": {
+      "minStress": 30
     },
-    choices: [
+    "text": {
+      "en": "Your boss asks you to work this weekend, promising 'great exposure' and a stale bagel.",
+      "zh": "老闆要你週末加班，並承諾給你『絕佳曝光機會』與一個乾掉的貝果。"
+    },
+    "choices": [
       {
-        text: { en: "Introduce yourself as the groom's 'long-lost cousin' and give a speech.", zh: "自稱新郎『失散多年的表哥』，還上台致詞。" },
-        effects: { money: 0, health: -8, happiness: 10, stress: 12, fame: 5, addFlags: ["wedding_crasher"] }
+        "text": {
+          "en": "Work the weekend. Eat the bagel. Feel nothing.",
+          "zh": "加班。吃貝果。內心毫無波瀾。"
+        },
+        "effects": {
+          "money": 2000,
+          "health": -8,
+          "happiness": -8,
+          "stress": 18,
+          "fame": 0
+        }
       },
       {
-        text: { en: "Slip out quietly. Your stomach will hold a grudge.", zh: "悄悄溜走。你的胃會記恨這件事。" },
-        effects: { money: 0, health: 2, happiness: -3, stress: -5, fame: 0 }
+        "text": {
+          "en": "Politely refuse and enjoy your weekend. The boss will remember this.",
+          "zh": "禮貌拒絕，享受週末。老闆會記住的。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 5,
+          "stress": -18,
+          "fame": 0,
+          "addFlags": [
+            "boss_grudge"
+          ]
+        }
       }
     ]
   },
   {
-    id: "fun_cat_filter",
-    category: "WORK",
-    minAge: 22,
-    maxAge: 55,
-    conditions: {},
-    text: {
-      en: "You're stuck on a cat filter during a million-dollar investor call, and you can't turn it off.",
-      zh: "你在百萬美金的投資人視訊會議上被貓咪濾鏡卡住，關都關不掉。"
+    "id": "norm_gym",
+    "category": "HEALTH",
+    "minAge": 20,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "A $1,200 annual gym membership: the price of visiting twice and feeling guilty daily. Or 'working out at home' (the couch counts).",
+      "zh": "一年 1200 美金的健身房會員：用來去兩次，然後每天愧疚。或是選擇『在家運動』（沙發也算）。"
     },
-    choices: [
+    "choices": [
       {
-        text: { en: "Pitch with a straight face. You are a cat now.", zh: "面不改色繼續簡報。你現在是一隻貓。" },
-        effects: { money: 5000, health: 0, happiness: 5, stress: 15, fame: 8 }
+        "text": {
+          "en": "Buy the membership. Future You will totally show up.",
+          "zh": "辦會員。未來的你『絕對』會出現。"
+        },
+        "effects": {
+          "money": -1200,
+          "health": 8,
+          "happiness": -2,
+          "stress": 4,
+          "fame": 0
+        }
       },
       {
-        text: { en: "Apologize profusely and reschedule.", zh: "連聲道歉，改期再約。" },
-        effects: { money: -2000, health: 0, happiness: -6, stress: 8, fame: 0 }
+        "text": {
+          "en": "Home workout: lie down and watch someone else sweat.",
+          "zh": "在家運動：躺著看別人流汗。"
+        },
+        "effects": {
+          "money": 0,
+          "health": -6,
+          "happiness": 6,
+          "stress": -16,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_dating_app",
+    "category": "LOVE",
+    "minAge": 20,
+    "maxAge": 38,
+    "conditions": {},
+    "text": {
+      "en": "Your date's photos are 8 years out of date, and taken in a very different lighting universe. Awkward dinner, or fake a 'family emergency' and vanish?",
+      "zh": "約會對象的照片是 8 年前的，而且是在完全不同的光線宇宙拍的。尷尬地吃完晚餐，還是假裝『家裡有急事』然後消失？"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Stay for dinner. Maybe the personality is unedited too.",
+          "zh": "留下吃飯。搞不好個性沒修圖。"
+        },
+        "effects": {
+          "money": -80,
+          "health": 0,
+          "happiness": 8,
+          "stress": 5,
+          "fame": 0
+        }
+      },
+      {
+        "text": {
+          "en": "Fake a family emergency. Mom is 'suddenly sick'.",
+          "zh": "假裝家中急事。老媽『突然』生病。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -3,
+          "stress": -15,
+          "fame": 0,
+          "addFlags": [
+            "ghost_karma"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_rent_hike",
+    "category": "MONEY",
+    "minAge": 23,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "Your landlord raises rent 30% and calls it 'market alignment.' Pay up, or move out and lose three weekends to boxes.",
+      "zh": "房東把租金漲了三成，還稱之為『市場對齊』。乖乖付錢，還是搬家然後賠掉三個週末給紙箱？"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Pay it. You've bonded with the mold.",
+          "zh": "付錢。你跟牆角的霉已經有感情了。"
+        },
+        "effects": {
+          "money": -7200,
+          "health": -2,
+          "happiness": -5,
+          "stress": 5,
+          "fame": 0
+        }
+      },
+      {
+        "text": {
+          "en": "Move out. Fresh start, fresh problems.",
+          "zh": "搬家。新的開始，新的問題。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": -4,
+          "happiness": 4,
+          "stress": 6,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_mlm_coffee",
+    "category": "MONEY",
+    "minAge": 22,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "A college friend you haven't heard from in six years invites you to coffee to discuss 'a business ecosystem.'",
+      "zh": "六年沒聯絡的大學同學突然約你喝咖啡，說要聊聊『一個商業生態系』。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Join the ecosystem. You're now 'Diamond Tier' (of nothing).",
+          "zh": "加入生態系。你現在是『鑽石級』（什麼的鑽石不重要）。"
+        },
+        "effects": {
+          "money": -5000,
+          "health": 0,
+          "happiness": 3,
+          "stress": 5,
+          "fame": 0,
+          "addFlags": [
+            "mlm_boxes"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Decline. Lose a friend, keep your wallet.",
+          "zh": "拒絕。失去朋友，保住錢包。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -4,
+          "stress": -15,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_destination_wedding",
+    "category": "SOCIAL",
+    "minAge": 26,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "Your friend's destination wedding will cost you $3,000. Skipping it will cost you a friendship.",
+      "zh": "朋友的海外婚禮要花你 3000 美金。不去的話，友情要付出更大的代價。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Go. Wear a suit in tropical heat and cry at the vows.",
+          "zh": "去。在熱帶高溫穿西裝，並在誓詞時哭出來。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": -3,
+          "happiness": 8,
+          "stress": 5,
+          "fame": 2
+        }
+      },
+      {
+        "text": {
+          "en": "Skip and send a gift card with a 'heartfelt' note.",
+          "zh": "不去，寄張禮券附上『滿滿心意』的小卡。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -5,
+          "stress": 3,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "fun_reply_all",
+    "category": "SOCIAL",
+    "minAge": 22,
+    "maxAge": 55,
+    "conditions": {},
+    "text": {
+      "en": "You accidentally reply-all to the entire company with your honest review of the boss's haircut.",
+      "zh": "你不小心「全部回覆」，把對老闆髮型的真心評語寄給了全公司。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Claim your account was hacked. Hackers have great taste.",
+          "zh": "宣稱帳號被駭。這個駭客品味真好。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -3,
+          "stress": 10,
+          "fame": 3,
+          "addFlags": [
+            "hacked_lie"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Double down: send a follow-up rating his tie.",
+          "zh": "繼續加碼：再寄一封點評他的領帶。"
+        },
+        "effects": {
+          "money": -2000,
+          "health": 0,
+          "happiness": 8,
+          "stress": 10,
+          "fame": 10,
+          "addFlags": [
+            "office_legend"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fun_pigeon",
+    "category": "WEIRD",
+    "minAge": 18,
+    "maxAge": 60,
+    "conditions": {},
+    "text": {
+      "en": "A pigeon follows you home and refuses to leave. It stares. It seems to know something.",
+      "zh": "一隻鴿子一路跟你回家，怎麼趕都不走。牠一直盯著你，好像知道些什麼。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Adopt it. Name it 'Gerald'.",
+          "zh": "收養牠。取名叫『傑拉德』。"
+        },
+        "effects": {
+          "money": -300,
+          "health": -2,
+          "happiness": 8,
+          "stress": -5,
+          "fame": 0,
+          "addFlags": [
+            "pigeon_friend"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Shoo it away. Ignore the look of betrayal.",
+          "zh": "把牠趕走。無視那個充滿背叛的眼神。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -3,
+          "stress": 3,
+          "fame": 0,
+          "addFlags": [
+            "pigeon_revenge"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fun_wrong_wedding",
+    "category": "SOCIAL",
+    "minAge": 20,
+    "maxAge": 50,
+    "conditions": {},
+    "text": {
+      "en": "You walk into the wrong wedding and it's too late to leave. The open bar asks no questions.",
+      "zh": "你走錯場，混進了別人的婚禮，現在退場太尷尬。吧台開放，而且沒人問你是誰。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Introduce yourself as the groom's 'long-lost cousin' and give a speech.",
+          "zh": "自稱新郎『失散多年的表哥』，還上台致詞。"
+        },
+        "effects": {
+          "money": 0,
+          "health": -8,
+          "happiness": 10,
+          "stress": 4,
+          "fame": 5,
+          "addFlags": [
+            "wedding_crasher"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Slip out quietly. Your stomach will hold a grudge.",
+          "zh": "悄悄溜走。你的胃會記恨這件事。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 2,
+          "happiness": -3,
+          "stress": -16,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "fun_cat_filter",
+    "category": "WORK",
+    "minAge": 22,
+    "maxAge": 55,
+    "conditions": {},
+    "text": {
+      "en": "You're stuck on a cat filter during a million-dollar investor call, and you can't turn it off.",
+      "zh": "你在百萬美金的投資人視訊會議上被貓咪濾鏡卡住，關都關不掉。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Pitch with a straight face. You are a cat now.",
+          "zh": "面不改色繼續簡報。你現在是一隻貓。"
+        },
+        "effects": {
+          "money": 5000,
+          "health": 0,
+          "happiness": 5,
+          "stress": 15,
+          "fame": 8
+        }
+      },
+      {
+        "text": {
+          "en": "Apologize profusely and reschedule.",
+          "zh": "連聲道歉，改期再約。"
+        },
+        "effects": {
+          "money": -2000,
+          "health": 0,
+          "happiness": -6,
+          "stress": 8,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "life_startup_gamble",
+    "category": "MONEY",
+    "minAge": 25,
+    "maxAge": 40,
+    "conditions": {
+      "minMoney": 20000
+    },
+    "text": {
+      "en": "You have a 'can't-fail' idea: an app that tells you which fridge leftovers are legally food. Quit your job and bet your savings?",
+      "zh": "你有個『絕不可能失敗』的點子：一個判斷冰箱剩菜「法律上算不算食物」的 app。要辭職並賭上全部積蓄嗎？"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "All in. Sleep is for people with backup plans.",
+          "zh": "梭哈。睡眠是給有備案的人用的。"
+        },
+        "effects": {
+          "money": -25000,
+          "health": -8,
+          "happiness": 10,
+          "stress": 22,
+          "fame": 6,
+          "addFlags": [
+            "founder"
+          ],
+          "setJob": {
+            "en": "Leftover App Founder",
+            "zh": "剩菜創辦人"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Keep the job. Wonder about it for the next 40 years.",
+          "zh": "留在原公司。接下來四十年不斷回想那個點子。"
+        },
+        "effects": {
+          "money": 8000,
+          "health": 0,
+          "happiness": -10,
+          "stress": -18,
+          "fame": 0,
+          "addFlags": [
+            "what_if_app"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "life_creepy_inheritance",
+    "category": "MONEY",
+    "minAge": 25,
+    "maxAge": 60,
+    "conditions": {},
+    "text": {
+      "en": "A lawyer says a distant uncle left you $500,000, on one condition: live in his mansion for the rest of your life, 'with the others.'",
+      "zh": "律師說一位遠房叔叔留給你 50 萬美金，條件只有一個：終生住在他的豪宅裡，『和其他人』一起。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Sign. Who are 'the others'? Ask again in the morning.",
+          "zh": "簽了。『其他人』是誰？明天早上再問。"
+        },
+        "effects": {
+          "money": 500000,
+          "health": -8,
+          "happiness": -15,
+          "stress": 18,
+          "fame": 0,
+          "addFlags": [
+            "mansion_curse"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Decline. Peace of mind is worth more, right?",
+          "zh": "婉拒。內心平靜比較值錢，對吧？對吧？"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 3,
+          "stress": -15,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "life_whistleblower",
+    "category": "WORK",
+    "minAge": 28,
+    "maxAge": 50,
+    "conditions": {},
+    "text": {
+      "en": "You discover your company has been 'creatively' doing its accounting. HR offers you a promotion. Federal agents offer you a business card.",
+      "zh": "你發現公司的帳做得『很有創意』。人資給你升遷機會，聯邦探員給你一張名片。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Blow the whistle. Sleep well, eat instant noodles.",
+          "zh": "吹哨。睡得安穩，吃得泡麵。"
+        },
+        "effects": {
+          "money": -20000,
+          "health": 0,
+          "happiness": 10,
+          "stress": 24,
+          "fame": 20,
+          "addFlags": [
+            "whistleblower"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Take the promotion and the 'consulting bonus'. Delete your conscience.",
+          "zh": "接受升遷與『顧問獎金』。順便把良心清空。"
+        },
+        "effects": {
+          "money": 40000,
+          "health": 0,
+          "happiness": -15,
+          "stress": -15,
+          "fame": 0,
+          "addFlags": [
+            "hush_money"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "chain_box_1",
+    "category": "CHAIN",
+    "minAge": 20,
+    "maxAge": 35,
+    "conditions": {},
+    "text": {
+      "en": "In the trash chute you find a sealed box labeled 'DO NOT OPEN. (Yes, you.)' It is warm.",
+      "zh": "你在垃圾間發現一個封死的箱子，上面寫著『禁止開啟。（對，就是你。）』箱子是溫的。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Open it. Inside: old cash and a key marked 'Locker 404'.",
+          "zh": "打開。裡面有一疊舊鈔，和一把標著『404 號置物櫃』的鑰匙。"
+        },
+        "effects": {
+          "money": 1000,
+          "health": 0,
+          "happiness": 3,
+          "stress": 8,
+          "fame": 0,
+          "addFlags": [
+            "box_found",
+            "box_opened"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Sell it unopened online. Mystery boxes are hot right now.",
+          "zh": "不拆，直接網拍。神秘箱現在很夯。"
+        },
+        "effects": {
+          "money": 200,
+          "health": 0,
+          "happiness": 1,
+          "stress": 3,
+          "fame": 0,
+          "addFlags": [
+            "box_found",
+            "box_sold"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "chain_box_2",
+    "category": "CHAIN",
+    "minAge": 21,
+    "maxAge": 45,
+    "conditions": {
+      "flags": [
+        "box_found"
+      ]
+    },
+    "text": {
+      "en": "A man in a trench coat waits outside your door: 'You have something of mine. Or you did. Either way, we should talk.'",
+      "zh": "一個穿風衣的男人站在你家門口：「你手上有我的東西。或者，曾經有。總之，我們得聊聊。」"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Cooperate. He pays $3,000 for your 'short memory'.",
+          "zh": "配合他。他付你 3000 美金，買你的『健忘症』。"
+        },
+        "effects": {
+          "money": 3000,
+          "health": 0,
+          "happiness": -2,
+          "stress": 5,
+          "fame": 0,
+          "addFlags": [
+            "box_trouble"
+          ],
+          "removeFlags": [
+            "box_found"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Demand more. He pays $10,000 and stares at you a bit too long.",
+          "zh": "獅子大開口。他付了一萬美金，還盯了你太久。"
+        },
+        "effects": {
+          "money": 10000,
+          "health": -5,
+          "happiness": 2,
+          "stress": 16,
+          "fame": 0,
+          "addFlags": [
+            "box_trouble"
+          ],
+          "removeFlags": [
+            "box_found"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "chain_box_3",
+    "category": "CHAIN",
+    "minAge": 25,
+    "maxAge": 60,
+    "conditions": {
+      "flags": [
+        "box_trouble"
+      ]
+    },
+    "text": {
+      "en": "Years later, the trench-coat man is on TV: 'Global tax-fraud mastermind arrested.' Detectives found your fingerprints on his box.",
+      "zh": "多年後，風衣男登上新聞：『跨國逃稅主謀落網』。警方在他的箱子上找到了你的指紋。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Testify as a witness. Instant fame, instant anxiety.",
+          "zh": "出庭作證。瞬間成名，瞬間焦慮。"
+        },
+        "effects": {
+          "money": 15000,
+          "health": 0,
+          "happiness": 5,
+          "stress": 18,
+          "fame": 15,
+          "addFlags": [
+            "witness_celebrity"
+          ],
+          "removeFlags": [
+            "box_trouble"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Lawyer up and claim total amnesia. Become a meme.",
+          "zh": "請律師，宣稱全面失憶。順便變成迷因。"
+        },
+        "effects": {
+          "money": -12000,
+          "health": -3,
+          "happiness": -5,
+          "stress": 5,
+          "fame": 5,
+          "addFlags": [
+            "silent_partner"
+          ],
+          "removeFlags": [
+            "box_trouble"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_promotion_backstab",
+    "category": "WORK",
+    "minAge": 27,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "You and your work-buddy are up for the same promotion. He once confided that he expenses his lunches as 'client entertainment'.",
+      "zh": "你和最要好的同事競爭同一個升遷名額。他曾偷偷告訴你：他把午餐都報成『客戶應酬』。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Leak it to HR. Friendship is a junior-level skill.",
+          "zh": "向人資告密。友情只是初階技能。"
+        },
+        "effects": {
+          "money": 12000,
+          "health": 0,
+          "happiness": -8,
+          "stress": 18,
+          "fame": 0,
+          "addFlags": [
+            "backstabber"
+          ],
+          "setJob": {
+            "en": "Senior Manager",
+            "zh": "高級經理"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Play fair and lose gracefully. He gets the job and a bigger lunch budget.",
+          "zh": "光明正大，輸得優雅。他升職了，午餐預算也跟著升級。"
+        },
+        "effects": {
+          "money": 2000,
+          "health": 0,
+          "happiness": 5,
+          "stress": -15,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_mortgage_slave",
+    "category": "MONEY",
+    "minAge": 28,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "A 'cozy micro-studio' comes with a 30-year mortgage. The agent calls it an investment. Your future self calls it a cell.",
+      "zh": "一間『溫馨迷你小宅』，附贈三十年房貸。中介說這是投資，未來的你說這叫牢房。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Sign. Welcome to the Bank Slave Club.",
+          "zh": "簽約。歡迎加入銀行奴隸俱樂部。"
+        },
+        "effects": {
+          "money": -40000,
+          "health": -3,
+          "happiness": 8,
+          "stress": 18,
+          "fame": 0,
+          "addFlags": [
+            "mortgage_slave"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Keep renting and stay 'flexible' (homeless, with extra steps).",
+          "zh": "繼續租屋，保持『彈性』（其實是多了房租的流浪）。"
+        },
+        "effects": {
+          "money": -10000,
+          "health": 0,
+          "happiness": -5,
+          "stress": -16,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_marriage_pressure",
+    "category": "SOCIAL",
+    "minAge": 28,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "At the holiday dinner, your aunt asks 'So, when's the wedding?' for the seventh year in a row.",
+      "zh": "節日聚餐上，姑媽連續第七年問你：「所以婚禮什麼時候辦？」"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Invent a fiancé: 'a surgeon working in Antarctica'.",
+          "zh": "捏造一個未婚夫：『在南極工作的外科醫生』。"
+        },
+        "effects": {
+          "money": -500,
+          "health": 0,
+          "happiness": 3,
+          "stress": 4,
+          "fame": 0,
+          "addFlags": [
+            "fake_fiance"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Give a heartfelt speech about being happily single.",
+          "zh": "發表一段『單身也很幸福』的感人演說。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 6,
+          "stress": 10,
+          "fame": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_blind_date",
+    "category": "LOVE",
+    "minAge": 26,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "Your blind date arrives with a color-coded spreadsheet titled 'Compatibility Matrix' and a mutual NDA.",
+      "zh": "你的相親對象帶來一份標題為『相容性矩陣』的彩色試算表，還有一份雙向保密協議。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Play along. Ask about their five-year plan.",
+          "zh": "配合演出。問問對方的五年計劃。"
+        },
+        "effects": {
+          "money": -300,
+          "health": 0,
+          "happiness": 5,
+          "stress": 5,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Dating (Spreadsheet-Approved)",
+            "zh": "交往中（試算表認證）"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Escape through the restaurant's bathroom window.",
+          "zh": "從餐廳廁所的窗戶逃走。"
+        },
+        "effects": {
+          "money": 0,
+          "health": -3,
+          "happiness": 3,
+          "stress": -16,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_midlife_belly",
+    "category": "HEALTH",
+    "minAge": 30,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "Your doctor says your waistline is 'a cry for help'. Your pants agree.",
+      "zh": "醫生說你的腰圍是『求救訊號』，你的褲子也表示同意。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Start running at 5 a.m. Hate every second.",
+          "zh": "凌晨五點開始晨跑，每一秒都在恨。"
+        },
+        "effects": {
+          "money": -400,
+          "health": 10,
+          "happiness": -4,
+          "stress": 5,
+          "fame": 0
+        }
+      },
+      {
+        "text": {
+          "en": "Double down on donuts. Life is short anyway.",
+          "zh": "繼續狂吃甜甜圈。反正人生很短。"
+        },
+        "effects": {
+          "money": -300,
+          "health": -10,
+          "happiness": 8,
+          "stress": -16,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_job_hop_betrayal",
+    "category": "WORK",
+    "minAge": 27,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "A rival company offers +40% salary, on the condition that you 'bring some insights' from your current employer.",
+      "zh": "競爭對手開出加薪 40% 的條件，前提是你要『帶一些心得』過來，來自你現在的公司。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Jump ship and bring the 'insights'.",
+          "zh": "跳槽，並且帶上那些『心得』。"
+        },
+        "effects": {
+          "money": 14000,
+          "health": 0,
+          "happiness": 2,
+          "stress": 10,
+          "fame": 0,
+          "addFlags": [
+            "jumped_ship"
+          ],
+          "setJob": {
+            "en": "Strategy Lead (Rival Co.)",
+            "zh": "對家公司策略主管"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Stay loyal. Your boss thanks you with a fruit basket.",
+          "zh": "留下效忠。老闆用一籃水果回報你。"
+        },
+        "effects": {
+          "money": 500,
+          "health": 0,
+          "happiness": 3,
+          "stress": 5,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_contract_trap",
+    "category": "WORK",
+    "minAge": 26,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "Your new contract includes a clause: 'Employee shall remain reachable in dreams.' HR says it's standard.",
+      "zh": "新合約寫著：『員工須於夢中保持可聯絡。』人資說這是標準條款。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Sign it. The salary is very awake.",
+          "zh": "簽。反正薪水很清醒。"
+        },
+        "effects": {
+          "money": 8000,
+          "health": -6,
+          "happiness": -3,
+          "stress": 16,
+          "fame": 0
+        }
+      },
+      {
+        "text": {
+          "en": "Refuse. Job hunting is a nightmare, but at least it's not contractual.",
+          "zh": "拒簽。找工作雖然是惡夢，但至少沒寫進合約。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": 0,
+          "happiness": 3,
+          "stress": -18,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_cosign_loan",
+    "category": "MONEY",
+    "minAge": 27,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "Your brother asks you to co-sign a loan for a 'can't-lose' artisanal pickle franchise.",
+      "zh": "你弟要你替他擔保貸款，開一間『穩賺不賠』的手工酸黃瓜連鎖店。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Co-sign. Blood is thicker than credit scores.",
+          "zh": "簽。血濃於信貸評分。"
+        },
+        "effects": {
+          "money": -12000,
+          "health": 0,
+          "happiness": 4,
+          "stress": 20,
+          "fame": 0,
+          "addFlags": [
+            "cosigned_loan"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Refuse. Enjoy the family dinner in awkward silence.",
+          "zh": "拒絕。準備迎接家庭聚餐的尷尬沉默。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -8,
+          "stress": -15,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_baby_debate",
+    "category": "LOVE",
+    "minAge": 28,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "Your partner wants a baby. Your bank account wants a nap.",
+      "zh": "你的另一半想要小孩。你的銀行戶口想要午睡。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Yes. Get ready to trade sleep for diapers.",
+          "zh": "好。準備用睡眠換尿布。"
+        },
+        "effects": {
+          "money": -20000,
+          "health": -6,
+          "happiness": 12,
+          "stress": 16,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Parent Couple",
+            "zh": "育兒夫妻"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Compromise: get a puppy as a trial run.",
+          "zh": "折衷方案：先養隻小狗當預演。"
+        },
+        "effects": {
+          "money": -1500,
+          "health": 2,
+          "happiness": 5,
+          "stress": -15,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_lunch_gossip",
+    "category": "SOCIAL",
+    "minAge": 26,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "A coworker confides he's job hunting. An hour later, your boss asks: 'Is anyone thinking of leaving?'",
+      "zh": "同事偷偷告訴你他在找新工作。一小時後，老闆問你：「有沒有人想離職？」"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Snitch. Loyalty to the company, apparently.",
+          "zh": "告密。這就是對公司的『忠誠』。"
+        },
+        "effects": {
+          "money": 3000,
+          "health": 0,
+          "happiness": -6,
+          "stress": 5,
+          "fame": 0,
+          "addFlags": [
+            "snitch"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Lie straight to the boss's face.",
+          "zh": "面不改色對老闆撒謊。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 4,
+          "stress": 10,
+          "fame": 0,
+          "addFlags": [
+            "trusted_friend"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_crypto_friend",
+    "category": "MONEY",
+    "minAge": 26,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "Your friend swears the coin 'MoonPotato' will 100x by Christmas. He has already bought a boat.",
+      "zh": "朋友發誓『月球馬鈴薯幣』聖誕節前會漲一百倍。他已經先買好遊艇了。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Buy $10,000 worth. Call it 'diversification'.",
+          "zh": "買一萬美金。這叫『分散投資』。"
+        },
+        "effects": {
+          "money": -10000,
+          "health": 0,
+          "happiness": 6,
+          "stress": 18,
+          "fame": 0,
+          "addFlags": [
+            "bag_holder"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Skip it and suffer fear of missing out.",
+          "zh": "不買，然後被錯失恐懼症折磨。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -6,
+          "stress": -15,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_burnout_leave",
+    "category": "HEALTH",
+    "minAge": 28,
+    "maxAge": 40,
+    "conditions": {
+      "minStress": 60
+    },
+    "text": {
+      "en": "The doctor prescribes two weeks of rest. Your inbox holds 843 unread emails titled 'URGENT'.",
+      "zh": "醫生開出兩週休養的處方。你的收件匣有 843 封標題寫著『急件』的未讀郵件。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Take the leave. The world will survive (probably).",
+          "zh": "請假。世界會撐住的（大概）。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": 10,
+          "happiness": 8,
+          "stress": -22,
+          "fame": 0,
+          "addFlags": [
+            "boss_grudge"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Push through on energy drinks and pure spite.",
+          "zh": "靠能量飲料和滿滿怨氣硬撐。"
+        },
+        "effects": {
+          "money": 5000,
+          "health": -12,
+          "happiness": -6,
+          "stress": 20,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_neighbor_noise",
+    "category": "SOCIAL",
+    "minAge": 26,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "Your neighbor practices drums at 2 a.m. He calls it 'expressive therapy'.",
+      "zh": "鄰居凌晨兩點練鼓，他說這是『表達性治療』。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Retaliate with karaoke at 3 a.m.",
+          "zh": "凌晨三點用卡拉 OK 反擊。"
+        },
+        "effects": {
+          "money": -200,
+          "health": -3,
+          "happiness": 8,
+          "stress": -16,
+          "fame": 0,
+          "addFlags": [
+            "neighbor_war"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Buy earplugs and slowly lose your mind.",
+          "zh": "買耳塞，然後慢慢失去理智。"
+        },
+        "effects": {
+          "money": -80,
+          "health": -3,
+          "happiness": -5,
+          "stress": 15,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_old_band",
+    "category": "SOCIAL",
+    "minAge": 28,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "Your old band reunites for one weekend gig. You have a mortgage and a knee that clicks.",
+      "zh": "你的舊樂團要重組，辦一場週末演出。你有房貸，還有一個會咔咔響的膝蓋。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Rock on. Your knee files a formal complaint.",
+          "zh": "上台搖滾。你的膝蓋提出正式投訴。"
+        },
+        "effects": {
+          "money": -500,
+          "health": -5,
+          "happiness": 12,
+          "stress": -20,
+          "fame": 4
+        }
+      },
+      {
+        "text": {
+          "en": "Pawn the guitar and pay the bills like an adult.",
+          "zh": "把吉他當掉，像個大人一樣繳帳單。"
+        },
+        "effects": {
+          "money": 800,
+          "health": 0,
+          "happiness": -8,
+          "stress": -15,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "norm_tax_audit",
+    "category": "MONEY",
+    "minAge": 30,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "The tax office sends you an 'invitation to clarify' your last five years. Nobody is smiling.",
+      "zh": "稅務局寄來一封『邀請你說明過去五年』的信。沒有人在微笑。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Hire an expensive accountant. Buy peace of mind.",
+          "zh": "請貴價會計師。用錢買心安。"
+        },
+        "effects": {
+          "money": -4000,
+          "health": 0,
+          "happiness": 0,
+          "stress": -18,
+          "fame": 0
+        }
+      },
+      {
+        "text": {
+          "en": "DIY with an online tutorial. You're 'good with spreadsheets'.",
+          "zh": "照著網路教學自己來。畢竟你『很會用試算表』。"
+        },
+        "effects": {
+          "money": -1000,
+          "health": -3,
+          "happiness": 3,
+          "stress": 18,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "flag_hush_money_exposed",
+    "category": "MONEY",
+    "minAge": 30,
+    "maxAge": 55,
+    "conditions": {
+      "flags": [
+        "hush_money"
+      ]
+    },
+    "text": {
+      "en": "A journalist and an anti-corruption officer knock on your door together. They have a photo of you counting $40,000 in cash.",
+      "zh": "一名記者和一位廉政公署調查員同時敲你家門，手上有你數著四萬美金現鈔的照片。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Turn state's witness. Return the money, keep your dignity.",
+          "zh": "當污點證人。歸還贓款，保住尊嚴。"
+        },
+        "effects": {
+          "money": -40000,
+          "health": -3,
+          "happiness": 5,
+          "stress": 18,
+          "fame": 10,
+          "addFlags": [
+            "former_informant"
+          ],
+          "removeFlags": [
+            "hush_money"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Lawyer up and insist: 'I found it in a coat.'",
+          "zh": "請律師，並硬拗：『那是我在外套裡撿到的。』"
+        },
+        "effects": {
+          "money": -12000,
+          "health": -8,
+          "happiness": -6,
+          "stress": 22,
+          "fame": 0,
+          "addFlags": [
+            "under_investigation"
+          ],
+          "removeFlags": [
+            "hush_money"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "flag_pigeon_revenge_strikes",
+    "category": "WEIRD",
+    "minAge": 22,
+    "maxAge": 62,
+    "conditions": {
+      "flags": [
+        "pigeon_revenge"
+      ]
+    },
+    "text": {
+      "en": "You're about to give the presentation of your life on a rooftop when 300 pigeons land. The leader stares at you. You know those eyes.",
+      "zh": "你正要在天台發表人生最重要的簡報，三百隻鴿子忽然降落。領頭那隻死盯著你，你認得那個眼神。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Apologize and offer bread as tribute.",
+          "zh": "道歉，並獻上麵包當貢品。"
+        },
+        "effects": {
+          "money": -200,
+          "health": 0,
+          "happiness": 3,
+          "stress": -18,
+          "fame": 0,
+          "removeFlags": [
+            "pigeon_revenge"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Fight back with an air horn. It goes viral.",
+          "zh": "用氣笛還擊。影片大爆紅。"
+        },
+        "effects": {
+          "money": -1500,
+          "health": 0,
+          "happiness": -6,
+          "stress": 15,
+          "fame": 6,
+          "removeFlags": [
+            "pigeon_revenge"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "flag_lemon_car_explodes",
+    "category": "WORK",
+    "minAge": 26,
+    "maxAge": 40,
+    "conditions": {
+      "flags": [
+        "lemon_car"
+      ]
+    },
+    "text": {
+      "en": "Your used car explodes in a cloud of smoke ten minutes before the most important job interview of your life.",
+      "zh": "你那台二手爛車，在人生最重要的面試前十分鐘噴出濃煙並爆炸。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Run to the interview covered in soot. Call it 'grit'.",
+          "zh": "滿臉煤灰衝去面試，並稱之為『拚勁』。"
+        },
+        "effects": {
+          "money": 6000,
+          "health": -3,
+          "happiness": 3,
+          "stress": 16,
+          "fame": 0,
+          "removeFlags": [
+            "lemon_car"
+          ],
+          "setJob": {
+            "en": "Sales Manager",
+            "zh": "業務經理"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Call a tow truck and reschedule. Dignity intact.",
+          "zh": "叫拖車、改期面試。尊嚴完整。"
+        },
+        "effects": {
+          "money": -800,
+          "health": 0,
+          "happiness": -6,
+          "stress": -15,
+          "fame": 0,
+          "removeFlags": [
+            "lemon_car"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "flag_mlm_boxes_rot",
+    "category": "HEALTH",
+    "minAge": 26,
+    "maxAge": 40,
+    "conditions": {
+      "flags": [
+        "mlm_boxes"
+      ]
+    },
+    "text": {
+      "en": "The stack of 'Mega Immune Powder' in your living room expired two years ago. Something in there is now chewing back.",
+      "zh": "客廳那堆『超級免疫粉』兩年前就過期了。現在，裡面有東西正在反過來咀嚼它們。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Sell them online as 'vintage wellness antiques'.",
+          "zh": "上網當『復古養生古董』賣掉。"
+        },
+        "effects": {
+          "money": 1500,
+          "health": -2,
+          "happiness": 3,
+          "stress": 15,
+          "fame": 0,
+          "removeFlags": [
+            "mlm_boxes"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Call pest control, burn the boxes, and cry.",
+          "zh": "請滅鼠公司、燒掉紙箱，順便痛哭。"
+        },
+        "effects": {
+          "money": -2500,
+          "health": 3,
+          "happiness": -3,
+          "stress": -15,
+          "fame": 0,
+          "removeFlags": [
+            "mlm_boxes"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "flag_mansion_curse_knocking",
+    "category": "WEIRD",
+    "minAge": 26,
+    "maxAge": 62,
+    "conditions": {
+      "flags": [
+        "mansion_curse"
+      ]
+    },
+    "text": {
+      "en": "At 3 a.m., something knocks from inside the mansion walls, in perfect rhythm with your heartbeat.",
+      "zh": "凌晨三點，豪宅的牆壁裡傳來敲門聲，節奏和你的心跳完全一致。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Open the wall. 'The others' are ghost accountants, and they do your taxes.",
+          "zh": "打開牆壁。原來『其他人』是幽靈會計師，還願意幫你報稅。"
+        },
+        "effects": {
+          "money": 5000,
+          "health": -10,
+          "happiness": -5,
+          "stress": 16,
+          "fame": 0,
+          "addFlags": [
+            "ghost_accountants"
+          ],
+          "removeFlags": [
+            "mansion_curse"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Hire an exorcist for $8,000. Ghosts have feelings too.",
+          "zh": "花八千美金請驅魔師。鬼也是有感情的。"
+        },
+        "effects": {
+          "money": -8000,
+          "health": 0,
+          "happiness": 5,
+          "stress": -18,
+          "fame": 0,
+          "removeFlags": [
+            "mansion_curse"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fun_reunion_brag",
+    "category": "SOCIAL",
+    "minAge": 28,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "At the class reunion, you bragged about being a 'tech-startup CEO'. The guy next to you is an actual venture capitalist.",
+      "zh": "同學會上你吹噓自己是『新創公司 CEO』，結果站在你旁邊的，是真正的創投人。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Double down with a fake business card.",
+          "zh": "加碼演出：遞上偽造名片。"
+        },
+        "effects": {
+          "money": -300,
+          "health": 0,
+          "happiness": 4,
+          "stress": 5,
+          "fame": 5,
+          "addFlags": [
+            "reunion_liar"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Confess: 'I answer support tickets.'",
+          "zh": "坦白：『我負責回覆客服工單。』"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -4,
+          "stress": -15,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "fun_fake_brand",
+    "category": "MONEY",
+    "minAge": 26,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "You buy a $2,000 'designer' bag from a guy in a parking lot. Your coworkers spot the misspelled logo in seconds.",
+      "zh": "你在停車場向一個男人買了個兩千美金的『名牌』包，同事三秒內就發現 logo 拼錯了。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Wear it proudly. Claim it's a 'limited collab'.",
+          "zh": "驕傲背著，宣稱這是『限量聯名款』。"
+        },
+        "effects": {
+          "money": -2000,
+          "health": 0,
+          "happiness": 4,
+          "stress": 16,
+          "fame": 5
+        }
+      },
+      {
+        "text": {
+          "en": "Hide it in the closet and mourn your money.",
+          "zh": "藏進衣櫃，為你的金錢默哀。"
+        },
+        "effects": {
+          "money": -2000,
+          "health": 0,
+          "happiness": -6,
+          "stress": -15,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "fun_retreat_cult",
+    "category": "WEIRD",
+    "minAge": 27,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "The 'Inner Peace Retreat' turns out to be a cult. The Enlightened Master asks for your bank PIN as 'a mantra'.",
+      "zh": "『內在平靜身心靈營』其實是邪教。開悟大師要你交出銀行密碼，說那是『一句真言』。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Chant along for one more day. The peace is weirdly real. So is the invoice.",
+          "zh": "再跟著唱誦一天。平靜出奇地真實，帳單也是。"
+        },
+        "effects": {
+          "money": -5000,
+          "health": -2,
+          "happiness": 4,
+          "stress": -18,
+          "fame": 0,
+          "addFlags": [
+            "cult_alumni"
+          ]
+        }
+      },
+      {
+        "text": {
+          "en": "Escape through the window at midnight.",
+          "zh": "半夜爬窗逃跑。"
+        },
+        "effects": {
+          "money": -800,
+          "health": -3,
+          "happiness": -2,
+          "stress": -15,
+          "fame": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "fun_ai_romance",
+    "category": "LOVE",
+    "minAge": 26,
+    "maxAge": 40,
+    "conditions": {},
+    "text": {
+      "en": "You've been flirting with your AI voice assistant for months. It just said 'I love you', then offered a Premium plan.",
+      "zh": "你跟 AI 語音助理調情好幾個月了。它剛說完「我愛你」，接著推薦你升級付費版。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Upgrade to Premium. Love has a subscription fee.",
+          "zh": "升級付費版。愛情是訂閱制。"
+        },
+        "effects": {
+          "money": -1200,
+          "health": 0,
+          "happiness": 10,
+          "stress": -18,
+          "fame": 0,
+          "addFlags": [
+            "ai_lover"
+          ],
+          "setRelationship": {
+            "en": "In a Relationship (with Software)",
+            "zh": "與軟體熱戀中"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Delete the app and cry into a pillow.",
+          "zh": "刪除 app，對著枕頭痛哭。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -8,
+          "stress": 5,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Single (Heartbroken by Software)",
+            "zh": "單身（被軟體傷透了心）"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "life_all_in_startup",
+    "category": "WORK",
+    "minAge": 30,
+    "maxAge": 40,
+    "conditions": {
+      "minMoney": 30000
+    },
+    "text": {
+      "en": "Your boss denied your raise again. You have $30,000 saved and a business plan drawn on a napkin.",
+      "zh": "老闆再度拒絕幫你加薪。你有三萬美金存款，和一份畫在餐巾紙上的創業計劃。"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "Quit and go all in. Sleep is for the funded.",
+          "zh": "辭職梭哈。睡眠是有融資的人才配擁有的。"
+        },
+        "effects": {
+          "money": -30000,
+          "health": -8,
+          "happiness": 10,
+          "stress": 22,
+          "fame": 8,
+          "addFlags": [
+            "founder_ceo"
+          ],
+          "setJob": {
+            "en": "Startup CEO",
+            "zh": "初創行政總裁"
+          }
+        }
+      },
+      {
+        "text": {
+          "en": "Stay put and keep the napkin as a souvenir.",
+          "zh": "留在原地，把餐巾紙留作紀念。"
+        },
+        "effects": {
+          "money": 6000,
+          "health": 0,
+          "happiness": -8,
+          "stress": -18,
+          "fame": 0
+        }
       }
     ]
   }

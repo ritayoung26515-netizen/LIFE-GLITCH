@@ -151,17 +151,17 @@ Play LIFE GLITCH on CrazyGames!`;
 
         {/* Generated Epitaph Card */}
         <div className="bg-[#1a1f2c] border-2 border-[#2d3748] rounded-xl p-4 sm:p-5 mb-4 text-center shadow-xl relative overflow-hidden">
-          <div className="text-[10px] font-mono-numbers text-[#00f0ff] uppercase tracking-widest font-bold mb-1">
+          <div className="text-[11px] font-semibold text-[#00f0ff] uppercase tracking-normal mb-1">
             {t.officialTitle}
           </div>
-          <h2 className="text-xl sm:text-2xl font-display font-extrabold text-[#00e676] mb-1 tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#00e676] mb-1 tracking-normal">
             "{epitaph.title[language]}"
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300 italic mb-3">
+          <p className="text-xs sm:text-sm text-slate-200 font-medium italic mb-3">
             "{epitaph.tagline[language]}"
           </p>
-          <div className="bg-[#12151c] p-3 rounded-lg border border-[#2d3748] text-xs text-slate-300 leading-relaxed text-left">
-            <strong className="text-[#ff1744] block mb-1">{t.causeOfEnd}</strong>
+          <div className="bg-[#12151c] p-3.5 rounded-lg border border-[#2d3748] text-xs sm:text-sm text-slate-200 font-medium leading-relaxed text-left">
+            <strong className="text-[#ff1744] block mb-1 font-semibold">{t.causeOfEnd}</strong>
             {state.deathReason ? state.deathReason[language] : ''}
           </div>
         </div>
@@ -202,12 +202,12 @@ Play LIFE GLITCH on CrazyGames!`;
         {/* Traits list */}
         {state.flags.length > 0 && (
           <div className="mb-3 bg-[#161a24] border border-[#2d3748] p-2.5 rounded-lg">
-            <span className="text-[10px] font-mono-numbers text-slate-400 uppercase tracking-wider block mb-1.5">
+            <span className="text-[11px] font-semibold text-slate-400 block mb-1.5 tracking-normal">
               {t.acquiredTraits}
             </span>
             <div className="flex flex-wrap gap-1">
               {state.flags.map((f, i) => (
-                <span key={i} className="text-[10px] font-mono-numbers bg-[#1a1f2c] border border-[#2d3748] px-2 py-0.5 rounded text-slate-300">
+                <span key={i} className="text-[10px] font-medium bg-[#1a1f2c] border border-[#2d3748] px-2 py-0.5 rounded text-slate-300 tracking-normal">
                   {f.replace(/_/g, ' ')}
                 </span>
               ))}

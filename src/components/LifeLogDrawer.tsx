@@ -78,11 +78,11 @@ export const LifeLogDrawer: React.FC<LifeLogDrawerProps> = ({
         {/* Past Life Summary Banner (Shown when inspecting a Hall of Fame record) */}
         {isPastLifeInspection && (
           <div className="mb-3 bg-gradient-to-br from-[#1a1f2c] to-[#121620] border-2 border-amber-400/40 rounded-xl p-3.5 shadow-md">
-            <div className="text-[10px] font-mono-numbers text-[#00f0ff] uppercase tracking-wider font-bold mb-1 flex items-center justify-between">
+            <div className="text-[11px] text-[#00f0ff] font-semibold mb-1 flex items-center justify-between tracking-normal">
               <span>{language === 'zh' ? '⭐ 歷史傳奇墓誌銘' : '⭐ HISTORICAL EPITAPH'}</span>
               <span className="text-amber-300 font-mono-numbers">{pastRun.date}</span>
             </div>
-            <h4 className="text-lg font-display font-black text-amber-300 mb-2">
+            <h4 className="text-lg font-bold text-amber-300 mb-2 tracking-normal">
               "{pastRun.epitaph[language]}"
             </h4>
 
@@ -105,7 +105,7 @@ export const LifeLogDrawer: React.FC<LifeLogDrawerProps> = ({
             </div>
 
             {/* Cause of Death */}
-            <div className="text-[11px] text-slate-300 bg-[#12151c]/80 p-2 rounded border border-[#2d3748] leading-relaxed flex items-start gap-1.5">
+            <div className="text-[11px] text-slate-300 bg-[#12151c]/80 p-2 rounded border border-[#2d3748] leading-relaxed flex items-start gap-1.5 font-medium">
               <Skull size={13} className="text-[#ff1744] shrink-0 mt-0.5" />
               <div>
                 <strong className="text-slate-400 mr-1">{language === 'zh' ? '終局原因：' : 'Cause of End: '}</strong>
@@ -172,28 +172,28 @@ export const LifeLogDrawer: React.FC<LifeLogDrawerProps> = ({
                 className="bg-[#1a1f2c] border border-[#2d3748] hover:border-[#3b475f] rounded-lg p-3 text-left relative transition-colors shadow-sm"
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[10px] font-mono-numbers font-bold text-[#00e676] bg-[#00e676]/10 border border-[#00e676]/20 px-2 py-0.5 rounded">
+                  <span className="text-[11px] font-semibold text-[#00e676] bg-[#00e676]/10 border border-[#00e676]/20 px-2 py-0.5 rounded tracking-normal">
                     {language === 'zh' ? `${entry.age} 歲歷史節點` : `AGE ${entry.age} CHECKPOINT`}
                   </span>
 
                   {entry.snapshot && (
-                    <span className="text-[10px] font-mono-numbers text-slate-400">
+                    <span className="text-[11px] font-mono-numbers text-slate-300">
                       ${entry.snapshot.money.toLocaleString()} · ♥ {entry.snapshot.health}%
                     </span>
                   )}
                 </div>
                 
-                <div className="text-xs text-slate-200 mb-1.5 leading-relaxed font-medium">
+                <div className="text-xs sm:text-sm text-slate-100 mb-1.5 leading-relaxed font-medium tracking-normal">
                   {entry.eventText[language]}
                 </div>
 
-                <div className="text-xs text-cyan-300 bg-[#12151c] p-2 rounded border border-[#2d3748]/60 leading-relaxed mb-1.5">
-                  <strong className="text-slate-400">{language === 'zh' ? '當時抉擇：' : 'Chosen: '}</strong>
+                <div className="text-xs sm:text-sm text-cyan-300 bg-[#12151c] p-2.5 rounded border border-[#2d3748]/60 leading-relaxed mb-1.5 font-medium tracking-normal">
+                  <strong className="text-slate-400 font-semibold">{language === 'zh' ? '當時抉擇：' : 'Chosen: '}</strong>
                   {entry.choiceText[language]}
                 </div>
 
                 {entry.effectsSummary && (
-                  <div className="text-[10px] font-mono-numbers text-slate-400">
+                  <div className="text-[11px] text-slate-300 font-medium tracking-normal">
                     {entry.effectsSummary[language]}
                   </div>
                 )}

@@ -11,12 +11,38 @@
     },
     "choices": [
       {
-        "text": { "en": "Forgive and repay it together. 'For better or worse' has terms.", "zh": "原諒並一起還債。『不論好壞』其實有附加條款。" },
-        "effects": { "money": -60000, "health": 0, "happiness": -5, "stress": 15, "fame": 0, "setRelationship": { "en": "Married (Financially Hostage)", "zh": "已婚（財務人質）" } }
+        "text": {
+          "en": "Forgive and repay it together. 'For better or worse' has terms.",
+          "zh": "原諒並一起還債。『不論好壞』其實有附加條款。"
+        },
+        "effects": {
+          "money": -60000,
+          "health": 0,
+          "happiness": -5,
+          "stress": 18,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Married (Financially Hostage)",
+            "zh": "已婚（財務人質）"
+          }
+        }
       },
       {
-        "text": { "en": "File for divorce. Keep the toaster.", "zh": "提出離婚。保住烤麵包機。" },
-        "effects": { "money": -20000, "health": 0, "happiness": -10, "stress": 10, "fame": 0, "setRelationship": { "en": "Divorced", "zh": "離婚" } }
+        "text": {
+          "en": "File for divorce. Keep the toaster.",
+          "zh": "提出離婚。保住烤麵包機。"
+        },
+        "effects": {
+          "money": -20000,
+          "health": 0,
+          "happiness": -10,
+          "stress": -16,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Divorced",
+            "zh": "離婚"
+          }
+        }
       }
     ]
   },
@@ -32,12 +58,38 @@
     },
     "choices": [
       {
-        "text": { "en": "Bet it all on a food truck selling 'Salted Tears Fries'.", "zh": "全押在餐車上，賣『淚水鹽味薯條』。" },
-        "effects": { "money": -20000, "health": -3, "happiness": 8, "stress": 15, "fame": 4, "setJob": { "en": "Food Truck Owner", "zh": "餐車老闆" } }
+        "text": {
+          "en": "Bet it all on a food truck selling 'Salted Tears Fries'.",
+          "zh": "全押在餐車上，賣『淚水鹽味薯條』。"
+        },
+        "effects": {
+          "money": -20000,
+          "health": -3,
+          "happiness": 8,
+          "stress": 20,
+          "fame": 4,
+          "setJob": {
+            "en": "Food Truck Owner",
+            "zh": "餐車老闆"
+          }
+        }
       },
       {
-        "text": { "en": "Accept the first offer: soulless data entry.", "zh": "接下第一份工作：毫無靈魂的資料輸入。" },
-        "effects": { "money": 2000, "health": 0, "happiness": -10, "stress": 8, "fame": 0, "setJob": { "en": "Contract Data Entry Clerk", "zh": "約聘資料輸入員" } }
+        "text": {
+          "en": "Accept the first offer: soulless data entry.",
+          "zh": "接下第一份工作：毫無靈魂的資料輸入。"
+        },
+        "effects": {
+          "money": 2000,
+          "health": 0,
+          "happiness": -10,
+          "stress": -16,
+          "fame": 0,
+          "setJob": {
+            "en": "Contract Data Entry Clerk",
+            "zh": "約聘資料輸入員"
+          }
+        }
       }
     ]
   },
@@ -53,12 +105,36 @@
     },
     "choices": [
       {
-        "text": { "en": "Perfect it in secret. Genius needs privacy.", "zh": "秘密改良。天才需要隱私。" },
-        "effects": { "money": -3000, "health": -3, "happiness": 8, "stress": 10, "fame": 0, "addFlags": ["invented_flying_vac"] }
+        "text": {
+          "en": "Perfect it in secret. Genius needs privacy.",
+          "zh": "秘密改良。天才需要隱私。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": -3,
+          "happiness": 8,
+          "stress": 5,
+          "fame": 0,
+          "addFlags": [
+            "invented_flying_vac"
+          ]
+        }
       },
       {
-        "text": { "en": "Test-fly it in the driveway. Livestream it, obviously.", "zh": "直接在車道試飛，當然要開直播。" },
-        "effects": { "money": -500, "health": -3, "happiness": 6, "stress": 5, "fame": 3, "addFlags": ["invented_flying_vac"] }
+        "text": {
+          "en": "Test-fly it in the driveway. Livestream it, obviously.",
+          "zh": "直接在車道試飛，當然要開直播。"
+        },
+        "effects": {
+          "money": -500,
+          "health": -3,
+          "happiness": 6,
+          "stress": -15,
+          "fame": 3,
+          "addFlags": [
+            "invented_flying_vac"
+          ]
+        }
       }
     ]
   },
@@ -67,19 +143,54 @@
     "category": "CHAIN",
     "minAge": 27,
     "maxAge": 39,
-    "conditions": { "flags": ["invented_flying_vac"] },
+    "conditions": {
+      "flags": [
+        "invented_flying_vac"
+      ]
+    },
     "text": {
       "en": "Your flying vacuum goes rogue and smashes through your neighbor's glass patio door. The video hits 100 million views.",
       "zh": "你的飛天吸塵機失控，撞破鄰居的落地玻璃門。影片在網上破億播放。"
     },
     "choices": [
       {
-        "text": { "en": "Apologize publicly and pay for the door. Become 'the honest vacuum guy'.", "zh": "公開道歉並賠償玻璃門。成為『誠實吸塵機男』。" },
-        "effects": { "money": -5000, "health": 0, "happiness": 2, "stress": 8, "fame": 12, "addFlags": ["vac_viral"], "removeFlags": ["invented_flying_vac"] }
+        "text": {
+          "en": "Apologize publicly and pay for the door. Become 'the honest vacuum guy'.",
+          "zh": "公開道歉並賠償玻璃門。成為『誠實吸塵機男』。"
+        },
+        "effects": {
+          "money": -5000,
+          "health": 0,
+          "happiness": 2,
+          "stress": 6,
+          "fame": 12,
+          "addFlags": [
+            "vac_viral"
+          ],
+          "removeFlags": [
+            "invented_flying_vac"
+          ]
+        }
       },
       {
-        "text": { "en": "Sell 'Vac Attack' merch. The neighbor sues.", "zh": "推出『吸塵機襲擊』周邊商品。鄰居告你。" },
-        "effects": { "money": 8000, "health": 0, "happiness": -3, "stress": 12, "fame": 15, "addFlags": ["vac_viral", "neighbor_lawsuit"], "removeFlags": ["invented_flying_vac"] }
+        "text": {
+          "en": "Sell 'Vac Attack' merch. The neighbor sues.",
+          "zh": "推出『吸塵機襲擊』周邊商品。鄰居告你。"
+        },
+        "effects": {
+          "money": 8000,
+          "health": 0,
+          "happiness": -3,
+          "stress": 16,
+          "fame": 15,
+          "addFlags": [
+            "vac_viral",
+            "neighbor_lawsuit"
+          ],
+          "removeFlags": [
+            "invented_flying_vac"
+          ]
+        }
       }
     ]
   },
@@ -88,19 +199,58 @@
     "category": "CHAIN",
     "minAge": 28,
     "maxAge": 40,
-    "conditions": { "flags": ["vac_viral"] },
+    "conditions": {
+      "flags": [
+        "vac_viral"
+      ]
+    },
     "text": {
       "en": "A multinational tech giant offers $1,000,000 for your patent. Or you can mass-produce it yourself and pray.",
       "zh": "跨國科技巨頭出價一百萬美金收購你的專利。或者，你也可以自己量產，然後祈禱。"
     },
     "choices": [
       {
-        "text": { "en": "Sell. They rename it 'CorpVac 3000' and remove the flying.", "zh": "賣掉。他們把它改名為『CorpVac 3000』，並且拿掉飛行功能。" },
-        "effects": { "money": 1000000, "health": 0, "happiness": -10, "stress": 5, "fame": 10, "removeFlags": ["vac_viral"], "setJob": { "en": "Ceremonial Consultant", "zh": "巨頭掛名顧問" } }
+        "text": {
+          "en": "Sell. They rename it 'CorpVac 3000' and remove the flying.",
+          "zh": "賣掉。他們把它改名為『CorpVac 3000』，並且拿掉飛行功能。"
+        },
+        "effects": {
+          "money": 1000000,
+          "health": 0,
+          "happiness": -10,
+          "stress": -16,
+          "fame": 10,
+          "removeFlags": [
+            "vac_viral"
+          ],
+          "setJob": {
+            "en": "Ceremonial Consultant",
+            "zh": "巨頭掛名顧問"
+          }
+        }
       },
       {
-        "text": { "en": "Mass-produce it yourself. Debt is just motivation with interest.", "zh": "自己量產。債務只是帶利息的動力。" },
-        "effects": { "money": -300000, "health": -10, "happiness": 12, "stress": 30, "fame": 15, "addFlags": ["vac_debt"], "removeFlags": ["vac_viral"], "setJob": { "en": "Founder, Flying Vac Inc.", "zh": "飛天吸塵機公司創辦人" } }
+        "text": {
+          "en": "Mass-produce it yourself. Debt is just motivation with interest.",
+          "zh": "自己量產。債務只是帶利息的動力。"
+        },
+        "effects": {
+          "money": -300000,
+          "health": -10,
+          "happiness": 12,
+          "stress": 22,
+          "fame": 15,
+          "addFlags": [
+            "vac_debt"
+          ],
+          "removeFlags": [
+            "vac_viral"
+          ],
+          "setJob": {
+            "en": "Founder, Flying Vac Inc.",
+            "zh": "飛天吸塵機公司創辦人"
+          }
+        }
       }
     ]
   },
@@ -116,12 +266,33 @@
     },
     "choices": [
       {
-        "text": { "en": "Buy the bike. Leather jacket included, dignity optional.", "zh": "買重機。皮衣附贈，尊嚴自選。" },
-        "effects": { "money": -22000, "health": -8, "happiness": 12, "stress": -8, "fame": 2, "addFlags": ["biker_midlife"] }
+        "text": {
+          "en": "Buy the bike. Leather jacket included, dignity optional.",
+          "zh": "買重機。皮衣附贈，尊嚴自選。"
+        },
+        "effects": {
+          "money": -22000,
+          "health": -8,
+          "happiness": 12,
+          "stress": -8,
+          "fame": 2,
+          "addFlags": [
+            "biker_midlife"
+          ]
+        }
       },
       {
-        "text": { "en": "Buy an ergonomic chair and 'adult sneakers' instead.", "zh": "買張人體工學椅和一雙『大人球鞋』代替。" },
-        "effects": { "money": -1500, "health": 3, "happiness": -6, "stress": 0, "fame": 0 }
+        "text": {
+          "en": "Buy an ergonomic chair and 'adult sneakers' instead.",
+          "zh": "買張人體工學椅和一雙『大人球鞋』代替。"
+        },
+        "effects": {
+          "money": -1500,
+          "health": 3,
+          "happiness": -6,
+          "stress": 0,
+          "fame": 0
+        }
       }
     ]
   },
@@ -137,12 +308,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Overhaul your life: no booze, no midnight snacks, no joy.", "zh": "徹底改造人生：不喝酒、不吃宵夜、不要快樂。" },
-        "effects": { "money": -2000, "health": 12, "happiness": -8, "stress": 5, "fame": 0 }
+        "text": {
+          "en": "Overhaul your life: no booze, no midnight snacks, no joy.",
+          "zh": "徹底改造人生：不喝酒、不吃宵夜、不要快樂。"
+        },
+        "effects": {
+          "money": -2000,
+          "health": 12,
+          "happiness": -8,
+          "stress": 5,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Doctor-shop until someone says 'you're fine'.", "zh": "一直換醫生，直到有人說『你很健康』。" },
-        "effects": { "money": -3000, "health": -5, "happiness": 4, "stress": -5, "fame": 0 }
+        "text": {
+          "en": "Doctor-shop until someone says 'you're fine'.",
+          "zh": "一直換醫生，直到有人說『你很健康』。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": -5,
+          "happiness": 4,
+          "stress": -5,
+          "fame": 0
+        }
       }
     ]
   },
@@ -158,12 +347,33 @@
     },
     "choices": [
       {
-        "text": { "en": "Expose him in front of everyone. Youth is not bulletproof.", "zh": "當眾拆穿他。年輕不是防彈衣。" },
-        "effects": { "money": 2000, "health": 0, "happiness": 8, "stress": 12, "fame": 0, "addFlags": ["office_feud"] }
+        "text": {
+          "en": "Expose him in front of everyone. Youth is not bulletproof.",
+          "zh": "當眾拆穿他。年輕不是防彈衣。"
+        },
+        "effects": {
+          "money": 2000,
+          "health": 0,
+          "happiness": 8,
+          "stress": 12,
+          "fame": 0,
+          "addFlags": [
+            "office_feud"
+          ]
+        }
       },
       {
-        "text": { "en": "Swallow it and 'mentor' him with a fake smile.", "zh": "吞下去，並用假笑『指導』他。" },
-        "effects": { "money": 0, "health": -2, "happiness": -8, "stress": 8, "fame": 0 }
+        "text": {
+          "en": "Swallow it and 'mentor' him with a fake smile.",
+          "zh": "吞下去，並用假笑『指導』他。"
+        },
+        "effects": {
+          "money": 0,
+          "health": -2,
+          "happiness": -8,
+          "stress": 8,
+          "fame": 0
+        }
       }
     ]
   },
@@ -179,12 +389,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Pay it. Your retirement plan becomes 'working until death'.", "zh": "付錢。你的退休計劃改成『工作到死』。" },
-        "effects": { "money": -60000, "health": -3, "happiness": 6, "stress": 15, "fame": 0 }
+        "text": {
+          "en": "Pay it. Your retirement plan becomes 'working until death'.",
+          "zh": "付錢。你的退休計劃改成『工作到死』。"
+        },
+        "effects": {
+          "money": -60000,
+          "health": -3,
+          "happiness": 6,
+          "stress": 15,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Say 'the local school builds character.' Absorb the silent treatment.", "zh": "說『本地大學培養品格』。然後承受冷戰。" },
-        "effects": { "money": -5000, "health": 0, "happiness": -8, "stress": 5, "fame": 0 }
+        "text": {
+          "en": "Say 'the local school builds character.' Absorb the silent treatment.",
+          "zh": "說『本地大學培養品格』。然後承受冷戰。"
+        },
+        "effects": {
+          "money": -5000,
+          "health": 0,
+          "happiness": -8,
+          "stress": 5,
+          "fame": 0
+        }
       }
     ]
   },
@@ -200,12 +428,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Go to the ER and admit the mint incident.", "zh": "去急診，並承認這起薄荷糖事件。" },
-        "effects": { "money": -3000, "health": 4, "happiness": -3, "stress": 10, "fame": 0 }
+        "text": {
+          "en": "Go to the ER and admit the mint incident.",
+          "zh": "去急診，並承認這起薄荷糖事件。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": 4,
+          "happiness": -3,
+          "stress": 10,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Call the pharmacist and buy a pill organizer with giant labels.", "zh": "打給藥師，買個超大標籤的藥盒。" },
-        "effects": { "money": -50, "health": 3, "happiness": -1, "stress": 3, "fame": 0 }
+        "text": {
+          "en": "Call the pharmacist and buy a pill organizer with giant labels.",
+          "zh": "打給藥師，買個超大標籤的藥盒。"
+        },
+        "effects": {
+          "money": -50,
+          "health": 3,
+          "happiness": -1,
+          "stress": 3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -221,12 +467,38 @@
     },
     "choices": [
       {
-        "text": { "en": "Move back into one room. Prepare for earplugs.", "zh": "搬回同一間房。準備好耳塞。" },
-        "effects": { "money": -100, "health": -3, "happiness": 8, "stress": 3, "fame": 0, "setRelationship": { "en": "Married (Rekindled)", "zh": "已婚（重燃火花）" } }
+        "text": {
+          "en": "Move back into one room. Prepare for earplugs.",
+          "zh": "搬回同一間房。準備好耳塞。"
+        },
+        "effects": {
+          "money": -100,
+          "health": -3,
+          "happiness": 8,
+          "stress": 3,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Married (Rekindled)",
+            "zh": "已婚（重燃火花）"
+          }
+        }
       },
       {
-        "text": { "en": "Renovate the house into two master suites.", "zh": "把家裝修成兩套主臥。" },
-        "effects": { "money": -15000, "health": 2, "happiness": 3, "stress": -8, "fame": 0, "setRelationship": { "en": "Married (Separate Wings)", "zh": "已婚（分翼居住）" } }
+        "text": {
+          "en": "Renovate the house into two master suites.",
+          "zh": "把家裝修成兩套主臥。"
+        },
+        "effects": {
+          "money": -15000,
+          "health": 2,
+          "happiness": 3,
+          "stress": -8,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Married (Separate Wings)",
+            "zh": "已婚（分翼居住）"
+          }
+        }
       }
     ]
   },
@@ -242,12 +514,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Move them into your home. Learn the true meaning of 'patience'.", "zh": "接他們回家住。你將重新學習『耐心』二字。" },
-        "effects": { "money": -8000, "health": -5, "happiness": -5, "stress": 18, "fame": 0 }
+        "text": {
+          "en": "Move them into your home. Learn the true meaning of 'patience'.",
+          "zh": "接他們回家住。你將重新學習『耐心』二字。"
+        },
+        "effects": {
+          "money": -8000,
+          "health": -5,
+          "happiness": -5,
+          "stress": 18,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Pay for a nursing home and carry the guilt for free.", "zh": "出錢送去安養院，愧疚感免費附贈。" },
-        "effects": { "money": -25000, "health": 0, "happiness": -8, "stress": 5, "fame": 0 }
+        "text": {
+          "en": "Pay for a nursing home and carry the guilt for free.",
+          "zh": "出錢送去安養院，愧疚感免費附贈。"
+        },
+        "effects": {
+          "money": -25000,
+          "health": 0,
+          "happiness": -8,
+          "stress": 5,
+          "fame": 0
+        }
       }
     ]
   },
@@ -263,12 +553,37 @@
     },
     "choices": [
       {
-        "text": { "en": "Train it properly. Become its 'human supervisor'.", "zh": "認真訓練它。成為它的『人類監督員』。" },
-        "effects": { "money": 6000, "health": 0, "happiness": -8, "stress": 8, "fame": 0, "setJob": { "en": "AI Supervisor (Human)", "zh": "AI 監督員（真人）" } }
+        "text": {
+          "en": "Train it properly. Become its 'human supervisor'.",
+          "zh": "認真訓練它。成為它的『人類監督員』。"
+        },
+        "effects": {
+          "money": 6000,
+          "health": 0,
+          "happiness": -8,
+          "stress": 8,
+          "fame": 0,
+          "setJob": {
+            "en": "AI Supervisor (Human)",
+            "zh": "AI 監督員（真人）"
+          }
+        }
       },
       {
-        "text": { "en": "Subtly train it to love spreadsheets from 1998.", "zh": "偷偷把它訓練成只愛 1998 年的試算表。" },
-        "effects": { "money": -2000, "health": 0, "happiness": 8, "stress": 12, "fame": 0, "addFlags": ["ai_saboteur"] }
+        "text": {
+          "en": "Subtly train it to love spreadsheets from 1998.",
+          "zh": "偷偷把它訓練成只愛 1998 年的試算表。"
+        },
+        "effects": {
+          "money": -2000,
+          "health": 0,
+          "happiness": 8,
+          "stress": 12,
+          "fame": 0,
+          "addFlags": [
+            "ai_saboteur"
+          ]
+        }
       }
     ]
   },
@@ -284,12 +599,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Get the transplant. Hope has a price tag.", "zh": "植髮。希望是有標價的。" },
-        "effects": { "money": -9000, "health": -2, "happiness": 8, "stress": 3, "fame": 2 }
+        "text": {
+          "en": "Get the transplant. Hope has a price tag.",
+          "zh": "植髮。希望是有標價的。"
+        },
+        "effects": {
+          "money": -9000,
+          "health": -2,
+          "happiness": 8,
+          "stress": 3,
+          "fame": 2
+        }
       },
       {
-        "text": { "en": "Embrace baldness and call it 'shiny confidence'.", "zh": "擁抱光頭，並稱之為『閃亮自信』。" },
-        "effects": { "money": -200, "health": 0, "happiness": -3, "stress": 0, "fame": 1 }
+        "text": {
+          "en": "Embrace baldness and call it 'shiny confidence'.",
+          "zh": "擁抱光頭，並稱之為『閃亮自信』。"
+        },
+        "effects": {
+          "money": -200,
+          "health": 0,
+          "happiness": -3,
+          "stress": 0,
+          "fame": 1
+        }
       }
     ]
   },
@@ -305,12 +638,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Cash out and hide the money under your mattress.", "zh": "全部提領，塞進床墊底下。" },
-        "effects": { "money": -6000, "health": 0, "happiness": -3, "stress": -6, "fame": 0 }
+        "text": {
+          "en": "Cash out and hide the money under your mattress.",
+          "zh": "全部提領，塞進床墊底下。"
+        },
+        "effects": {
+          "money": -6000,
+          "health": 0,
+          "happiness": -3,
+          "stress": -6,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Buy the dip with your last savings. Hope is a strategy.", "zh": "用最後的積蓄抄底。希望也是一種策略。" },
-        "effects": { "money": -15000, "health": -3, "happiness": 6, "stress": 12, "fame": 0 }
+        "text": {
+          "en": "Buy the dip with your last savings. Hope is a strategy.",
+          "zh": "用最後的積蓄抄底。希望也是一種策略。"
+        },
+        "effects": {
+          "money": -15000,
+          "health": -3,
+          "happiness": 6,
+          "stress": 12,
+          "fame": 0
+        }
       }
     ]
   },
@@ -326,12 +677,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Learn the slang. Say 'no cap' with a straight face.", "zh": "學新潮用語。面不改色地說『真的假的』。" },
-        "effects": { "money": 3000, "health": 0, "happiness": -2, "stress": 6, "fame": 0 }
+        "text": {
+          "en": "Learn the slang. Say 'no cap' with a straight face.",
+          "zh": "學新潮用語。面不改色地說『真的假的』。"
+        },
+        "effects": {
+          "money": 3000,
+          "health": 0,
+          "happiness": -2,
+          "stress": 6,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Say 'back in my day...' and watch HR take notes.", "zh": "說『我們那個年代……』，然後看人資開始做筆記。" },
-        "effects": { "money": -3000, "health": 0, "happiness": 5, "stress": 10, "fame": 0 }
+        "text": {
+          "en": "Say 'back in my day...' and watch HR take notes.",
+          "zh": "說『我們那個年代……』，然後看人資開始做筆記。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": 0,
+          "happiness": 5,
+          "stress": 10,
+          "fame": 0
+        }
       }
     ]
   },
@@ -347,12 +716,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Get the surgery. Enjoy six weeks of daytime TV.", "zh": "動手術。享受六週的白天電視節目。" },
-        "effects": { "money": -12000, "health": 10, "happiness": -3, "stress": 5, "fame": 0 }
+        "text": {
+          "en": "Get the surgery. Enjoy six weeks of daytime TV.",
+          "zh": "動手術。享受六週的白天電視節目。"
+        },
+        "effects": {
+          "money": -12000,
+          "health": 10,
+          "happiness": -3,
+          "stress": 5,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Buy a cane and call it 'vintage style'.", "zh": "買根拐杖，稱之為『復古造型』。" },
-        "effects": { "money": -100, "health": -8, "happiness": 3, "stress": 0, "fame": 1 }
+        "text": {
+          "en": "Buy a cane and call it 'vintage style'.",
+          "zh": "買根拐杖，稱之為『復古造型』。"
+        },
+        "effects": {
+          "money": -100,
+          "health": -8,
+          "happiness": 3,
+          "stress": 0,
+          "fame": 1
+        }
       }
     ]
   },
@@ -368,12 +755,33 @@
     },
     "choices": [
       {
-        "text": { "en": "Fund his dream. Watch the stream. Suffer quietly.", "zh": "資助他的夢想。看他直播。默默受苦。" },
-        "effects": { "money": -6000, "health": 0, "happiness": 4, "stress": 12, "fame": 0 }
+        "text": {
+          "en": "Fund his dream. Watch the stream. Suffer quietly.",
+          "zh": "資助他的夢想。看他直播。默默受苦。"
+        },
+        "effects": {
+          "money": -6000,
+          "health": 0,
+          "happiness": 4,
+          "stress": 12,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Forbid it. Enjoy the cold war at dinner.", "zh": "禁止。享受晚餐桌上的冷戰。" },
-        "effects": { "money": 0, "health": 0, "happiness": -5, "stress": 6, "fame": 0, "addFlags": ["cold_war_home"] }
+        "text": {
+          "en": "Forbid it. Enjoy the cold war at dinner.",
+          "zh": "禁止。享受晚餐桌上的冷戰。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -5,
+          "stress": 6,
+          "fame": 0,
+          "addFlags": [
+            "cold_war_home"
+          ]
+        }
       }
     ]
   },
@@ -389,12 +797,33 @@
     },
     "choices": [
       {
-        "text": { "en": "Enjoy the attention. Just a little.", "zh": "享受一下被關注的感覺。只是一點點。" },
-        "effects": { "money": -500, "health": 0, "happiness": 8, "stress": 10, "fame": 0, "addFlags": ["flirt_risk"] }
+        "text": {
+          "en": "Enjoy the attention. Just a little.",
+          "zh": "享受一下被關注的感覺。只是一點點。"
+        },
+        "effects": {
+          "money": -500,
+          "health": 0,
+          "happiness": 8,
+          "stress": 10,
+          "fame": 0,
+          "addFlags": [
+            "flirt_risk"
+          ]
+        }
       },
       {
-        "text": { "en": "Go home and hug your spouse, awkwardly.", "zh": "回家，笨拙地抱抱你的另一半。" },
-        "effects": { "money": 0, "health": 0, "happiness": -2, "stress": -5, "fame": 0 }
+        "text": {
+          "en": "Go home and hug your spouse, awkwardly.",
+          "zh": "回家，笨拙地抱抱你的另一半。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -2,
+          "stress": -5,
+          "fame": 0
+        }
       }
     ]
   },
@@ -410,12 +839,33 @@
     },
     "choices": [
       {
-        "text": { "en": "Start a real bucket list. Spend money on being alive.", "zh": "認真列一張願望清單。花錢在『活著』這件事上。" },
-        "effects": { "money": -5000, "health": 2, "happiness": 8, "stress": -8, "fame": 0, "addFlags": ["memento_mori"] }
+        "text": {
+          "en": "Start a real bucket list. Spend money on being alive.",
+          "zh": "認真列一張願望清單。花錢在『活著』這件事上。"
+        },
+        "effects": {
+          "money": -5000,
+          "health": 2,
+          "happiness": 8,
+          "stress": -8,
+          "fame": 0,
+          "addFlags": [
+            "memento_mori"
+          ]
+        }
       },
       {
-        "text": { "en": "Return to work. Funerals aren't billable.", "zh": "回去工作。喪禮不能報帳。" },
-        "effects": { "money": 3000, "health": -2, "happiness": -6, "stress": 8, "fame": 0 }
+        "text": {
+          "en": "Return to work. Funerals aren't billable.",
+          "zh": "回去工作。喪禮不能報帳。"
+        },
+        "effects": {
+          "money": 3000,
+          "health": -2,
+          "happiness": -6,
+          "stress": 8,
+          "fame": 0
+        }
       }
     ]
   },
@@ -431,12 +881,33 @@
     },
     "choices": [
       {
-        "text": { "en": "Sell up and move into a compact condo.", "zh": "賣房，搬進小巧的公寓。" },
-        "effects": { "money": 50000, "health": -2, "happiness": -4, "stress": 10, "fame": 0 }
+        "text": {
+          "en": "Sell up and move into a compact condo.",
+          "zh": "賣房，搬進小巧的公寓。"
+        },
+        "effects": {
+          "money": 50000,
+          "health": -2,
+          "happiness": -4,
+          "stress": 10,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Rent the rooms to strangers. What could go wrong?", "zh": "把房間出租給陌生人。能出什麼事呢？" },
-        "effects": { "money": 12000, "health": 0, "happiness": -6, "stress": 12, "fame": 0, "addFlags": ["rental_horror"] }
+        "text": {
+          "en": "Rent the rooms to strangers. What could go wrong?",
+          "zh": "把房間出租給陌生人。能出什麼事呢？"
+        },
+        "effects": {
+          "money": 12000,
+          "health": 0,
+          "happiness": -6,
+          "stress": 12,
+          "fame": 0,
+          "addFlags": [
+            "rental_horror"
+          ]
+        }
       }
     ]
   },
@@ -445,19 +916,47 @@
     "category": "WORK",
     "minAge": 43,
     "maxAge": 58,
-    "conditions": { "flags": ["backstabber"] },
+    "conditions": {
+      "flags": [
+        "backstabber"
+      ]
+    },
     "text": {
       "en": "The colleague you sold out years ago now runs the regulatory board that approves your project. He remembers everything.",
       "zh": "多年前被你出賣的同事，如今是審批你項目的監管機構負責人。他什麼都記得。"
     },
     "choices": [
       {
-        "text": { "en": "Apologize sincerely and accept his 'public humility' terms.", "zh": "誠心道歉，並接受他提出的『公開謙卑』條件。" },
-        "effects": { "money": 15000, "health": 0, "happiness": -8, "stress": 12, "fame": 0, "removeFlags": ["backstabber"] }
+        "text": {
+          "en": "Apologize sincerely and accept his 'public humility' terms.",
+          "zh": "誠心道歉，並接受他提出的『公開謙卑』條件。"
+        },
+        "effects": {
+          "money": 15000,
+          "health": 0,
+          "happiness": -8,
+          "stress": 12,
+          "fame": 0,
+          "removeFlags": [
+            "backstabber"
+          ]
+        }
       },
       {
-        "text": { "en": "Take your project elsewhere and keep your pride.", "zh": "把項目帶去別處，保住自尊。" },
-        "effects": { "money": -12000, "health": 0, "happiness": 6, "stress": -3, "fame": 0, "removeFlags": ["backstabber"] }
+        "text": {
+          "en": "Take your project elsewhere and keep your pride.",
+          "zh": "把項目帶去別處，保住自尊。"
+        },
+        "effects": {
+          "money": -12000,
+          "health": 0,
+          "happiness": 6,
+          "stress": -3,
+          "fame": 0,
+          "removeFlags": [
+            "backstabber"
+          ]
+        }
       }
     ]
   },
@@ -466,19 +965,58 @@
     "category": "SOCIAL",
     "minAge": 41,
     "maxAge": 60,
-    "conditions": { "flags": ["fake_fiance"] },
+    "conditions": {
+      "flags": [
+        "fake_fiance"
+      ]
+    },
     "text": {
       "en": "At grandma's 90th birthday, the whole family demands to meet 'the surgeon fiancé from Antarctica'. Aunt Linda has brought a gift for him.",
       "zh": "奶奶九十大壽，全家人堅持要見那位『在南極行醫的未婚夫』。琳達姑姑還特地準備了禮物給他。"
     },
     "choices": [
       {
-        "text": { "en": "Hire an actor. He's method: he's memorized penguin facts.", "zh": "花錢請個演員。他很敬業，連企鵝知識都背好了。" },
-        "effects": { "money": -3000, "health": 0, "happiness": 2, "stress": 15, "fame": 0, "addFlags": ["hired_actor"], "removeFlags": ["fake_fiance"], "setRelationship": { "en": "Engaged (Actor)", "zh": "訂婚中（演員版）" } }
+        "text": {
+          "en": "Hire an actor. He's method: he's memorized penguin facts.",
+          "zh": "花錢請個演員。他很敬業，連企鵝知識都背好了。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": 0,
+          "happiness": 2,
+          "stress": 15,
+          "fame": 0,
+          "addFlags": [
+            "hired_actor"
+          ],
+          "removeFlags": [
+            "fake_fiance"
+          ],
+          "setRelationship": {
+            "en": "Engaged (Actor)",
+            "zh": "訂婚中（演員版）"
+          }
+        }
       },
       {
-        "text": { "en": "Confess everything. Absorb the flying dinner rolls.", "zh": "全盤招供，並承受飛來的餐包。" },
-        "effects": { "money": 0, "health": 0, "happiness": -6, "stress": -12, "fame": 0, "removeFlags": ["fake_fiance"], "setRelationship": { "en": "Single (Exposed)", "zh": "單身（被拆穿）" } }
+        "text": {
+          "en": "Confess everything. Absorb the flying dinner rolls.",
+          "zh": "全盤招供，並承受飛來的餐包。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -6,
+          "stress": -12,
+          "fame": 0,
+          "removeFlags": [
+            "fake_fiance"
+          ],
+          "setRelationship": {
+            "en": "Single (Exposed)",
+            "zh": "單身（被拆穿）"
+          }
+        }
       }
     ]
   },
@@ -487,19 +1025,50 @@
     "category": "MONEY",
     "minAge": 41,
     "maxAge": 60,
-    "conditions": { "flags": ["cosigned_loan"] },
+    "conditions": {
+      "flags": [
+        "cosigned_loan"
+      ]
+    },
     "text": {
       "en": "Your brother's pickle shop went bust years ago. Two men in matching jackets show up with an IOU: $100,000 with interest.",
       "zh": "你弟的酸黃瓜店早就倒了。兩個穿著同款外套的男人拿著借據上門：連本帶利十萬美金。"
     },
     "choices": [
       {
-        "text": { "en": "Pay it off. Family is expensive.", "zh": "全額付清。家人真貴。" },
-        "effects": { "money": -100000, "health": 0, "happiness": -8, "stress": -10, "fame": 0, "removeFlags": ["cosigned_loan"] }
+        "text": {
+          "en": "Pay it off. Family is expensive.",
+          "zh": "全額付清。家人真貴。"
+        },
+        "effects": {
+          "money": -100000,
+          "health": 0,
+          "happiness": -8,
+          "stress": -10,
+          "fame": 0,
+          "removeFlags": [
+            "cosigned_loan"
+          ]
+        }
       },
       {
-        "text": { "en": "Run and hide. Move cities. Change your name to 'Steve'.", "zh": "逃跑、搬城市、改名叫『史蒂夫』。" },
-        "effects": { "money": -5000, "health": -8, "happiness": -5, "stress": 25, "fame": 0, "addFlags": ["mob_target"], "removeFlags": ["cosigned_loan"] }
+        "text": {
+          "en": "Run and hide. Move cities. Change your name to 'Steve'.",
+          "zh": "逃跑、搬城市、改名叫『史蒂夫』。"
+        },
+        "effects": {
+          "money": -5000,
+          "health": -8,
+          "happiness": -5,
+          "stress": 25,
+          "fame": 0,
+          "addFlags": [
+            "mob_target"
+          ],
+          "removeFlags": [
+            "cosigned_loan"
+          ]
+        }
       }
     ]
   },
@@ -508,19 +1077,47 @@
     "category": "SOCIAL",
     "minAge": 41,
     "maxAge": 60,
-    "conditions": { "flags": ["neighbor_war"] },
+    "conditions": {
+      "flags": [
+        "neighbor_war"
+      ]
+    },
     "text": {
       "en": "The drummer you fought with at 3 a.m. is now chairman of the homeowners' committee. His first fine is for your 'excessive aura'.",
       "zh": "當年凌晨跟你對轟的鼓手鄰居，如今是業主委員會主席。他開的第一張罰單是針對你『過度張揚的氣場』。"
     },
     "choices": [
       {
-        "text": { "en": "Surrender and bake him an apology cake.", "zh": "投降，烤一個道歉蛋糕給他。" },
-        "effects": { "money": -500, "health": 0, "happiness": -5, "stress": -5, "fame": 0, "removeFlags": ["neighbor_war"] }
+        "text": {
+          "en": "Surrender and bake him an apology cake.",
+          "zh": "投降，烤一個道歉蛋糕給他。"
+        },
+        "effects": {
+          "money": -500,
+          "health": 0,
+          "happiness": -5,
+          "stress": -5,
+          "fame": 0,
+          "removeFlags": [
+            "neighbor_war"
+          ]
+        }
       },
       {
-        "text": { "en": "Run for chairman against him. Democracy is loud.", "zh": "出來競選主席跟他對決。民主是很吵的。" },
-        "effects": { "money": -3000, "health": -3, "happiness": 8, "stress": 15, "fame": 5, "removeFlags": ["neighbor_war"] }
+        "text": {
+          "en": "Run for chairman against him. Democracy is loud.",
+          "zh": "出來競選主席跟他對決。民主是很吵的。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": -3,
+          "happiness": 8,
+          "stress": 15,
+          "fame": 5,
+          "removeFlags": [
+            "neighbor_war"
+          ]
+        }
       }
     ]
   },
@@ -529,19 +1126,47 @@
     "category": "MONEY",
     "minAge": 41,
     "maxAge": 64,
-    "conditions": { "flags": ["ghost_accountants"] },
+    "conditions": {
+      "flags": [
+        "ghost_accountants"
+      ]
+    },
     "text": {
       "en": "Your tax returns were too perfect. The tax office has dispatched its Supernatural Investigation Unit.",
       "zh": "你的報稅單完美得不正常。稅務局派出了『超自然調查組』。"
     },
     "choices": [
       {
-        "text": { "en": "Let the ghosts testify in a séance court.", "zh": "讓幽靈會計師們在招魂法庭上作證。" },
-        "effects": { "money": -3000, "health": -3, "happiness": 3, "stress": 12, "fame": 8, "removeFlags": ["ghost_accountants"] }
+        "text": {
+          "en": "Let the ghosts testify in a séance court.",
+          "zh": "讓幽靈會計師們在招魂法庭上作證。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": -3,
+          "happiness": 3,
+          "stress": 12,
+          "fame": 8,
+          "removeFlags": [
+            "ghost_accountants"
+          ]
+        }
       },
       {
-        "text": { "en": "Hire a lawyer who is also a medium. Billable hours: both worlds.", "zh": "請一位同時是靈媒的律師。兩個世界一起計費。" },
-        "effects": { "money": -12000, "health": 0, "happiness": 0, "stress": -5, "fame": 0, "removeFlags": ["ghost_accountants"] }
+        "text": {
+          "en": "Hire a lawyer who is also a medium. Billable hours: both worlds.",
+          "zh": "請一位同時是靈媒的律師。兩個世界一起計費。"
+        },
+        "effects": {
+          "money": -12000,
+          "health": 0,
+          "happiness": 0,
+          "stress": -5,
+          "fame": 0,
+          "removeFlags": [
+            "ghost_accountants"
+          ]
+        }
       }
     ]
   },
@@ -550,19 +1175,58 @@
     "category": "MONEY",
     "minAge": 43,
     "maxAge": 60,
-    "conditions": { "flags": ["vac_debt"] },
+    "conditions": {
+      "flags": [
+        "vac_debt"
+      ]
+    },
     "text": {
       "en": "Your flying vacuum company is insolvent. Liquidators schedule an auction, and a mysterious overseas buyer offers to 'rescue' it.",
       "zh": "你的飛天吸塵機公司資不抵債。清盤人安排了拍賣，同時有位神秘的外國買家表示願意『接盤』。"
     },
     "choices": [
       {
-        "text": { "en": "Let it go to auction. Watch strangers bid on your dreams.", "zh": "任其拍賣。看著陌生人為你的夢想喊價。" },
-        "effects": { "money": -50000, "health": 0, "happiness": -8, "stress": -10, "fame": 0, "removeFlags": ["vac_debt"], "setJob": { "en": "Ex-Founder (Bankrupt)", "zh": "前創辦人（已破產）" } }
+        "text": {
+          "en": "Let it go to auction. Watch strangers bid on your dreams.",
+          "zh": "任其拍賣。看著陌生人為你的夢想喊價。"
+        },
+        "effects": {
+          "money": -50000,
+          "health": 0,
+          "happiness": -8,
+          "stress": -10,
+          "fame": 0,
+          "removeFlags": [
+            "vac_debt"
+          ],
+          "setJob": {
+            "en": "Ex-Founder (Bankrupt)",
+            "zh": "前創辦人（已破產）"
+          }
+        }
       },
       {
-        "text": { "en": "Sell to the overseas buyer. They promise 'peaceful uses'.", "zh": "賣給外國買家。他們保證『只作和平用途』。" },
-        "effects": { "money": 80000, "health": 0, "happiness": -12, "stress": 5, "fame": 5, "addFlags": ["vac_weaponized"], "removeFlags": ["vac_debt"], "setJob": { "en": "Consultant to Unknown Buyer", "zh": "神秘買家的顧問" } }
+        "text": {
+          "en": "Sell to the overseas buyer. They promise 'peaceful uses'.",
+          "zh": "賣給外國買家。他們保證『只作和平用途』。"
+        },
+        "effects": {
+          "money": 80000,
+          "health": 0,
+          "happiness": -12,
+          "stress": 5,
+          "fame": 5,
+          "addFlags": [
+            "vac_weaponized"
+          ],
+          "removeFlags": [
+            "vac_debt"
+          ],
+          "setJob": {
+            "en": "Consultant to Unknown Buyer",
+            "zh": "神秘買家的顧問"
+          }
+        }
       }
     ]
   },
@@ -578,12 +1242,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Stay the full week. Enlightenment has terrible reception.", "zh": "撐滿整週。頓悟的訊號真的很差。" },
-        "effects": { "money": -2000, "health": 3, "happiness": 6, "stress": -12, "fame": 0 }
+        "text": {
+          "en": "Stay the full week. Enlightenment has terrible reception.",
+          "zh": "撐滿整週。頓悟的訊號真的很差。"
+        },
+        "effects": {
+          "money": -2000,
+          "health": 3,
+          "happiness": 6,
+          "stress": -12,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Sneak into town for pizza and a place with signal.", "zh": "偷溜下山，去吃披薩、找個有訊號的地方。" },
-        "effects": { "money": -800, "health": -1, "happiness": 8, "stress": 3, "fame": 0 }
+        "text": {
+          "en": "Sneak into town for pizza and a place with signal.",
+          "zh": "偷溜下山，去吃披薩、找個有訊號的地方。"
+        },
+        "effects": {
+          "money": -800,
+          "health": -1,
+          "happiness": 8,
+          "stress": 3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -599,12 +1281,33 @@
     },
     "choices": [
       {
-        "text": { "en": "Join the hilltop welcoming party. Bring snacks.", "zh": "加入山頂歡迎會。記得帶零食。" },
-        "effects": { "money": -1500, "health": -3, "happiness": 8, "stress": -5, "fame": 2, "addFlags": ["ufo_believer"] }
+        "text": {
+          "en": "Join the hilltop welcoming party. Bring snacks.",
+          "zh": "加入山頂歡迎會。記得帶零食。"
+        },
+        "effects": {
+          "money": -1500,
+          "health": -3,
+          "happiness": 8,
+          "stress": -5,
+          "fame": 2,
+          "addFlags": [
+            "ufo_believer"
+          ]
+        }
       },
       {
-        "text": { "en": "Log off and touch grass. Tuesday is trash day.", "zh": "登出，去碰碰草地。週二是倒垃圾日。" },
-        "effects": { "money": 0, "health": 2, "happiness": -4, "stress": 3, "fame": 0 }
+        "text": {
+          "en": "Log off and touch grass. Tuesday is trash day.",
+          "zh": "登出，去碰碰草地。週二是倒垃圾日。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 2,
+          "happiness": -4,
+          "stress": 3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -620,12 +1323,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Challenge them to a dance-off. Yoga has moves.", "zh": "向她們下戰書辦舞蹈對決。瑜珈也有招式。" },
-        "effects": { "money": 0, "health": -5, "happiness": 6, "stress": 5, "fame": 8 }
+        "text": {
+          "en": "Challenge them to a dance-off. Yoga has moves.",
+          "zh": "向她們下戰書辦舞蹈對決。瑜珈也有招式。"
+        },
+        "effects": {
+          "money": 0,
+          "health": -5,
+          "happiness": 6,
+          "stress": 5,
+          "fame": 8
+        }
       },
       {
-        "text": { "en": "Retreat to the parking lot. Find inner peace between cars.", "zh": "撤退到停車場。在車縫間尋找內心平靜。" },
-        "effects": { "money": 0, "health": 0, "happiness": -4, "stress": -3, "fame": 0 }
+        "text": {
+          "en": "Retreat to the parking lot. Find inner peace between cars.",
+          "zh": "撤退到停車場。在車縫間尋找內心平靜。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -4,
+          "stress": -3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -641,12 +1362,33 @@
     },
     "choices": [
       {
-        "text": { "en": "Claim it's a reproduction of a Renaissance painting.", "zh": "宣稱那是一幅文藝復興名畫的仿作。" },
-        "effects": { "money": 0, "health": 0, "happiness": -5, "stress": 15, "fame": 5, "addFlags": ["chat_legend"] }
+        "text": {
+          "en": "Claim it's a reproduction of a Renaissance painting.",
+          "zh": "宣稱那是一幅文藝復興名畫的仿作。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": -5,
+          "stress": 15,
+          "fame": 5,
+          "addFlags": [
+            "chat_legend"
+          ]
+        }
       },
       {
-        "text": { "en": "Leave every parent group and transfer your kid to another school.", "zh": "退出所有家長群組，並幫孩子轉學。" },
-        "effects": { "money": -3000, "health": 0, "happiness": -6, "stress": 8, "fame": 0 }
+        "text": {
+          "en": "Leave every parent group and transfer your kid to another school.",
+          "zh": "退出所有家長群組，並幫孩子轉學。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": 0,
+          "happiness": -6,
+          "stress": 8,
+          "fame": 0
+        }
       }
     ]
   },
@@ -662,12 +1404,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Keep it. Your back can feel the quantum.", "zh": "留著。你的背可以感受到量子。" },
-        "effects": { "money": -3000, "health": -3, "happiness": 6, "stress": -8, "fame": 0 }
+        "text": {
+          "en": "Keep it. Your back can feel the quantum.",
+          "zh": "留著。你的背可以感受到量子。"
+        },
+        "effects": {
+          "money": -3000,
+          "health": -3,
+          "happiness": 6,
+          "stress": -8,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Return it. Endure 47 minutes of hold music.", "zh": "退貨。忍受 47 分鐘的等候音樂。" },
-        "effects": { "money": -600, "health": 0, "happiness": -3, "stress": 10, "fame": 0 }
+        "text": {
+          "en": "Return it. Endure 47 minutes of hold music.",
+          "zh": "退貨。忍受 47 分鐘的等候音樂。"
+        },
+        "effects": {
+          "money": -600,
+          "health": 0,
+          "happiness": -3,
+          "stress": 10,
+          "fame": 0
+        }
       }
     ]
   },
@@ -683,12 +1443,33 @@
     },
     "choices": [
       {
-        "text": { "en": "Apologize to everyone. Rebuild a normal life.", "zh": "向所有人道歉，重建平凡人生。" },
-        "effects": { "money": -10000, "health": 15, "happiness": 10, "stress": -10, "fame": 0 }
+        "text": {
+          "en": "Apologize to everyone. Rebuild a normal life.",
+          "zh": "向所有人道歉，重建平凡人生。"
+        },
+        "effects": {
+          "money": -10000,
+          "health": 15,
+          "happiness": 10,
+          "stress": -10,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Refuse to go back. Continue the bucket-list chaos.", "zh": "拒絕回頭。繼續執行願望清單的混亂人生。" },
-        "effects": { "money": -20000, "health": -8, "happiness": 15, "stress": 5, "fame": 5, "addFlags": ["bucket_list_mode"] }
+        "text": {
+          "en": "Refuse to go back. Continue the bucket-list chaos.",
+          "zh": "拒絕回頭。繼續執行願望清單的混亂人生。"
+        },
+        "effects": {
+          "money": -20000,
+          "health": -8,
+          "happiness": 15,
+          "stress": 5,
+          "fame": 5,
+          "addFlags": [
+            "bucket_list_mode"
+          ]
+        }
       }
     ]
   },
@@ -704,12 +1485,34 @@
     },
     "choices": [
       {
-        "text": { "en": "Accept everything. You are now a llama lighthouse keeper.", "zh": "全盤接收。你現在是羊駝燈塔看守人。" },
-        "effects": { "money": -15000, "health": -3, "happiness": 12, "stress": 8, "fame": 5, "setJob": { "en": "Llama Lighthouse Keeper", "zh": "羊駝燈塔看守人" } }
+        "text": {
+          "en": "Accept everything. You are now a llama lighthouse keeper.",
+          "zh": "全盤接收。你現在是羊駝燈塔看守人。"
+        },
+        "effects": {
+          "money": -15000,
+          "health": -3,
+          "happiness": 12,
+          "stress": 8,
+          "fame": 5,
+          "setJob": {
+            "en": "Llama Lighthouse Keeper",
+            "zh": "羊駝燈塔看守人"
+          }
+        }
       },
       {
-        "text": { "en": "Sell the lot and never speak of the llamas again.", "zh": "全部賣掉，永遠不再提起羊駝。" },
-        "effects": { "money": 30000, "health": 0, "happiness": -6, "stress": -3, "fame": 0 }
+        "text": {
+          "en": "Sell the lot and never speak of the llamas again.",
+          "zh": "全部賣掉，永遠不再提起羊駝。"
+        },
+        "effects": {
+          "money": 30000,
+          "health": 0,
+          "happiness": -6,
+          "stress": -3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -725,12 +1528,34 @@
     },
     "choices": [
       {
-        "text": { "en": "Quit everything and become a full-time beach angler.", "zh": "放下一切，成為全職海灘釣客。" },
-        "effects": { "money": -25000, "health": 8, "happiness": 20, "stress": -25, "fame": 0, "setJob": { "en": "Full-Time Beach Angler", "zh": "全職海灘釣客" } }
+        "text": {
+          "en": "Quit everything and become a full-time beach angler.",
+          "zh": "放下一切，成為全職海灘釣客。"
+        },
+        "effects": {
+          "money": -25000,
+          "health": 8,
+          "happiness": 20,
+          "stress": -25,
+          "fame": 0,
+          "setJob": {
+            "en": "Full-Time Beach Angler",
+            "zh": "全職海灘釣客"
+          }
+        }
       },
       {
-        "text": { "en": "Stay put. Fishing is just a screensaver.", "zh": "留下。釣魚只是螢幕保護程式。" },
-        "effects": { "money": 15000, "health": -5, "happiness": -10, "stress": 12, "fame": 0 }
+        "text": {
+          "en": "Stay put. Fishing is just a screensaver.",
+          "zh": "留下。釣魚只是螢幕保護程式。"
+        },
+        "effects": {
+          "money": 15000,
+          "health": -5,
+          "happiness": -10,
+          "stress": 12,
+          "fame": 0
+        }
       }
     ]
   },
@@ -746,12 +1571,37 @@
     },
     "choices": [
       {
-        "text": { "en": "Lead the resistance and swallow a poison pill.", "zh": "帶頭抵抗，並吞下毒丸策略。" },
-        "effects": { "money": -10000, "health": -5, "happiness": 5, "stress": 25, "fame": 10, "addFlags": ["raider_enemy"] }
+        "text": {
+          "en": "Lead the resistance and swallow a poison pill.",
+          "zh": "帶頭抵抗，並吞下毒丸策略。"
+        },
+        "effects": {
+          "money": -10000,
+          "health": -5,
+          "happiness": 5,
+          "stress": 25,
+          "fame": 10,
+          "addFlags": [
+            "raider_enemy"
+          ]
+        }
       },
       {
-        "text": { "en": "Sell your shares, take the payout, and leave.", "zh": "賣掉股份，拿走款項，離場。" },
-        "effects": { "money": 80000, "health": 0, "happiness": -8, "stress": -5, "fame": 0, "setJob": { "en": "Retired Executive", "zh": "退休高管" } }
+        "text": {
+          "en": "Sell your shares, take the payout, and leave.",
+          "zh": "賣掉股份，拿走款項，離場。"
+        },
+        "effects": {
+          "money": 80000,
+          "health": 0,
+          "happiness": -8,
+          "stress": -5,
+          "fame": 0,
+          "setJob": {
+            "en": "Retired Executive",
+            "zh": "退休高管"
+          }
+        }
       }
     ]
   },
@@ -767,12 +1617,36 @@
     },
     "choices": [
       {
-        "text": { "en": "Pocket it. Curiosity is a midlife hobby.", "zh": "收進口袋。好奇心是中年的興趣。" },
-        "effects": { "money": 0, "health": 0, "happiness": 4, "stress": 8, "fame": 0, "addFlags": ["has_black_card"] }
+        "text": {
+          "en": "Pocket it. Curiosity is a midlife hobby.",
+          "zh": "收進口袋。好奇心是中年的興趣。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 4,
+          "stress": 8,
+          "fame": 0,
+          "addFlags": [
+            "has_black_card"
+          ]
+        }
       },
       {
-        "text": { "en": "Hand it to the bartender. He turns pale and hands it back.", "zh": "交給酒保。他臉色發白，又把卡塞回你手裡。" },
-        "effects": { "money": 0, "health": -1, "happiness": 2, "stress": 4, "fame": 0, "addFlags": ["has_black_card"] }
+        "text": {
+          "en": "Hand it to the bartender. He turns pale and hands it back.",
+          "zh": "交給酒保。他臉色發白，又把卡塞回你手裡。"
+        },
+        "effects": {
+          "money": 0,
+          "health": -1,
+          "happiness": 2,
+          "stress": 4,
+          "fame": 0,
+          "addFlags": [
+            "has_black_card"
+          ]
+        }
       }
     ]
   },
@@ -781,19 +1655,53 @@
     "category": "CHAIN",
     "minAge": 42,
     "maxAge": 58,
-    "conditions": { "flags": ["has_black_card"] },
+    "conditions": {
+      "flags": [
+        "has_black_card"
+      ]
+    },
     "text": {
       "en": "The coordinates lead to a masked gala where millionaires wear animal heads. A tiger offers you membership: 'Welcome, new member.'",
       "zh": "座標把你帶到一場富豪戴動物頭套的假面夜宴。一隻老虎向你遞出入會邀請：「歡迎，新會員。」"
     },
     "choices": [
       {
-        "text": { "en": "Accept immediately. Pay the $20,000 'initiation fee'.", "zh": "立刻接受。繳交兩萬美金的『入會禮金』。" },
-        "effects": { "money": -20000, "health": -3, "happiness": 6, "stress": 8, "fame": 6, "addFlags": ["club_member"], "removeFlags": ["has_black_card"] }
+        "text": {
+          "en": "Accept immediately. Pay the $20,000 'initiation fee'.",
+          "zh": "立刻接受。繳交兩萬美金的『入會禮金』。"
+        },
+        "effects": {
+          "money": -20000,
+          "health": -3,
+          "happiness": 6,
+          "stress": 8,
+          "fame": 6,
+          "addFlags": [
+            "club_member"
+          ],
+          "removeFlags": [
+            "has_black_card"
+          ]
+        }
       },
       {
-        "text": { "en": "Haggle the fee down and wear a fake name tag.", "zh": "殺價，並戴上一個假名牌。" },
-        "effects": { "money": -8000, "health": 0, "happiness": 2, "stress": 12, "fame": 3, "addFlags": ["club_member"], "removeFlags": ["has_black_card"] }
+        "text": {
+          "en": "Haggle the fee down and wear a fake name tag.",
+          "zh": "殺價，並戴上一個假名牌。"
+        },
+        "effects": {
+          "money": -8000,
+          "health": 0,
+          "happiness": 2,
+          "stress": 12,
+          "fame": 3,
+          "addFlags": [
+            "club_member"
+          ],
+          "removeFlags": [
+            "has_black_card"
+          ]
+        }
       }
     ]
   },
@@ -802,19 +1710,55 @@
     "category": "CHAIN",
     "minAge": 43,
     "maxAge": 59,
-    "conditions": { "flags": ["club_member"] },
+    "conditions": {
+      "flags": [
+        "club_member"
+      ]
+    },
     "text": {
       "en": "The club tips you off about a pharma stock that will 100x tomorrow. All you have to do is sign a contract using ten years of your lifespan as collateral.",
       "zh": "俱樂部給你一個明天會暴漲百倍的藥廠股票內幕。你只需要簽一份以『十年壽命』作抵押的合約。"
     },
     "choices": [
       {
-        "text": { "en": "Sign in blood. The interest rate is 'eternal'.", "zh": "以血簽名。利息是『永恆』。" },
-        "effects": { "money": 200000, "health": -15, "happiness": -5, "stress": 15, "fame": 0, "addFlags": ["club_contract", "lifespan_pledged"], "removeFlags": ["club_member"] }
+        "text": {
+          "en": "Sign in blood. The interest rate is 'eternal'.",
+          "zh": "以血簽名。利息是『永恆』。"
+        },
+        "effects": {
+          "money": 200000,
+          "health": -15,
+          "happiness": -5,
+          "stress": 15,
+          "fame": 0,
+          "addFlags": [
+            "club_contract",
+            "lifespan_pledged"
+          ],
+          "removeFlags": [
+            "club_member"
+          ]
+        }
       },
       {
-        "text": { "en": "Refuse politely. They mark your name in a very thick book.", "zh": "禮貌拒絕。他們在一本非常厚的簿子裡寫下你的名字。" },
-        "effects": { "money": 3000, "health": 0, "happiness": 2, "stress": 20, "fame": 0, "addFlags": ["club_contract", "club_dropout"], "removeFlags": ["club_member"] }
+        "text": {
+          "en": "Refuse politely. They mark your name in a very thick book.",
+          "zh": "禮貌拒絕。他們在一本非常厚的簿子裡寫下你的名字。"
+        },
+        "effects": {
+          "money": 3000,
+          "health": 0,
+          "happiness": 2,
+          "stress": 20,
+          "fame": 0,
+          "addFlags": [
+            "club_contract",
+            "club_dropout"
+          ],
+          "removeFlags": [
+            "club_member"
+          ]
+        }
       }
     ]
   },
@@ -823,19 +1767,59 @@
     "category": "CHAIN",
     "minAge": 44,
     "maxAge": 60,
-    "conditions": { "flags": ["club_contract"] },
+    "conditions": {
+      "flags": [
+        "club_contract"
+      ]
+    },
     "text": {
       "en": "A multinational task force raids the club at dawn. Agents hold a list with your name and offer you a choice: name your fellow members for immunity, or swallow the encrypted ledger chip.",
       "zh": "跨國執法隊在黎明突擊俱樂部。探員手上有一份寫著你名字的名單，並給你兩個選擇：供出其他會員換取豁免，或吞下加密帳本晶片。"
     },
     "choices": [
       {
-        "text": { "en": "Name names. Enter witness protection.", "zh": "供出同夥。進入證人保護計劃。" },
-        "effects": { "money": -20000, "health": 0, "happiness": -12, "stress": 10, "fame": 12, "removeFlags": ["club_contract"], "setJob": { "en": "Protected Witness", "zh": "受保護證人" }, "setRelationship": { "en": "Estranged (Witness Protection)", "zh": "疏離（證人保護中）" } }
+        "text": {
+          "en": "Name names. Enter witness protection.",
+          "zh": "供出同夥。進入證人保護計劃。"
+        },
+        "effects": {
+          "money": -20000,
+          "health": 0,
+          "happiness": -12,
+          "stress": 10,
+          "fame": 12,
+          "removeFlags": [
+            "club_contract"
+          ],
+          "setJob": {
+            "en": "Protected Witness",
+            "zh": "受保護證人"
+          },
+          "setRelationship": {
+            "en": "Estranged (Witness Protection)",
+            "zh": "疏離（證人保護中）"
+          }
+        }
       },
       {
-        "text": { "en": "Swallow the chip. Become a professional victim.", "zh": "吞下晶片。成為終身受害者。" },
-        "effects": { "money": 30000, "health": -20, "happiness": 4, "stress": 20, "fame": 5, "removeFlags": ["club_contract"], "setJob": { "en": "Professional Victim", "zh": "終身受害者（賠償待議）" } }
+        "text": {
+          "en": "Swallow the chip. Become a professional victim.",
+          "zh": "吞下晶片。成為終身受害者。"
+        },
+        "effects": {
+          "money": 30000,
+          "health": -20,
+          "happiness": 4,
+          "stress": 20,
+          "fame": 5,
+          "removeFlags": [
+            "club_contract"
+          ],
+          "setJob": {
+            "en": "Professional Victim",
+            "zh": "終身受害者（賠償待議）"
+          }
+        }
       }
     ]
   },
@@ -851,12 +1835,33 @@
     },
     "choices": [
       {
-        "text": { "en": "Split it equally and enjoy the peace (for about four minutes).", "zh": "平均分配，享受平靜（大概四分鐘）。" },
-        "effects": { "money": -5000, "health": 0, "happiness": 3, "stress": -5, "fame": 0 }
+        "text": {
+          "en": "Split it equally and enjoy the peace (for about four minutes).",
+          "zh": "平均分配，享受平靜（大概四分鐘）。"
+        },
+        "effects": {
+          "money": -5000,
+          "health": 0,
+          "happiness": 3,
+          "stress": -5,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Leave everything to whoever visits most. Watch the Great Visiting Contest begin.", "zh": "遺產留給最常來探望的人。看『探望大賽』開跑。" },
-        "effects": { "money": -2000, "health": 2, "happiness": 6, "stress": 5, "fame": 0, "addFlags": ["visit_contest"] }
+        "text": {
+          "en": "Leave everything to whoever visits most. Watch the Great Visiting Contest begin.",
+          "zh": "遺產留給最常來探望的人。看『探望大賽』開跑。"
+        },
+        "effects": {
+          "money": -2000,
+          "health": 2,
+          "happiness": 6,
+          "stress": 5,
+          "fame": 0,
+          "addFlags": [
+            "visit_contest"
+          ]
+        }
       }
     ]
   },
@@ -872,12 +1877,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Fish them out and put them back. Efficient.", "zh": "撈出來直接戴回去。很有效率。" },
-        "effects": { "money": 0, "health": -8, "happiness": 2, "stress": 3, "fame": 0 }
+        "text": {
+          "en": "Fish them out and put them back. Efficient.",
+          "zh": "撈出來直接戴回去。很有效率。"
+        },
+        "effects": {
+          "money": 0,
+          "health": -8,
+          "happiness": 2,
+          "stress": 3,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Announce 'chef's special: dentures au gratin' and order a new set.", "zh": "宣布這是『主廚特餐：焗烤假牙』，然後訂一副新假牙。" },
-        "effects": { "money": -1500, "health": 0, "happiness": 3, "stress": 5, "fame": 2 }
+        "text": {
+          "en": "Announce 'chef's special: dentures au gratin' and order a new set.",
+          "zh": "宣布這是『主廚特餐：焗烤假牙』，然後訂一副新假牙。"
+        },
+        "effects": {
+          "money": -1500,
+          "health": 0,
+          "happiness": 3,
+          "stress": 5,
+          "fame": 2
+        }
       }
     ]
   },
@@ -893,12 +1916,38 @@
     },
     "choices": [
       {
-        "text": { "en": "Hold a lavish farewell with their favorite karaoke playlist.", "zh": "辦一場放滿他最愛卡拉 OK 歌單的盛大告別式。" },
-        "effects": { "money": -8000, "health": -3, "happiness": 3, "stress": -5, "fame": 0, "setRelationship": { "en": "Widowed", "zh": "喪偶" } }
+        "text": {
+          "en": "Hold a lavish farewell with their favorite karaoke playlist.",
+          "zh": "辦一場放滿他最愛卡拉 OK 歌單的盛大告別式。"
+        },
+        "effects": {
+          "money": -8000,
+          "health": -3,
+          "happiness": 3,
+          "stress": -5,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Widowed",
+            "zh": "喪偶"
+          }
+        }
       },
       {
-        "text": { "en": "Keep it small and quiet. Talk to the empty couch.", "zh": "簡單低調。對著空沙發說話。" },
-        "effects": { "money": -1500, "health": -3, "happiness": -10, "stress": 8, "fame": 0, "setRelationship": { "en": "Widowed", "zh": "喪偶" } }
+        "text": {
+          "en": "Keep it small and quiet. Talk to the empty couch.",
+          "zh": "簡單低調。對著空沙發說話。"
+        },
+        "effects": {
+          "money": -1500,
+          "health": -3,
+          "happiness": -10,
+          "stress": 8,
+          "fame": 0,
+          "setRelationship": {
+            "en": "Widowed",
+            "zh": "喪偶"
+          }
+        }
       }
     ]
   },
@@ -914,12 +1963,37 @@
     },
     "choices": [
       {
-        "text": { "en": "Send the money. Your heart overrules your bank teller.", "zh": "匯錢。你的心臟否決了銀行櫃員。" },
-        "effects": { "money": -30000, "health": 0, "happiness": -6, "stress": 15, "fame": 0, "addFlags": ["scam_victim"], "setRelationship": { "en": "Online Romance (Unverified)", "zh": "網戀中（身份未驗證）" } }
+        "text": {
+          "en": "Send the money. Your heart overrules your bank teller.",
+          "zh": "匯錢。你的心臟否決了銀行櫃員。"
+        },
+        "effects": {
+          "money": -30000,
+          "health": 0,
+          "happiness": -6,
+          "stress": 15,
+          "fame": 0,
+          "addFlags": [
+            "scam_victim"
+          ],
+          "setRelationship": {
+            "en": "Online Romance (Unverified)",
+            "zh": "網戀中（身份未驗證）"
+          }
+        }
       },
       {
-        "text": { "en": "Report him and tell your family. Being careful isn't being foolish.", "zh": "報警並告訴家人。謹慎不等於愚蠢。" },
-        "effects": { "money": 0, "health": 0, "happiness": 2, "stress": -3, "fame": 0 }
+        "text": {
+          "en": "Report him and tell your family. Being careful isn't being foolish.",
+          "zh": "報警並告訴家人。謹慎不等於愚蠢。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 0,
+          "happiness": 2,
+          "stress": -3,
+          "fame": 0
+        }
       }
     ]
   },
@@ -935,12 +2009,30 @@
     },
     "choices": [
       {
-        "text": { "en": "Buy a year's supply. The placebo effect is free; the invoice is not.", "zh": "買一整年份。安慰劑效應是免費的，帳單可不是。" },
-        "effects": { "money": -2000, "health": 0, "happiness": 4, "stress": -3, "fame": 0 }
+        "text": {
+          "en": "Buy a year's supply. The placebo effect is free; the invoice is not.",
+          "zh": "買一整年份。安慰劑效應是免費的，帳單可不是。"
+        },
+        "effects": {
+          "money": -2000,
+          "health": 0,
+          "happiness": 4,
+          "stress": -3,
+          "fame": 0
+        }
       },
       {
-        "text": { "en": "Turn off the TV and take a walk instead.", "zh": "關掉電視，出門散個步。" },
-        "effects": { "money": 0, "health": 4, "happiness": -3, "stress": 0, "fame": 0 }
+        "text": {
+          "en": "Turn off the TV and take a walk instead.",
+          "zh": "關掉電視，出門散個步。"
+        },
+        "effects": {
+          "money": 0,
+          "health": 4,
+          "happiness": -3,
+          "stress": 0,
+          "fame": 0
+        }
       }
     ]
   }

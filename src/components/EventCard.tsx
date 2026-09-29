@@ -68,23 +68,39 @@ export const EventCard: React.FC<EventCardProps> = ({
   };
 
   return (
-    <div className="flex-1 flex flex-col justify-between p-3 sm:p-4 max-w-lg mx-auto w-full select-none">
+    <div className="flex flex-col p-3 sm:p-4 max-w-lg mx-auto w-full select-none">
       {/* Turn Feedback Toast from Previous Turn with Regret (Undo) Button */}
       {feedback && (
         <div className="mb-3 animate-fade-in bg-[#161a24] border border-[#2d3748] rounded-xl p-3 shadow-md">
-          <div className="flex items-start justify-between gap-2 mb-1.5">
-            <div className="text-xs text-slate-300 font-medium">
+          <div className="flex items-center justify-between gap-2 mb-2">
+            <div className="text-xs text-slate-300 font-medium truncate min-w-0">
               <span className="text-slate-400">{language === 'zh' ? '上一輪選擇：' : 'Previous choice:'} </span>
               <span className="text-white italic">{feedback.choiceText[language]}</span>
             </div>
+
+            {/* Compact Regret / Undo Button */}
+            {canRegret && (
+              <button
+                type="button"
+                onClick={() => {
+                  sounds.playClick();
+                  onRegretClick();
+                }}
+                className="shrink-0 px-2.5 py-1 bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 hover:text-amber-200 border border-amber-400/40 hover:border-amber-300 rounded-lg text-xs font-bold flex items-center gap-1 transition-all cursor-pointer active:scale-95 shadow-sm"
+                title={language === 'zh' ? '看廣告重選上一輪' : 'Watch ad to undo choice'}
+              >
+                <RotateCcw size={11} className="text-amber-400" />
+                <span>{language === 'zh' ? '⏪ 後悔了？' : '⏪ Regret?'}</span>
+              </button>
+            )}
           </div>
 
           {feedback.deltas.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mb-2.5">
+            <div className="flex flex-wrap gap-1.5">
               {feedback.deltas.map((ch, idx) => (
                 <span
                   key={idx}
-                  className={`text-[11px] font-mono-numbers font-semibold px-2 py-0.5 rounded ${
+                  className={`text-[11px] font-semibold px-2 py-0.5 rounded tracking-normal ${
                     ch.positive 
                       ? 'bg-emerald-950/60 text-[#00e676] border border-emerald-800/40' 
                       : 'bg-rose-950/60 text-[#ff1744] border border-rose-800/40'
@@ -95,63 +111,42 @@ export const EventCard: React.FC<EventCardProps> = ({
               ))}
             </div>
           )}
-
-          {/* Regret / Undo Choice Rewarded Ad Button (No usage limit: always visible if previous choice made) */}
-          {canRegret && (
-            <div className="pt-2 border-t border-[#2d3748]/70 flex items-center justify-between">
-              <button
-                type="button"
-                onClick={() => {
-                  sounds.playClick();
-                  onRegretClick();
-                }}
-                className="w-full py-2 px-3 bg-gradient-to-r from-[#1c2333] via-[#242e44] to-[#1c2333] hover:from-[#25304a] hover:to-[#25304a] text-amber-300 hover:text-amber-200 border border-amber-400/50 hover:border-amber-300 rounded-lg text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-[0_0_12px_rgba(251,191,36,0.12)] hover:shadow-[0_0_18px_rgba(251,191,36,0.22)] cursor-pointer active:scale-98"
-              >
-                <RotateCcw size={13} className="text-amber-400" />
-                <span className="tracking-wide">
-                  {language === 'zh' 
-                    ? '⏪ 後悔了？(看廣告重選)' 
-                    : '⏪ Regret Choice? (Watch Ad)'}
-                </span>
-              </button>
-            </div>
-          )}
         </div>
       )}
 
-      {/* Main Event Card */}
-      <div className={`bg-[#1a1f2c] border ${currentTheme.border} rounded-xl p-4 sm:p-5 shadow-xl relative overflow-hidden mb-3 flex-1 flex flex-col justify-between`}>
+      {/* Main Event Card (Wraps naturally without awkward black void) */}
+      <div className={`bg-[#1a1f2c] border ${currentTheme.border} rounded-xl p-4 sm:p-5 shadow-xl relative overflow-hidden mb-3`}>
         <div className="absolute top-0 right-0 w-32 h-32 bg-[#00e676]/5 rounded-full blur-2xl pointer-events-none" />
 
         <div>
           {/* Category Tag Header with Clean Polished Badge (NO raw code IDs) */}
           <div className="flex items-center justify-between mb-3">
-            <span className={`text-[10px] sm:text-xs font-mono-numbers font-bold px-2.5 py-0.5 rounded border uppercase tracking-wider ${currentTheme.badge}`}>
+            <span className={`text-[11px] sm:text-xs font-semibold px-2.5 py-0.5 rounded border uppercase tracking-normal ${currentTheme.badge}`}>
               {currentTheme[language]}
             </span>
             <div className="flex items-center gap-1.5">
-              <span className={`text-[10px] sm:text-[11px] font-mono-numbers font-semibold px-2 py-0.5 rounded border ${rarityInfo.badge}`}>
+              <span className={`text-[11px] sm:text-xs font-semibold px-2 py-0.5 rounded border tracking-normal ${rarityInfo.badge}`}>
                 {rarityInfo.label}
               </span>
-              <span className="text-[10px] sm:text-[11px] font-mono-numbers text-slate-400 bg-[#12151c] px-2 py-0.5 rounded border border-[#2d3748]">
+              <span className="text-[11px] sm:text-xs font-medium text-slate-200 bg-[#12151c] px-2 py-0.5 rounded border border-[#2d3748] tracking-normal">
                 {language === 'zh' ? `${currentAge} 歲` : `AGE ${currentAge}`}
               </span>
             </div>
           </div>
 
-          {/* Event Narrative Box */}
-          <div className="bg-[#12151c]/70 border border-[#2d3748] rounded-lg p-3.5 sm:p-4 text-slate-200 text-sm sm:text-base leading-relaxed font-medium">
+          {/* Event Narrative Box - Crisp solid high-contrast 16px/18px text */}
+          <div className="bg-[#12151c]/90 border border-[#2d3748] rounded-lg p-3.5 sm:p-4 text-white text-[16px] sm:text-[18px] leading-relaxed font-medium sm:font-semibold tracking-normal">
             {event.text[language]}
           </div>
         </div>
 
         {/* Thematic flair */}
-        <div className="mt-4 pt-3 border-t border-[#2d3748]/60 flex items-center justify-between text-[11px] text-slate-400">
-          <span className="flex items-center gap-1">
+        <div className="mt-4 pt-3 border-t border-[#2d3748]/60 flex items-center justify-between text-xs text-slate-400">
+          <span className="flex items-center gap-1 font-medium">
             <Sparkles size={12} className="text-[#00e676]" />
             {language === 'zh' ? '慎重抉擇，或承受系統漏洞' : 'Choose wisely or embrace the glitch'}
           </span>
-          <span className="text-slate-500 font-mono-numbers">{language === 'zh' ? '2 個選項' : '2 Choices'}</span>
+          <span className="text-slate-400 font-medium">{language === 'zh' ? '2 個選項' : '2 Choices'}</span>
         </div>
       </div>
 
@@ -172,13 +167,13 @@ export const EventCard: React.FC<EventCardProps> = ({
           >
             <div className="flex-1 pr-2">
               <div className="flex items-center gap-2 mb-1">
-                <span className={`text-[10px] font-mono-numbers font-bold px-1.5 py-0.5 rounded ${
+                <span className={`text-[11px] font-bold px-2 py-0.5 rounded tracking-normal ${
                   idx === 0 ? 'bg-[#00e676]/20 text-[#00e676]' : 'bg-[#00f0ff]/20 text-[#00f0ff]'
                 }`}>
                   {language === 'zh' ? `選項 ${idx === 0 ? 'A' : 'B'}` : `CHOICE ${idx === 0 ? 'A' : 'B'}`}
                 </span>
               </div>
-              <div className="text-sm sm:text-base font-semibold text-white group-hover:text-[#00e676] transition-colors leading-snug">
+              <div className="text-[15px] sm:text-base font-semibold text-white group-hover:text-[#00e676] transition-colors leading-snug tracking-normal">
                 {choice.text[language]}
               </div>
             </div>

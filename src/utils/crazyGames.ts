@@ -23,6 +23,8 @@ type CrazyGamesGameModule = {
 };
 
 type CrazyGamesSDK = {
+  environment?: 'disabled' | 'local' | 'crazygames' | string;
+  getEnvironment?: () => Promise<string>;
   ad?: CrazyGamesAdModule;
   game?: CrazyGamesGameModule;
   init?: () => Promise<void>;
@@ -36,10 +38,34 @@ declare global {
   }
 }
 
-/** True when the official CrazyGames SDK ad module is available. */
+/** Check if running on a CrazyGames platform domain or testing environment */
+export function isCrazyGamesDomain(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    const host = window.location.hostname;
+    const ref = document.referrer || '';
+    const search = window.location.search || '';
+
+    if (host.includes('crazygames') || host.includes('1001juegos')) return true;
+    if (ref.includes('crazygames') || ref.includes('1001juegos')) return true;
+    if (search.includes('useLocalSdk') || search.includes('crazygames')) return true;
+
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+/** True when the official CrazyGames SDK is active and not disabled on this domain. */
 export function isCrazyGamesAvailable(): boolean {
   try {
-    return typeof window !== 'undefined' && !!window.CrazyGames?.SDK?.ad?.requestAd;
+    if (typeof window === 'undefined') return false;
+    if (!isCrazyGamesDomain()) return false;
+
+    const sdk = window.CrazyGames?.SDK;
+    if (!sdk) return false;
+    if (sdk.environment === 'disabled') return false;
+    return !!sdk.ad?.requestAd;
   } catch {
     return false;
   }
@@ -56,10 +82,17 @@ export function requestRewardedAd(callbacks: AdCallbacks): boolean {
   }
 
   try {
-    window.CrazyGames!.SDK!.ad!.requestAd('rewarded', {
+    const sdk = window.CrazyGames?.SDK;
+    if (!sdk || sdk.environment === 'disabled' || !sdk.ad?.requestAd) {
+      return false;
+    }
+
+    sdk.ad.requestAd('rewarded', {
       adStarted: () => {
         try {
-          window.CrazyGames?.SDK?.game?.gameplayStop?.();
+          if (sdk.environment !== 'disabled') {
+            sdk.game?.gameplayStop?.();
+          }
         } catch {
           // ignore
         }
@@ -67,7 +100,9 @@ export function requestRewardedAd(callbacks: AdCallbacks): boolean {
       },
       adFinished: () => {
         try {
-          window.CrazyGames?.SDK?.game?.gameplayStart?.();
+          if (sdk.environment !== 'disabled') {
+            sdk.game?.gameplayStart?.();
+          }
         } catch {
           // ignore
         }
@@ -75,7 +110,9 @@ export function requestRewardedAd(callbacks: AdCallbacks): boolean {
       },
       adError: (error) => {
         try {
-          window.CrazyGames?.SDK?.game?.gameplayStart?.();
+          if (sdk.environment !== 'disabled') {
+            sdk.game?.gameplayStart?.();
+          }
         } catch {
           // ignore
         }
@@ -92,7 +129,9 @@ export function requestRewardedAd(callbacks: AdCallbacks): boolean {
 /** Signal that active gameplay has begun (new life / resume after ad). */
 export function gameplayStart(): void {
   try {
-    window.CrazyGames?.SDK?.game?.gameplayStart?.();
+    const sdk = window.CrazyGames?.SDK;
+    if (!sdk || sdk.environment === 'disabled') return;
+    sdk.game?.gameplayStart?.();
   } catch {
     // ignore outside CrazyGames
   }
@@ -101,7 +140,9 @@ export function gameplayStart(): void {
 /** Signal that gameplay paused (game over, menu, or ad about to show). */
 export function gameplayStop(): void {
   try {
-    window.CrazyGames?.SDK?.game?.gameplayStop?.();
+    const sdk = window.CrazyGames?.SDK;
+    if (!sdk || sdk.environment === 'disabled') return;
+    sdk.game?.gameplayStop?.();
   } catch {
     // ignore outside CrazyGames
   }

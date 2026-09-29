@@ -26,7 +26,7 @@ const INITIAL_STATE: GameState = {
   money: 1000,
   health: 80,
   happiness: 60,
-  stress: 20,
+  stress: 30,
   fame: 0,
   job: {
     en: 'Unemployed',
@@ -70,6 +70,12 @@ export default function App() {
   const [pastRuns, setPastRuns] = useState<PastRun[]>([]);
   const [inspectedPastRun, setInspectedPastRun] = useState<PastRun | null>(null);
 
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = language === 'zh' ? 'zh-TW' : 'en';
+    }
+  }, [language]);
+
   // Load localStorage on mount
   useEffect(() => {
     try {
@@ -79,29 +85,33 @@ export default function App() {
       }
 
       const savedRuns = localStorage.getItem('life_glitch_total_runs');
-      if (savedRuns) {
-        setTotalRuns(parseInt(savedRuns, 10) || 0);
-      }
-
       const savedHistory = localStorage.getItem('life_glitch_past_runs');
+      
+      let loadedPastRuns: PastRun[] = DEFAULT_PAST_RUNS;
       if (savedHistory) {
-        const parsed: PastRun[] = JSON.parse(savedHistory) || [];
-        if (parsed.length > 0) {
-          const verified = parsed.map(ensurePastRunHistory);
-          setPastRuns(verified);
-          try {
-            localStorage.setItem('life_glitch_past_runs', JSON.stringify(verified));
-          } catch {
-            // ignore quota error
+        try {
+          const parsed: PastRun[] = JSON.parse(savedHistory) || [];
+          if (parsed.length > 0) {
+            loadedPastRuns = parsed.map(ensurePastRunHistory);
           }
-        } else {
-          setPastRuns(DEFAULT_PAST_RUNS);
+        } catch {
+          // ignore
         }
-      } else {
-        setPastRuns(DEFAULT_PAST_RUNS);
       }
+      setPastRuns(loadedPastRuns);
+
+      let effectiveTotal = loadedPastRuns.length;
+      if (savedRuns !== null) {
+        const parsedRuns = parseInt(savedRuns, 10);
+        if (!isNaN(parsedRuns) && parsedRuns >= 0) {
+          effectiveTotal = Math.max(parsedRuns, loadedPastRuns.length);
+        }
+      }
+      setTotalRuns(effectiveTotal);
+      localStorage.setItem('life_glitch_total_runs', String(effectiveTotal));
     } catch {
       setPastRuns(DEFAULT_PAST_RUNS);
+      setTotalRuns(DEFAULT_PAST_RUNS.length);
     }
   }, []);
 
@@ -501,7 +511,9 @@ export default function App() {
     gameplayStop();
 
     try {
-      const newTotal = totalRuns + 1;
+      const storedRunsStr = localStorage.getItem('life_glitch_total_runs');
+      const currentStoredTotal = storedRunsStr !== null ? parseInt(storedRunsStr, 10) : totalRuns;
+      const newTotal = (isNaN(currentStoredTotal) || currentStoredTotal <= 0 ? totalRuns : currentStoredTotal) + 1;
       setTotalRuns(newTotal);
       localStorage.setItem('life_glitch_total_runs', String(newTotal));
 
@@ -523,9 +535,14 @@ export default function App() {
         date: new Date().toLocaleDateString()
       };
 
-      const updatedHistory = [...pastRuns, runRecord].slice(-10);
-      setPastRuns(updatedHistory);
-      localStorage.setItem('life_glitch_past_runs', JSON.stringify(updatedHistory));
+      const updatedHistory = [...pastRuns, runRecord];
+      const cappedHistory = updatedHistory.slice(-50);
+      setPastRuns(cappedHistory);
+      try {
+        localStorage.setItem('life_glitch_past_runs', JSON.stringify(cappedHistory));
+      } catch {
+        localStorage.setItem('life_glitch_past_runs', JSON.stringify(cappedHistory.slice(-20)));
+      }
     } catch {
       // storage error fallback
     }
@@ -535,9 +552,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0f1117] text-slate-100 flex flex-col justify-between relative selection:bg-[#00e676] selection:text-black">
-      {/* CRT Scanline Filter Overlay */}
-      <div className="fixed inset-0 crt-overlay pointer-events-none z-30" />
-
       {/* Main Content Router */}
       <main className="flex-1 flex flex-col justify-center w-full z-10">
         {screen === 'START' && (
@@ -554,7 +568,7 @@ export default function App() {
         )}
 
         {screen === 'PLAYING' && (
-          <div id="screen-game" className="flex-1 flex flex-col justify-between min-h-screen max-w-lg mx-auto w-full">
+          <div id="screen-game" className="flex-1 flex flex-col justify-start min-h-screen max-w-lg mx-auto w-full">
             <StatusHUD
               state={gameState}
               language={language}

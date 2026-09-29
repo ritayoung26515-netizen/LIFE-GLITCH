@@ -52,10 +52,10 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
       <div className="flex items-center justify-between gap-2 mb-2">
         <div className="flex items-center gap-2">
           <div className="bg-[#1a1f2c] border border-[#2d3748] px-3 py-1 rounded-md flex items-center gap-2">
-            <span className="text-[11px] font-mono-numbers text-slate-400 uppercase tracking-wider font-semibold">
+            <span className="text-xs text-slate-300 font-semibold tracking-normal">
               {t.age}
             </span>
-            <span className="text-xl sm:text-2xl font-display font-bold text-white tracking-tight">
+            <span className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               {state.age}
             </span>
           </div>
@@ -67,7 +67,7 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
                 onToggleFlagsDrawer();
               }}
               title="Discovered flags"
-              className="text-[11px] font-mono-numbers bg-[#1a1f2c] hover:bg-[#252b3d] text-[#00f0ff] border border-[#2d3748] px-2 py-1 rounded-md transition-colors flex items-center gap-1 cursor-pointer"
+              className="text-xs bg-[#1a1f2c] hover:bg-[#252b3d] text-[#00f0ff] border border-[#2d3748] px-2.5 py-1 rounded-md transition-colors flex items-center gap-1 cursor-pointer font-semibold tracking-normal"
             >
               <span>🚩</span>
               <span>{state.flags.length} {t.traits}</span>
@@ -83,12 +83,12 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
                 sounds.playClick();
                 onReturnHome();
               }}
-              className="flex items-center gap-1 text-xs font-medium text-slate-300 hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] hover:border-amber-400/60 px-2 sm:px-2.5 py-1.5 rounded-md transition-colors cursor-pointer"
+              className="flex items-center gap-1 text-xs font-semibold text-slate-200 hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] hover:border-amber-400/60 px-2 sm:px-2.5 py-1.5 rounded-md transition-colors cursor-pointer tracking-normal"
               title={language === 'zh' ? '返回主頁 / Home' : 'Return to Home'}
               aria-label="Home"
             >
               <Home size={14} className="text-amber-400" />
-              <span className="hidden sm:inline font-mono-numbers">{language === 'zh' ? '主頁' : 'Home'}</span>
+              <span className="hidden sm:inline font-semibold">{language === 'zh' ? '主頁' : 'Home'}</span>
             </button>
           )}
 
@@ -97,7 +97,7 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
               sounds.playClick();
               onToggleLanguage();
             }}
-            className="flex items-center gap-1 text-xs font-mono-numbers font-bold text-[#00e676] hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] hover:border-[#00e676]/60 px-2.5 py-1.5 rounded-md transition-colors cursor-pointer"
+            className="flex items-center gap-1 text-xs font-semibold text-[#00e676] hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] hover:border-[#00e676]/60 px-2.5 py-1.5 rounded-md transition-colors cursor-pointer tracking-normal"
             title="Toggle Language / 切換語言"
           >
             <Globe size={14} />
@@ -109,7 +109,7 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
               sounds.playClick();
               onOpenLog();
             }}
-            className="flex items-center gap-1 text-xs font-medium text-slate-300 hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] px-2.5 py-1.5 rounded-md transition-colors cursor-pointer"
+            className="flex items-center gap-1 text-xs font-semibold text-slate-200 hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] px-2.5 py-1.5 rounded-md transition-colors cursor-pointer"
             title="View Life Log"
           >
             <BookOpen size={14} />
@@ -118,7 +118,7 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
 
           <button
             onClick={onToggleMute}
-            className="p-1.5 text-slate-400 hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] rounded-md transition-colors cursor-pointer"
+            className="p-1.5 text-slate-300 hover:text-white bg-[#1a1f2c] hover:bg-[#252b3d] border border-[#2d3748] rounded-md transition-colors cursor-pointer"
             title={isMuted ? "Unmute Audio" : "Mute Audio"}
             aria-label="Toggle Audio"
           >
@@ -127,15 +127,15 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
         </div>
       </div>
 
-      {/* 8 Core Stats Grid */}
+      {/* 8 Core Stats Grid with Enhanced Legibility and Contrast */}
       <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
         {/* 1. Money */}
-        <div className="bg-[#1a1f2c] border border-[#2d3748] rounded p-1.5 flex flex-col justify-between">
-          <div className="text-[10px] text-slate-400 font-medium">
+        <div className="bg-[#1a1f2c] border border-[#2d3748] rounded-lg p-2 flex flex-col justify-between">
+          <div className="text-[11px] sm:text-xs text-slate-300 font-medium">
             {t.money}
           </div>
           <div 
-            className={`font-mono-numbers text-xs sm:text-sm font-bold truncate mt-0.5 ${
+            className={`font-mono-numbers text-xs sm:text-sm font-bold truncate mt-1 ${
               state.money < 0 ? 'text-[#ff1744]' : 'text-[#00e676]'
             }`}
             title={formattedMoney}
@@ -145,17 +145,17 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
         </div>
 
         {/* 2. Health */}
-        <div className={`bg-[#1a1f2c] border rounded p-1.5 flex flex-col justify-between transition-colors ${
-          isCriticalHealth ? 'border-[#ff1744] bg-[#ff1744]/10' : 'border-[#2d3748]'
+        <div className={`bg-[#1a1f2c] border rounded-lg p-2 flex flex-col justify-between transition-colors ${
+          isCriticalHealth ? 'border-[#ff1744] bg-[#ff1744]/15' : 'border-[#2d3748]'
         }`}>
-          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium">
+          <div className="flex items-center justify-between text-[11px] sm:text-xs text-slate-300 font-medium">
             <span className="flex items-center gap-0.5">
               {t.health}
-              {isCriticalHealth && <AlertTriangle size={10} className="text-[#ff1744]" />}
+              {isCriticalHealth && <AlertTriangle size={11} className="text-[#ff1744]" />}
             </span>
-            <span className="font-mono-numbers text-[10px] text-slate-300">{state.health}%</span>
+            <span className="font-mono-numbers text-xs sm:text-[13px] font-bold text-slate-100">{state.health}%</span>
           </div>
-          <div className="w-full bg-[#12151c] h-1.5 rounded-full overflow-hidden mt-1">
+          <div className="w-full bg-[#12151c] h-1.5 rounded-full overflow-hidden mt-1.5">
             <div 
               className={`h-full transition-all duration-300 ${
                 state.health <= 25 ? 'bg-[#ff1744]' : state.health <= 50 ? 'bg-amber-400' : 'bg-emerald-400'
@@ -166,12 +166,12 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
         </div>
 
         {/* 3. Happiness */}
-        <div className="bg-[#1a1f2c] border border-[#2d3748] rounded p-1.5 flex flex-col justify-between">
-          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium">
+        <div className="bg-[#1a1f2c] border border-[#2d3748] rounded-lg p-2 flex flex-col justify-between">
+          <div className="flex items-center justify-between text-[11px] sm:text-xs text-slate-300 font-medium">
             <span>{t.happiness}</span>
-            <span className="font-mono-numbers text-[10px] text-slate-300">{state.happiness}%</span>
+            <span className="font-mono-numbers text-xs sm:text-[13px] font-bold text-cyan-300">{state.happiness}%</span>
           </div>
-          <div className="w-full bg-[#12151c] h-1.5 rounded-full overflow-hidden mt-1">
+          <div className="w-full bg-[#12151c] h-1.5 rounded-full overflow-hidden mt-1.5">
             <div 
               className="h-full bg-cyan-400 transition-all duration-300"
               style={{ width: `${Math.max(0, Math.min(100, state.happiness))}%` }}
@@ -180,16 +180,16 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
         </div>
 
         {/* 4. Stress */}
-        <div className={`bg-[#1a1f2c] border rounded p-1.5 flex flex-col justify-between transition-colors ${
-          isHighStress ? 'border-[#ff1744] bg-[#ff1744]/15 danger-pulse' : 'border-[#2d3748]'
+        <div className={`bg-[#1a1f2c] border rounded-lg p-2 flex flex-col justify-between transition-colors ${
+          isHighStress ? 'border-[#ff1744] bg-[#ff1744]/20 danger-pulse' : 'border-[#2d3748]'
         }`}>
-          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium">
+          <div className="flex items-center justify-between text-[11px] sm:text-xs text-slate-300 font-medium">
             <span className={isHighStress ? 'text-[#ff1744] font-bold' : ''}>{t.stress}</span>
-            <span className={`font-mono-numbers text-[10px] ${isHighStress ? 'text-[#ff1744] font-bold' : 'text-slate-300'}`}>
+            <span className={`font-mono-numbers text-xs sm:text-[13px] font-bold ${isHighStress ? 'text-[#ff1744]' : 'text-slate-100'}`}>
               {state.stress}%
             </span>
           </div>
-          <div className="w-full bg-[#12151c] h-1.5 rounded-full overflow-hidden mt-1">
+          <div className="w-full bg-[#12151c] h-1.5 rounded-full overflow-hidden mt-1.5">
             <div 
               className={`h-full transition-all duration-300 ${
                 isHighStress ? 'bg-[#ff1744]' : state.stress > 40 ? 'bg-amber-400' : 'bg-slate-400'
@@ -200,12 +200,12 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
         </div>
 
         {/* 5. Fame */}
-        <div className="bg-[#1a1f2c] border border-[#2d3748] rounded p-1.5 flex flex-col justify-between">
-          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium">
+        <div className="bg-[#1a1f2c] border border-[#2d3748] rounded-lg p-2 flex flex-col justify-between">
+          <div className="flex items-center justify-between text-[11px] sm:text-xs text-slate-300 font-medium">
             <span>{t.fame}</span>
-            <span className="font-mono-numbers text-[10px] text-amber-300">{state.fame}%</span>
+            <span className="font-mono-numbers text-xs sm:text-[13px] font-bold text-amber-300">{state.fame}%</span>
           </div>
-          <div className="w-full bg-[#12151c] h-1.5 rounded-full overflow-hidden mt-1">
+          <div className="w-full bg-[#12151c] h-1.5 rounded-full overflow-hidden mt-1.5">
             <div 
               className="h-full bg-amber-400 transition-all duration-300"
               style={{ width: `${Math.max(0, Math.min(100, state.fame))}%` }}
@@ -214,21 +214,21 @@ export const StatusHUD: React.FC<StatusHUDProps> = ({
         </div>
 
         {/* 6. Career / Job */}
-        <div className="bg-[#1a1f2c] border border-[#2d3748] rounded p-1.5 flex flex-col justify-between col-span-1">
-          <div className="text-[10px] text-slate-400 font-medium truncate">
+        <div className="bg-[#1a1f2c] border border-[#2d3748] rounded-lg p-2 flex flex-col justify-between col-span-1">
+          <div className="text-[11px] sm:text-xs text-slate-300 font-medium truncate">
             {t.job}
           </div>
-          <div className="text-xs font-semibold text-slate-200 truncate mt-0.5" title={state.job[language]}>
+          <div className="text-xs sm:text-[13px] font-semibold text-[#e2e8f0] truncate mt-1" title={state.job[language]}>
             {state.job[language]}
           </div>
         </div>
 
         {/* 7. Relationship */}
-        <div className="bg-[#1a1f2c] border border-[#2d3748] rounded p-1.5 flex flex-col justify-between col-span-2">
-          <div className="text-[10px] text-slate-400 font-medium truncate">
+        <div className="bg-[#1a1f2c] border border-[#2d3748] rounded-lg p-2 flex flex-col justify-between col-span-2">
+          <div className="text-[11px] sm:text-xs text-slate-300 font-medium truncate">
             {t.relationship}
           </div>
-          <div className="text-xs font-semibold text-slate-200 truncate mt-0.5" title={state.relationship[language]}>
+          <div className="text-xs sm:text-[13px] font-semibold text-[#e2e8f0] truncate mt-1" title={state.relationship[language]}>
             {state.relationship[language]}
           </div>
         </div>
