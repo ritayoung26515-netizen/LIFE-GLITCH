@@ -1,6 +1,7 @@
 import React from 'react';
 import { Home, AlertTriangle, X } from 'lucide-react';
 import { Language } from '../types/game';
+import { isChinese, loc, languageButtonLabel } from '../utils/i18n';
 import { sounds } from '../utils/audio';
 
 interface AbandonModalProps {
@@ -19,75 +20,64 @@ export const AbandonModal: React.FC<AbandonModalProps> = ({
   if (!isOpen) return null;
 
   const t = {
-    title: language === 'zh' ? '返回主頁' : 'Return to Home',
-    prompt: language === 'zh' 
-      ? '放棄當前人生並返回主頁？' 
-      : 'Abandon this life and return to Home?',
-    desc: language === 'zh'
-      ? '未完成的當前人生矩陣將直接重置，不記入名人堂檔案。'
-      : 'Your current in-progress life simulation will be discarded without saving.',
-    cancelBtn: language === 'zh' ? '繼續遊玩' : 'Continue Life',
-    confirmBtn: language === 'zh' ? '確認放棄並返回' : 'Confirm & Abandon'
+    title: isChinese(language) ? '返回主頁' : 'Return to Home',
+    prompt: isChinese(language)
+      ? '確定要放棄當前人生並返回主頁嗎？'
+      : 'Abandon this life and return to the start screen?',
+    desc: isChinese(language)
+      ? '目前進度不會存入名人堂。此操作無法復原。'
+      : 'Current progress will not be saved to the Hall of Fame. This cannot be undone.',
+    cancelBtn: isChinese(language) ? '繼續遊玩' : 'Continue Life',
+    confirmBtn: isChinese(language) ? '確認放棄並返回' : 'Confirm & Abandon'
   };
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in select-none"
-      onClick={onCancel}
-    >
-      <div 
-        className="w-full max-w-sm bg-[#161a24] border-2 border-red-500/50 rounded-2xl p-5 shadow-[0_0_30px_rgba(255,23,68,0.25)] flex flex-col text-center relative"
-        onClick={e => e.stopPropagation()}
-      >
-        <button
-          onClick={() => {
-            sounds.playClick();
-            onCancel();
-          }}
-          className="absolute top-3.5 right-3.5 p-1.5 text-slate-400 hover:text-white bg-[#1a1f2c] border border-[#2d3748] rounded-md transition-colors cursor-pointer"
-        >
-          <X size={15} />
-        </button>
-
-        <div className="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center mx-auto mb-3 text-[#ff1744]">
-          <AlertTriangle size={24} />
-        </div>
-
-        <h3 className="font-display font-black text-white text-lg sm:text-xl mb-1 flex items-center justify-center gap-2">
-          <Home size={18} className="text-amber-400" />
-          <span>{t.title}</span>
-        </h3>
-
-        <p className="text-sm font-semibold text-red-400 mt-2 mb-1">
-          {t.prompt}
-        </p>
-
-        <p className="text-xs text-slate-400 mb-5 leading-relaxed">
-          {t.desc}
-        </p>
-
-        <div className="grid grid-cols-2 gap-2.5">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+      <div className="w-full max-w-sm bg-[#161a24] border border-[#2d3748] rounded-2xl shadow-2xl overflow-hidden">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-[#2d3748]">
+          <div className="flex items-center gap-2 text-amber-400">
+            <AlertTriangle size={16} />
+            <span className="text-sm font-bold text-white">{t.title}</span>
+          </div>
           <button
             type="button"
             onClick={() => {
               sounds.playClick();
               onCancel();
             }}
-            className="py-2.5 px-3 bg-[#1a1f2c] hover:bg-[#252b3d] text-slate-300 hover:text-white text-xs font-bold rounded-xl border border-[#2d3748] transition-colors cursor-pointer"
+            className="p-1 text-slate-400 hover:text-white cursor-pointer"
           >
-            {t.cancelBtn}
+            <X size={16} />
           </button>
+        </div>
 
-          <button
-            type="button"
-            onClick={() => {
-              sounds.playDeath();
-              onConfirm();
-            }}
-            className="py-2.5 px-3 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white text-xs font-black uppercase tracking-wider rounded-xl shadow-[0_0_15px_rgba(255,23,68,0.4)] transition-all cursor-pointer active:scale-98"
-          >
-            {t.confirmBtn}
-          </button>
+        <div className="p-4 space-y-3">
+          <p className="text-sm text-slate-200">{t.prompt}</p>
+          <p className="text-xs text-slate-500">{t.desc}</p>
+
+          <div className="flex flex-col gap-2 pt-1">
+            <button
+              type="button"
+              onClick={() => {
+                sounds.playClick();
+                onCancel();
+              }}
+              className="w-full py-2.5 rounded-xl bg-[#1a1f2c] border border-[#2d3748] text-slate-200 text-sm font-semibold cursor-pointer hover:border-slate-500"
+            >
+              {t.cancelBtn}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                sounds.playDanger();
+                onConfirm();
+              }}
+              className="w-full py-2.5 rounded-xl bg-rose-600/90 hover:bg-rose-500 text-white text-sm font-bold cursor-pointer flex items-center justify-center gap-1.5"
+            >
+              <Home size={14} />
+              {t.confirmBtn}
+            </button>
+          </div>
         </div>
       </div>
     </div>
