@@ -12,7 +12,7 @@ export const GlitchTitle: React.FC<GlitchTitleProps> = ({
   const sizeClasses = {
     lg: 'text-2xl sm:text-4xl',
     xl: 'text-3xl sm:text-5xl',
-    '2xl': 'text-3xl sm:text-6xl tracking-tight'
+    '2xl': 'text-4xl sm:text-7xl tracking-tight'
   }[size];
 
   return (
@@ -21,7 +21,6 @@ export const GlitchTitle: React.FC<GlitchTitleProps> = ({
         <h1 className={`${sizeClasses} font-display font-extrabold uppercase text-white tracking-widest drop-shadow-[0_0_15px_rgba(0,230,118,0.4)]`}>
           LIFE <span className="text-[#00e676] group-hover:text-[#00f0ff] transition-colors">GLITCH</span>
         </h1>
-        {/* Subtle chromatic aberration shadow */}
         <span 
           aria-hidden="true" 
           className={`absolute top-0 left-0 ${sizeClasses} font-display font-extrabold uppercase text-[#ff1744] opacity-20 -translate-x-[2px] translate-y-[1px] pointer-events-none group-hover:opacity-40 transition-opacity`}
@@ -30,7 +29,7 @@ export const GlitchTitle: React.FC<GlitchTitleProps> = ({
         </span>
       </div>
       {subtitle && (
-        <p className="text-[14px] sm:text-base text-slate-300 mt-1.5 sm:mt-2 font-medium tracking-normal leading-relaxed max-w-sm mx-auto px-1">
+        <p className="text-[16px] sm:text-lg text-slate-200 mt-2 sm:mt-3 font-semibold tracking-normal leading-relaxed max-w-md mx-auto px-2">
           {subtitle}
         </p>
       )}
