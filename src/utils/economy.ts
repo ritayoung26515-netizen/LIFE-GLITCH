@@ -17,7 +17,7 @@ export interface JobSalaryResult {
  * - Entry / Junior / Seasonal: +$2,000 / year
  * - Corporate / Professional: +$5,000 / year
  * - Senior / Management: +$8,000 / year
- * - Executive / Founder (healthy): +$12,000 / year (capped, performance bonus limited)
+ * - Executive / Founder (healthy): +$12,000 / year (capped)
  * - Retired (Pension): +$6,000 / year
  *
  * Joke identities (beach fisherman, cat king, silver knight, etc.) always $0.
@@ -26,7 +26,7 @@ export function calculateJobSalary(job: LocalizedString, state: GameState): JobS
   const en = (job?.en || '').toLowerCase();
   const zh = job?.zh || '';
 
-  // 0. Joke / lifestyle identities — always $0 (they cost money, don't earn)
+  // 0. Joke / lifestyle identities — always $0
   if (
     en.includes('beach') ||
     en.includes('fisherman') ||
@@ -101,14 +101,13 @@ export function calculateJobSalary(job: LocalizedString, state: GameState): JobS
         salaryFormatted: '+$4,000'
       };
     }
-    // Capped performance bonus
     const performanceBonus = Math.min(8000, Math.floor((state.fame || 0) * 80) + (state.money > 80000 ? 4000 : 0));
     const totalExec = 12000 + performanceBonus;
     return {
       salary: totalExec,
       tier: 'EXECUTIVE',
       tierLabel: { en: 'Founder / Executive', zh: '創始人 / 高階主管' },
-      salaryFormatted: `+$ ${totalExec.toLocaleString()}`
+      salaryFormatted: '+$' + totalExec.toLocaleString()
     };
   }
 
