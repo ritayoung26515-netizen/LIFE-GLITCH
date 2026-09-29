@@ -30,7 +30,7 @@ export const GlitchTitle: React.FC<GlitchTitleProps> = ({
         </span>
       </div>
       {subtitle && (
-        <p className="text-[11px] sm:text-sm text-slate-400 mt-1 sm:mt-2 font-medium tracking-wide max-w-sm mx-auto px-1">
+        <p className="text-[14px] sm:text-base text-slate-300 mt-1.5 sm:mt-2 font-medium tracking-normal leading-relaxed max-w-sm mx-auto px-1">
           {subtitle}
         </p>
       )}
