@@ -1,6 +1,6 @@
 import React from 'react';
 import { GameEvent, EventChoice, TurnFeedback, Language } from '../types/game';
-import { ArrowRight, Sparkles, RotateCcw } from 'lucide-react';
+import { Sparkles, RotateCcw } from 'lucide-react';
 import { sounds } from '../utils/audio';
 
 interface EventCardProps {
@@ -121,7 +121,7 @@ export const EventCard: React.FC<EventCardProps> = ({
           </span>
         </div>
 
-        <p className="text-sm sm:text-base text-slate-100 leading-relaxed mb-1">
+        <p className="text-[17px] sm:text-lg text-[#e2e8f0] leading-relaxed mb-1 font-medium sm:font-semibold">
           {event.text[language]}
         </p>
 
@@ -140,7 +140,7 @@ export const EventCard: React.FC<EventCardProps> = ({
             key={idx}
             disabled={isButtonsDisabled}
             onClick={() => handleChoiceClick(choice)}
-            className={`w-full text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-200 cursor-pointer group relative overflow-hidden flex items-center justify-between gap-3 ${
+            className={`w-full text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-200 cursor-pointer group relative overflow-hidden flex items-center gap-3 ${
               isButtonsDisabled
                 ? 'opacity-60 cursor-not-allowed pointer-events-none'
                 : idx === 0
@@ -159,10 +159,6 @@ export const EventCard: React.FC<EventCardProps> = ({
               <div className="text-sm sm:text-base font-semibold text-white group-hover:text-[#00e676] transition-colors leading-snug">
                 {choice.text[language]}
               </div>
-            </div>
-
-            <div className="w-8 h-8 rounded-full bg-[#12151c] border border-[#2d3748] flex items-center justify-center shrink-0 group-hover:border-[#00e676] group-hover:text-[#00e676] transition-colors">
-              <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
             </div>
           </button>
         ))}
