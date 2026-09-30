@@ -1,1 +1,1 @@
-see_local_file
+export { default } from './AppMain';
