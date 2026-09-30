@@ -18,9 +18,9 @@ import { LifeLogDrawer } from './components/LifeLogDrawer';
 import { MockAdModal } from './components/MockAdModal';
 import { AbandonModal } from './components/AbandonModal';
 import { TrophyRoomModal } from './components/TrophyRoomModal';
-import { DEFAULT_PAST_RUNS, ensurePastRunHistory } from './data/sampleRuns';
-import { gameplayStart, gameplayStop, requestRewardedAd } from './utils/crazyGames';
-import { getUnlockedMedalIds, saveUnlockedMedalIds } from './utils/traits';
+import { DEFAULT_PAST_RUNS } from './data/sampleRuns';
+import { gameplayStart, gameplayStop } from './utils/crazyGames';
+import { getUnlockedMedalIds } from './utils/traits';
 
 const initialState = (): GameState => ({
   age: 18,
@@ -54,7 +54,16 @@ export default function App() {
   const [isAbandonConfirmOpen, setIsAbandonConfirmOpen] = useState(false);
   const [isTrophyRoomOpen, setIsTrophyRoomOpen] = useState(false);
   const [isProcessingChoice, setIsProcessingChoice] = useState(false);
-  const [pastRuns, setPastRuns] = useState<PastRun[]>(() => ensurePastRunHistory(DEFAULT_PAST_RUNS));
+  const [pastRuns, setPastRuns] = useState<PastRun[]>(() => {
+    try {
+      const saved = localStorage.getItem('life-glitch-past-runs');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {}
+    return DEFAULT_PAST_RUNS;
+  });
   const [inspectedPastRun, setInspectedPastRun] = useState<PastRun | null>(null);
   const [unlockedMedalIds, setUnlockedMedalIds] = useState<string[]>(() => getUnlockedMedalIds());
   const [showRegretAd, setShowRegretAd] = useState(false);
@@ -274,9 +283,10 @@ export default function App() {
   if (screen === 'START') {
     return (
       <StartScreen
+        totalRuns={pastRuns.length}
         language={language}
         theme={theme}
-        onStart={handleStart}
+        onStartGame={handleStart}
         onToggleLanguage={handleToggleLanguage}
         onToggleTheme={handleToggleTheme}
         isMuted={isMuted}
@@ -294,13 +304,17 @@ export default function App() {
       <EndScreen
         state={gameState}
         language={language}
+        onToggleLanguage={handleToggleLanguage}
         theme={theme}
+        onToggleTheme={handleToggleTheme}
         onRestart={handleStart}
-        onHome={handleReturnHome}
-        onRevive={() => setShowReviveAd(true)}
-        onOpenRegret={() => setShowRegretAd(true)}
-        canRegret={previousTurnState !== null}
-        epitaph={generateEpitaph(gameState, language)}
+        onOpenAdRevive={() => setShowReviveAd(true)}
+        canRewindFatal={previousTurnState !== null}
+        onRewindFatalChoice={handleOpenRegretAd}
+        onOpenHistory={() => setIsLogOpen(true)}
+        onReturnHome={handleReturnHome}
+        onOpenTrophyRoom={() => setIsTrophyRoomOpen(true)}
+        totalUnlockedCount={unlockedMedalIds.length}
       />
     );
   }
@@ -364,14 +378,12 @@ export default function App() {
         onClose={() => setShowRegretAd(false)}
         onComplete={handleRegretConfirm}
         language={language}
-        title={language === 'zh' ? '後悔選擇' : 'Regret Choice'}
       />
       <MockAdModal
         isOpen={showReviveAd}
         onClose={() => setShowReviveAd(false)}
         onComplete={handleRevive}
         language={language}
-        title={language === 'zh' ? '復活' : 'Revive'}
       />
       <TrophyRoomModal
         isOpen={isTrophyRoomOpen}
