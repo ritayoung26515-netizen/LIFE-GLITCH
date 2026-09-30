@@ -18,9 +18,38 @@ import { LifeLogDrawer } from './components/LifeLogDrawer';
 import { MockAdModal } from './components/MockAdModal';
 import { AbandonModal } from './components/AbandonModal';
 import { TrophyRoomModal } from './components/TrophyRoomModal';
-import { DEFAULT_PAST_RUNS } from './data/sampleRuns';
 import { gameplayStart, gameplayStop } from './utils/crazyGames';
-import { getUnlockedMedalIds } from './utils/traits';
+import { getUnlockedMedalIds, saveUnlockedMedalIds } from './utils/traits';
+
+const STORAGE_PAST_RUNS = 'life_glitch_past_runs';
+const STORAGE_TOTAL_RUNS = 'life_glitch_total_runs';
+const STORAGE_LANG = 'life_glitch_lang';
+const STORAGE_THEME = 'life_glitch_theme';
+
+/** Demo sample ids – never show as player history */
+const SAMPLE_RUN_IDS = new Set([
+  'run_meme_informant',
+  'run_carefree_aristocrat',
+]);
+
+function loadPastRunsFromStorage(): PastRun[] {
+  try {
+    const saved = localStorage.getItem(STORAGE_PAST_RUNS);
+    if (!saved) return [];
+    const parsed = JSON.parse(saved);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(
+      (r: PastRun) =>
+        r &&
+        r.id &&
+        !SAMPLE_RUN_IDS.has(String(r.id)) &&
+        !String(r.id).startsWith('run_meme') &&
+        !String(r.id).startsWith('run_carefree')
+    );
+  } catch {
+    return [];
+  }
+}
 
 const initialState = (): GameState => ({
   age: 18,
@@ -54,27 +83,63 @@ export default function App() {
   const [isAbandonConfirmOpen, setIsAbandonConfirmOpen] = useState(false);
   const [isTrophyRoomOpen, setIsTrophyRoomOpen] = useState(false);
   const [isProcessingChoice, setIsProcessingChoice] = useState(false);
-  const [pastRuns, setPastRuns] = useState<PastRun[]>(() => {
-    try {
-      const saved = localStorage.getItem('life-glitch-past-runs');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-      }
-    } catch {}
-    return DEFAULT_PAST_RUNS;
-  });
+  const [pastRuns, setPastRuns] = useState<PastRun[]>([]);
+  const [totalRuns, setTotalRuns] = useState(0);
   const [inspectedPastRun, setInspectedPastRun] = useState<PastRun | null>(null);
   const [unlockedMedalIds, setUnlockedMedalIds] = useState<string[]>(() => getUnlockedMedalIds());
   const [showRegretAd, setShowRegretAd] = useState(false);
   const [showReviveAd, setShowReviveAd] = useState(false);
+  const [storageReady, setStorageReady] = useState(false);
+
+  useEffect(() => {
+    try {
+      const savedLang = localStorage.getItem(STORAGE_LANG) as Language | null;
+      if (savedLang === 'en' || savedLang === 'zh') setLanguage(savedLang);
+
+      const savedTheme = localStorage.getItem(STORAGE_THEME) as Theme | null;
+      if (savedTheme === 'light' || savedTheme === 'dark') setTheme(savedTheme);
+
+      const loaded = loadPastRunsFromStorage();
+      setPastRuns(loaded);
+
+      const storedTotal = localStorage.getItem(STORAGE_TOTAL_RUNS);
+      let effectiveTotal = loaded.length;
+      if (storedTotal !== null) {
+        const n = parseInt(storedTotal, 10);
+        if (!isNaN(n) && n >= 0) effectiveTotal = Math.max(n, loaded.length);
+      }
+      if (loaded.length === 0) effectiveTotal = 0;
+      setTotalRuns(effectiveTotal);
+
+      const allFlags = loaded.flatMap(r => r.flags || []);
+      if (allFlags.length > 0) {
+        setUnlockedMedalIds(saveUnlockedMedalIds(allFlags));
+      }
+    } catch {
+      setPastRuns([]);
+      setTotalRuns(0);
+    }
+    setStorageReady(true);
+  }, []);
 
   useEffect(() => {
     sounds.setMuted(isMuted);
   }, [isMuted]);
 
-  const handleToggleLanguage = () => setLanguage(l => l === 'zh' ? 'en' : 'zh');
-  const handleToggleTheme = () => setTheme(t => t === 'light' ? 'dark' : 'light');
+  const handleToggleLanguage = () => {
+    setLanguage(l => {
+      const next = l === 'zh' ? 'en' : 'zh';
+      try { localStorage.setItem(STORAGE_LANG, next); } catch {}
+      return next;
+    });
+  };
+  const handleToggleTheme = () => {
+    setTheme(t => {
+      const next = t === 'light' ? 'dark' : 'light';
+      try { localStorage.setItem(STORAGE_THEME, next); } catch {}
+      return next;
+    });
+  };
   const handleToggleMute = () => setIsMuted(m => !m);
 
   const handleStart = () => {
@@ -102,6 +167,51 @@ export default function App() {
     gameplayStop();
   };
 
+  const handleGameOver = (finalState: GameState) => {
+    gameplayStop();
+    try {
+      const epitaph = generateEpitaph(finalState);
+      const runRecord: PastRun = {
+        id: `run_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+        age: finalState.age,
+        money: finalState.money,
+        health: finalState.health,
+        happiness: finalState.happiness,
+        stress: finalState.stress,
+        fame: finalState.fame,
+        job: finalState.job,
+        epitaph: epitaph.title,
+        deathReason: finalState.deathReason || { en: 'Unknown', zh: '未知原因' },
+        flags: [...finalState.flags],
+        history: [...finalState.history],
+        timeline: [...finalState.history],
+        date: new Date().toLocaleDateString()
+      };
+
+      const updatedHistory = [...pastRuns, runRecord].slice(-50);
+      setPastRuns(updatedHistory);
+      try {
+        localStorage.setItem(STORAGE_PAST_RUNS, JSON.stringify(updatedHistory));
+      } catch {
+        try {
+          localStorage.setItem(STORAGE_PAST_RUNS, JSON.stringify(updatedHistory.slice(-15)));
+        } catch {}
+      }
+
+      const newTotal = Math.max(totalRuns, pastRuns.length) + 1;
+      setTotalRuns(newTotal);
+      try {
+        localStorage.setItem(STORAGE_TOTAL_RUNS, String(newTotal));
+      } catch {}
+
+      const newlyUnlocked = saveUnlockedMedalIds(finalState.flags);
+      setUnlockedMedalIds(newlyUnlocked);
+    } catch {
+      // ignore storage errors
+    }
+    setScreen('END');
+  };
+
   const handleSelectChoice = (choice: EventChoice) => {
     if (isProcessingChoice || !currentEvent) return;
     setIsProcessingChoice(true);
@@ -111,7 +221,7 @@ export default function App() {
     const effects = choice.effects;
     const salaryResult = calculateJobSalary(gameState.job, gameState);
     const annualSalary = salaryResult.salary || 0;
-    let totalMoneyDelta = (effects.money || 0) + annualSalary;
+    const totalMoneyDelta = (effects.money || 0) + annualSalary;
 
     let updatedFlags = [...gameState.flags];
     if (effects.addFlags) {
@@ -183,7 +293,10 @@ export default function App() {
       age: gameState.age,
       eventText: currentEvent?.text || { en: 'Routine day', zh: '平常的一天' },
       choiceText: choice.text,
-      effectsSummary: { en: enSummary || 'Routine year', zh: zhSummary || '平穩度過的一年' },
+      effectsSummary: {
+        en: enSummary || 'Routine year',
+        zh: zhSummary || '平穩度過的一年'
+      },
       event: currentEvent ? { ...currentEvent } : undefined,
       snapshot: {
         age: gameState.age,
@@ -202,49 +315,46 @@ export default function App() {
 
     setFeedback({ choiceText: choice.text, deltas });
 
-    setGameState(prev => {
-      const nextMoney = prev.money + totalMoneyDelta;
-      const nextHealth = Math.max(0, Math.min(100, prev.health + (effects.health || 0)));
-      const nextHappiness = Math.max(0, Math.min(100, prev.happiness + (effects.happiness || 0)));
-      const nextStress = Math.max(0, Math.min(100, prev.stress + (effects.stress || 0)));
-      const nextFame = Math.max(0, Math.min(100, prev.fame + (effects.fame || 0)));
-      const nextAge = prev.age + 1;
+    const nextMoney = gameState.money + totalMoneyDelta;
+    const nextHealth = Math.max(0, Math.min(100, gameState.health + (effects.health || 0)));
+    const nextHappiness = Math.max(0, Math.min(100, gameState.happiness + (effects.happiness || 0)));
+    const nextStress = Math.max(0, Math.min(100, gameState.stress + (effects.stress || 0)));
+    const nextFame = Math.max(0, Math.min(100, gameState.fame + (effects.fame || 0)));
+    const nextAge = gameState.age + 1;
 
-      const nextState: GameState = {
-        ...prev,
-        age: nextAge,
-        money: nextMoney,
-        health: nextHealth,
-        happiness: nextHappiness,
-        stress: nextStress,
-        fame: nextFame,
-        job: effects.setJob || prev.job,
-        relationship: effects.setRelationship || prev.relationship,
-        flags: updatedFlags,
-        history: [...prev.history, newHistoryEntry],
-        peakMoney: Math.max(prev.peakMoney, nextMoney),
-        decisionsCount: prev.decisionsCount + 1
-      };
+    const nextState: GameState = {
+      ...gameState,
+      age: nextAge,
+      money: nextMoney,
+      health: nextHealth,
+      happiness: nextHappiness,
+      stress: nextStress,
+      fame: nextFame,
+      job: effects.setJob || gameState.job,
+      relationship: effects.setRelationship || gameState.relationship,
+      flags: updatedFlags,
+      history: [...gameState.history, newHistoryEntry],
+      peakMoney: Math.max(gameState.peakMoney, nextMoney),
+      decisionsCount: gameState.decisionsCount + 1
+    };
 
-      if (nextHealth <= 0 || nextStress >= 100 || nextAge > 100) {
-        const deathReason = determineDeathReason(nextState);
-        const finalState = { ...nextState, isAlive: false, deathReason };
-        setTimeout(() => {
-          setGameState(finalState);
-          setScreen('END');
-          gameplayStop();
-          setIsProcessingChoice(false);
-        }, 400);
-        return finalState;
-      }
-
-      const nextEvent = eventEngine.getNextEvent(nextState);
+    if (nextHealth <= 0 || nextStress >= 100 || nextAge > 100) {
+      const deathReason = determineDeathReason(nextState);
+      const finalState = { ...nextState, isAlive: false, deathReason };
+      setGameState(finalState);
       setTimeout(() => {
-        setCurrentEvent(nextEvent);
+        handleGameOver(finalState);
         setIsProcessingChoice(false);
-      }, 300);
-      return nextState;
-    });
+      }, 350);
+      return;
+    }
+
+    setGameState(nextState);
+    const nextEvent = eventEngine.getNextEvent(nextState);
+    setTimeout(() => {
+      setCurrentEvent(nextEvent);
+      setIsProcessingChoice(false);
+    }, 280);
   };
 
   const handleOpenRegretAd = () => setShowRegretAd(true);
@@ -262,7 +372,7 @@ export default function App() {
 
   const handleRevive = () => {
     setShowReviveAd(false);
-    const revivedState = {
+    const revivedState: GameState = {
       ...gameState,
       health: 50,
       stress: Math.min(gameState.stress, 60),
@@ -280,10 +390,18 @@ export default function App() {
 
   const handleInspectPastRun = (run: PastRun) => setInspectedPastRun(run);
 
+  if (!storageReady) {
+    return (
+      <div className={`min-h-[100dvh] flex items-center justify-center ${theme === 'light' ? 'bg-slate-50' : 'bg-[#0b0e14]'}`}>
+        <p className="text-sm opacity-60">…</p>
+      </div>
+    );
+  }
+
   if (screen === 'START') {
     return (
       <StartScreen
-        totalRuns={pastRuns.length}
+        totalRuns={totalRuns}
         language={language}
         theme={theme}
         onStartGame={handleStart}
@@ -309,7 +427,7 @@ export default function App() {
         onToggleTheme={handleToggleTheme}
         onRestart={handleStart}
         onOpenAdRevive={() => setShowReviveAd(true)}
-        canRewindFatal={previousTurnState !== null}
+        canRewindFatal={previousTurnState !== null && !gameState.hasRevived}
         onRewindFatalChoice={handleOpenRegretAd}
         onOpenHistory={() => setIsLogOpen(true)}
         onReturnHome={handleReturnHome}
@@ -378,12 +496,14 @@ export default function App() {
         onClose={() => setShowRegretAd(false)}
         onComplete={handleRegretConfirm}
         language={language}
+        mode="REGRET"
       />
       <MockAdModal
         isOpen={showReviveAd}
         onClose={() => setShowReviveAd(false)}
         onComplete={handleRevive}
         language={language}
+        mode="REVIVE"
       />
       <TrophyRoomModal
         isOpen={isTrophyRoomOpen}
